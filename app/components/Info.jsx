@@ -18,21 +18,34 @@ const Info = () => {
         setShowMore(!showMore);
     };
 
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const srver = process.env.REACT_APP_SERVER;
+    //             const response = await axios.get(`${srver}:5000/api/information/${collegeName}`)
+    //             setFixedDatas(response.data)
+
+    //         }
+    //         catch (error) {
+    //             console.log(error)
+    //         }
+    //     }
+    //     fetchData()
+
+    // }, []);
+
+
     useEffect(() => {
         const fetchData = async () => {
-            try {
-                const srver = process.env.REACT_APP_SERVER;
-                const response = await axios.get(`${srver}:5000/api/information/${collegeName}`)
-                setFixedDatas(response.data)
-
-            }
-            catch (error) {
-                console.log(error)
-            }
-        }
-        fetchData()
-
-    }, []);
+          const res = await fetch('/api/information?name=' + collegeName);
+          const result = await res.json();
+          if (result.success) {
+            setFixedDatas(result.data);
+          }
+        };
+    
+        fetchData();
+      }, [collegeName]);
 
     // console.log("data in info is",fixedDatas)
 

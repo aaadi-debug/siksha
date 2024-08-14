@@ -24,21 +24,19 @@ const collegeImages = {
 
 
 const Top10Colleges = () => {
-    const [tabData, setTabData] = useState([]) 
+    const [tabData, setTabData] = useState([])
+
     useEffect(() => {
         const fetchData = async () => {
-            try {
-                const srver = process.env.REACT_APP_SERVER;
-                const response = await axios.get(`${srver}:5000/api/top10colleges`)
-                setTabData(response.data)
-                console.log(response.data);
-            }
-            catch (error) {
-                console.log(error)
-            }
-        }
-        fetchData()
-    }, []);
+          const res = await fetch('/api/tabdata');
+          const result = await res.json();
+          if (result.success) {
+            setTabData(result.data);
+          }
+        };
+    
+        fetchData();
+      }, []);
 
 
     return (
@@ -50,22 +48,31 @@ const Top10Colleges = () => {
                 <Tabs defaultActiveKey="BE/B.Tech" id="uncontrolled-tab-example" className="mb-3 tabs">
 
 
-                    {tabData.map((info) => (
-                        <Tab key={info._id} eventKey={info.eventkey} className={info.classname} title={info.title}>
-                            {info.colleges.map((college, index) => (
-                                <Top10CollegeCard
-                                    key={index}
-                                    id={college.college_name}
-                                    imgSrc={collegeImages[college.college_name] || '/assets/images/college_imgs.jpg'} // Default to CollegeIMG if not found
-                                    ranking={college.ranking}
-                                    college_name={college.college_name}
-                                    cut_off={college.cut_off}
-                                    deadline={college.deadline}
-                                    college_fees={college.college_fees}
-                                />
-                            ))}
-                        </Tab>
-                    ))}
+                    {tabData.length === 0 ? (
+                        <p>No Data</p>
+                    ) : (
+                        tabData.map((info) => (
+                            <Tab key={info._id} eventKey={info.eventkey} className={info.classname} title={info.title}>
+                                {info.colleges.length === 0 ? (
+                                    <p>No Data</p>
+                                ) : (
+                                    info.colleges.map((college, index) => (
+                                        <Top10CollegeCard
+                                            key={index}
+                                            id={college.college_name}
+                                            imgSrc={collegeImages[college.college_name] || '/assets/images/college_imgs.jpg'} // Default to CollegeIMG if not found
+                                            ranking={college.ranking}
+                                            college_name={college.college_name}
+                                            cut_off={college.cut_off}
+                                            deadline={college.deadline}
+                                            college_fees={college.college_fees}
+                                        />
+                                    ))
+                                )}
+                            </Tab>
+                        ))
+                    )}
+
 
                 </Tabs>
             </div>

@@ -29,7 +29,15 @@
     "reactstrap": "^9.2.2",
     "recharts": "^2.12.7",
     "swiper": "^11.1.9",
-    "video-react": "^0.16.0"
+    "video-react": "^0.16.0",
+
+    "@heroicons/react": "^2.1.4",
+    "@types/react-date-range": "^1.4.9",
+    "mongoose": "^8.4.4",
+    "multiparty": "^4.2.3",
+    "react-quill": "^2.0.0",
+    "react-sortablejs": "^6.1.4",
+    "react-spinners": "^0.14.1"
   },
   "devDependencies": {
     "postcss": "^8",

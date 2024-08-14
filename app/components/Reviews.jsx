@@ -17,11 +17,13 @@ import { MdKeyboardArrowUp } from "react-icons/md";
 import { FaStarHalfAlt } from "react-icons/fa";
 import axios from 'axios';
 
-const Reviews = () => {
+const Reviews = (props) => {
     // State to manage visibility for each section
     const [visibleLikes, setVisibleLikes] = useState({});
     const [visibleDislikes, setVisibleDislikes] = useState({});
     const [reviewsData, setReviewsData] = useState([]);
+    const  collegeName =props.collegeName
+
 
     const fixedData = [
         {
@@ -37,20 +39,34 @@ const Reviews = () => {
         }
     ]
 
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const response = await axios.get(`http://157.173.221.48:5000/api/reviews`)
+    //             setReviewsData(response.data)
+
+    //         }
+    //         catch (error) {
+    //             console.log(error)
+    //         }
+    //     }
+    //     fetchData()
+
+    // }, []);
+
+
     useEffect(() => {
         const fetchData = async () => {
-            try {
-                const response = await axios.get(`http://157.173.221.48:5000/api/reviews`)
-                setReviewsData(response.data)
+          const res = await fetch('/api/reviews?name=' + collegeName);
+          const result = await res.json();
+          if (result.success) {
+            setReviewsData(result.data);
+          }
+        };
+    
+        fetchData();
+      }, [collegeName]);
 
-            }
-            catch (error) {
-                console.log(error)
-            }
-        }
-        fetchData()
-
-    }, []);
 
     // Array of progress values for each star rating
     const progressValues = [
@@ -120,20 +136,20 @@ const Reviews = () => {
     // ];
 
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(`http://localhost:5000/api/reviews`)
-                setReviewsData(response.data)
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const response = await axios.get(`http://localhost:5000/api/reviews`)
+    //             setReviewsData(response.data)
 
-            }
-            catch (error) {
-                console.log(error)
-            }
-        }
-        fetchData()
+    //         }
+    //         catch (error) {
+    //             console.log(error)
+    //         }
+    //     }
+    //     fetchData()
 
-    }, []);
+    // }, []);
 
     console.log("rewiew is",reviewsData)
 

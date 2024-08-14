@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { FaSearch } from "react-icons/fa";
 import axios from 'axios';
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-const Admissions = () => {
+const Admissions = (props) => {
     const [filter, setFilter] = useState('all');
     const [searchQuery, setSearchQuery] = useState('');
-    // const { collegeName } = useParams();
+    const  collegeName =props.collegeName
     const [datas, setData] = useState([])
 
     const filterSelection = (filter) => {
@@ -19,21 +19,33 @@ const Admissions = () => {
 
 
 
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const srver = process.env.REACT_APP_SERVER;
+    //             const response = await axios.get(`${srver}:5000/api/admissions`)
+    //             setData(response.data)
+
+    //         }
+    //         catch (error) {
+    //             console.log(error)
+    //         }
+    //     }
+    //     fetchData()
+
+    // }, []);
+
     useEffect(() => {
         const fetchData = async () => {
-            try {
-                const srver = process.env.REACT_APP_SERVER;
-                const response = await axios.get(`${srver}:5000/api/admissions`)
-                setData(response.data)
-
-            }
-            catch (error) {
-                console.log(error)
-            }
-        }
-        fetchData()
-
-    }, []);
+          const res = await fetch('/api/admission?name=' + collegeName);
+          const result = await res.json();
+          if (result.success) {
+            setData(result.data);
+          }
+        };
+    
+        fetchData();
+      }, [collegeName]);
 
     console.log("data is ", datas)
 

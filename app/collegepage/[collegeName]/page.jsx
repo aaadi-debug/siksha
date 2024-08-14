@@ -41,7 +41,7 @@ import axios from 'axios';
 const page = ({ params }) => {
 
     const [sidebarOpen, setSidebarOpen] = useState(false);
-    const [data, setData] = useState([]);
+    const [datas, setData] = useState([]);
     const { collegeName } = params;
     const [activeTab, setActiveTab] = useState('info');
 
@@ -51,18 +51,17 @@ const page = ({ params }) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            try {
-                const srver = process.env.REACT_APP_SERVER;
-                const response = await axios.get(`${srver}:5000/api/collegelist/` + collegeName); //localhost
-                setData(response.data);
-            } catch (error) {
-                console.log(error);
-            }
+          const res = await fetch('/api/collegeslist?name=' + collegeName);
+          const result = await res.json();
+          if (result.success) {
+            setData(result.data);
+          }
         };
+    
         fetchData();
-    }, [collegeName]);
+      }, [collegeName]);
 
-    console.log("data for upper navigation", data);
+    console.log("data for upper navigation", datas);
 
     return (
         <>
@@ -74,8 +73,12 @@ const page = ({ params }) => {
                     <Navbar />
 
                     {
-                        data ? (
-                            data.map((data, index) => (
+                        datas.length===0 ?
+                        (
+                            <div className="text-center">No College info Found</div>
+                        ):
+                        (
+                            datas?.map((data, index) => (
                                 <div className="collegepage_section_wrapper" key={index}>
                                     <div className="collegepage_section_about">
                                         {/* ----- left div ---- */}
@@ -123,7 +126,7 @@ const page = ({ params }) => {
                                             <div className="will_you_get_btn">
                                                 <Link href="">Get Contact Details</Link>
                                             </div>
-                                            <Link className="claim_this_college">
+                                            <Link href={'#'} className="claim_this_college">
                                                 <span><GoDotFill /></span>
                                                 <p>Claim this college</p>
                                                 <div className="claim_this_college_tooltip">
@@ -139,8 +142,6 @@ const page = ({ params }) => {
                                     </div>
                                 </div>
                             ))
-                        ) : (
-                            <div>No Data Available</div>
                         )
                     }
                 </section>
@@ -281,7 +282,7 @@ const page = ({ params }) => {
                             <div className="tab-content">
                                 {activeTab === 'info' && (
                                     <div className="text-left text-light">
-                                        <Info />
+                                        <Info collegeName={collegeName} />
                                     </div>
                                 )}
                                 {activeTab === 'courses' && (
@@ -291,12 +292,12 @@ const page = ({ params }) => {
                                 )}
                                 {activeTab === 'admission' && (
                                     <div className="text-left text-light">
-                                        <Admissions />
+                                        <Admissions collegeName={collegeName}  />
                                     </div>
                                 )}
                                 {activeTab === 'reviews' && (
                                     <div className="text-left text-light">
-                                        <Reviews />
+                                        <Reviews  collegeName={collegeName} />
                                     </div>
                                 )}
                                 {activeTab === 'department' && (

@@ -18,7 +18,7 @@ const Top10CollegeCard = (props) => {
       <div data-aos="fade-up" className="ranking">
         <span>{props.ranking}</span>
       </div>
-      <Link to={`/collegepage/${transformedCollegeName}`} data-aos="fade-up" className="card_body">
+      <Link href={`/collegepage/${transformedCollegeName}`} data-aos="fade-up" className="card_body">
         <ul>
           <li data-aos="fade-up">College</li>
           <li data-aos="fade-up">Cut Off</li>

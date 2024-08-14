@@ -34,8 +34,28 @@ const Navbar = () => {
             date: '2023-07-24',
             link: '#'
         },
+        {
+            id: 2,
+            type: 'normal',
+            image: '/path/to/image1.jpg',
+            title: 'Notification 2',
+            message: 'This is the first notification message.',
+            date: '2023-07-24',
+            link: '#'
+        },
+        {
+            id: 3,
+            type: 'live',
+            image: '/path/to/image1.jpg',
+            title: 'Notification 1',
+            message: 'This is the first notification message.',
+            date: '2023-07-24',
+            link: '#'
+        },
         // ... other notifications
     ]);
+    const [isOpen, setIsOpenState] = useState(false); // Added this line to fix the ReferenceError
+
 
     const handleReadMore = (notificationName) => {
         window.location.href = `/notifications/${notificationName}`;
@@ -86,14 +106,23 @@ const Navbar = () => {
     return (
         <nav className={`navbar navbar-expand-lg ${scrolled ? 'navbar_fixed navbar_dark' : ''}`}>
             <Link href="/" passHref className="navbar-brand">
-                    <Image src={scrolled ? '/assets/logo-white-box.png' : '/assets/logo-white-box.png'} alt="Logo" width={150} height={50} />
+                <Image src={scrolled ? '/assets/logo-white-box.png' : '/assets/logo-white-box.png'} alt="Logo" width={150} height={50} />
             </Link>
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button
+                className="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                onClick={() => setIsOpenState(!isOpen)} // Use isOpenState to toggle navbar
+            >
                 <span className="navbar-toggler-icon"></span>
             </button>
 
             {/* <div className="collapse navbar-collapse" id="navbarSupportedContent"> */}
-            <div className="navbar-collapse" id="navbarSupportedContent">
+            <div className={`navbar-collapse ${isOpen ? 'block' : 'hidden'} lg:flex lg:items-center lg:space-x-4`} id="navbarSupportedContent">
                 {scrolled ? (
                     <div className="search_widget navbar_search_widget">
                         <input type="text" placeholder="Search for Colleges, Exams, Courses, and More..." />
@@ -123,6 +152,10 @@ const Navbar = () => {
                             <a className="nav-link" onClick={() => handleItemClick('item5')} style={{ color: activeItem === 'item5' ? '#fff' : '', background: activeItem === 'item5' ? '#3D52A0' : '' }}>Colleges</a>
                             <ul className="dropdown_menu dropdown_menu--animated dropdown_menu-6">
                                 <li className="dropdown_item-1"><Link href="/collegepage/IIT Delhi (IIT-D)">IIT Delhi</Link></li>
+                                <li><Link href="/collegepage/IIT Madras (IIT-M)">IIT Madras</Link></li>
+                                <li><Link href="/collegepage/IIT Kharagpur (IIT-KGP)">IIT Kharagpur</Link></li>
+                                <li><Link href="/collegepage/IIT Roorkee (IIT-R)">IIT Roorkee</Link></li>
+                                <li><Link href="/collegepage/IIT Bombay (IIT-B)">IIT Bombay</Link></li>
                                 {/* other dropdown items */}
                             </ul>
                         </li>
@@ -131,19 +164,19 @@ const Navbar = () => {
 
                 <div className="social_media_links ms-auto">
                     <div className="icon_div">
-                        <a href="https://www.facebook.com/profile.php?id=61550767657757&mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
+                        <Link href="https://www.facebook.com/profile.php?id=61550767657757&mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer"><FaFacebookF /></Link>
                     </div>
                     <div className="icon_div">
-                        <a href="https://www.linkedin.com/company/siksha-helpline/" target="_blank" rel="noopener noreferrer"><FaLinkedinIn /></a>
+                        <Link href="https://www.linkedin.com/company/siksha-helpline/" target="_blank" rel="noopener noreferrer"><FaLinkedinIn /></Link>
                     </div>
                     <div className="icon_div">
-                        <a href="https://www.instagram.com/siksha_helpline?igsh=MWU3ZXIwbXZzOXhndg==" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+                        <Link href="https://www.instagram.com/siksha_helpline?igsh=MWU3ZXIwbXZzOXhndg==" target="_blank" rel="noopener noreferrer"><FaInstagram /></Link>
                     </div>
                     <div className="icon_div">
-                        <a href="https://x.com/Siksha_Helpline?t=trstRpmhjj-gQEetDt9O6w&s=09" target="_blank" rel="noopener noreferrer"><FaTwitter /></a>
+                        <Link href="https://x.com/Siksha_Helpline?t=trstRpmhjj-gQEetDt9O6w&s=09" target="_blank" rel="noopener noreferrer"><FaTwitter /></Link>
                     </div>
                     <div className="icon_div">
-                        <a href="https://www.youtube.com/@Siksha_Helpline" target="_blank" rel="noopener noreferrer"><FaYoutube /></a>
+                        <Link href="https://www.youtube.com/@Siksha_Helpline" target="_blank" rel="noopener noreferrer"><FaYoutube /></Link>
                     </div>
                     <div className="noti">
                         <button className="notification_icons" onClick={openModal}>
@@ -156,7 +189,7 @@ const Navbar = () => {
                             contentLabel="Notification Modal"
                         >
                             <div className="notification_modal_wrapper">
-                                <h5>Notification</h5>
+                                <h5 className='text-xl text-black font-semibold'>Notifications</h5>
                                 <div className="noti_content mt-3">
                                     <select
                                         value={notificationType}

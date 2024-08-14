@@ -448,7 +448,7 @@ Particular tabs tables litlle little styling below
 
 
 
-/* ----------------- Navbar ------------------ */
+/* ----------------- Navbar styling ------------------ */
 
 .navbar-toggler {
   background-color: var(--white-clr) !important;
@@ -522,7 +522,7 @@ Particular tabs tables litlle little styling below
 }
 
 .nav_btns .common_new_btn span {
-  top: -56px;
+  top: -30px !important;
 }
 
 .nav_btns .common_new_btn:hover span {
@@ -573,9 +573,8 @@ Particular tabs tables litlle little styling below
 }
 
 .icon_div {
-  width: 30px;
   background-color: var(--primary-clr);
-  padding: 3px 8px 6px 7px;
+  padding: 8px;
   border-radius: 50%;
   margin: 0 4px;
 }
@@ -813,12 +812,12 @@ Particular tabs tables litlle little styling below
   }
 
   .navbar ul li {
-    margin: 0 20px;
+    margin: 0 20px 4px 20px;
   }
 
   .navbar ul li a {
     color: var(--white-clr) !important;
-    font-size: 18px;
+    font-size: 12px !important;
     font-weight: 600;
     text-decoration: none;
     padding: 4px 12px;
@@ -879,7 +878,6 @@ Particular tabs tables litlle little styling below
   .icon_div {
     width: 30px;
     background-color: var(--primary-clr);
-    padding: 3px 8px 6px 7px;
     border-radius: 50%;
     margin: 0 4px;
   }
@@ -950,13 +948,14 @@ Particular tabs tables litlle little styling below
   }
 
   .nav_btns {
-    /* border: 1px solid red; */
     margin-top: 10px;
     padding-left: 20px;
   }
 
   .nav_btns .common_new_btn {
     margin: 0;
+    z-index: 9999 !important;
+
   }
 
   .nav_btns .common_new_btn span {
@@ -980,13 +979,12 @@ Particular tabs tables litlle little styling below
     /* border: 1px solid red; */
     justify-content: start;
     padding-left: 30px;
-    margin: 10px 0;
+    margin: 5px 10px 0 10px;
   }
 
   .icon_div {
     width: 30px;
     background-color: var(--primary-clr);
-    padding: 3px 8px 6px 7px;
     border-radius: 50%;
     margin: 0 4px;
   }
@@ -1070,7 +1068,6 @@ Particular tabs tables litlle little styling below
   .icon_div {
     width: 30px;
     background-color: var(--primary-clr);
-    padding: 3px 8px 6px 7px;
     border-radius: 50%;
     margin: 0 4px;
   }
@@ -1238,6 +1235,8 @@ Particular tabs tables litlle little styling below
   width: 40%;
   color: var(--white-clr);
   position: relative;
+  margin-bottom: 10px;
+  
   /* z-index: 9999 !important; */
 
 }
@@ -1245,6 +1244,12 @@ Particular tabs tables litlle little styling below
 .herosection_wrapper h2 .fixed_h {
   position: absolute;
   left: 0;
+  font-size: 28px;
+  font-weight: 600;
+}
+.herosection_wrapper h2 .moving_h {
+  font-size: 28px;
+  font-weight: 600;
 }
 
 .herosection h1 span {
@@ -1286,7 +1291,7 @@ Particular tabs tables litlle little styling below
   top: 6px;
   /* width: 20%; */
   background-color: var(--primary-clr);
-  padding: 8px 12px;
+  padding: 12px;
   color: var(--white-clr);
   text-decoration: none;
   font-size: 18px;
@@ -1314,7 +1319,17 @@ Particular tabs tables litlle little styling below
   .herosection_wrapper h2 {
     /* border: 1px solid red; */
     width: 80%;
-    font-size: 20px;
+    font-size: 20px !important;
+  }
+  .herosection_wrapper h2 .fixed_h {
+    position: absolute;
+    left: 0;
+    font-size: 19px;
+    font-weight: 600;
+  }
+  .herosection_wrapper h2 .moving_h {
+    font-size: 19px;
+    font-weight: 600;
   }
 
   .herosection_wrapper h2 span:last-child {
@@ -1347,12 +1362,6 @@ Particular tabs tables litlle little styling below
     font-size: 16px;
   }
 }
-
-
-
-
-
-
 
 /* ----------------- set your goal ----------------- */
 
@@ -4405,7 +4414,8 @@ footer {
   }
   .footer_buttons ul {
       /* border: 1px solid red; */
-      margin-left: -30px;
+      margin-left: 0px;
+      margin-bottom: 20px;
   }
   .footer_buttons ul li {
       list-style: none;
@@ -5464,7 +5474,7 @@ footer {
 /* ----------------------------------------
 ---------- collegepage --------------------
 ---------------------------------------- */
-collegepage_section{
+.collegepage_section{
   /* border: 1px solid red; */
   background: linear-gradient(#00000073, #00000077);
   background-size: cover;

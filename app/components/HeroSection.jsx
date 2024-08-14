@@ -46,8 +46,8 @@ const HeroSection = () => {
         <Navbar />
         <div className="herosection_wrapper">
           <h2>
-            <span className='fixed_h text-3xl font-semibold'>Find Over</span> {' '}
-            <span style={{ color: '#00f1ff', fontWeight: 'bold', marginLeft: '150px' }} className='text-3xl font-semibold'>
+            <span className='fixed_h'>Find Over</span> {' '}
+            <span style={{ color: '#00f1ff', fontWeight: 'bold', marginLeft: '150px' }} className='moving_h'>
               <Typewriter
                 words={['3500+ Colleges in India', '500+ Exams in India', '1100+ Exams in India', '1 Lakh Reviews in India!']}
                 loop={Infinity}

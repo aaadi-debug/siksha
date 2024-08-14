@@ -455,7 +455,7 @@ Particular tabs tables litlle little styling below
 }
 
 .navbar {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   margin-top: 20px;
   padding: 20px 30px !important;
 }
@@ -479,8 +479,8 @@ Particular tabs tables litlle little styling below
 }
 
 .navbar ul li {
+  /* border: 1px solid red; */
   margin: 0 20px;
-  border: 1px solid red;
   z-index: 9999;
 }
 
@@ -566,7 +566,7 @@ Particular tabs tables litlle little styling below
 }
 
 .social_media_links {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -4984,6 +4984,478 @@ footer {
   }
 
 }
+
+
+
+
+/* -------------- top10colleges ------------------------ */
+
+.top10colleges {
+  background: url(/assets/images/3-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  padding-bottom: 800px !important;
+  overflow: scroll;
+}
+
+.top10colleges_wrapper {
+  /* backgroun    : linear-gradient(#0000008b 50%, white 50%); */
+  position: relative;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.top10colleges_wrapper .tab-content {
+  /* border: 1px solid red; */
+  height: 800px;
+}
+.top10colleges_video_bg {
+  width: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+
+.top10colleges .nav-item button {
+  /* border: 1px solid red; */
+  border-radius: 20px;
+  border: 2px solid var(--primary-clr);
+  color: var(--primary-clr);
+  transition: all 0.4s;
+}
+
+.top10colleges .nav-item button:hover {
+  border-radius: 20px;
+  background-color: var(--primary-clr);
+  color: var(--white-clr);
+}
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+  color: var(--white-clr) !important;
+  background-color: var(--primary-clr) !important;
+  border-color: var(--primary-clr) !important;
+}
+.top10colleges .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+  color: var(--white-clr);
+  background-color: var(--primary-clr);
+  border-color: var(--primary-clr);
+}
+.tabs {
+  /* border: 1px solid red; */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.tab {
+  position: absolute;
+  /* border: 1px solid green; */
+  display: flex !important;
+  flex-direction: row;
+  flex-wrap: wrap !important;
+  padding-left: 40px;
+}
+
+
+.top10college_card {
+  /* border: 1px solid red; */
+  margin-right: 20px;
+  margin-bottom: 20px;
+  width: 290px;
+  overflow: hidden;
+  border-radius: 30px;
+  position: relative;
+}
+.top10college_card img {
+  position: absolute;
+  top: 0;
+  width: 290px;
+  height: 100%;
+  /* z-index: -1; */
+}
+.top10college_card .ranking {
+  /* border: 1px solid green; */
+  border-radius: 30px;
+  text-align: center;
+  background-color: #3d52a0be;
+  padding: 50px;
+  margin-top: -420px;
+  margin-left: -100px;
+  height: 500px;
+  width: 500px;
+  border-radius: 50%;
+  position: relative;
+  margin-bottom: 60px;
+}
+.top10college_card .ranking span {
+  position: absolute;
+  color: var(--white-clr);
+  bottom: 10px;
+  right: 238px;
+  font-size: 48px;
+  font-weight: bolder;
+}
+
+.top10college_card .card_body {
+  /* border: 1px solid blue; */
+  border-radius: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.897);
+  align-items: center;
+  padding: 20px 20px 0 20px;
+  text-decoration: none;
+  color: #000;
+  /* visibility: hidden; */
+}
+
+.top10college_card .card_body ul {
+  margin-left: -30px;
+}
+
+.top10college_card .card_body ul li  {
+  list-style: none;
+  line-height: 16px;
+  height: 40px;
+  font-size: 14px;
+}
+.top10college_card .card_body ul:first-child {
+  margin-right: 10px;
+}
+.top10college_card .card_body ul:first-child li {
+  color: #000;
+  font-weight: 500;
+}
+.top10college_card .card_body ul:first-child li:first-child {
+  /* border: 1px solid red; */
+  padding-bottom: 55px;
+}
+.top10college_card .card_body ul:last-child li:first-child {
+  /* border: 1px solid red; */
+  height: 60px;
+  padding-bottom: 6px;
+}
+
+@media (max-width: 378px) {
+  .top10colleges {
+      padding-bottom: 100% !important;
+
+      box-shadow: 1px -46px 34px 0px rgba(255,255,255,0.75) inset;
+-webkit-box-shadow: 1px -46px 34px 0px rgba(255,255,255,0.75) inset;
+-moz-box-shadow: 1px -46px 34px 0px rgba(255,255,255,0.75) inset;
+  }
+  
+  .top10colleges .nav-item button {
+      /* border: 1px solid red; */
+      border-radius: 20px;
+      margin-bottom: 8px;
+      font-size: 10px;
+      padding: 3px 5px;
+  }
+  .top10colleges_wrapper {
+      /* position: relative !important; */
+  }
+  .top10colleges .top10colleges_wrapper .tabs {
+      /* position: absolute;
+      border: 1px solid red;
+      z-index: 999;
+      position: fixed  !important;
+      right: 0 !important;
+      top: 0; 
+      left: 0; */
+  }
+  
+  .tab {
+      position: absolute;
+      /* border: 1px solid green; */
+      display: flex !important;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center ;
+      flex-wrap: wrap !important;
+      padding-left: 0px;  
+      overflow: hidden !important;
+  }
+  
+  
+  .top10college_card {
+      /* border: 1px solid red; */
+      margin-right: 10px;
+      margin-bottom: 10px;
+      width: 200px;
+      height: 230px;
+      overflow: hidden;
+      border-radius: 30px;
+      background-color: var(--white-clr);
+  }
+  
+  .top10college_card .ranking {
+      /* border: 3px solid green; */
+      border-radius: 30px;
+      text-align: center;
+      background-color: var(--primary-clr);
+      padding: 50px;
+      margin-top: -430px;
+      margin-left: -146px;
+      height: 500px;
+      width: 500px;
+      border-radius: 50%;
+      margin-bottom: 4px;
+  }
+  .top10college_card .ranking span {
+      position: absolute;
+      color: var(--white-clr);
+      bottom: 10px;
+      right: 245px;
+      font-size: 36px;
+      font-weight: bolder;
+  }
+  
+  .top10college_card .card_body {
+      /* border: 1px solid blue; */
+      border-radius: 30px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 0 10px;
+  }
+  
+  .top10college_card .card_body ul {
+      margin-left: -30px;
+  }
+  
+  .top10college_card .card_body ul li  {
+      list-style: none;
+      line-height: 16px;
+      height: 40px;
+      font-size: 14px;
+  }
+  
+  .top10college_card .card_body ul:first-child li {
+      font-size: 12px;
+  }
+  
+  .top10college_card .card_body ul:last-child li {
+      /* border: 1px solid red; */
+      margin-top: 4px;
+      line-height: 10px;
+      font-size: 10px;
+  }
+}
+
+@media (min-width: 379px) and (max-width: 480px) {
+  .top10colleges {
+      padding-bottom: 100% !important;
+
+      box-shadow: 1px -46px 34px 0px rgba(255,255,255,0.75) inset;
+      -webkit-box-shadow: 1px -46px 34px 0px rgba(255,255,255,0.75) inset;
+      -moz-box-shadow: 1px -46px 34px 0px rgba(255,255,255,0.75) inset;
+  }
+  
+  .top10colleges .nav-item button {
+      /* border: 1px solid red; */
+      border-radius: 20px;
+      margin-bottom: 8px;
+      font-size: 10px;
+      padding: 3px 5px;
+  }
+  .top10colleges_wrapper {
+      /* position: relative !important; */
+  }
+  .top10colleges .top10colleges_wrapper .tabs {
+      /* position: absolute;
+      border: 1px solid red;
+      z-index: 999;
+      position: fixed  !important;
+      right: 0 !important;
+      top: 0; 
+      left: 0; */
+  }
+  
+  .tab {
+      position: absolute;
+      /* border: 1px solid green; */
+      display: flex !important;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center ;
+      flex-wrap: wrap !important;
+      padding-left: 0px;  
+      overflow: hidden !important;
+  }
+  
+  
+  .top10college_card {
+      /* border: 1px solid red; */
+      margin-right: 10px;
+      margin-bottom: 10px;
+      width: 200px;
+      height: 230px;
+      overflow: hidden;
+      border-radius: 30px;
+      background-color: var(--white-clr);
+  }
+  
+  .top10college_card .ranking {
+      /* border: 3px solid green; */
+      border-radius: 30px;
+      text-align: center;
+      background-color: var(--primary-clr);
+      padding: 50px;
+      margin-top: -430px;
+      margin-left: -146px;
+      height: 500px;
+      width: 500px;
+      border-radius: 50%;
+      margin-bottom: 4px;
+  }
+  .top10college_card .ranking span {
+      position: absolute;
+      color: var(--white-clr);
+      bottom: 10px;
+      right: 245px;
+      font-size: 36px;
+      font-weight: bolder;
+  }
+  
+  .top10college_card .card_body {
+      /* border: 1px solid blue; */
+      border-radius: 30px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 0 10px;
+  }
+  
+  .top10college_card .card_body ul {
+      margin-left: -30px;
+  }
+  
+  .top10college_card .card_body ul li  {
+      list-style: none;
+      line-height: 16px;
+      height: 40px;
+      font-size: 14px;
+  }
+  
+  .top10college_card .card_body ul:first-child li {
+      font-size: 12px;
+  }
+  
+  .top10college_card .card_body ul:last-child li {
+      /* border: 1px solid red; */
+      margin-top: 4px;
+      line-height: 10px;
+      font-size: 10px;
+  }
+}
+
+/* Repsonsive code  */
+@media (min-width: 481px) and (max-width: 768px) {
+  
+.top10colleges {
+  padding-bottom: 180% !important;
+}
+
+.top10colleges .nav-item button {
+  /* border: 1px solid red; */
+  border-radius: 20px;
+  margin-bottom: 8px;
+  font-size: 10px;
+  padding: 3px 5px;
+}
+
+
+.tab {
+  position: absolute;
+  /* border: 1px solid green; */
+  display: flex !important;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center ;
+  flex-wrap: wrap !important;
+  padding-left: 0px;  
+  overflow: hidden !important;
+}
+
+
+.top10college_card {
+  /* border: 1px solid red; */
+  margin-right: 10px;
+  margin-bottom: 10px;
+  width: 200px;
+  height: 230px;
+  overflow: hidden;
+  border-radius: 30px;
+  background-color: var(--white-clr);
+}
+
+.top10college_card .ranking {
+  /* border: 3px solid green; */
+  border-radius: 30px;
+  text-align: center;
+  background-color: var(--primary-clr);
+  padding: 50px;
+  margin-top: -430px;
+  margin-left: -146px;
+  height: 500px;
+  width: 500px;
+  border-radius: 50%;
+  margin-bottom: 4px;
+}
+.top10college_card .ranking span {
+  position: absolute;
+  color: var(--white-clr);
+  bottom: 10px;
+  right: 245px;
+  font-size: 36px;
+  font-weight: bolder;
+}
+
+.top10college_card .card_body {
+  /* border: 1px solid blue; */
+  border-radius: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.top10college_card .card_body ul {
+  margin-left: -30px;
+}
+
+.top10college_card .card_body ul li  {
+  list-style: none;
+  line-height: 16px;
+  height: 40px;
+  font-size: 14px;
+}
+
+.top10college_card .card_body ul:first-child li {
+  font-size: 12px;
+}
+
+.top10college_card .card_body ul:last-child li {
+  /* border: 1px solid red; */
+  margin-top: 4px;
+  line-height: 10px;
+  font-size: 10px;
+}
+
+}
+
+@media (min-width:1024px) and (max-width: 1440px) {
+
+}
+
 
 
 

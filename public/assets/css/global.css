@@ -1,0 +1,293 @@
+:root {
+  --primary-clr: #3D52A0;
+  --secondary-color: #7091E6;
+  --dark-gray: #8697c4;
+  --light-gray: #adbbda;
+  --more-light-gray: #7091e610;
+  --reddish-white: #ede8f5;
+  --white-clr: #ffffff;
+  --black_clr: #000000;
+  --star-clr: #FFA100;
+  --green-clr: #099250;
+  --red-clr: #D92D20;
+}
+
+.swiper-scrollbar {
+    display: none;
+}
+
+.bg_reddish {
+  background-color: var(--reddish-white);
+}
+
+
+/* ------------- two cta button styling starts ---------------- */
+.cta_buttons {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.cta_buttons .brochure_btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .cta_buttons .brochure_btn  {
+    width: 100%;
+    border: 1px solid var(--secondary-color);
+    text-align: center;
+    color: var(--secondary-color);
+    font-size: 18px;
+    border-radius: 30px;
+    padding: 8px 20px;
+    transition: all .4s;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  .cta_buttons .brochure_btn  input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: var(--secondary-color);
+    transition: 0.5s all;
+  }
+  .cta_buttons .brochure_btn:hover {
+    background-color: var(--secondary-color);
+    color: var(--white-clr);
+  }
+  .cta_buttons .brochure_btn:hover input {
+    color: var(--white-clr);
+  }
+  .cta_buttons .applynow_btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .cta_buttons .applynow_btn  {
+    width: 100%;
+    border: 1px solid var(--star-clr);
+    text-align: center;
+    color: var(--star-clr);
+    font-size: 18px;
+    border-radius: 30px;
+    padding: 8px 20px;
+    transition: all .4s;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  .cta_buttons .applynow_btn  input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: var(--star-clr);
+    transition: 0.5s all;
+  }
+  .cta_buttons .applynow_btn:hover {
+    background-color: var(--star-clr);
+    color: var(--white-clr);
+  }
+  .cta_buttons .applynow_btn:hover input {
+    color: var(--white-clr);
+  }  
+
+/* ------------- two cta button styling end ---------------- */
+
+
+/* ------------- also_check styling starts ---------------- */
+/* ------------- also_check styling starts ---------------- */
+.also_check p {
+  display: flex;
+  color: var(--secondary-color);
+}
+
+.also_check p span {
+  color: var(--red-clr);
+  font-weight: 500;
+}
+.also_check p a {
+  text-decoration: none;
+  color: var(--secondary-color);
+}
+.also_check p a:hover {
+  color: var(--black_clr);
+}
+/* ------------- also_check styling ends ---------------- */
+
+/* ------------- table_of_contents styling starts ---------------- */
+.table_of_contents {
+  background-color: var(--more-light-gray);
+}
+.table_of_contents li a{
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+.table_of_contents li a:hover{
+  color: var(--black_clr);
+}
+.table_of_contents {
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+/* ------------- table_of_contents styling ends ---------------- */
+
+
+
+/* -------------- progress_bars_div starts -------------- */
+.progress_bars_div .progress_div {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.progress_bars_div .progress_div span:first-child {
+  font-weight: 600;
+  font-size: 18px;
+}
+.progress_bars_div .progress_div span:nth-child(2) {
+  color: var(--star-clr);
+  font-size: 20px;
+  padding: 0 10px 5px 5px;
+}
+
+.progress_bars_div .progress {
+  width: 100%;
+}
+.progress_bars_div .progress-bar {
+  background-color: var(--star-clr);
+  font-size: 14px;
+  font-weight: 700;
+}
+/* -------------- progress_bars_div ends -------------- */
+
+
+/* -------------- locked_div -------------- */
+.locked_content{
+  /* border: 1px solid red; */
+  padding: 60px 0 30px 0;
+  margin-top: -30px;
+  border-radius: 0 0 10px 10px;
+  background: linear-gradient(to top, var(--white-clr) 50%, rgba(255, 255, 255, 0.473) 50%);
+}
+.locked_div {
+  /* border: 1px solid red; */
+  background-color: var(--star-clr);
+  border: 1px solid var(--star-clr);
+  color: var(--white-clr);
+  padding: 10px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: 0.4s all;
+  margin: 10px 0;
+}
+.locked_div:hover {
+  /* border: 1px solid red; */
+  background-color: transparent;
+  color: var(--star-clr);
+  padding: 10px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+}
+
+/* ----------- name_link_style -------------  */
+.name_link_style {
+  text-decoration: none;
+  color: var(--secondary-color);
+}
+.name_link_style:hover {
+  text-decoration: none;
+  color: var(--black_clr);
+}
+.name_link_style.disabled_link {color: var(--black_clr);}
+
+
+
+/* ------------------------------------------------------- */
+/* -------------- tesrms and conditions --------------- */
+/* ------------------------------------------------------- */
+.terms_and_conditions {
+  background-color: var(--reddish-white);
+}
+.terms_and_conditions a {
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+
+/* ------------------------------------------------------- */
+/* -------------- privacy policy --------------- */
+/* ------------------------------------------------------- */
+.privacy_policy {
+  background-color: var(--reddish-white);
+}
+.privacy_policy a {
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+.privacy_policy ul li {
+  margin-left: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ------------------------------------------------------- */
+/* -------------- Error --------------- */
+/* ------------------------------------------------------- */
+.error .navbar {
+  /* border: 1px solid #000; */
+  margin-top: -1px;
+}
+
+.error .navbar_fixed {
+  /* border: 1px solid #000; */
+  margin-top: 20px;
+}
+
+.error .error_wrapper {
+  background-image: url('../images/error_bg.svg');
+  background-color: var(--reddish-white);
+  background-repeat: no-repeat;
+  background-position: top center;
+
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  height: 80vh; 
+}
+.error .error_wrapper h2 {
+  color: #3F3D56;
+  font-size: 84px;
+  padding-bottom: 50px;
+}
+
+@media(max-width: 425px) {
+  .error .error_wrapper {
+    background-position: top center;
+    background-size: contain;
+  
+    height: 30vh; 
+    padding-bottom: 100px;
+  }
+  .error .error_wrapper h2 {
+    color: #3F3D56;
+    font-size: 24px;
+    padding-bottom: 0px;
+  }
+}

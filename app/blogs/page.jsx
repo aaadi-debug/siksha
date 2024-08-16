@@ -39,32 +39,35 @@ export default function Blog() {
         fetchData();
     }, []);
 
-    useEffect(() => {
-        // Filter blogs based on search term and date range
-        const filtered = blogs
-            .filter(blog => blog.title.toLowerCase().includes(search.toLowerCase()))
-            .filter(blog => {
-                const blogDate = new Date(blog.date); // Ensure your blog object has a date field
-                return blogDate >= dateRange.startDate && blogDate <= dateRange.endDate;
-            });
-        setFilteredBlogs(filtered);
-    }, [search, dateRange, blogs]);
+    // useEffect(() => {
+    //     // Filter blogs based on search term and date range
+    //     const filtered = blogs
+    //         .filter(blog => blog.title.toLowerCase().includes(search.toLowerCase()))
+    //         .filter(blog => {
+    //             const blogDate = new Date(blog.createdAt); // Ensure your blog object has a date field
+    //             return blogDate >= dateRange.startDate && blogDate <= dateRange.endDate;
+    //         });
+    //     setFilteredBlogs(filtered);
+    // }, [search, dateRange, blogs]);
 
-    const handleSearchChange = (e) => {
-        setSearch(e.target.value);
-    };
+    // const handleSearchChange = (e) => {
+    //     setSearch(e.target.value);
+    // };
 
-    const handleRowsPerPageChange = (e) => {
-        setRowsPerPage(Number(e.target.value));
-        setCurrentPage(1); // Reset to first page when rows per page changes
-    };
+    // const handleRowsPerPageChange = (e) => {
+    //     setRowsPerPage(Number(e.target.value));
+    //     setCurrentPage(1); // Reset to first page when rows per page changes
+    // };
 
-    const handlePageChange = (newPage) => {
-        setCurrentPage(newPage);
-    };
+    // const handlePageChange = (newPage) => {
+    //     setCurrentPage(newPage);
+    // };
 
-    const pageCount = Math.ceil(filteredBlogs.length / rowsPerPage);
-    const displayedBlogs = filteredBlogs.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
+    // const pageCount = Math.ceil(filteredBlogs.length / rowsPerPage);
+    // const blogs = filteredBlogs.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
+
+
+    console.log(blogs)
 
     return (
         <>
@@ -77,10 +80,10 @@ export default function Blog() {
             </div>
             <div className="container py-5 lg:px-28 bg_reddish">
                 <div className="blogs_card_wrapper flex flex-wrap gap-4">
-                    {displayedBlogs.length > 0 ? displayedBlogs.map((blog) => (
+                    {blogs.length > 0 ? blogs.map((blog) => (
                         <div key={blog.id} className="blogs_card rounded shadow-md border border-slate-500 p-3 h-[400px] w-[300px] bg-white m-2">
                             <img
-                                src={blog.imageUrl || "https://via.placeholder.com/300x200"} // Fallback image URL
+                                src={blog.cardImage || "https://via.placeholder.com/300x200"} // Fallback image URL
                                 alt={blog.title}
                                 className="rounded h-[80%] w-full border"
                             />
@@ -93,7 +96,7 @@ export default function Blog() {
                             <div className="text-base text-slate-500 font-medium">Date: {new Date(blog.date).toLocaleDateString()}</div>
                             <Link
                                 href={'/blogs/view/' + blog.title}
-                                className="rounded-full px-4 py-2 bg-blue-500 text-white"
+                                className="rounded-full px-4 py-2 bg-blue-500 text-white mt-6 p-6"
                             >
                                 Read this blog
                             </Link>
@@ -103,7 +106,7 @@ export default function Blog() {
                     )}
                 </div>
 
-                <div className="pagination mt-4 flex justify-center space-x-2">
+                {/* <div className="pagination mt-4 flex justify-center space-x-2">
                     <button
                         onClick={() => handlePageChange(currentPage - 1)}
                         disabled={currentPage === 1}
@@ -111,7 +114,7 @@ export default function Blog() {
                     >
                         Previous
                     </button>
-                    <span className="px-4 py-2 text-gray-700">{`Page ${currentPage} of ${pageCount}`}</span>
+                 
                     <button
                         onClick={() => handlePageChange(currentPage + 1)}
                         disabled={currentPage === pageCount}
@@ -119,7 +122,7 @@ export default function Blog() {
                     >
                         Next
                     </button>
-                </div>
+                </div> */}
             </div>
 
             <Footer />

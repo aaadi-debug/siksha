@@ -23,38 +23,27 @@ const Navbar = () => {
     const [activeItem, setActiveItem] = useState(null);
     const [modalIsOpen, setIsOpen] = useState(false);
     const [notificationType, setNotificationType] = useState('normal');
-    const [notifications, setNotifications] = useState([
-        // demo data for notifications
-        {
-            id: 1,
-            type: 'normal',
-            image: '/path/to/image1.jpg',
-            title: 'Notification 1',
-            message: 'This is the first notification message.',
-            date: '2023-07-24',
-            link: '#'
-        },
-        {
-            id: 2,
-            type: 'normal',
-            image: '/path/to/image1.jpg',
-            title: 'Notification 2',
-            message: 'This is the first notification message.',
-            date: '2023-07-24',
-            link: '#'
-        },
-        {
-            id: 3,
-            type: 'live',
-            image: '/path/to/image1.jpg',
-            title: 'Notification 1',
-            message: 'This is the first notification message.',
-            date: '2023-07-24',
-            link: '#'
-        },
-        // ... other notifications
-    ]);
+    const [notifications, setNotifications] = useState([]);
     const [isOpen, setIsOpenState] = useState(false); // Added this line to fix the ReferenceError
+
+
+    useEffect(() => {
+        // Simulate data fetching
+        const fetchData = async () => {
+            try {
+                const res = await fetch(`/api/notification`);
+                const result = await res.json();
+                if (result.success) {
+                    setNotifications(result.data);
+                    // setFilteredBlogs(result.data);
+                }
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+
+        fetchData();
+    }, []);
 
 
     const handleReadMore = (notificationName) => {
@@ -206,7 +195,7 @@ const Navbar = () => {
                                         {notifications.filter(notification => notification.type === notificationType).map(notification => (
                                             <div className="nav_notification_div" key={notification.id}>
                                                 <div className="d-flex align-items-center">
-                                                    <img src={notification.image} alt="" />
+                                                    <img src={notification.images} alt="" />
                                                     <div className="nav_notification_title ml-2">{notification.title}</div>
                                                 </div>
                                                 <p className="nav_notification_para">{notification.message}</p>

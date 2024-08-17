@@ -6,24 +6,29 @@ import Navbar from '../components/Navbar';
 const Notifications = () => {
     const { notificationName } = useParams();
 
-    const contentPara = [
-        {
-            id: 1,
-            para: "Indian Institute of Technology, Roorkee released the GATE syllabus for the 2025 examination at their website, gate2025.iitr.ac.in. Candidates can check and download the syllabus for all 30 subjects. Each of the papers consists of 100 marks. The Data Science and Artificial Intelligence (DA) syllabus was added in 2024 by IISc Bangalore."
-        },
-        {
-            id: 2,
-            para: "Along with each subject, candidates need to appear in the General Aptitude paper. The authority has set 85% weightage for the core subjects and 15% weightage in the General Aptitude (GA) paper. The GA paper includes topics of verbal, quantitative, analytical, and spatial aptitude. There is also a compulsory section of Engineering Mathematics in XE paper, Reasoning and Comprehension in XH, and Chemistry in XL paper."
-        },
-        {
-            id: 3,
-            para: "From 2024 onwards, a new two-paper combination has been introduced in GATE examination. According to this, students appearing for a particular paper can attempt other eligible papers as well. For example, students preparing for Agricultural Engineering (AG) paper, have the option to appear in the Civil Engineering (CE) syllabus as well. Read the article to get the list of eligible subjects for each paper."
-        },
-    ]
+    // const contentPara = [
+    //     {
+    //         id: 1,
+    //         para: "Indian Institute of Technology, Roorkee released the GATE syllabus for the 2025 examination at their website, gate2025.iitr.ac.in. Candidates can check and download the syllabus for all 30 subjects. Each of the papers consists of 100 marks. The Data Science and Artificial Intelligence (DA) syllabus was added in 2024 by IISc Bangalore."
+    //     },
+    //     {
+    //         id: 2,
+    //         para: "Along with each subject, candidates need to appear in the General Aptitude paper. The authority has set 85% weightage for the core subjects and 15% weightage in the General Aptitude (GA) paper. The GA paper includes topics of verbal, quantitative, analytical, and spatial aptitude. There is also a compulsory section of Engineering Mathematics in XE paper, Reasoning and Comprehension in XH, and Chemistry in XL paper."
+    //     },
+    //     {
+    //         id: 3,
+    //         para: "From 2024 onwards, a new two-paper combination has been introduced in GATE examination. According to this, students appearing for a particular paper can attempt other eligible papers as well. For example, students preparing for Agricultural Engineering (AG) paper, have the option to appear in the Civil Engineering (CE) syllabus as well. Read the article to get the list of eligible subjects for each paper."
+    //     },
+    // ]
 
     const notificationDetails = [
         {
             id: 1,
+            type: 'normal',
+            image: '/path/to/image1.jpg',
+            title: 'Notification 1',
+            message: 'This is the first notification message.',
+            date: '2023-07-24',
             notificationData: 'The Railway Recruitment Cell (RRC) of Southern Railway has announced the Various Trade Apprentices 2024 recruitment. Candidates interested in the Railway RRC Southern Railway Apprentice positions can apply online from July 22, 2024, to August 12, 2024. For detailed information on eligibility, post details, selection procedure, and more, please read the official notification.',
             importantDate: {
                 heading: 'Important Dates',

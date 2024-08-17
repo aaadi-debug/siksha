@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Script from 'next/script';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,6 +27,18 @@ export default function RootLayout({ children }) {
 
           gtag('config', 'G-2FQ9P5M6GH');
         </script> */}
+        <Script
+        id="google-analytics"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments)}
+            gtag('js', new Date());
+            gtag('config', 'G-2FQ9P5M6GH');
+          `,
+        }}
+      />
 
 
       </head>

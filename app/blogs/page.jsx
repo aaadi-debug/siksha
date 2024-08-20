@@ -1,13 +1,11 @@
 'use client'
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { EditIcon } from "lucide-react";
+import { EditIcon,MoveRight } from "lucide-react";
 import { MdDelete } from "react-icons/md";
 import { DateRangePicker } from 'react-date-range';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-// import 'react-date-range/dist/styles.css'; // import the styles
-// import 'react-date-range/dist/theme/default.css'; // import the theme
 
 export default function Blog() {
     const [blogs, setBlogs] = useState([]);
@@ -39,33 +37,6 @@ export default function Blog() {
         fetchData();
     }, []);
 
-    // useEffect(() => {
-    //     // Filter blogs based on search term and date range
-    //     const filtered = blogs
-    //         .filter(blog => blog.title.toLowerCase().includes(search.toLowerCase()))
-    //         .filter(blog => {
-    //             const blogDate = new Date(blog.createdAt); // Ensure your blog object has a date field
-    //             return blogDate >= dateRange.startDate && blogDate <= dateRange.endDate;
-    //         });
-    //     setFilteredBlogs(filtered);
-    // }, [search, dateRange, blogs]);
-
-    // const handleSearchChange = (e) => {
-    //     setSearch(e.target.value);
-    // };
-
-    // const handleRowsPerPageChange = (e) => {
-    //     setRowsPerPage(Number(e.target.value));
-    //     setCurrentPage(1); // Reset to first page when rows per page changes
-    // };
-
-    // const handlePageChange = (newPage) => {
-    //     setCurrentPage(newPage);
-    // };
-
-    // const pageCount = Math.ceil(filteredBlogs.length / rowsPerPage);
-    // const blogs = filteredBlogs.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
-
 
     console.log(blogs)
 
@@ -85,20 +56,20 @@ export default function Blog() {
                             <img
                                 src={blog.cardImage || "https://via.placeholder.com/300x200"} // Fallback image URL
                                 alt={blog.title}
-                                className="rounded h-[80%] w-full border"
+                                className="rounded h-[80%] w-full border mb-2"
                             />
                             <Link
                                 href={'/blogs/view/' + blog.title}
                                 className="text-xl mt-3 text-black font-semibold"
                             >
-                                {blog.title.length > 15 ? blog.title.slice(0, 15) + '...' : blog.title}
+                                {blog.title.length > 22 ? blog.title.slice(0, 22) + '...' : blog.title}
                             </Link>
-                            <div className="text-base text-slate-500 font-medium">Date: {new Date(blog.date).toLocaleDateString()}</div>
+                            <div className="text-sm text-slate-500 font-medium">Date: {new Date(blog.date).toLocaleDateString()}</div>
                             <Link
                                 href={'/blogs/view/' + blog.title}
-                                className="rounded-full px-4 py-2 bg-blue-500 text-white mt-6 p-6"
+                                className="rounded-full py-1 text-xs text-black flex items-center hover:text-violet-500"
                             >
-                                Read this blog
+                                Read this blog <span className="ml-2"><MoveRight size={14} /></span>
                             </Link>
                         </div>
                     )) : (

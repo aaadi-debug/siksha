@@ -144,11 +144,11 @@ const Navbar = () => {
                         <li className="nav-item dropdown">
                             <a className="nav-link" onClick={() => handleItemClick('item5')} style={{ color: activeItem === 'item5' ? '#fff' : '', background: activeItem === 'item5' ? '#3D52A0' : '' }}>Colleges</a>
                             <ul className="dropdown_menu dropdown_menu--animated dropdown_menu-6">
-                                <li className="dropdown_item-1"><Link href="/collegepage/IIT Delhi (IIT-D)">IIT Delhi</Link></li>
-                                <li><Link href="/collegepage/IIT Madras (IIT-M)">IIT Madras</Link></li>
-                                <li><Link href="/collegepage/IIT Kharagpur (IIT-KGP)">IIT Kharagpur</Link></li>
-                                <li><Link href="/collegepage/IIT Roorkee (IIT-R)">IIT Roorkee</Link></li>
-                                <li><Link href="/collegepage/IIT Bombay (IIT-B)">IIT Bombay</Link></li>
+                                <li className="dropdown_item-1 truncate "><Link href="/collegepage/IIT Delhi (IIT-D)">IIT Delhi</Link></li>
+                                <li className='truncate'><Link href="/collegepage/IIT Madras (IIT-M)">IIT Madras</Link></li>
+                                <li className='truncate'><Link href="/collegepage/IIT Kharagpur (IIT-KGP)">IIT Kharagpur</Link></li>
+                                <li className='truncate'><Link href="/collegepage/IIT Roorkee (IIT-R)">IIT Roorkee</Link></li>
+                                <li className='truncate'><Link href="/collegepage/IIT Bombay (IIT-B)">IIT Bombay</Link></li>
                                 {/* other dropdown items */}
                             </ul>
                         </li>
@@ -200,7 +200,7 @@ const Navbar = () => {
                                                 </div>
                                                 <p className="nav_notification_para">{notification.message}</p>
                                                 <div className="d-flex justify-content-between">
-                                                    <div className="nav_noti_date">{notification.date}</div>
+                                                    <div className="nav_noti_date">{new Date(notification.date).toLocaleDateString()}</div>
                                                     <button className="nav_noti_readMore" onClick={() => handleReadMore(notification.title)}>Read More</button>
                                                 </div>
                                             </div>

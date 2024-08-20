@@ -13,7 +13,7 @@ import StudyAbroad from "./components/StudyAbroad";
 import Testimonials from "./components/Testimonials";
 import Footer from "./components/Footer";
 import Top10Colleges from "./components/Top10Colleges";
-
+  
 export default function Home() {
   return (
     <main>

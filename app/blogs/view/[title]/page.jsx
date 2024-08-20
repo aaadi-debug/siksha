@@ -6,9 +6,9 @@ import Image from "next/image";
 import "react-quill/dist/quill.snow.css";
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
-export default function Page({params}) {
+export default function Page({ params }) {
     const [blogInfo, setBlogInfo] = useState([]);
-  
+
     const title = decodeURIComponent(params.title);
 
     useEffect(() => {
@@ -38,29 +38,31 @@ export default function Page({params}) {
             <p>Posted on {formatDate( blogInfo?.createdAt)}</p>
             <button onClick={() => router.push('/blogs')}>Back to Blogs</button> 
             <div className='text-lg' dangerouslySetInnerHTML={{ __html: blogInfo.content }} />*/}
-            <Navbar/>
+            <Navbar />
 
-            <div className="w-full flex-row items-center">
-                <div className=" flex justify-center w-full p-3">
-                    <img src={blogInfo?.cardImage} height={1000} width={1000} alt="Card image" className="m-5" />
+            <div className="container lg:px-32 py-5">
+                <div className="flex justify-center w-full p-3">
+                    <img src={blogInfo?.cardImage} loading="lazy" alt="Card image" className="mt-5 rounded w-[100%]" />
                 </div>
 
                 <div className="flex-row justify-center">
-                    <div className="container mx-auto p-10">
-                        <h1 className="text-3xl font-bold mb-3">{blogInfo?.title}</h1>
-                        <p className="text-sm text-gray-500">{blogInfo?.author}</p>
-                        <p className="text-sm text-gray-500">{formatDate(blogInfo?.createdAt)}</p>
-                        <p className="text-sm text-gray-500 flex justify-stretch">Published by <User /> {blogInfo?.author}</p>
+                    <div className="container mx-auto">
+                        <h1 className="text-3xl font-bold mb-3 text-center">{blogInfo?.title}</h1>
+                        {/* <p className="text-sm text-gray-500">{blogInfo?.author}</p> */}
+                        <div className="flex justify-center items-center">
+                            <p className="text-sm text-gray-500 flex items-center"><User size={16} /> Published by  {blogInfo?.author ? blogInfo?.author : "N/A"}</p>
+                            <span className="px-2 text-slate-400">|</span>
+                            <p className="text-sm text-gray-500">{formatDate(blogInfo?.createdAt)}</p>
+                        </div>
 
-                        <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
+                        <hr class="h-px my-8 dark:bg-gray-700" />
 
-                        <div className='text-lg' style={{ all: 'initial' }}
+                        <div className='text-lg blog_content' style={{ all: 'initial' }}
                             dangerouslySetInnerHTML={{ __html: blogInfo?.content }} />
                     </div>
-
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </>
     )
 

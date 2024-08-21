@@ -8515,6 +8515,16 @@ department_section {
 .blog_content p {
   font-family: sans-serif;
   line-height: 1.4;
+  font-size: 20px;
+}
+
+.blog_content a {
+  color: black;
+  font-size: 20px;
+}
+.blog_content a:hover {
+  text-decoration: underline;
+  color: #555;
 }
 
 .blog_content h1,
@@ -8525,6 +8535,7 @@ department_section {
 .blog_content h6 {
   font-family: sans-serif;
   line-height: 1.6;
+  font-size: 36px;
 }
 
 .blog_content ul {
@@ -8539,12 +8550,14 @@ department_section {
   font-family: sans-serif;
   list-style: disc;
   line-height: 1.4;
+  font-size: 20px;
 }
 
 .blog_content ol li {
   font-family: sans-serif;
   list-style: disc;
   line-height: 1.4;
+  font-size: 20px;
 }
 
 .blog_content img {

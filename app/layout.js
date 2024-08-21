@@ -17,7 +17,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <meta name="google-site-verification" content="EzxyJq1YWhTRsBWG8SGXMf0e1UVv82sj_PV1J41hM20" />
+        {/* <meta name="google-site-verification" content="EzxyJq1YWhTRsBWG8SGXMf0e1UVv82sj_PV1J41hM20" /> */}
+        <meta name="google-site-verification" content="nIim5hw_WWaYERuTWrTmKikxHr6ks2QC5zbEqGbXxOU" />
         {/* Google tag (gtag.js) */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-2FQ9P5M6GH"></script>
         {/* <script>

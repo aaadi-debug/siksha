@@ -24,18 +24,6 @@ import Faculty from '../../components/Faculty'
 import NewsArticles from '../../components/NewsArticles'
 import Hostel from '../../components/Hostel'
 import CollegeCompare from '../../components/CollegeCompare'
-// import Admission from './InnerComponents/Admission.jsx'
-// import Reviews from './InnerComponents/Reviews.jsx'
-// import Department from './InnerComponents/Department.jsx'
-// import CutOff from './InnerComponents/CutOff.jsx'
-// import Placement from './InnerComponents/Placement.jsx'
-// import Ranking from './InnerComponents/Ranking.jsx'
-// import Gallery from './InnerComponents/Gallery.jsx'
-// import Scholarship from './InnerComponents/Scholarship.jsx'
-// import Faculty from './InnerComponents/Faculty.jsx'
-// import NewsArticles from './InnerComponents/NewsArticles.jsx'
-// import Hostel from './InnerComponents/Hostel.jsx'
-// import CollegeCompare from './InnerComponents/CollegeCompare.jsx'
 import axios from 'axios';
 
 const page = ({ params }) => {
@@ -271,7 +259,7 @@ const page = ({ params }) => {
                                     </button>
                                 </li>
                                 <li>
-                                    <Link href={`/collegepage/${collegeName}/qna/`} className="nav-link w-full text-left py-3 px-3 bg-white text-blue-500">
+                                    <Link href={`/collegepage/${collegeName}/qna/`} className="nav-link w-full text-left py-3 px-3 text-blue-500">
                                         Q&A
                                     </Link>
                                 </li>

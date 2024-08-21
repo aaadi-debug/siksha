@@ -20,7 +20,7 @@ const collegeImages = {
     "IIT Kharagpur - Indian Institute of Technology - [IITKGP]": '/assets/images/TOP 10 Colleges/khrgpr.png'
 };
 
-const Top10Colleges = () => {
+const Test = () => {
     const [tabData, setTabData] = useState([]);
 
     useEffect(() => {
@@ -72,4 +72,4 @@ const Top10Colleges = () => {
     );
 };
 
-export default Top10Colleges;
+export default Test;

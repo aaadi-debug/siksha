@@ -39,15 +39,15 @@ const page = ({ params }) => {
 
     useEffect(() => {
         const fetchData = async () => {
-          const res = await fetch('/api/collegeslist?name=' + collegeName);
-          const result = await res.json();
-          if (result.success) {
-            setData(result.data);
-          }
+            const res = await fetch('/api/collegeslist?name=' + collegeName);
+            const result = await res.json();
+            if (result.success) {
+                setData(result.data);
+            }
         };
-    
+
         fetchData();
-      }, [collegeName]);
+    }, [collegeName]);
 
     console.log("data for upper navigation", datas);
 
@@ -61,76 +61,76 @@ const page = ({ params }) => {
                     <Navbar />
 
                     {
-                        datas.length===0 ?
-                        (
-                            <div className="text-center">No College info Found</div>
-                        ):
-                        (
-                            datas?.map((data, index) => (
-                                <div className="collegepage_section_wrapper" key={index}>
-                                    <div className="collegepage_section_about">
-                                        {/* ----- left div ---- */}
-                                        <div className="college_about_body">
-                                            <div className="college_about_body_head">
-                                                <img src={data.collageIcon[data.collageIcon.length - 1]} alt="college-logo" />
-                                                <div className="body">
-                                                    <h4> {collegeName}</h4>
-                                                    <h5>{data.shortDiscription}</h5>
-                                                    <div className="body_points">
-                                                        <p>{data.shortAddress}</p>
-                                                        <p>
-                                                            <span><FaRegNewspaper /></span>
-                                                            {data.universitytype}
-                                                        </p>
-                                                        <p>
-                                                            <span><FaCalendarAlt /></span>
-                                                            {data.Estd}
-                                                        </p>
+                        datas.length === 0 ?
+                            (
+                                <div className="text-center">No College info Found</div>
+                            ) :
+                            (
+                                datas?.map((data, index) => (
+                                    <div className="collegepage_section_wrapper" key={index}>
+                                        <div className="collegepage_section_about">
+                                            {/* ----- left div ---- */}
+                                            <div className="college_about_body">
+                                                <div className="college_about_body_head">
+                                                    <img src={data.collageIcon[data.collageIcon.length - 1]} alt="college-logo" />
+                                                    <div className="body">
+                                                        <h4> {collegeName}</h4>
+                                                        <h5>{data.shortDiscription}</h5>
+                                                        <div className="body_points">
+                                                            <p>{data.shortAddress}</p>
+                                                            <p>
+                                                                <span><FaRegNewspaper /></span>
+                                                                {data.universitytype}
+                                                            </p>
+                                                            <p>
+                                                                <span><FaCalendarAlt /></span>
+                                                                {data.Estd}
+                                                            </p>
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                <div className="college_about_body_foot"></div>
                                             </div>
-                                            <div className="college_about_body_foot"></div>
-                                        </div>
-                                        {/* ----- right div ---- */}
-                                        <div className="college_about_footer">
-                                            <div className="rating">
-                                                <h2 className="number">{data.rating}</h2>
-                                                <div className="reviews">
-                                                    <div className="star_box">
-                                                        <span><FaStar /></span>
-                                                        <span><FaStar /></span>
-                                                        <span><FaStar /></span>
-                                                        <span><FaStar /></span>
-                                                        <span><FaStar /></span>
+                                            {/* ----- right div ---- */}
+                                            <div className="college_about_footer">
+                                                <div className="rating">
+                                                    <h2 className="number">{data.rating}</h2>
+                                                    <div className="reviews">
+                                                        <div className="star_box">
+                                                            <span><FaStar /></span>
+                                                            <span><FaStar /></span>
+                                                            <span><FaStar /></span>
+                                                            <span><FaStar /></span>
+                                                            <span><FaStar /></span>
+                                                        </div>
+                                                        <div className="no_of_reviews">(74 Reviews)</div>
                                                     </div>
-                                                    <div className="no_of_reviews">(74 Reviews)</div>
                                                 </div>
-                                            </div>
 
-                                            <div className="will_you_get_btn">
-                                                <Link href="">Will You get In</Link>
-                                            </div>
-
-                                            <div className="will_you_get_btn">
-                                                <Link href="">Get Contact Details</Link>
-                                            </div>
-                                            <Link href={'#'} className="claim_this_college">
-                                                <span><GoDotFill /></span>
-                                                <p>Claim this college</p>
-                                                <div className="claim_this_college_tooltip">
-                                                    <ul>
-                                                        Claim this college if you are:
-                                                        <li>Lorem ipsum dolor sit amet.</li>
-                                                        <li>Lorem ipsum dolor sit amet.</li>
-                                                        <li>Lorem ipsum dolor sit amet.</li>
-                                                    </ul>
+                                                <div className="will_you_get_btn">
+                                                    <Link href="">Will You get In</Link>
                                                 </div>
-                                            </Link>
+
+                                                <div className="will_you_get_btn">
+                                                    <Link href="">Get Contact Details</Link>
+                                                </div>
+                                                <Link href={'#'} className="claim_this_college">
+                                                    <span><GoDotFill /></span>
+                                                    <p>Claim this college</p>
+                                                    <div className="claim_this_college_tooltip">
+                                                        <ul>
+                                                            Claim this college if you are:
+                                                            <li>Lorem ipsum dolor sit amet.</li>
+                                                            <li>Lorem ipsum dolor sit amet.</li>
+                                                            <li>Lorem ipsum dolor sit amet.</li>
+                                                        </ul>
+                                                    </div>
+                                                </Link>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            ))
-                        )
+                                ))
+                            )
                     }
                 </section>
 
@@ -280,12 +280,12 @@ const page = ({ params }) => {
                                 )}
                                 {activeTab === 'admission' && (
                                     <div className="text-left text-light">
-                                        <Admissions collegeName={collegeName}  />
+                                        <Admissions collegeName={collegeName} />
                                     </div>
                                 )}
                                 {activeTab === 'reviews' && (
                                     <div className="text-left text-light">
-                                        <Reviews  collegeName={collegeName} />
+                                        <Reviews collegeName={collegeName} />
                                     </div>
                                 )}
                                 {activeTab === 'department' && (

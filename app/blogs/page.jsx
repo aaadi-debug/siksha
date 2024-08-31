@@ -52,17 +52,17 @@ export default function Blog() {
             <div className="container py-5 lg:px-28 bg_reddish">
                 <div className="blogs_card_wrapper flex flex-wrap gap-4">
                     {blogs.length > 0 ? blogs.map((blog) => (
-                        <div key={blog.id} className="blogs_card rounded shadow-md border border-slate-500 p-3 h-[400px] w-[300px] bg-white m-2">
+                        <div key={blog.id} className="blogs_card rounded shadow-md border border-slate-500 p-3 h-[350px] w-[280px] bg-white m-2 max-sm:w-full">
                             <img
                                 src={blog.cardImage || "https://via.placeholder.com/300x200"} // Fallback image URL
                                 alt={blog.title}
-                                className="rounded h-[80%] w-full border mb-2"
+                                className="rounded h-[75%] w-full border mb-2"
                             />
                             <Link
                                 href={'/blogs/view/' + blog.title}
                                 className="text-xl mt-3 text-black font-semibold"
                             >
-                                {blog.title.length > 22 ? blog.title.slice(0, 22) + '...' : blog.title}
+                                {blog.title.length > 20 ? blog.title.slice(0, 20) + '...' : blog.title}
                             </Link>
                             <div className="text-sm text-slate-500 font-medium">Date: {new Date(blog.date).toLocaleDateString()}</div>
                             <Link

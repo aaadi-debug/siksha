@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-
+import axios from 'axios'
 import { FaLocationDot } from "react-icons/fa6";
 import { IoCall } from "react-icons/io5";
 import { IoIosMail } from "react-icons/io";
@@ -55,8 +55,28 @@ const Contact = () => {
             return;
         }
 
+
+        try {
+            const response = await axios.post('/api/contact', formData);
+            if (response.data.success) {
+                setFormStatus(response.data.message);
+              setFormData({
+                name: '',
+                email: '',
+                phone: '',
+                message: '',
+              });
+            } else {
+                setFormStatus(response.data.error);
+            }
+          } catch (err) {
+            setFormStatus('An error occurred while submitting the form.');
+          } finally {
+            
+          }
+
         // Log the form data to the console
-        console.log('Form Data:', formData);
+        // console.log('Form Data:', formData);
 
         // Set form status (for demo purposes)
         setFormStatus('Form submitted successfully!');

@@ -154,7 +154,7 @@ const Page = ({ params }) => {
             className=""
             style={{
               backgroundImage: `linear-gradient(180deg, rgba(150, 105, 97, 0.67) 0%, rgba(2, 0, 76, 0.84) 100%), 
-                url('/assets/images/noti.jpg')`,
+                url(${notificationSData?.image})`,
               backgroundSize: "cover",
               backgroundPosition: "center center",
               height: "40vh",

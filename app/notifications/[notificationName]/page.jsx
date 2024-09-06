@@ -62,9 +62,7 @@ const Page = ({ params }) => {
             { id: 2, row: "Aditya row2" },
             { id: 2, row: "Aditya row2" },
           ],
-          tableCol: [
-            { id: 1, col: "col1" },
-          ],
+          tableCol: [{ id: 1, col: "col1" }],
           tableFooter: "Main Footer of table",
         },
         {
@@ -123,7 +121,13 @@ const Page = ({ params }) => {
                   {data.table.map((table) => (
                     <>
                       <div className="table_wrapper bg-white rounded-lg mb-5">
-                        <div className={`text-2xl font-semibold text-black rounded ${table.tableHeading.length == 0 ? 'hidden':' p-2'} `}>{table.tableHeading}</div>
+                        <div
+                          className={`text-2xl font-semibold text-black rounded ${
+                            table.tableHeading.length == 0 ? "hidden" : " p-2"
+                          } `}
+                        >
+                          {table.tableHeading}
+                        </div>
 
                         <table
                           key={table.id}
@@ -134,9 +138,13 @@ const Page = ({ params }) => {
                               {table.tableCol.map((col, colIndex) => (
                                 <th
                                   key={colIndex}
-                                  className={`${table.tableCol.length === 1 ? "text-center" : "text-left"}`}
+                                  className={`${
+                                    table.tableCol.length === 1
+                                      ? "text-center"
+                                      : "text-left"
+                                  }`}
                                 >
-                                  {col.col || 'N/A'}
+                                  {col.col || "N/A"}
                                 </th>
                               ))}
                             </tr>
@@ -149,9 +157,15 @@ const Page = ({ params }) => {
                                 {table.tableCol.map((col, colIndex) => (
                                   <td
                                     key={col.id}
-                                    className={`${table.tableCol.length === 1 ? "text-center" : "text-left"}`}
+                                    className={`${
+                                      table.tableCol.length === 1
+                                        ? "text-center"
+                                        : "text-left"
+                                    }`}
                                   >
-                                    {`${row.row || 'N/A'} - ${col.col || 'N/A'}`}
+                                    {`${row.row || "N/A"} - ${
+                                      col.col || "N/A"
+                                    }`}
                                   </td>
                                 ))}
                               </tr>
@@ -159,7 +173,13 @@ const Page = ({ params }) => {
                           </tbody>
                         </table>
 
-                        <div className={`text-2xl font-semibold text-black rounded border-t ${table.tableFooter.length == 0 ? 'hidden':' p-2'} `}>{table.tableFooter}</div>
+                        <div
+                          className={`text-2xl font-semibold text-black rounded border-t ${
+                            table.tableFooter.length == 0 ? "hidden" : " p-2"
+                          } `}
+                        >
+                          {table.tableFooter}
+                        </div>
                       </div>
                     </>
                   ))}

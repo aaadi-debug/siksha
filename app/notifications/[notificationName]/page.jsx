@@ -130,50 +130,48 @@ const Page = ({ params }) => {
                         </div>
 
                         <div className="overflow-x-auto">
-                        <div className="max-sm:w-[700px]">
-                          <table
-                            key={table.id}
-                          >
-                            <thead>
-                              <tr>
-                                {table.tableCol.map((col, colIndex) => (
-                                  <th
-                                    key={colIndex}
-                                    className={`${
-                                      table.tableCol.length === 1
-                                        ? "text-center"
-                                        : "text-left"
-                                    }`}
-                                  >
-                                    {col.col || "N/A"}
-                                  </th>
-                                ))}
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {/* Create dynamic rows */}
-                              {table.tableRow.map((row, rowIndex) => (
-                                <tr key={row.id}>
-                                  {/* Create dynamic columns */}
+                          <div className="max-sm:w-[700px]">
+                            <table key={table.id}>
+                              <thead>
+                                <tr>
                                   {table.tableCol.map((col, colIndex) => (
-                                    <td
-                                      key={col.id}
+                                    <th
+                                      key={colIndex}
                                       className={`${
                                         table.tableCol.length === 1
                                           ? "text-center"
                                           : "text-left"
                                       }`}
                                     >
-                                      {`${row.row || "N/A"} - ${
-                                        col.col || "N/A"
-                                      }`}
-                                    </td>
+                                      {col.col || "N/A"}
+                                    </th>
                                   ))}
                                 </tr>
-                              ))}
-                            </tbody>
-                          </table>
-                        </div>
+                              </thead>
+                              <tbody>
+                                {/* Create dynamic rows */}
+                                {table.tableRow.map((row, rowIndex) => (
+                                  <tr key={row.id}>
+                                    {/* Create dynamic columns */}
+                                    {table.tableCol.map((col, colIndex) => (
+                                      <td
+                                        key={col.id}
+                                        className={`${
+                                          table.tableCol.length === 1
+                                            ? "text-center"
+                                            : "text-left"
+                                        }`}
+                                      >
+                                        {`${row.row || "N/A"} - ${
+                                          col.col || "N/A"
+                                        }`}
+                                      </td>
+                                    ))}
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
                         </div>
 
                         <div

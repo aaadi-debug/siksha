@@ -8,7 +8,7 @@ const Page = ({ params }) => {
   const { notificationName } = useParams();
   const title = decodeURIComponent(params.notificationName);
 
-  const [notificationSData, setNotificationDetails] = useState([]);
+  // const [notificationSData, setNotificationDetails] = useState([]);
 
   const notificationSData = [
     {
@@ -128,7 +128,6 @@ const Page = ({ params }) => {
           ],
           tableFooter: "Main Footer of table",
         },
-        
       ],
     },
   ];

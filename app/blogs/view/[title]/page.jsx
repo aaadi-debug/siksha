@@ -8,9 +8,9 @@ import "react-quill/dist/quill.snow.css";
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
 
-export const metadata: Metadata = {
-  title: 'Invoices',
-};
+// export const metadata: Metadata = {
+//   title: 'Invoices',
+// };
 export default function Page({ params }) {
   const [blogInfo, setBlogInfo] = useState([]);
 

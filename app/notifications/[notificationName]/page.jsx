@@ -141,49 +141,50 @@ const Page = ({ params }) => {
                           {table.tableHeading}
                         </div>
 
-                        <table
-                          key={table.id}
-                          className="w-full overflow-x-auto sm:max-w-[500px]"
-                        >
-                          <thead>
-                            <tr>
-                              {table.tableCol.map((col, colIndex) => (
-                                <th
-                                  key={colIndex}
-                                  className={`${
-                                    table.tableCol.length === 1
-                                      ? "text-center"
-                                      : "text-left"
-                                  }`}
-                                >
-                                  {col.col || "N/A"}
-                                </th>
-                              ))}
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {/* Create dynamic rows */}
-                            {table.tableRow.map((row, rowIndex) => (
-                              <tr key={row.id}>
-                                {/* Create dynamic columns */}
-                                {table.tableCol.map((col, colIndex) => (
-                                  <td
-                                    key={col.id}
-                                    className={`${
-                                      table.tableCol.length === 1
-                                        ? "text-center"
-                                        : "text-left"
-                                    }`}
-                                  >
-                                    {`${row.row || "N/A"} - ${
-                                      col.col || "N/A"
-                                    }`}
-                                  </td>
+                        <div className="overflow-x-auto">
+                          <div className="max-sm:w-[700px]">
+                            <table key={table.id}>
+                              <thead>
+                                <tr>
+                                  {table.tableCol.map((col, colIndex) => (
+                                    <th
+                                      key={colIndex}
+                                      className={`${
+                                        table.tableCol.length === 1
+                                          ? "text-center"
+                                          : "text-left"
+                                      }`}
+                                    >
+                                      {col.col || "N/A"}
+                                    </th>
+                                  ))}
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {/* Create dynamic rows */}
+                                {table.tableRow.map((row, rowIndex) => (
+                                  <tr key={row.id}>
+                                    {/* Create dynamic columns */}
+                                    {table.tableCol.map((col, colIndex) => (
+                                      <td
+                                        key={col.id}
+                                        className={`${
+                                          table.tableCol.length === 1
+                                            ? "text-center"
+                                            : "text-left"
+                                        }`}
+                                      >
+                                        {`${row.row || "N/A"} - ${
+                                          col.col || "N/A"
+                                        }`}
+                                      </td>
+                                    ))}
+                                  </tr>
                                 ))}
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
 
                         <div
                           className={`text-2xl font-semibold text-black rounded border-t ${

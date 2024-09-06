@@ -62,9 +62,7 @@ const Page = ({ params }) => {
             { id: 2, row: "Aditya row2" },
             { id: 2, row: "Aditya row2" },
           ],
-          tableCol: [
-            { id: 1, col: "col1" },
-          ],
+          tableCol: [{ id: 1, col: "col1" }],
           tableFooter: "Main Footer of table",
         },
         {
@@ -123,43 +121,68 @@ const Page = ({ params }) => {
                   {data.table.map((table) => (
                     <>
                       <div className="table_wrapper bg-white rounded-lg mb-5">
-                        <div className={`text-2xl font-semibold text-black rounded ${table.tableHeading.length == 0 ? 'hidden':' p-2'} `}>{table.tableHeading}</div>
-
-                        <table
-                          key={table.id}
-                          className="w-full overflow-x-auto sm:max-w-[500px]"
+                        <div
+                          className={`text-2xl font-semibold text-black rounded ${
+                            table.tableHeading.length == 0 ? "hidden" : " p-2"
+                          } `}
                         >
-                          <thead>
-                            <tr>
-                              {table.tableCol.map((col, colIndex) => (
-                                <th
-                                  key={colIndex}
-                                  className={`${table.tableCol.length === 1 ? "text-center" : "text-left"}`}
-                                >
-                                  {col.col || 'N/A'}
-                                </th>
-                              ))}
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {/* Create dynamic rows */}
-                            {table.tableRow.map((row, rowIndex) => (
-                              <tr key={row.id}>
-                                {/* Create dynamic columns */}
+                          {table.tableHeading}
+                        </div>
+
+                        <div className="overflow-x-auto">
+                        <div className="max-sm:w-[700px]">
+                          <table
+                            key={table.id}
+                          >
+                            <thead>
+                              <tr>
                                 {table.tableCol.map((col, colIndex) => (
-                                  <td
-                                    key={col.id}
-                                    className={`${table.tableCol.length === 1 ? "text-center" : "text-left"}`}
+                                  <th
+                                    key={colIndex}
+                                    className={`${
+                                      table.tableCol.length === 1
+                                        ? "text-center"
+                                        : "text-left"
+                                    }`}
                                   >
-                                    {`${row.row || 'N/A'} - ${col.col || 'N/A'}`}
-                                  </td>
+                                    {col.col || "N/A"}
+                                  </th>
                                 ))}
                               </tr>
-                            ))}
-                          </tbody>
-                        </table>
+                            </thead>
+                            <tbody>
+                              {/* Create dynamic rows */}
+                              {table.tableRow.map((row, rowIndex) => (
+                                <tr key={row.id}>
+                                  {/* Create dynamic columns */}
+                                  {table.tableCol.map((col, colIndex) => (
+                                    <td
+                                      key={col.id}
+                                      className={`${
+                                        table.tableCol.length === 1
+                                          ? "text-center"
+                                          : "text-left"
+                                      }`}
+                                    >
+                                      {`${row.row || "N/A"} - ${
+                                        col.col || "N/A"
+                                      }`}
+                                    </td>
+                                  ))}
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                        </div>
 
-                        <div className={`text-2xl font-semibold text-black rounded border-t ${table.tableFooter.length == 0 ? 'hidden':' p-2'} `}>{table.tableFooter}</div>
+                        <div
+                          className={`text-2xl font-semibold text-black rounded border-t ${
+                            table.tableFooter.length == 0 ? "hidden" : " p-2"
+                          } `}
+                        >
+                          {table.tableFooter}
+                        </div>
                       </div>
                     </>
                   ))}

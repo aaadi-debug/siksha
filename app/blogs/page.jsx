@@ -59,14 +59,14 @@ export default function Blog() {
                                 className="rounded h-[75%] w-full border mb-2"
                             />
                             <Link
-                                href={'/blogs/view/' + blog.title}
+                                href={'/blogs/view/' + blog.url}
                                 className="text-xl mt-3 text-black font-semibold"
                             >
                                 {blog.title.length > 20 ? blog.title.slice(0, 20) + '...' : blog.title}
                             </Link>
                             <div className="text-sm text-slate-500 font-medium">Date: {new Date(blog.date).toLocaleDateString()}</div>
                             <Link
-                                href={'/blogs/view/' + blog.title}
+                                href={'/blogs/view/' + blog.url}
                                 className="rounded-full py-1 text-xs text-black flex items-center hover:text-violet-500"
                             >
                                 Read this blog <span className="ml-2"><MoveRight size={14} /></span>

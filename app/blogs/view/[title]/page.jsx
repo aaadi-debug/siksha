@@ -36,11 +36,11 @@ export default function Page({ params }) {
   }, []);
   console.log("blogs are: ", blogs);
 
-  const title = decodeURIComponent(params.title);
+  const url = decodeURIComponent(params.title);
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("/api/blogs?title=" + title);
+      const res = await fetch("/api/blogs?url=" + url);
       const result = await res.json();
       if (result.success) {
         setBlogInfo(result.data);
@@ -48,7 +48,7 @@ export default function Page({ params }) {
     };
 
     fetchData();
-  }, [title]);
+  }, [url]);
 
   function formatDate(dateString) {
     const options = {
@@ -60,10 +60,10 @@ export default function Page({ params }) {
     const date = new Date(dateString);
     return date.toLocaleDateString("en-US", options);
   }
-  
+
   return (
     <>
-      
+     
 
       <Navbar />
 
@@ -108,18 +108,18 @@ export default function Page({ params }) {
           </div>
           <div className="w-1/3 px-2 max-sm:w-full max-sm:mt-5 border-l">
             <div className="border w-full h-[300px] rounded mb-2">
-              <img
-                src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/higher-education-ad-template-design-5f1fffa627c42e7bbe32dcb59346de49_screen.jpg?ts=1643693093"
+              {/* <img
+                src="https://d1csarkz8obe9u.cloudfsdsront.net/posterpreviews/higher-education-ad-template-design-5f1fffa627c42e7bbe32dcb59346de49_screen.jpg?ts=1643693093"
                 alt="advertisement"
                 className="w-full h-full rounded"
-              />
+              /> */}
             </div>
             <div className="border w-full h-[300px] rounded mb-2">
-              <img
-                src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/higher-education-ad-template-design-71efd4127f00354d3064c25209dd6b77_screen.jpg?ts=1640955053"
+              {/* <img
+                src="https://d1csarkz8obe9u.cloudfronsdt.net/posterpreviews/higher-education-ad-template-design-71efd4127f00354d3064c25209dd6b77_screen.jpg?ts=1640955053"
                 alt="advertisement"
                 className="w-full h-full rounded"
-              />
+              /> */}
             </div>
 
             <div className="w-full rounded mb-2 mt-5">

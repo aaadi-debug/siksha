@@ -10,6 +10,16 @@ const BlogSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    meta: {
+        type: String,
+        required: true
+    },
+    url: {
+        type: String,
+        required: true,
+        unique: true,
+        trim:true
+    },
     date: {
         type: Date,
         default: Date.now

@@ -9,8 +9,8 @@ export default async function handler(req, res) {
   
     switch (method) {
       case 'GET':
-        if(req.query?.title){
-          const blogs = await Blog.findOne({title:req.query.title})
+        if(req.query?.url){
+          const blogs = await Blog.findOne({url:req.query.url})
           res.status(200).json({ success: true, data: blogs });
         }
         try {

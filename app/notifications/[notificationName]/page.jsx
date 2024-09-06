@@ -8,7 +8,7 @@ const Page = ({ params }) => {
   const { notificationName } = useParams();
   const title = decodeURIComponent(params.notificationName);
 
-  const [notificationDetails, setNotificationDetails] = useState([]);
+  const [notificationSData, setNotificationDetails] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -174,9 +174,13 @@ const Page = ({ params }) => {
                                             : "text-left"
                                         }`}
                                       >
-                                        {`${row.row || "N/A"} - ${
-                                          col.col || "N/A"
-                                        }`}
+                                        {`${row.row || "N/A"}`}
+                                        
+                                        {/* // - 
+                                        // ${
+                                        //   col.col || "N/A"
+                                        // }
+                                        // `} */}
                                       </td>
                                     ))}
                                   </tr>

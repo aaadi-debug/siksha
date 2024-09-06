@@ -3,9 +3,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { CircleUserRound, User } from "lucide-react";
 import Image from "next/image";
+import Head from "next/head";
 import "react-quill/dist/quill.snow.css";
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
+
+export const metadata: Metadata = {
+  title: 'Invoices',
+};
 export default function Page({ params }) {
   const [blogInfo, setBlogInfo] = useState([]);
 
@@ -55,15 +60,11 @@ export default function Page({ params }) {
     const date = new Date(dateString);
     return date.toLocaleDateString("en-US", options);
   }
+  
   return (
     <>
-      {/* <h1>{blogInfo?.title}</h1>
-            <p>{blogInfo?.content}</p>
-            <img src={blogInfo?.image} alt={blogInfo?.title} />
-            <p>Posted by {blogInfo?.author}</p>
-            <p>Posted on {formatDate( blogInfo?.createdAt)}</p>
-            <button onClick={() => router.push('/blogs')}>Back to Blogs</button> 
-            <div className='text-lg' dangerouslySetInnerHTML={{ __html: blogInfo.content }} />*/}
+      
+
       <Navbar />
 
       <div className="container lg:px-32 py-5">
@@ -107,23 +108,23 @@ export default function Page({ params }) {
           </div>
           <div className="w-1/3 px-2 max-sm:w-full max-sm:mt-5 border-l">
             <div className="border w-full h-[300px] rounded mb-2">
-                <img 
-                src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/higher-education-ad-template-design-5f1fffa627c42e7bbe32dcb59346de49_screen.jpg?ts=1643693093" 
-                alt="advertisement" 
+              <img
+                src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/higher-education-ad-template-design-5f1fffa627c42e7bbe32dcb59346de49_screen.jpg?ts=1643693093"
+                alt="advertisement"
                 className="w-full h-full rounded"
-                />
+              />
             </div>
             <div className="border w-full h-[300px] rounded mb-2">
-                <img 
-                src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/higher-education-ad-template-design-71efd4127f00354d3064c25209dd6b77_screen.jpg?ts=1640955053" 
-                alt="advertisement" 
+              <img
+                src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/higher-education-ad-template-design-71efd4127f00354d3064c25209dd6b77_screen.jpg?ts=1640955053"
+                alt="advertisement"
                 className="w-full h-full rounded"
-                />
+              />
             </div>
 
             <div className="w-full rounded mb-2 mt-5">
               <h5 className="text-black font-semibold text-xl mb-4">
-                Suggested Posts 
+                Suggested Posts
               </h5>
               <div className="marquee">
                 <div className="marquee-content">
@@ -140,7 +141,7 @@ export default function Page({ params }) {
                             {blog.title}
                           </div>
                           <a
-                            href={'/blogs/view/' + blog.title}
+                            href={"/blogs/view/" + blog.title}
                             className="w-full mx-auto text-sm font-medium text-right text-blue-600"
                           >
                             ...Read more

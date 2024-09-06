@@ -1,159 +1,139 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const notificationSchema = new mongoose.Schema({
+const notificationSchema = new mongoose.Schema(
+  {
     type: {
-        type: String,
-        enum: ['normal', 'live'], // Adjust enums based on types you expect
-        
+      type: String,
+      enum: ["normal", "live"], // Adjust enums based on types you expect
     },
     image: {
-        type: String,
-        
+      type: String,
     },
     title: {
-        type: String,
-        
+      type: String,
     },
     message: {
-        type: String,
-        
+      type: String,
     },
     date: {
-        type: Date,
-        
+      type: Date,
     },
     notificationData: {
-        type: String,
-        
+      type: String,
     },
     importantDate: {
-        heading: {
+      heading: {
+        type: String,
+      },
+      table_data: [
+        {
+          event_name: {
             type: String,
-            
+          },
+          date: {
+            type: String,
+          },
         },
-        table_data: [
-            {
-                event_name: {
-                    type: String,
-                    
-                },
-                date: {
-                    type: String,
-                    
-                },
-            },
-        ],
+      ],
     },
     applicationFee: {
-        heading: {
+      heading: {
+        type: String,
+      },
+      table_data: [
+        {
+          category: {
             type: String,
-            
-        },
-        table_data: [
-            {
-                category: {
-                    type: String,
-                    
-                },
-                fee: {
-                    type: String,
-                    
-                },
-            },
-        ],
-        note: {
+          },
+          fee: {
             type: String,
-            
+          },
         },
+      ],
+      note: {
+        type: String,
+      },
     },
     vacancyDetails: {
-        heading: {
+      heading: {
+        type: String,
+      },
+      table_data: [
+        {
+          postName: {
             type: String,
-            
+          },
+          totalPosts: {
+            type: String,
+          },
         },
-        table_data: [
-            {
-                postName: {
-                    type: String,
-                    
-                },
-                totalPosts: {
-                    type: String,
-                    
-                },
-            },
-        ],
+      ],
     },
     eligibilityCriteria: {
-        heading: {
+      heading: {
+        type: String,
+      },
+      listItems: [
+        {
+          item: {
             type: String,
-            
+            default: "",
+          },
         },
-        listItems: [
-            {
-                item: {
-                    type: String,
-                    default: '',
-                },
-            },
-        ],
-        table_data: [
-            {
-                name: {
-                    type: String,
-                    
-                },
-                type: {
-                    type: String,
-                    
-                },
-                posts: {
-                    type: String,
-                    
-                },
-            },
-        ],
+      ],
+      table_data: [
+        {
+          name: {
+            type: String,
+          },
+          type: {
+            type: String,
+          },
+          posts: {
+            type: String,
+          },
+        },
+      ],
     },
     howToApply: {
-        heading: {
+      heading: {
+        type: String,
+      },
+      listItems: [
+        {
+          item: {
             type: String,
-            
+            default: "",
+          },
         },
-        listItems: [
-            {
-                item: {
-                    type: String,
-                    default: '',
-                },
-            },
-        ],
+      ],
     },
     usefulLinks: {
-        heading: {
+      heading: {
+        type: String,
+      },
+      table_data: [
+        {
+          linkDesc: {
             type: String,
-            
+          },
+          url: {
+            type: String,
+          },
         },
-        table_data: [
-            {
-                linkDesc: {
-                    type: String,
-                    
-                },
-                url: {
-                    type: String,
-                    
-                },
-            },
-        ],
+      ],
     },
     notiFooterData: {
-        type: String,
-        
+      type: String,
     },
-}, {
+  },
+  {
     timestamps: true, // Adds createdAt and updatedAt timestamps
-});
+  }
+);
 
-const Notification = mongoose.models.notifications || mongoose.model('notifications', notificationSchema);
+const Notification =
+  mongoose.models.notifications ||
+  mongoose.model("notifications", notificationSchema);
 
 export default Notification;

@@ -10,82 +10,94 @@ const Page = ({ params }) => {
 
   const [notificationDetails, setNotificationDetails] = useState([]);
 
-  const notificationSData = [
-    {
-      _id: 1,
-      summary:
-        "Minimum Age : 15 Years Maximum Age : 22-24 Years (Post Wise) Age Relaxation Extra as per Southern Railway RRC SR Apprentice Rules 2024-2025.",
-      table: [
-        {
-          id: 1,
-          tableHeading: "Main heading of table",
-          tableRow: [
-            { id: 1, row: "row1" },
-            { id: 2, row: "row2" },
-          ],
-          tableCol: [
-            { id: 1, col: "col1" },
-            { id: 2, col: "col2" },
-            { id: 3, col: "col3" },
-          ],
-          tableFooter: "Main Footer of table",
-        },
-        {
-          id: 2,
-          tableHeading: "Main heading of table 2",
-          tableRow: [
-            { id: 1, row: "Aditya row1" },
-            { id: 2, row: "Aditya row2" },
-            { id: 2, row: "Aditya row2" },
-            { id: 2, row: "Aditya row2" },
-            { id: 2, row: "Aditya row2" },
-            { id: 2, row: "Aditya row2" },
-            { id: 2, row: "Aditya row2" },
-          ],
-          tableCol: [
-            { id: 1, col: "col1" },
-            { id: 2, col: "col2" },
-            { id: 3, col: "col3" },
-            { id: 4, col: "col4" },
-          ],
-          tableFooter: "",
-        },
-        {
-          id: 3,
-          tableHeading: "Main heading of table 2",
-          tableRow: [
-            { id: 1, row: "Aditya row1" },
-            { id: 2, row: "Aditya row2" },
-            { id: 2, row: "Aditya row2" },
-            { id: 2, row: "Aditya row2" },
-            { id: 2, row: "Aditya row2" },
-            { id: 2, row: "Aditya row2" },
-            { id: 2, row: "Aditya row2" },
-          ],
-          tableCol: [{ id: 1, col: "col1" }],
-          tableFooter: "Main Footer of table",
-        },
-        {
-          id: 4,
-          tableHeading: "Main heading of table 2",
-          tableRow: [
-            { id: 1, row: "Aditya row1" },
-            { id: 2, row: "Aditya row2" },
-            { id: 2, row: "Aditya row2" },
-            { id: 2, row: "Aditya row2" },
-            { id: 2, row: "Aditya row2" },
-            { id: 2, row: "Aditya row2" },
-            { id: 2, row: "" },
-          ],
-          tableCol: [
-            { id: 1, col: "" },
-            { id: 1, col: "col1" },
-          ],
-          tableFooter: "Main Footer of table",
-        },
-      ],
-    },
-  ];
+  useEffect(() => {
+    const fetchData = async () => {
+        const res = await fetch('/api/notification?title=' + title);
+        const result = await res.json();
+        if (result.success) {
+          setNotificationDetails(result.data);
+        }
+    };
+
+    fetchData();
+}, [title]);
+
+  // const notificationSData = [
+  //   {
+  //     _id: 1,
+  //     summary:
+  //       "Minimum Age : 15 Years Maximum Age : 22-24 Years (Post Wise) Age Relaxation Extra as per Southern Railway RRC SR Apprentice Rules 2024-2025.",
+  //     table: [
+  //       {
+  //         id: 1,
+  //         tableHeading: "Main heading of table",
+  //         tableRow: [
+  //           { id: 1, row: "row1" },
+  //           { id: 2, row: "row2" },
+  //         ],
+  //         tableCol: [
+  //           { id: 1, col: "col1" },
+  //           { id: 2, col: "col2" },
+  //           { id: 3, col: "col3" },
+  //         ],
+  //         tableFooter: "Main Footer of table",
+  //       },
+  //       {
+  //         id: 2,
+  //         tableHeading: "Main heading of table 2",
+  //         tableRow: [
+  //           { id: 1, row: "Aditya row1" },
+  //           { id: 2, row: "Aditya row2" },
+  //           { id: 2, row: "Aditya row2" },
+  //           { id: 2, row: "Aditya row2" },
+  //           { id: 2, row: "Aditya row2" },
+  //           { id: 2, row: "Aditya row2" },
+  //           { id: 2, row: "Aditya row2" },
+  //         ],
+  //         tableCol: [
+  //           { id: 1, col: "col1" },
+  //           { id: 2, col: "col2" },
+  //           { id: 3, col: "col3" },
+  //           { id: 4, col: "col4" },
+  //         ],
+  //         tableFooter: "",
+  //       },
+  //       {
+  //         id: 3,
+  //         tableHeading: "Main heading of table 2",
+  //         tableRow: [
+  //           { id: 1, row: "Aditya row1" },
+  //           { id: 2, row: "Aditya row2" },
+  //           { id: 2, row: "Aditya row2" },
+  //           { id: 2, row: "Aditya row2" },
+  //           { id: 2, row: "Aditya row2" },
+  //           { id: 2, row: "Aditya row2" },
+  //           { id: 2, row: "Aditya row2" },
+  //         ],
+  //         tableCol: [{ id: 1, col: "col1" }],
+  //         tableFooter: "Main Footer of table",
+  //       },
+  //       {
+  //         id: 4,
+  //         tableHeading: "Main heading of table 2",
+  //         tableRow: [
+  //           { id: 1, row: "Aditya row1" },
+  //           { id: 2, row: "Aditya row2" },
+  //           { id: 2, row: "Aditya row2" },
+  //           { id: 2, row: "Aditya row2" },
+  //           { id: 2, row: "Aditya row2" },
+  //           { id: 2, row: "Aditya row2" },
+  //           { id: 2, row: "" },
+  //         ],
+  //         tableCol: [
+  //           { id: 1, col: "" },
+  //           { id: 1, col: "col1" },
+  //         ],
+  //         tableFooter: "Main Footer of table",
+  //       },
+  //     ],
+  //   },
+  // ];
 
   return (
     <>

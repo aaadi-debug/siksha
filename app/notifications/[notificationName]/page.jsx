@@ -20,13 +20,46 @@ const Page = ({ params }) => {
           id: 1,
           tableHeading: "Main heading of table",
           tableRow: [
-            { id: 1, row: "row1" },
-            { id: 2, row: "row2" },
+            // { id: 1, row: "row1" },
+            {
+              id: 1,
+              row: [
+                {
+                  id: 1,
+                  colData: "OBC",
+                },
+                {
+                  id: 2,
+                  colData: "150",
+                },
+                {
+                  id: 3,
+                  colData: "200",
+                },
+              ],
+            },
+            {
+              id: 2,
+              row: [
+                {
+                  id: 1,
+                  colData: "SC",
+                },
+                {
+                  id: 2,
+                  colData: "90",
+                },
+                {
+                  id: 3,
+                  colData: "600",
+                },
+              ],
+            },
           ],
           tableCol: [
-            { id: 1, col: "col1" },
-            { id: 2, col: "col2" },
-            { id: 3, col: "col3" },
+            { id: 1, col: "category" },
+            { id: 2, col: "before date" },
+            { id: 3, col: "after date" },
           ],
           tableFooter: "Main Footer of table",
         },
@@ -34,55 +67,68 @@ const Page = ({ params }) => {
           id: 2,
           tableHeading: "Main heading of table 2",
           tableRow: [
-            { id: 1, row: "Aditya row1" },
-            { id: 2, row: "Aditya row2" },
-            { id: 2, row: "Aditya row2" },
-            { id: 2, row: "Aditya row2" },
-            { id: 2, row: "Aditya row2" },
-            { id: 2, row: "Aditya row2" },
-            { id: 2, row: "Aditya row2" },
+            // { id: 1, row: "row1" },
+            {
+              id: 1,
+              row: [
+                {
+                  id: 1,
+                  colData: "2020",
+                },
+                {
+                  id: 2,
+                  colData: "150",
+                },
+                {
+                  id: 3,
+                  colData: "200",
+                },
+                {
+                  id: 4,
+                  colData: "500",
+                },
+                {
+                  id: 5,
+                  colData: "100",
+                },
+              ],
+            },
+            {
+              id: 2,
+              row: [
+                {
+                  id: 1,
+                  colData: "2019",
+                },
+                {
+                  id: 2,
+                  colData: "90",
+                },
+                {
+                  id: 3,
+                  colData: "600",
+                },
+                {
+                  id: 4,
+                  colData: "1",
+                },
+                {
+                  id: 5,
+                  colData: "2",
+                },
+              ],
+            },
           ],
           tableCol: [
-            { id: 1, col: "col1" },
-            { id: 2, col: "col2" },
-            { id: 3, col: "col3" },
-            { id: 4, col: "col4" },
-          ],
-          tableFooter: "",
-        },
-        {
-          id: 3,
-          tableHeading: "Main heading of table 2",
-          tableRow: [
-            { id: 1, row: "Aditya row1" },
-            { id: 2, row: "Aditya row2" },
-            { id: 2, row: "Aditya row2" },
-            { id: 2, row: "Aditya row2" },
-            { id: 2, row: "Aditya row2" },
-            { id: 2, row: "Aditya row2" },
-            { id: 2, row: "Aditya row2" },
-          ],
-          tableCol: [{ id: 1, col: "col1" }],
-          tableFooter: "Main Footer of table",
-        },
-        {
-          id: 4,
-          tableHeading: "Main heading of table 2",
-          tableRow: [
-            { id: 1, row: "Aditya row1" },
-            { id: 2, row: "Aditya row2" },
-            { id: 2, row: "Aditya row2" },
-            { id: 2, row: "Aditya row2" },
-            { id: 2, row: "Aditya row2" },
-            { id: 2, row: "Aditya row2" },
-            { id: 2, row: "" },
-          ],
-          tableCol: [
-            { id: 1, col: "" },
-            { id: 1, col: "col1" },
+            { id: 1, col: "Posts/Year" },
+            { id: 2, col: "general" },
+            { id: 3, col: "ews" },
+            { id: 3, col: "sc" },
+            { id: 5, col: "st" },
           ],
           tableFooter: "Main Footer of table",
         },
+        
       ],
     },
   ];
@@ -149,24 +195,24 @@ const Page = ({ params }) => {
                                 </tr>
                               </thead>
                               <tbody>
-                                {/* Create dynamic rows */}
+                                {/* Creating dynamic rows */}
                                 {table.tableRow.map((row, rowIndex) => (
                                   <tr key={row.id}>
-                                    {/* Create dynamic columns */}
-                                    {table.tableCol.map((col, colIndex) => (
+                                    {/* Checking: if row is an array or a string */}
+                                    {Array.isArray(row.row) ? (
+                                      row.row.map((colData) => (
+                                        <td key={colData.id}>
+                                          {colData.colData || "N/A"}
+                                        </td>
+                                      ))
+                                    ) : (
                                       <td
-                                        key={col.id}
-                                        className={`${
-                                          table.tableCol.length === 1
-                                            ? "text-center"
-                                            : "text-left"
-                                        }`}
+                                        colSpan={table.tableCol.length}
+                                        className="text-left"
                                       >
-                                        {`${row.row || "N/A"} - ${
-                                          col.col || "N/A"
-                                        }`}
+                                        {row.row || "N/A"}
                                       </td>
-                                    ))}
+                                    )}
                                   </tr>
                                 ))}
                               </tbody>

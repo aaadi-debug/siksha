@@ -113,7 +113,7 @@ const Contact = () => {
                                 <p className='mb-3 mt-2'>We are here for you! How can we help?</p>
 
                                 <form onSubmit={handleSubmit} className="form">
-                                    <div className="form-group mb-3 mb-3">
+                                    <div className="form-group mb-3">
                                         <input
                                             type="text"
                                             id="name"

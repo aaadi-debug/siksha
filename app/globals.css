@@ -734,6 +734,7 @@ Particular tabs tables litlle little styling below
   overflow: hidden;
   text-overflow: ellipsis;
   width: 160px;
+  color: #000 !important;
   /* Adjust width as needed */
 }
 

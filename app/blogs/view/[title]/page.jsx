@@ -63,6 +63,15 @@ export default function Page({ params }) {
 
   return (
     <>
+    <head>
+    <title>{blogInfo?.metatitle || "Default Title"}</title>
+        <meta name="description" content={blogInfo?.description} />
+        <meta property="og:title" content={blogInfo?.metatitle} key="title" />
+        <meta property="og:description" content={blogInfo?.metadesc} />
+        <meta property="og:image" content={blogInfo?.cardImage} />
+        <meta property="og:url" content={blogInfo?.url} />
+        <link rel="canonical" href={blogInfo?.url} />
+    </head>
      
 
       <Navbar />

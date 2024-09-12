@@ -16,6 +16,12 @@ import Top10Colleges from "./components/Top10Colleges";
   
 export default function Home() {
   return (
+    <>
+    <head>
+      <title>sikshahelpline</title>
+      <meta name="description" content="Solve all your education-related queries with Siksha and get admission to the top colleges, institutes, and universities in India. Discover everything you need to know about the best courses and scholarship programs." />
+      </head>
+    
     <main>
       {/* <Navbar /> */}
       <HeroSection />
@@ -31,5 +37,6 @@ export default function Home() {
       <Testimonials />
       <Footer />
     </main>
+    </>
   );
 }

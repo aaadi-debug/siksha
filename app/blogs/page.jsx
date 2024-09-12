@@ -42,6 +42,10 @@ export default function Blog() {
 
     return (
         <>
+        <head>
+            <title>Blogs || sikshahelpline</title>
+            <meta name="description" content="Blogs from sikshahelpline." />
+        </head>
             <Navbar />
 
             <div className="blogs_wrapper bg_reddish">

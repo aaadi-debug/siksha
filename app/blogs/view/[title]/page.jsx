@@ -63,18 +63,18 @@ export default function Page({ params }) {
 
   return (
     <>
-    <head>
-    <title>{blogInfo?.metatitle || "Default Title"}</title>
+      <head>
+        <title>{blogInfo?.metatitle || "Default Title"}</title>
         <meta name="description" content={blogInfo?.metadesc} />
         <meta property="og:title" content={blogInfo?.metatitle} key="title" />
         <meta property="og:description" content={blogInfo?.metadesc} />
         <meta property="og:image" content={blogInfo?.cardImage} />
-        <meta name="author" content={blogInfo?.author ? blogInfo?.author : "sikshahelpline"}/>
-        <meta name="keywords" content={blogInfo?.keywords}/>
+        <meta name="author" content={blogInfo?.author ? blogInfo?.author : "sikshahelpline"} />
+        <meta name="keywords" content={blogInfo?.keywords} />
         <meta property="og:url" content={`http://sikshahelpline.com/blogs/view/${blogInfo?.url}`} />
         <link rel="canonical" href={`http://sikshahelpline.com/blogs/view/${blogInfo?.url}`} />
-    </head>
-     
+      </head>
+
 
       <Navbar />
 

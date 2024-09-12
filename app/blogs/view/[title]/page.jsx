@@ -65,7 +65,7 @@ export default function Page({ params }) {
     <>
     <head>
     <title>{blogInfo?.metatitle || "Default Title"}</title>
-        <meta name="description" content={blogInfo?.description} />
+        <meta name="description" content={blogInfo?.metadesc} />
         <meta property="og:title" content={blogInfo?.metatitle} key="title" />
         <meta property="og:description" content={blogInfo?.metadesc} />
         <meta property="og:image" content={blogInfo?.cardImage} />

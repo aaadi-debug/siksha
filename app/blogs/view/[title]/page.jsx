@@ -64,7 +64,7 @@ export default function Page({ params }) {
   return (
     <>
       <head>
-        <title>{blogInfo?.metatitle || "Default Title"}</title>
+        <title>{blogInfo?.metatitle || "sikshahelpline"}</title>
         <meta name="description" content={blogInfo?.metadesc} />
         <meta property="og:title" content={blogInfo?.metatitle} key="title" />
         <meta property="og:description" content={blogInfo?.metadesc} />
@@ -152,7 +152,7 @@ export default function Page({ params }) {
                             {blog.title}
                           </div>
                           <a
-                            href={"/blogs/view/" + blog.title}
+                            href={"/blogs/view/" + blog.url}
                             className="w-full mx-auto text-sm font-medium text-right text-blue-600"
                           >
                             ...Read more

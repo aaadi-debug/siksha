@@ -24,6 +24,17 @@
   background-color: var(--reddish-white);
 }
 
+/* styles/globals.css or a dedicated CSS file */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+
 
 /* ------------- two cta button styling starts ---------------- */
 .cta_buttons {
@@ -2604,7 +2615,7 @@ Particular tabs tables litlle little styling below
 /* ------------------ class exam ------------------------------ */
 
 .classexam {
-  padding-top: 180px;
+  padding-top: 20px;
   background: url(/assets/images/cbseboard_bg.png);
   background-repeat: no-repeat;
   background-position: right center;
@@ -2723,8 +2734,12 @@ Particular tabs tables litlle little styling below
 
 
 @media (max-width: 378px) {
-  .classexam {
+  .explorecourses {
     padding-top: 700px;
+  }
+
+  .classexam {
+    padding-top: 20px;
   }
 
   .double_widget {
@@ -2769,8 +2784,12 @@ Particular tabs tables litlle little styling below
 }
 
 @media (min-width:379px) and (max-width: 480px) {
-  .classexam {
+  .explorecourses {
     padding-top: 700px;
+  }
+
+  .classexam {
+    padding-top: 20px;
   }
 
   .double_widget {
@@ -2814,8 +2833,12 @@ Particular tabs tables litlle little styling below
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
-  .classexam {
+  .explorecourses {
     padding-top: 580px;
+  }
+
+  .classexam {
+    padding-top: 20px;
   }
 
   .double_widget {
@@ -2925,6 +2948,9 @@ Particular tabs tables litlle little styling below
 }
 
 @media (min-width:769px) and (max-width: 1024px) {
+  .explorecourses {
+    padding-top: 250px;
+  }
   .classexam_widget p {
     /* border: 1px solid red; */
     font-size: 10px !important;
@@ -8630,4 +8656,97 @@ department_section {
 .table-container {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch; /* For smooth scrolling on touch devices */
+}
+
+
+
+/* ================================================
+---------------- courses page ------------------
+================================================ */
+
+
+.textEditor p {
+  font-family: sans-serif;
+  line-height: 1.4;
+  font-size: 16px;
+}
+
+.textEditor a {
+  color: black;
+  font-size: 16px;
+}
+.textEditor a:hover {
+  text-decoration: underline;
+  color: #555;
+}
+
+.textEditor h1 {
+  font-family: sans-serif;
+  line-height: 1.6;
+  font-size: 36px;
+  margin-top: 10px;
+}
+.textEditor h2 {
+  font-family: sans-serif;
+  line-height: 1.6;
+  font-size: 30px;
+  margin-top: 10px;
+}
+.textEditor h3 {
+  font-family: sans-serif;
+  line-height: 1.6;
+  font-size: 24px;
+  margin-top: 10px;
+}
+.textEditor h4 {
+  font-family: sans-serif;
+  line-height: 1.6;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.textEditor h5 {
+  font-family: sans-serif;
+  line-height: 1.6;
+  font-size: 18px;
+  margin-top: 10px;
+}
+.textEditor h6 {
+  font-family: sans-serif;
+  line-height: 1.6;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.textEditor ul {
+  margin-left: 20px;
+}
+
+.textEditor ol {
+  margin-left: 20px;
+}
+
+.textEditor ul li {
+  font-family: sans-serif;
+  list-style: disc;
+  line-height: 1.4;
+  font-size: 16px;
+}
+
+.textEditor ol li {
+  font-family: sans-serif;
+  list-style: decimal;
+  line-height: 1.4;
+  font-size: 16px;
+}
+
+.textEditor img {
+  border-radius: 4px;
+  width: 100%;
+}
+
+.textEditor iframe {
+  margin-top: 10px;
+  border-radius: 4px;
+  width: 325px;
 }

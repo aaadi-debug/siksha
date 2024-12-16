@@ -8,8 +8,8 @@ export default async function handler(req, res) {
 
   switch (method) {
     case 'GET':
-      if(req.query?.college){
-        const informations = await information.find({college:req.query.college})
+      if(req.query?.name){
+        const informations = await information.findOne({college:req.query.name})
         res.status(200).json({ success: true, data: informations });
       }
       try {

@@ -7,10 +7,10 @@ import { IoIosNotifications } from "react-icons/io";
 // import AuthorIMG from '../../../../assets/images/college_imgs/college_logo.webp'
 
 
-const Info = () => {
+const Info = ({collegeName}) => {
     const [showMore, setShowMore] = useState(true);
-    const [fixedData, setFixedDatas] = useState([]);
-    const { collegeName } = useParams();
+    const [fixedData, setFixedDatas] = useState();
+    
     const today = new Date();
 
 
@@ -33,6 +33,9 @@ const Info = () => {
     //     fetchData()
 
     // }, []);
+
+
+    console.log('collage name',collegeName)
 
 
     useEffect(() => {
@@ -173,7 +176,7 @@ const Info = () => {
             {/* 1st section */}
             {/* {fixedDatas.map((data,index)=>( */}
             {/* <div>
-                {fixedDatas[0]?.page_title}
+                {fixedDatas?.page_title}
 
                 </div> */}
             {/* ))} */}
@@ -181,8 +184,8 @@ const Info = () => {
 
             <div className="quick_updates">
                 <div className="quick_updates_wrapper">
-                    <h5> {fixedData[0]?.page_title} </h5>
-                    <p> {fixedData[0]?.para_1} </p>
+                    <h5> {fixedData?.page_title} </h5>
+                    <p> {fixedData?.para_1} </p>
                     <p className="d-flex align-items-center">
                         <span className="mr-5">Other major updates of {collegeName} are as follows:</span>
                         <button className="ml-5" onClick={toggleReadMore} id="myBtn"> {/* to toggle read more and less */}
@@ -191,7 +194,7 @@ const Info = () => {
                     </p>
                     <ul style={{ display: showMore ? "none" : "inline" }}>
                         {
-                            fixedData[0]?.major_updates?.map((list, index) => (
+                            fixedData?.major_updates?.map((list, index) => (
                                 <li key={index}> {list.list_item} </li>
                             ))
                         }
@@ -205,7 +208,7 @@ const Info = () => {
                             </div>
                             <ul>
                                 {
-                                    fixedData[0]?.notifications?.map((data) => (
+                                    fixedData?.notifications?.map((data) => (
                                         <li key={data.id}>
                                             <span> {data.date}:</span> <a href={data.link}> {data.title} </a>
                                         </li>
@@ -222,11 +225,11 @@ const Info = () => {
                 <div className="about_college_wrapper">
                     <h5>About {collegeName}</h5>
                     <small>
-                        <img src={fixedData[0]?.authorImgSrc} alt="author-image" />
-                        Written By &nbsp; <b>{fixedData[0]?.author_name}  </b>
+                        <img src={fixedData?.authorImgSrc} alt="author-image" />
+                        Written By &nbsp; <b>{fixedData?.author_name}  </b>
                     </small>
                     {
-                        fixedData[0]?.author_para.map((para) => (
+                        fixedData?.author_para.map((para) => (
                             <p key={para.id}> {para.para} </p>
                         ))
                     }
@@ -236,8 +239,8 @@ const Info = () => {
             {/* 3rd section */}
             <div className="highlights">
                 <div className="highlights_wrapper">
-                    <h5> {fixedData[0]?.h5} </h5>
-                    <p> {fixedData[0]?.h5_para} </p>
+                    <h5> {fixedData?.h5} </h5>
+                    <p> {fixedData?.h5_para} </p>
 
                     <div className="table_wrapper" id='packagesList'>
                         <table>          {/* Table styling is in table.css */}
@@ -249,8 +252,8 @@ const Info = () => {
                             </thead>
                             <tbody>
                                 {
-                                    fixedData[0]?.collegeHighlights.length > 0 ? (
-                                        fixedData[0]?.collegeHighlights.map(collegeHighlights => (
+                                    fixedData?.collegeHighlights.length > 0 ? (
+                                        fixedData?.collegeHighlights.map(collegeHighlights => (
                                             <tr key={collegeHighlights.id}>
                                                 <td className='courses_name'>{collegeHighlights.particular}</td>
                                                 <td >

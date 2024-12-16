@@ -9,17 +9,16 @@ import { MdOutlineShare } from "react-icons/md";
 import { IoIosArrowUp } from "react-icons/io";
 import { IoIosArrowDown } from "react-icons/io";
 import axios from 'axios';
-
+import CryptoJS from 'crypto-js';
 // import DepartmentIMG from '../../../../assets/images/department.webp'  // image import 
 
-const DepartmentDynamic = () => {
+const DepartmentDynamic = (props) => {
 
     // Using an object to keep track of the expansion state of each card
     const [expandedCards, setExpandedCards] = useState({});
-    const { collegeName } = useParams();
     const [count, setCount] = useState(0)
     const [department, stDepartment]=useState([])
-
+    const  collegeName =props.collegeName
     // Toggle the expansion state for a specific card
     const toggleReadMore = (id) => {
         setExpandedCards((prevState) => ({
@@ -30,21 +29,42 @@ const DepartmentDynamic = () => {
 
     
 
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const srver = process.env.REACT_APP_SERVER;
+    //             const response = await axios.get(`${srver}:5000/api/department/${collegeName}`)
+    //             stDepartment(response.data)
+
+    //         }
+    //         catch (error) {
+    //             console.log(error)
+    //         }
+    //     }
+    //     fetchData()
+
+    // }, []);
+
     useEffect(() => {
         const fetchData = async () => {
-            try {
-                const srver = process.env.REACT_APP_SERVER;
-                const response = await axios.get(`${srver}:5000/api/department/${collegeName}`)
-                stDepartment(response.data)
+            const res = await fetch('/api/department?name=' + collegeName);
+            const result = await res.json();
 
-            }
-            catch (error) {
-                console.log(error)
-            }
-        }
-        fetchData()
+            // Secret key (must match the one used in the server)
+            const SECRET_KEY = process.env.NEXT_PUBLIC_SECRET_KEY ;
 
-    }, []);
+            if (result.success) {
+                // Decrypt the data
+                const bytes = CryptoJS.AES.decrypt(result.data, SECRET_KEY);
+                const decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+
+                // Set the decrypted department data to state
+                stDepartment(decryptedData);
+            }
+        };
+
+        fetchData();
+    }, [collegeName]);
 
 
     // const department = [

@@ -8,7 +8,7 @@ const Admissions = (props) => {
     const [searchQuery, setSearchQuery] = useState('');
     const  collegeName =props.collegeName
     const [datas, setData] = useState([])
-
+    const today = new Date();
     const filterSelection = (filter) => {
         setFilter(filter);
     };
@@ -47,13 +47,13 @@ const Admissions = (props) => {
         fetchData();
       }, [collegeName]);
 
-    console.log("data is ", datas)
+    
 
     return (
         <div className="admission_section">
             <div className="upcoming_application">
                 <div className="upcoming_application_wrapper">
-                    <h5>IIT Kharagpur Upcoming Application Dates 2024</h5>
+                    <h5>{collegeName} Upcoming Application Dates {today.getFullYear()}</h5>
 
                     <div id="filterBtnWrapper" >
 

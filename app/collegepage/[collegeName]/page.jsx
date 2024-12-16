@@ -29,7 +29,7 @@ import axios from 'axios';
 const page = ({ params }) => {
 
     const [sidebarOpen, setSidebarOpen] = useState(false);
-    const [datas, setData] = useState([]);
+    const [data, setData] = useState([]);
     const { collegeName } = params;
     const [activeTab, setActiveTab] = useState('info');
 
@@ -49,7 +49,7 @@ const page = ({ params }) => {
         fetchData();
     }, [collegeName]);
 
-    console.log("data for upper navigation", datas);
+    console.log("data for upper navigation", data);
 
     return (
         <>
@@ -61,30 +61,30 @@ const page = ({ params }) => {
                     <Navbar />
 
                     {
-                        datas.length === 0 ?
+                        data?.length === 0 ?
                             (
                                 <div className="text-center">No College info Found</div>
                             ) :
                             (
-                                datas?.map((data, index) => (
-                                    <div className="collegepage_section_wrapper" key={index}>
+                                
+                                    <div className="collegepage_section_wrapper">
                                         <div className="collegepage_section_about">
                                             {/* ----- left div ---- */}
                                             <div className="college_about_body">
                                                 <div className="college_about_body_head">
-                                                    <img src={data.collageIcon[data.collageIcon.length - 1]} alt="college-logo" />
+                                                    <img src={data?.collageIcon[data?.collageIcon.length - 1]} alt="college-logo" />
                                                     <div className="body">
-                                                        <h4> {collegeName}</h4>
-                                                        <h5>{data.shortDiscription}</h5>
+                                                        <h4> {data?.name}</h4>
+                                                        <h5>{data?.shortDiscription}</h5>
                                                         <div className="body_points">
-                                                            <p>{data.shortAddress}</p>
+                                                            <p>{data?.shortAddress}</p>
                                                             <p>
                                                                 <span><FaRegNewspaper /></span>
-                                                                {data.universitytype}
+                                                                {data?.universitytype}
                                                             </p>
                                                             <p>
                                                                 <span><FaCalendarAlt /></span>
-                                                                {data.Estd}
+                                                                {data?.Estd}
                                                             </p>
                                                         </div>
                                                     </div>
@@ -94,7 +94,7 @@ const page = ({ params }) => {
                                             {/* ----- right div ---- */}
                                             <div className="college_about_footer">
                                                 <div className="rating">
-                                                    <h2 className="number">{data.rating}</h2>
+                                                    <h2 className="number">{data?.rating}</h2>
                                                     <div className="reviews">
                                                         <div className="star_box">
                                                             <span><FaStar /></span>
@@ -129,7 +129,7 @@ const page = ({ params }) => {
                                             </div>
                                         </div>
                                     </div>
-                                ))
+                                
                             )
                     }
                 </section>
@@ -270,72 +270,72 @@ const page = ({ params }) => {
                             <div className="tab-content">
                                 {activeTab === 'info' && (
                                     <div className="text-left text-light">
-                                        <Info collegeName={collegeName} />
+                                        <Info collegeName={data?.name} />
                                     </div>
                                 )}
                                 {activeTab === 'courses' && (
                                     <div className="text-left text-light">
-                                        <Courses />
+                                        <Courses  collegeName={data?.name}/>
                                     </div>
                                 )}
                                 {activeTab === 'admission' && (
                                     <div className="text-left text-light">
-                                        <Admissions collegeName={collegeName} />
+                                        <Admissions collegeName={data?.name} />
                                     </div>
                                 )}
                                 {activeTab === 'reviews' && (
                                     <div className="text-left text-light">
-                                        <Reviews collegeName={collegeName} />
+                                        <Reviews  collegeName={data?.name} />
                                     </div>
                                 )}
                                 {activeTab === 'department' && (
                                     <div className="text-left text-light">
-                                        <Departments />
+                                        <Departments collegeName={data?.name}/>
                                     </div>
                                 )}
                                 {activeTab === 'cutoff' && (
                                     <div className="text-left text-light">
-                                        <CutOffs />
+                                        <CutOffs collegeName={data?.name}/>
                                     </div>
                                 )}
                                 {activeTab === 'placement' && (
                                     <div className="text-left text-light">
-                                        <Placements />
+                                        <Placements collegeName={data?.name}/>
                                     </div>
                                 )}
                                 {activeTab === 'ranking' && (
                                     <div className="text-left text-light">
-                                        <Rankings />
+                                        <Rankings collegeName={data?.name}/>
                                     </div>
                                 )}
                                 {activeTab === 'gallery' && (
                                     <div className="text-left text-light">
-                                        <Gallery />
+                                        <Gallery collegeName={data?.name}/>
                                     </div>
                                 )}
                                 {activeTab === 'scholarship' && (
                                     <div className="text-left text-light">
-                                        <Scholarships />
+                                        <Scholarships collegeName={data?.name}/>
                                     </div>
                                 )}
                                 {activeTab === 'faculty' && (
                                     <div className="text-left text-light">
-                                        <Faculty />
+                                        <Faculty collegeName={data?.name}/>
                                     </div>
                                 )}
                                 {activeTab === 'newsArticles' && (
                                     <div className="text-left text-light">
-                                        <NewsArticles />
+                                        <NewsArticles collegeName={data?.name}/>
                                     </div>
                                 )}
                                 {activeTab === 'hostel' && (
                                     <div className="text-left text-light">
-                                        <Hostel />
+                                        <Hostel collegeName={data?.name}/>
                                     </div>
                                 )}
                                 {activeTab === 'collegeCompare' && (
                                     <div className="text-left text-light">
-                                        <CollegeCompare />
+                                        <CollegeCompare collegeName={data?.name}/>
                                     </div>
                                 )}
                             </div>

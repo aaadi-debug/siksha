@@ -61,7 +61,7 @@ const Courses = () => {
     const specialization_table = [  //mapping data for table
         {
             id: 1,
-            college_name: "Computer Science And Engineering",
+            mdule_name: "Computer Science And Engineering",
             rating: "4.5",
             no_of_reviews: "29",
             first_year_fees: "24,000",
@@ -69,7 +69,7 @@ const Courses = () => {
         },
         {
             id: 2,
-            college_name: "Microelectronics And Vlsi Design",
+            mdule_name: "Microelectronics And Vlsi Design",
             rating: "4.5",
             no_of_reviews: "29",
             first_year_fees: "24,000",
@@ -77,7 +77,7 @@ const Courses = () => {
         },
         {
             id: 3,
-            college_name: "Biomedical Engineering",
+            mdule_name: "Biomedical Engineering",
             rating: "4.5",
             no_of_reviews: "29",
             first_year_fees: "24,000",

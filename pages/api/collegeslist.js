@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     case 'GET':
       if(req.query?.name){
         const query = req.query?.name ? { name: req.query.name } : {};
-        const colleges = await College.find(query)
+        const colleges = await College.findOne(query)
         res.status(200).json({ success: true, data: colleges });
       }
       try {

@@ -1,0 +1,469 @@
+{
+  "data": [
+    {
+      "collegeId": 1,
+      "collegeName": "Sharda University",
+      "collegeAddress": {
+        "city": "Greater Noida",
+        "state": "Uttar Pradesh",
+        "pincode": "Uttar Pradesh"
+      },
+      "collegeType": "private",
+      "EstdYear": "2009",
+      "NAACGrade": "A+",
+      "collegeAbout": "Sharda University is a reputated engineering college.",
+      "departments": [
+        {
+          "id": 1,
+          "departmentName": "Engineering",
+          "courses": [
+            {
+              "id": 1,
+              "courseName": "Bachelor of Technology [B.tech]",
+              "specialization": [
+                {
+                  "id": 1,
+                  "name": "Information Technology",
+                  "courseType": "Full Time",
+                  "courseDuration": "4 years",
+                  "fee": {
+                    "general": {
+                      "firstYear": {
+                        "tuitionFee": "168683",
+                        "additionalFee": ""
+                      },
+                      "secondYear": {
+                        "tuitionFee": "173744",
+                        "additionalFee": ""
+                      },
+                      "thirdYear": {
+                        "tuitionFee": "178956",
+                        "additionalFee": ""
+                      },
+                      "fourthYear": {
+                        "tuitionFee": "184325",
+                        "additionalFee": ""
+                      }
+                    },
+                    "nri": {}
+                  }
+                },
+                {
+                  "id": 2,
+                  "name": "Artificial Intelligence & Machine Learning",
+                  "courseType": "Full Time",
+                  "courseDuration": "4 years",
+                  "fee": {
+                    "general": {
+                      "firstYear": {
+                        "tuitionFee": "200000",
+                        "additionalFee": ""
+                      },
+                      "secondYear": {
+                        "tuitionFee": "206000",
+                        "additionalFee": ""
+                      },
+                      "thirdYear": {
+                        "tuitionFee": "212180",
+                        "additionalFee": ""
+                      },
+                      "fourthYear": {
+                        "tuitionFee": "218545",
+                        "additionalFee": ""
+                      }
+                    },
+                    "nri": {}
+                  }
+                },
+                {
+                  "id": 3,
+                  "name": "Genetic Engineering",
+                  "courseType": "Full Time",
+                  "courseDuration": "4 years",
+                  "fee": {
+                    "general": {
+                      "firstYear": {
+                        "tuitionFee": "168683",
+                        "additionalFee": ""
+                      },
+                      "secondYear": {
+                        "tuitionFee": "173744",
+                        "additionalFee": ""
+                      },
+                      "thirdYear": {
+                        "tuitionFee": "178956",
+                        "additionalFee": ""
+                      },
+                      "fourthYear": {
+                        "tuitionFee": "184325",
+                        "additionalFee": ""
+                      }
+                    },
+                    "nri": {}
+                  }
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "courseName": "Bachelor of Science [B.Sc]",
+              "specialization": [
+                {
+                  "id": 1,
+                  "name": "Information Technology",
+                  "courseType": "Full Time",
+                  "courseDuration": "3 years",
+                  "fee": {
+                    "general": {
+                      "firstYear": {
+                        "tuitionFee": "95481",
+                        "additionalFee": ""
+                      },
+                      "secondYear": {
+                        "tuitionFee": "98345",
+                        "additionalFee": ""
+                      },
+                      "thirdYear": {
+                        "tuitionFee": "101296",
+                        "additionalFee": ""
+                      }
+                    },
+                    "nri": {}
+                  }
+                },
+                {
+                  "id": 2,
+                  "name": "Computer Science",
+                  "courseType": "Full Time",
+                  "courseDuration": "3 years",
+                  "fee": {
+                    "general": {
+                      "firstYear": {
+                        "tuitionFee": "95481",
+                        "additionalFee": ""
+                      },
+                      "secondYear": {
+                        "tuitionFee": "98345",
+                        "additionalFee": ""
+                      },
+                      "thirdYear": {
+                        "tuitionFee": "101296",
+                        "additionalFee": ""
+                      }
+                    },
+                    "nri": {}
+                  }
+                },
+                {
+                  "id": 3,
+                  "name": "Electronics",
+                  "courseType": "Full Time",
+                  "courseDuration": "3 years",
+                  "fee": {
+                    "general": {
+                      "firstYear": {
+                        "tuitionFee": "92700",
+                        "additionalFee": ""
+                      },
+                      "secondYear": {
+                        "tuitionFee": "95481",
+                        "additionalFee": ""
+                      },
+                      "thirdYear": {
+                        "tuitionFee": "98345",
+                        "additionalFee": ""
+                      }
+                    },
+                    "nri": {}
+                  }
+                }
+              ]
+            },
+            {
+              "id": 3,
+              "courseName": "Master of Computer Applications [M.C.A]",
+              "specialization": [
+                {
+                  "id": 1,
+                  "name": "Master of Computer Applications [MCA] ",
+                  "courseType": "Full Time",
+                  "courseDuration": "2 years",
+                  "fee": {
+                    "general": {
+                      "firstYear": {
+                        "tuitionFee": "150000",
+                        "additionalFee": ""
+                      },
+                      "secondYear": {
+                        "tuitionFee": "154500",
+                        "additionalFee": ""
+                      }
+                    },
+                    "nri": {}
+                  }
+                }
+              ]
+            },
+            {
+              "id": 4,
+              "courseName": "Master of Science [M.Sc]",
+              "specialization": []
+            },
+            {
+              "id": 5,
+              "courseName": "Master of Technology [M.Tech] ",
+              "specialization": []
+            },
+            {
+              "id": 6,
+              "courseName": "Ph.D. (Biotechnology) ",
+              "specialization": []
+            },
+            {
+              "id": 7,
+              "courseName": "Bachelor of Computer Application [BCA] ",
+              "specialization": []
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "departmentName": "Dental",
+          "courses": [
+            {
+              "id": 1,
+              "courseName": "Bachelor of Dental Surgery [BDS]",
+              "specialization": [
+                {
+                  "id": 1,
+                  "name": "Bachelor of Dental Surgery [BDS]",
+                  "courseType": "Full Time",
+                  "courseDuration": "5 years",
+                  "fee": {
+                    "general": {
+                      "firstYear": {
+                        "tuitionFee": "365000",
+                        "additionalFee": "40000"
+                      },
+                      "secondYear": {
+                        "tuitionFee": "365000",
+                        "additionalFee": "40000"
+                      },
+                      "thirdYear": {
+                        "tuitionFee": "365000",
+                        "additionalFee": "40000"
+                      },
+                      "fourthYear": {
+                        "tuitionFee": "365000",
+                        "additionalFee": "40000"
+                      },
+                      "FifthYear": {
+                        "tuitionFee": "365000",
+                        "additionalFee": "40000"
+                      }
+                    },
+                    "nri": {
+                      "firstYear": {
+                        "tuitionFee": "498000",
+                        "additionalFee": ""
+                      },
+                      "secondYear": {
+                        "tuitionFee": "498000",
+                        "additionalFee": ""
+                      },
+                      "thirdYear": {
+                        "tuitionFee": "498000",
+                        "additionalFee": ""
+                      },
+                      "fourthYear": {
+                        "tuitionFee": "498000",
+                        "additionalFee": ""
+                      },
+                      "FifthYear": {
+                        "tuitionFee": "498000",
+                        "additionalFee": ""
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "courseName": "Master of Dental Surgery [MDS]",
+              "specialization": [
+                {
+                  "id": 1,
+                  "name": "Conservative Dentistry & Endodontics",
+                  "courseType": "Full Time",
+                  "courseDuration": "3 years",
+                  "fee": {
+                    "general": {
+                      "firstYear": {
+                        "tuitionFee": "769400",
+                        "additionalFee": "100000"
+                      },
+                      "secondYear": {
+                        "tuitionFee": "769400",
+                        "additionalFee": "100000"
+                      },
+                      "thirdYear": {
+                        "tuitionFee": "769400",
+                        "additionalFee": "100000"
+                      }
+                    },
+                    "nri": {
+                      "firstYear": {
+                        "tuitionFee": "996000",
+                        "additionalFee": ""
+                      },
+                      "secondYear": {
+                        "tuitionFee": "996000",
+                        "additionalFee": ""
+                      },
+                      "thirdYear": {
+                        "tuitionFee": "996000",
+                        "additionalFee": ""
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": 2,
+                  "name": "Oral & Maxillofacial Surgery",
+                  "courseType": "Full Time",
+                  "courseDuration": "3 years",
+                  "fee": {
+                    "general": {
+                      "firstYear": {
+                        "tuitionFee": "769400",
+                        "additionalFee": "100000"
+                      },
+                      "secondYear": {
+                        "tuitionFee": "769400",
+                        "additionalFee": "100000"
+                      },
+                      "thirdYear": {
+                        "tuitionFee": "769400",
+                        "additionalFee": "100000"
+                      }
+                    },
+                    "nri": {
+                      "firstYear": {
+                        "tuitionFee": "996000",
+                        "additionalFee": ""
+                      },
+                      "secondYear": {
+                        "tuitionFee": "996000",
+                        "additionalFee": ""
+                      },
+                      "thirdYear": {
+                        "tuitionFee": "996000",
+                        "additionalFee": ""
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": 3,
+              "courseName": "Ph.D",
+              "specialization": []
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "departmentName": "Law",
+          "courses": [
+            {
+              "id": 1,
+              "courseName": "Bachelor of Business Administration + Bachelor of Laws [BBALLB] {Hons.}",
+              "specialization": [
+                {
+                  "id": 1,
+                  "name": "Bachelor of Business Administration + Bachelor of Laws [BBALLB] {Hons.}",
+                  "courseType": "Full Time",
+                  "courseDuration": "5 years",
+                  "fee": {
+                    "general": {
+                      "firstYear": {
+                        "tuitionFee": "166860",
+                        "additionalFee": ""
+                      },
+                      "secondYear": {
+                        "tuitionFee": "171866",
+                        "additionalFee": ""
+                      },
+                      "thirdYear": {
+                        "tuitionFee": "177020",
+                        "additionalFee": ""
+                      },
+                      "fourthYear": {
+                        "tuitionFee": "182331",
+                        "additionalFee": ""
+                      },
+                      "FifthYear": {
+                        "tuitionFee": "187801",
+                        "additionalFee": ""
+                      }
+                    },
+                    "nri": {
+                      "firstYear": {
+                        "tuitionFee": "235614",
+                        "additionalFee": ""
+                      },
+                      "secondYear": {
+                        "tuitionFee": "235614",
+                        "additionalFee": ""
+                      },
+                      "thirdYear": {
+                        "tuitionFee": "235614",
+                        "additionalFee": ""
+                      },
+                      "fourthYear": {
+                        "tuitionFee": "235614",
+                        "additionalFee": ""
+                      },
+                      "FifthYear": {
+                        "tuitionFee": "235614",
+                        "additionalFee": ""
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "courseName": "Master of Laws [L.L.M]",
+              "specialization": [
+                {
+                  "id": 1,
+                  "name": "Energy Laws",
+                  "courseType": "Full Time",
+                  "courseDuration": "1 year",
+                  "fee": {
+                    "general": {},
+                    "nri": {}
+                  }
+                },
+                {
+                  "id": 2,
+                  "name": "Criminal Law",
+                  "courseType": "Full Time",
+                  "courseDuration": "1 year",
+                  "fee": {
+                    "general": {},
+                    "nri": {}
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

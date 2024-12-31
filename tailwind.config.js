@@ -18,7 +18,7 @@ module.exports = {
           DEFAULT: "#ede8f5",
         },
         skin: {
-          DEFAULT: "#fedee1",
+          DEFAULT: "#ede8f5",
         },
         green: {
           DEFAULT: "#2fa97c",

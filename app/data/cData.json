@@ -1,0 +1,284 @@
+{
+  "data": [
+    {
+      "collegeId": 1,
+      "collegeName": "Sharda University",
+      "collegeAddress": {
+        "city": "Greater Noida",
+        "state": "Uttar Pradesh",
+        "pincode": "Uttar Pradesh"
+      },
+      "collegeType": "private",
+      "EstdYear": "2009",
+      "NAACGrade": "A+",
+      "collegeAbout": "Sharda University is a reputated engineering college.",
+      "departments": [
+        {
+          "id": 1,
+          "departmentName": "Engineering",
+          "courses": [
+            {
+              "id": 1,
+              "courseName": "Bachelor of Technology [B.tech]",
+              "specialization": [
+                {
+                  "id": 1,
+                  "name": "Information Technology",
+                  "courseType": "Full Time",
+                  "courseDuration": "4 years",
+                  "fee": {
+                    "general": {
+                      "firstYear": {
+                        "tuitionFee": "168683",
+                        "additionalFee": ""
+                      },
+                      "secondYear": {
+                        "tuitionFee": "173744",
+                        "additionalFee": ""
+                      },
+                      "thirdYear": {
+                        "tuitionFee": "178956",
+                        "additionalFee": ""
+                      },
+                      "fourthYear": {
+                        "tuitionFee": "184325",
+                        "additionalFee": ""
+                      }
+                    },
+                    "nri": {}
+                  }
+                },
+                {
+                  "id": 2,
+                  "name": "Artificial Intelligence & Machine Learning",
+                  "courseType": "Full Time",
+                  "courseDuration": "4 years",
+                  "fee": {
+                    "general": {
+                      "firstYear": {
+                        "tuitionFee": "200000",
+                        "additionalFee": ""
+                      },
+                      "secondYear": {
+                        "tuitionFee": "206000",
+                        "additionalFee": ""
+                      },
+                      "thirdYear": {
+                        "tuitionFee": "212180",
+                        "additionalFee": ""
+                      },
+                      "fourthYear": {
+                        "tuitionFee": "218545",
+                        "additionalFee": ""
+                      }
+                    },
+                    "nri": {}
+                  }
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "courseName": "Bachelor of Science [B.Sc]",
+              "specialization": [
+                {
+                  "id": 1,
+                  "name": "Information Technology",
+                  "courseType": "Full Time",
+                  "courseDuration": "3 years",
+                  "fee": {
+                    "general": {
+                      "firstYear": {
+                        "tuitionFee": "95481",
+                        "additionalFee": ""
+                      },
+                      "secondYear": {
+                        "tuitionFee": "98345",
+                        "additionalFee": ""
+                      },
+                      "thirdYear": {
+                        "tuitionFee": "101296",
+                        "additionalFee": ""
+                      }
+                    },
+                    "nri": {}
+                  }
+                },
+                {
+                  "id": 2,
+                  "name": "Computer Science",
+                  "courseType": "Full Time",
+                  "courseDuration": "3 years",
+                  "fee": {
+                    "general": {
+                      "firstYear": {
+                        "tuitionFee": "95481",
+                        "additionalFee": ""
+                      },
+                      "secondYear": {
+                        "tuitionFee": "98345",
+                        "additionalFee": ""
+                      },
+                      "thirdYear": {
+                        "tuitionFee": "101296",
+                        "additionalFee": ""
+                      }
+                    },
+                    "nri": {}
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "departmentName": "Dental",
+          "courses": [
+            {
+              "id": 1,
+              "courseName": "Bachelor of Dental Surgery [BDS]",
+              "specialization": [
+                {
+                  "id": 1,
+                  "name": "Bachelor of Dental Surgery [BDS]",
+                  "courseType": "Full Time",
+                  "courseDuration": "5 years",
+                  "fee": {
+                    "general": {
+                      "firstYear": {
+                        "tuitionFee": "365000",
+                        "additionalFee": "40000"
+                      },
+                      "secondYear": {
+                        "tuitionFee": "365000",
+                        "additionalFee": "40000"
+                      },
+                      "thirdYear": {
+                        "tuitionFee": "365000",
+                        "additionalFee": "40000"
+                      },
+                      "fourthYear": {
+                        "tuitionFee": "365000",
+                        "additionalFee": "40000"
+                      },
+                      "FifthYear": {
+                        "tuitionFee": "365000",
+                        "additionalFee": "40000"
+                      }
+                    },
+                    "nri": {
+                      "firstYear": {
+                        "tuitionFee": "498000",
+                        "additionalFee": ""
+                      },
+                      "secondYear": {
+                        "tuitionFee": "498000",
+                        "additionalFee": ""
+                      },
+                      "thirdYear": {
+                        "tuitionFee": "498000",
+                        "additionalFee": ""
+                      },
+                      "fourthYear": {
+                        "tuitionFee": "498000",
+                        "additionalFee": ""
+                      },
+                      "FifthYear": {
+                        "tuitionFee": "498000",
+                        "additionalFee": ""
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "courseName": "Master of Dental Surgery [MDS]",
+              "specialization": [
+                {
+                  "id": 1,
+                  "name": "Conservative Dentistry & Endodontics",
+                  "courseType": "Full Time",
+                  "courseDuration": "3 years",
+                  "fee": {
+                    "general": {
+                      "firstYear": {
+                        "tuitionFee": "769400",
+                        "additionalFee": "100000"
+                      },
+                      "secondYear": {
+                        "tuitionFee": "769400",
+                        "additionalFee": "100000"
+                      },
+                      "thirdYear": {
+                        "tuitionFee": "769400",
+                        "additionalFee": "100000"
+                      }
+                    },
+                    "nri": {
+                      "firstYear": {
+                        "tuitionFee": "996000",
+                        "additionalFee": ""
+                      },
+                      "secondYear": {
+                        "tuitionFee": "996000",
+                        "additionalFee": ""
+                      },
+                      "thirdYear": {
+                        "tuitionFee": "996000",
+                        "additionalFee": ""
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": 2,
+                  "name": "Oral & Maxillofacial Surgery",
+                  "courseType": "Full Time",
+                  "courseDuration": "3 years",
+                  "fee": {
+                    "general": {
+                      "firstYear": {
+                        "tuitionFee": "769400",
+                        "additionalFee": "100000"
+                      },
+                      "secondYear": {
+                        "tuitionFee": "769400",
+                        "additionalFee": "100000"
+                      },
+                      "thirdYear": {
+                        "tuitionFee": "769400",
+                        "additionalFee": "100000"
+                      }
+                    },
+                    "nri": {
+                      "firstYear": {
+                        "tuitionFee": "996000",
+                        "additionalFee": ""
+                      },
+                      "secondYear": {
+                        "tuitionFee": "996000",
+                        "additionalFee": ""
+                      },
+                      "thirdYear": {
+                        "tuitionFee": "996000",
+                        "additionalFee": ""
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": 3,
+              "courseName": "Ph.D",
+              "specialization": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

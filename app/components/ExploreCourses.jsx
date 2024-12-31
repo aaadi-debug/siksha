@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { ArrowLeft, ArrowRight, ChevronRight } from "lucide-react";
 import Link from "next/link";
 
+
 const tabsData = [
   {
     id: "Bachelors",
@@ -12,6 +13,8 @@ const tabsData = [
         _id: 1,
         time: "Full Time",
         courseName: "B.Com General",
+        stream: "commerce",
+        subStream: "commerce",
         courseCategory: "bachelor of commerce",
         duration: 3,
         avgFees: "69.11 K",
@@ -219,9 +222,35 @@ const ExploreCourses = () => {
     handleScroll(tabId); // Update scroll positions for new tab
   };
 
+  const handleCardClick = (course) => {
+    // Find the selected course from the content arrays within tabsData
+    let selectedCourse;
+    tabsData.forEach((tab) => {
+      const foundCourse = tab.content.find(
+        (c) => c.courseName === course.courseName
+      );
+      if (foundCourse) {
+        selectedCourse = foundCourse;
+      }
+    });
+
+    if (selectedCourse) {
+      // Construct query parameters for navigation
+      const query = new URLSearchParams({
+        courseName: selectedCourse.courseName,
+        courseCategory: selectedCourse.courseCategory,
+      }).toString();
+
+      // Redirect to the course page with the constructed query string
+      window.location.href = `/course/${selectedCourse.courseCategory}?${query}`;
+    } else {
+      console.error("Course not found.");
+    }
+  };
+
   return (
-    <div>
-      <div className=" bg-secondary-light pt-48 pb-10 lg:px-32 mx-auto px-6 explorecourses">
+    <div className="bg-secondary-light">
+      <div className="container  pt-48 pb-10 lg:px-32 mx-auto explorecourses">
         <h2 className="text-black text-3xl font-semibold ">Explore Courses</h2>
         <div className="w-full mt-4">
           <div className="w-full">
@@ -300,18 +329,17 @@ const ExploreCourses = () => {
                                 </div>
                               </div>
                             </div>
-                            <div>
-                              <Link
+                            <div className="flex justify-between items-center pt-2 mt-3 text-sm border-t group">
+                              <button
                                 href={`/courses/${data.courseCategory}`}
-                                className="flex justify-between items-center pt-2 text-sm mt-3 border-t group"
+                                className="text-textClr hover:text-primary"
+                                onClick={() => handleCardClick(data)}
                               >
-                                <p className="text-textClr hover:text-primary">
-                                  Course Overview
-                                </p>
-                                <p className="text-black hover:text-primary">
-                                  <ChevronRight size={16} />
-                                </p>
-                              </Link>
+                                Course Overview
+                              </button>
+                              <span className="text-black hover:text-primary">
+                                <ChevronRight size={16} />
+                              </span>
                             </div>
                           </div>
                         ))}

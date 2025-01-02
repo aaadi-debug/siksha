@@ -3,14 +3,15 @@
     {
       "collegeId": 1,
       "collegeName": "Sharda University",
+      "collegeLogo": "https://upload.wikimedia.org/wikipedia/en/1/16/Sharda_University_logo_no_wordmark.png",
       "collegeAddress": {
         "city": "Greater Noida",
-        "state": "Uttar Pradesh",
-        "pincode": "Uttar Pradesh"
+        "state": "Uttar Pradesh"
       },
       "collegeType": "private",
       "EstdYear": "2009",
       "NAACGrade": "A+",
+      "approvedBy": ["NCTE", "DCI", "COA", "INC", "MCI"],
       "collegeAbout": "Sharda University is a reputated engineering college.",
       "departments": [
         {
@@ -27,24 +28,24 @@
                   "courseType": "Full Time",
                   "courseDuration": "4 years",
                   "fee": {
-                    "general": {
-                      "firstYear": {
+                    "general": [
+                      {
                         "tuitionFee": "168683",
                         "additionalFee": ""
                       },
-                      "secondYear": {
+                      {
                         "tuitionFee": "173744",
                         "additionalFee": ""
                       },
-                      "thirdYear": {
+                      {
                         "tuitionFee": "178956",
                         "additionalFee": ""
                       },
-                      "fourthYear": {
+                      {
                         "tuitionFee": "184325",
                         "additionalFee": ""
                       }
-                    },
+                    ],
                     "nri": {}
                   }
                 },
@@ -54,24 +55,24 @@
                   "courseType": "Full Time",
                   "courseDuration": "4 years",
                   "fee": {
-                    "general": {
-                      "firstYear": {
+                    "general": [
+                      {
                         "tuitionFee": "200000",
                         "additionalFee": ""
                       },
-                      "secondYear": {
+                      {
                         "tuitionFee": "206000",
                         "additionalFee": ""
                       },
-                      "thirdYear": {
+                      {
                         "tuitionFee": "212180",
                         "additionalFee": ""
                       },
-                      "fourthYear": {
+                      {
                         "tuitionFee": "218545",
                         "additionalFee": ""
                       }
-                    },
+                    ],
                     "nri": {}
                   }
                 },
@@ -81,24 +82,24 @@
                   "courseType": "Full Time",
                   "courseDuration": "4 years",
                   "fee": {
-                    "general": {
-                      "firstYear": {
+                    "general": [
+                      {
                         "tuitionFee": "168683",
                         "additionalFee": ""
                       },
-                      "secondYear": {
+                      {
                         "tuitionFee": "173744",
                         "additionalFee": ""
                       },
-                      "thirdYear": {
+                      {
                         "tuitionFee": "178956",
                         "additionalFee": ""
                       },
-                      "fourthYear": {
+                      {
                         "tuitionFee": "184325",
                         "additionalFee": ""
                       }
-                    },
+                    ],
                     "nri": {}
                   }
                 }
@@ -114,20 +115,20 @@
                   "courseType": "Full Time",
                   "courseDuration": "3 years",
                   "fee": {
-                    "general": {
-                      "firstYear": {
+                    "general": [
+                      {
                         "tuitionFee": "95481",
                         "additionalFee": ""
                       },
-                      "secondYear": {
+                      {
                         "tuitionFee": "98345",
                         "additionalFee": ""
                       },
-                      "thirdYear": {
+                      {
                         "tuitionFee": "101296",
                         "additionalFee": ""
                       }
-                    },
+                    ],
                     "nri": {}
                   }
                 },
@@ -137,20 +138,20 @@
                   "courseType": "Full Time",
                   "courseDuration": "3 years",
                   "fee": {
-                    "general": {
-                      "firstYear": {
+                    "general": [
+                      {
                         "tuitionFee": "95481",
                         "additionalFee": ""
                       },
-                      "secondYear": {
+                      {
                         "tuitionFee": "98345",
                         "additionalFee": ""
                       },
-                      "thirdYear": {
+                      {
                         "tuitionFee": "101296",
                         "additionalFee": ""
                       }
-                    },
+                    ],
                     "nri": {}
                   }
                 },
@@ -160,20 +161,20 @@
                   "courseType": "Full Time",
                   "courseDuration": "3 years",
                   "fee": {
-                    "general": {
-                      "firstYear": {
+                    "general": [
+                      {
                         "tuitionFee": "92700",
                         "additionalFee": ""
                       },
-                      "secondYear": {
+                      {
                         "tuitionFee": "95481",
                         "additionalFee": ""
                       },
-                      "thirdYear": {
+                      {
                         "tuitionFee": "98345",
                         "additionalFee": ""
                       }
-                    },
+                    ],
                     "nri": {}
                   }
                 }
@@ -189,16 +190,16 @@
                   "courseType": "Full Time",
                   "courseDuration": "2 years",
                   "fee": {
-                    "general": {
-                      "firstYear": {
+                    "general": [
+                      {
                         "tuitionFee": "150000",
                         "additionalFee": ""
                       },
-                      "secondYear": {
+                      {
                         "tuitionFee": "154500",
                         "additionalFee": ""
                       }
-                    },
+                    ],
                     "nri": {}
                   }
                 }
@@ -240,50 +241,50 @@
                   "courseType": "Full Time",
                   "courseDuration": "5 years",
                   "fee": {
-                    "general": {
-                      "firstYear": {
+                    "general": [
+                      {
                         "tuitionFee": "365000",
                         "additionalFee": "40000"
                       },
-                      "secondYear": {
+                      {
                         "tuitionFee": "365000",
                         "additionalFee": "40000"
                       },
-                      "thirdYear": {
+                      {
                         "tuitionFee": "365000",
                         "additionalFee": "40000"
                       },
-                      "fourthYear": {
+                      {
                         "tuitionFee": "365000",
                         "additionalFee": "40000"
                       },
-                      "FifthYear": {
+                      {
                         "tuitionFee": "365000",
                         "additionalFee": "40000"
                       }
-                    },
-                    "nri": {
-                      "firstYear": {
+                    ],
+                    "nri": [
+                      {
                         "tuitionFee": "498000",
                         "additionalFee": ""
                       },
-                      "secondYear": {
+                      {
                         "tuitionFee": "498000",
                         "additionalFee": ""
                       },
-                      "thirdYear": {
+                      {
                         "tuitionFee": "498000",
                         "additionalFee": ""
                       },
-                      "fourthYear": {
+                      {
                         "tuitionFee": "498000",
                         "additionalFee": ""
                       },
-                      "FifthYear": {
+                      {
                         "tuitionFee": "498000",
                         "additionalFee": ""
                       }
-                    }
+                    ]
                   }
                 }
               ]
@@ -298,34 +299,34 @@
                   "courseType": "Full Time",
                   "courseDuration": "3 years",
                   "fee": {
-                    "general": {
-                      "firstYear": {
+                    "general": [
+                      {
                         "tuitionFee": "769400",
                         "additionalFee": "100000"
                       },
-                      "secondYear": {
+                      {
                         "tuitionFee": "769400",
                         "additionalFee": "100000"
                       },
-                      "thirdYear": {
+                      {
                         "tuitionFee": "769400",
                         "additionalFee": "100000"
                       }
-                    },
-                    "nri": {
-                      "firstYear": {
+                    ],
+                    "nri": [
+                      {
                         "tuitionFee": "996000",
                         "additionalFee": ""
                       },
-                      "secondYear": {
+                      {
                         "tuitionFee": "996000",
                         "additionalFee": ""
                       },
-                      "thirdYear": {
+                      {
                         "tuitionFee": "996000",
                         "additionalFee": ""
                       }
-                    }
+                    ]
                   }
                 },
                 {
@@ -334,34 +335,34 @@
                   "courseType": "Full Time",
                   "courseDuration": "3 years",
                   "fee": {
-                    "general": {
-                      "firstYear": {
+                    "general": [
+                      {
                         "tuitionFee": "769400",
                         "additionalFee": "100000"
                       },
-                      "secondYear": {
+                      {
                         "tuitionFee": "769400",
                         "additionalFee": "100000"
                       },
-                      "thirdYear": {
+                      {
                         "tuitionFee": "769400",
                         "additionalFee": "100000"
                       }
-                    },
-                    "nri": {
-                      "firstYear": {
+                    ],
+                    "nri": [
+                      {
                         "tuitionFee": "996000",
                         "additionalFee": ""
                       },
-                      "secondYear": {
+                      {
                         "tuitionFee": "996000",
                         "additionalFee": ""
                       },
-                      "thirdYear": {
+                      {
                         "tuitionFee": "996000",
                         "additionalFee": ""
                       }
-                    }
+                    ]
                   }
                 }
               ]
@@ -387,50 +388,50 @@
                   "courseType": "Full Time",
                   "courseDuration": "5 years",
                   "fee": {
-                    "general": {
-                      "firstYear": {
+                    "general": [
+                      {
                         "tuitionFee": "166860",
                         "additionalFee": ""
                       },
-                      "secondYear": {
+                      {
                         "tuitionFee": "171866",
                         "additionalFee": ""
                       },
-                      "thirdYear": {
+                      {
                         "tuitionFee": "177020",
                         "additionalFee": ""
                       },
-                      "fourthYear": {
+                      {
                         "tuitionFee": "182331",
                         "additionalFee": ""
                       },
-                      "FifthYear": {
+                      {
                         "tuitionFee": "187801",
                         "additionalFee": ""
                       }
-                    },
-                    "nri": {
-                      "firstYear": {
+                    ],
+                    "nri": [
+                      {
                         "tuitionFee": "235614",
                         "additionalFee": ""
                       },
-                      "secondYear": {
+                      {
                         "tuitionFee": "235614",
                         "additionalFee": ""
                       },
-                      "thirdYear": {
+                      {
                         "tuitionFee": "235614",
                         "additionalFee": ""
                       },
-                      "fourthYear": {
+                      {
                         "tuitionFee": "235614",
                         "additionalFee": ""
                       },
-                      "FifthYear": {
+                      {
                         "tuitionFee": "235614",
                         "additionalFee": ""
                       }
-                    }
+                    ]
                   }
                 }
               ]
@@ -462,6 +463,329 @@
               ]
             }
           ]
+        }
+      ],
+      "placements": [
+        {
+          "year": "2024",
+          "lowest": "",
+          "average": "",
+          "highest": "40 LPA",
+          "noOfRecruiters": "600+",
+          "topRecruiters": ["Cognizant", "Amazon", "Jonhson Controls", "Mahindra Rise", "Videocon", "MTS", "Tech Mahindra"]
+        },
+        {
+          "year": "2023",
+          "lowest": "",
+          "average": "5.65 LPA",
+          "highest": "40 LPA",
+          "noOfRecruiters": "600+",
+          "topRecruiters": ["Unacademy", "Infosys", "Wipro", "HCL", "TCS", "EY", "Deloitte", "KPMG"]
+        }
+      ]
+    },
+    {
+      "collegeId": 2,
+      "collegeName": "Amity University",
+      "collegeLogo": "https://upload.wikimedia.org/wikipedia/en/f/ff/Amity_University_logo.png",
+      "collegeAddress": {
+        "city": "Noida",
+        "state": "Uttar Pradesh"
+      },
+      "collegeType": "private",
+      "EstdYear": "1986",
+      "NAACGrade": "A+",
+      "approvedBy": ["NCTE", "AICTE", "COA", "BCI", "UGC"],
+      "collegeAbout": "Amity University is a reputated college for various specialization courses.",
+      "departments": [
+        {
+          "id": 1,
+          "departmentName": "Arts",
+          "courses": [
+            {
+              "id": 1,
+              "courseName": "Bachelor of Arts [BA] {Hons.}",
+              "specialization": [
+                {
+                  "id": 1,
+                  "name": "Bachelor of Arts [BA] {Hons.} (English)",
+                  "courseType": "Full Time",
+                  "courseDuration": "3 years",
+                  "fee": {
+                    "general": [
+                      {
+                        "tuitionFee": "120000",
+                        "additionalFee": ""
+                      },
+                      {
+                        "tuitionFee": "120000",
+                        "additionalFee": ""
+                      },
+                      {
+                        "tuitionFee": "120000",
+                        "additionalFee": ""
+                      }
+                    ],
+                    "nri": {}
+                  }
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "courseName": "Master of Arts [MA]",
+              "specialization": [
+                {
+                  "id": 1,
+                  "name": "Master of Arts [MA] (English)",
+                  "courseType": "Full Time",
+                  "courseDuration": "2 years",
+                  "fee": {
+                    "general": [
+                      {
+                        "tuitionFee": "120000",
+                        "additionalFee": ""
+                      },
+                      {
+                        "tuitionFee": "120000",
+                        "additionalFee": ""
+                      }
+                    ],
+                    "nri": {}
+                  }
+                }
+              ]
+            },
+            {
+              "id": 3,
+              "courseName": "Bachelor of Arts [BA] {Hons.} + Bachelor of Education [B.Ed.]",
+              "specialization": [
+                {
+                  "id": 1,
+                  "name": "Bachelor of Arts [BA] {Hons.} (English) + Bachelor of Education [B.Ed.]",
+                  "courseType": "Full Time",
+                  "courseDuration": "5 years",
+                  "fee": {
+                    "general": [
+                      {
+                        "tuitionFee": "106000",
+                        "additionalFee": ""
+                      },
+                      {
+                        "tuitionFee": "106000",
+                        "additionalFee": ""
+                      },
+                      {
+                        "tuitionFee": "106000",
+                        "additionalFee": ""
+                      },
+                      {
+                        "tuitionFee": "106000",
+                        "additionalFee": ""
+                      },
+                      {
+                        "tuitionFee": "106000",
+                        "additionalFee": ""
+                      }
+                    ],
+                    "nri": {}
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "departmentName": "Engineering",
+          "courses": [
+            {
+              "id": 1,
+              "courseName": "Bachelor of Technology [B.Tech]",
+              "specialization": [
+                {
+                  "id": 1,
+                  "name": "Computer Science and Engineering",
+                  "courseType": "Full Time",
+                  "courseDuration": "4 years",
+                  "fee": {
+                    "general": [
+                      {
+                        "tuitionFee": "340000",
+                        "additionalFee": "20000"
+                      },
+                      {
+                        "tuitionFee": "320000",
+                        "additionalFee": ""
+                      },
+                      {
+                        "tuitionFee": "320000",
+                        "additionalFee": ""
+                      },
+                      {
+                        "tuitionFee": "320000",
+                        "additionalFee": ""
+                      }
+                    ],
+                    "nri": {}
+                  }
+                },
+                {
+                  "id": 2,
+                  "name": "Aerospace Engineering",
+                  "courseType": "Full Time",
+                  "courseDuration": "4 years",
+                  "fee": {
+                    "general": [
+                      {
+                        "tuitionFee": "230000",
+                        "additionalFee": "20000"
+                      },
+                      {
+                        "tuitionFee": "230000",
+                        "additionalFee": ""
+                      },
+                      {
+                        "tuitionFee": "230000",
+                        "additionalFee": ""
+                      },
+                      {
+                        "tuitionFee": "230000",
+                        "additionalFee": ""
+                      }
+                    ],
+                    "nri": {}
+                  }
+                },
+                {
+                  "id": 3,
+                  "name": "Electronics & Communication Engineering",
+                  "courseType": "Full Time",
+                  "courseDuration": "4 years",
+                  "fee": {
+                    "general": [
+                      {
+                        "tuitionFee": "311000",
+                        "additionalFee": "20000"
+                      },
+                      {
+                        "tuitionFee": "311000",
+                        "additionalFee": ""
+                      },
+                      {
+                        "tuitionFee": "311000",
+                        "additionalFee": ""
+                      },
+                      {
+                        "tuitionFee": "311000",
+                        "additionalFee": ""
+                      }
+                    ],
+                    "nri": {}
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "departmentName": "Science",
+          "courses": [
+            {
+              "id": 1,
+              "courseName": "Bachelor of Science [B.Sc]",
+              "specialization": [
+                {
+                  "id": 1,
+                  "name": "Bachelor of Science [B.Sc] (Nanoscience)",
+                  "courseType": "Full Time",
+                  "courseDuration": "3 years",
+                  "fee": {
+                    "general": [
+                      {
+                        "tuitionFee": "51000",
+                        "additionalFee": ""
+                      },
+                      {
+                        "tuitionFee": "51000",
+                        "additionalFee": ""
+                      },
+                      {
+                        "tuitionFee": "51000",
+                        "additionalFee": ""
+                      }
+                    ],
+                    "nri": {}
+                  }
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "courseName": "Master of Science [M.Sc] (Nanoscience) + Master of Technology [M.Tech]",
+              "specialization": [
+                {
+                  "id": 1,
+                  "name": "Master of Science [M.Sc] (Nanoscience) + Master of Technology [M.Tech] (Nanotechnology)",
+                  "courseType": "Full Time",
+                  "courseDuration": "3 years",
+                  "fee": {
+                    "general": [
+                      {
+                        "tuitionFee": "69000",
+                        "additionalFee": ""
+                      },
+                      {
+                        "tuitionFee": "69000",
+                        "additionalFee": ""
+                      },
+                      {
+                        "tuitionFee": "69000",
+                        "additionalFee": ""
+                      }
+                    ],
+                    "nri": {}
+                  }
+                }
+              ]
+            },
+            {
+              "id": 3,
+              "courseName": "Master of Science [M.Sc]",
+              "specialization": [
+                {
+                  "id": 1,
+                  "name": "Master of Science [M.Sc] (Nano Science)",
+                  "courseType": "Full Time",
+                  "courseDuration": "2 years",
+                  "fee": {
+                    "general": [
+                      {
+                        "tuitionFee": "69000",
+                        "additionalFee": ""
+                      },
+                      {
+                        "tuitionFee": "69000",
+                        "additionalFee": ""
+                      }
+                    ],
+                    "nri": {}
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "placements": [
+        {
+          "year": "2023",
+          "lowest": "",
+          "average": "",
+          "highest": "61.75 LPA",
+          "noOfRecruiters": "1050",
+          "topRecruiters": ["Adobe", "Accenture", "TCS", "Flipkart", "Microsoft "]
         }
       ]
     }

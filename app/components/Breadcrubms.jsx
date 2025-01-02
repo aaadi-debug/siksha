@@ -6,7 +6,7 @@ const Breadcrumbs = (props) => {
   return (
     <div>
       <div className="border-t py-2">
-        <div className="lg:px-20 px-6">
+        <div className="lg:px-10 px-6">
           <div className="flex justify-start items-center">
             <div className="breadcrumbs flex flex-wrap items-center">
               <a href="/" className="text-sm text-black max-sm:text-xs">

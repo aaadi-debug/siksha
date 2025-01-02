@@ -10,12 +10,12 @@ module.exports = {
       colors: {
         primary: {
           light: "#6D28D9",
-          DEFAULT: "#3d52a0",
+          DEFAULT: "#3D52A0",
           dark: "#3d52a0",
         },
-        secondary: {
+        second: {
           light: "#ede8f5",
-          DEFAULT: "#ede8f5",
+          DEFAULT: "#3D52A0",
         },
         skin: {
           DEFAULT: "#ede8f5",

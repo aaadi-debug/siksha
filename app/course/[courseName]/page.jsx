@@ -107,13 +107,10 @@ const CoursePage = () => {
   useEffect(() => {
     // If the courseName exists in the URL, set it as the default courseName filter
     if (decodedCourseName) {
-      setLoading(true);
-      setTimeout(() => {
-        setFilters((prevFilters) => ({
-          ...prevFilters,
-          courseName: decodedCourseName,
-        }));
-      }, 500); // 2-second delay
+      setFilters((prevFilters) => ({
+        ...prevFilters,
+        courseName: decodedCourseName,
+      }));
     }
 
     // Set default department based on the courseName
@@ -148,7 +145,9 @@ const CoursePage = () => {
       filters.feeRange[1] === 1000000
     ) {
       // No filters selected, show all data
+      // setTimeout(() => {
       setFilteredData(collegeData);
+      // }, 500); // 2-second delay
       console.log("No filters applied, showing all colleges.", filteredData);
       setLoading(false);
       return;
@@ -241,12 +240,15 @@ const CoursePage = () => {
       )
     );
 
+    // setTimeout(() => {
     setFilteredData(filtered);
+    // }, 500); // 2-second delay
     setLoading(false); // Set loading to false when filtering is complete
   }, [filters, collegeData]); // Add collegeData to the dependency array
 
   const handleFilterChange = (filterType, value) => {
     setLoading(true); // Set loading to true when filter changes
+    // setTimeout(() => {
     setFilters((prev) => {
       const newFilters = { ...prev, [filterType]: value };
 
@@ -290,10 +292,12 @@ const CoursePage = () => {
 
       return newFilters;
     });
+    // }, 500); // 2-second delay
   };
 
   const handleClearFilters = () => {
     setLoading(true); // Set loading to true when clearing filters
+    // setTimeout(() => {
     setFilters({
       courseName: "",
       departmentName: "",
@@ -306,6 +310,7 @@ const CoursePage = () => {
 
     // Reset filtered data to show all colleges
     setFilteredData(collegeData);
+    // }, 500); // 2-second delay
     console.log("showing all colleges.", filteredData);
     setLoading(false); // Set loading to false after resetting filters
     // router.push(`/course/india-colleges`); // Reset URL
@@ -385,156 +390,158 @@ const CoursePage = () => {
 
   console.log("Final fileterd data: ", filteredData);
 
-  // Render the preloader if loading is true
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center ">
-        <div className="loader"></div>{" "}
-        {/* You can replace this with your own preloader */}
-      </div>
-    );
-  }
-
   return (
-    <div className="bg-skin">
+    <div className="bg-skin about_us">
       <Navbar />
-      <Breadcrumbs
-        page_title="Course"
-        page_title2={decodedCourseName}
-        page_title3=""
-      />
 
-      <div className="lg:px-10 px-6 mt-6 pb-10">
-        <h2 className="text-2xl font-semibold mb-4">
-          Top {decodedCourseName} Colleges
-        </h2>
+      {loading ? (
+        // Preloader section
+        <div className="flex justify-center items-center h-[80vh]">
+          <img src="/assets/videos/preloader2.gif" alt="Preloader" />
+        </div>
+      ) : (
+        <>
+          <Breadcrumbs
+            page_title="Course"
+            page_title2={decodedCourseName}
+            page_title3=""
+          />
+          <div className="lg:px-10 px-6 mt-6 pb-10">
+            <h2 className="text-2xl font-semibold mb-4">
+              Top {decodedCourseName} Colleges
+            </h2>
 
-        <div>
-          <div className="rounded-lg bg-white mb-4">
-            <div className="w-full p-6 flex text-sm">
-              <div className="border-r pr-4 mr-4">
-                <div className="border w-28 rounded-full p-2 flex gap-2 justify-center items-center">
-                  <Filter size={16} /> All Filters
-                </div>
-              </div>
-              <div className="flex overflow-x-auto whitespace-nowrap ">
-                <HorizontalScroll>
-                  {/* Course Filter */}
-                  <div className="border w-40 rounded-full p-2">
-                    {/* <label>Course Name</label> */}
-                    <select
-                      onChange={(e) =>
-                        handleFilterChange("courseName", e.target.value)
-                      }
-                      value={filters.courseName}
-                      className="w-full"
-                    >
-                      <option value="">Course</option>
-                      {getUniqueValues("courseName").map((course) => (
-                        <option key={course} value={course}>
-                          {course}
-                        </option>
-                      ))}
-                    </select>
+            <div>
+              <div className="rounded-lg bg-white mb-4">
+                <div className="w-full p-6 flex text-sm">
+                  <div className="border-r pr-4 mr-4">
+                    <div className="border w-28 rounded-full p-2 flex gap-2 justify-center items-center">
+                      <Filter size={16} /> All Filters
+                    </div>
                   </div>
+                  <div className="flex overflow-x-auto whitespace-nowrap ">
+                    <HorizontalScroll>
+                      {/* Course Filter */}
+                      <div className="border w-40 rounded-full p-2">
+                        {/* <label>Course Name</label> */}
+                        <select
+                          onChange={(e) =>
+                            handleFilterChange("courseName", e.target.value)
+                          }
+                          value={filters.courseName}
+                          className="w-full"
+                        >
+                          <option value="">Course</option>
+                          {getUniqueValues("courseName").map((course) => (
+                            <option key={course} value={course}>
+                              {course}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
 
-                  {/* Department Filter */}
-                  <div className="border w-40 rounded-full p-2">
-                    {/* <label>Department</label> */}
-                    <select
-                      onChange={(e) =>
-                        handleFilterChange("departmentName", e.target.value)
-                      }
-                      value={filters.departmentName}
-                      className="w-full"
-                    >
-                      <option value="">Department</option>
-                      {getUniqueValues("departmentName").map((dept) => (
-                        <option key={dept} value={dept}>
-                          {dept}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
+                      {/* Department Filter */}
+                      <div className="border w-40 rounded-full p-2">
+                        {/* <label>Department</label> */}
+                        <select
+                          onChange={(e) =>
+                            handleFilterChange("departmentName", e.target.value)
+                          }
+                          value={filters.departmentName}
+                          className="w-full"
+                        >
+                          <option value="">Department</option>
+                          {getUniqueValues("departmentName").map((dept) => (
+                            <option key={dept} value={dept}>
+                              {dept}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
 
-                  {/* Specialization Filter */}
-                  <div className="border w-40 rounded-full p-2">
-                    {/* <label>Specialization</label> */}
-                    <select
-                      onChange={(e) =>
-                        handleFilterChange("specialization", e.target.value)
-                      }
-                      value={filters.specialization}
-                      className="w-full"
-                    >
-                      <option value="">Specialization</option>
-                      {getAvailableSpecializations().map((specialization) => (
-                        <option key={specialization} value={specialization}>
-                          {specialization}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
+                      {/* Specialization Filter */}
+                      <div className="border w-40 rounded-full p-2">
+                        {/* <label>Specialization</label> */}
+                        <select
+                          onChange={(e) =>
+                            handleFilterChange("specialization", e.target.value)
+                          }
+                          value={filters.specialization}
+                          className="w-full"
+                        >
+                          <option value="">Specialization</option>
+                          {getAvailableSpecializations().map(
+                            (specialization) => (
+                              <option
+                                key={specialization}
+                                value={specialization}
+                              >
+                                {specialization}
+                              </option>
+                            )
+                          )}
+                        </select>
+                      </div>
 
-                  {/* State Filter */}
-                  <div className="border w-40 rounded-full p-2">
-                    {/* <label>State</label> */}
-                    <select
-                      onChange={(e) =>
-                        handleFilterChange("state", e.target.value)
-                      }
-                      value={filters.state}
-                      className="w-full"
-                    >
-                      <option value="">State</option>
-                      {getUniqueValues("state").map((state) => (
-                        <option key={state} value={state}>
-                          {state}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
+                      {/* State Filter */}
+                      <div className="border w-40 rounded-full p-2">
+                        {/* <label>State</label> */}
+                        <select
+                          onChange={(e) =>
+                            handleFilterChange("state", e.target.value)
+                          }
+                          value={filters.state}
+                          className="w-full"
+                        >
+                          <option value="">State</option>
+                          {getUniqueValues("state").map((state) => (
+                            <option key={state} value={state}>
+                              {state}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
 
-                  {/* City Filter */}
-                  <div className="border w-40 rounded-full p-2">
-                    {/* <label>City</label> */}
-                    <select
-                      onChange={(e) =>
-                        handleFilterChange("city", e.target.value)
-                      }
-                      value={filters.city}
-                      className="w-full"
-                    >
-                      <option value="">Select City</option>
-                      {getUniqueValues("city").map((city) => (
-                        <option key={city} value={city}>
-                          {city}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
+                      {/* City Filter */}
+                      <div className="border w-40 rounded-full p-2">
+                        {/* <label>City</label> */}
+                        <select
+                          onChange={(e) =>
+                            handleFilterChange("city", e.target.value)
+                          }
+                          value={filters.city}
+                          className="w-full"
+                        >
+                          <option value="">Select City</option>
+                          {getUniqueValues("city").map((city) => (
+                            <option key={city} value={city}>
+                              {city}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
 
-                  {/* College Type Filter */}
-                  <div className="border w-40 rounded-full p-2">
-                    {/* <label>College Type</label> */}
-                    <select
-                      onChange={(e) =>
-                        handleFilterChange("collegeType", e.target.value)
-                      }
-                      value={filters.collegeType}
-                      className="w-full"
-                    >
-                      <option value="">College Type</option>
-                      {["private", "public"].map((type) => (
-                        <option key={type} value={type}>
-                          {type}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
+                      {/* College Type Filter */}
+                      <div className="border w-40 rounded-full p-2">
+                        {/* <label>College Type</label> */}
+                        <select
+                          onChange={(e) =>
+                            handleFilterChange("collegeType", e.target.value)
+                          }
+                          value={filters.collegeType}
+                          className="w-full"
+                        >
+                          <option value="">College Type</option>
+                          {["private", "public"].map((type) => (
+                            <option key={type} value={type}>
+                              {type}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
 
-                  {/* Fee Filter */}
-                  {/* <div className="border rounded-full p-2 flex gap-2">
+                      {/* Fee Filter */}
+                      {/* <div className="border rounded-full p-2 flex gap-2">
                       <label>Fee Range: </label>
                       <div className="flex gap-4 items-center">
                         <div className="flex ">
@@ -576,56 +583,56 @@ const CoursePage = () => {
                         </div>
                       </div>
                     </div> */}
-                  <div className="border rounded-full p-1 px-3 flex flex-col sm:flex-row gap-4 items-center">
-                    <label className="font-medium text-gray-700">
-                      Fee Range:
-                    </label>
-
-                    <div className="flex gap-4 items-center">
-                      {/* Minimum Fee Input */}
-                      <div className="flex items-center">
-                        <label className="text-sm text-gray-500 mr-2">
-                          Min Fee
+                      <div className="border rounded-full p-1 px-3 flex flex-col sm:flex-row gap-4 items-center">
+                        <label className="font-medium text-gray-700">
+                          Fee Range:
                         </label>
-                        <input
-                          type="number"
-                          min="0"
-                          max="1000000"
-                          value={filters.feeRange[0]}
-                          onChange={(e) =>
-                            handleFilterChange("feeRange", [
-                              Number(e.target.value),
-                              filters.feeRange[1],
-                            ])
-                          }
-                          className="border rounded text-xs px-2 py-1 w-24 focus:ring-2 focus:ring-blue-400 outline-none"
-                        />
+
+                        <div className="flex gap-4 items-center">
+                          {/* Minimum Fee Input */}
+                          <div className="flex items-center">
+                            <label className="text-sm text-gray-500 mr-2">
+                              Min Fee
+                            </label>
+                            <input
+                              type="number"
+                              min="0"
+                              max="1000000"
+                              value={filters.feeRange[0]}
+                              onChange={(e) =>
+                                handleFilterChange("feeRange", [
+                                  Number(e.target.value),
+                                  filters.feeRange[1],
+                                ])
+                              }
+                              className="border rounded text-xs px-2 py-1 w-24 focus:ring-2 focus:ring-blue-400 outline-none"
+                            />
+                          </div>
+
+                          {/* Maximum Fee Input */}
+                          <div className="flex items-center">
+                            <label className="text-sm text-gray-500 mr-2">
+                              Max Fee
+                            </label>
+                            <input
+                              type="number"
+                              min="0"
+                              max="1000000"
+                              value={filters.feeRange[1]}
+                              onChange={(e) =>
+                                handleFilterChange("feeRange", [
+                                  filters.feeRange[0],
+                                  Number(e.target.value),
+                                ])
+                              }
+                              className="border rounded text-xs px-2 py-1 w-24 focus:ring-2 focus:ring-blue-400 outline-none"
+                            />
+                          </div>
+                        </div>
                       </div>
 
-                      {/* Maximum Fee Input */}
-                      <div className="flex items-center">
-                        <label className="text-sm text-gray-500 mr-2">
-                          Max Fee
-                        </label>
-                        <input
-                          type="number"
-                          min="0"
-                          max="1000000"
-                          value={filters.feeRange[1]}
-                          onChange={(e) =>
-                            handleFilterChange("feeRange", [
-                              filters.feeRange[0],
-                              Number(e.target.value),
-                            ])
-                          }
-                          className="border rounded text-xs px-2 py-1 w-24 focus:ring-2 focus:ring-blue-400 outline-none"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* range picker fee filter */}
-                  {/* <div className="border rounded-full p-2">
+                      {/* range picker fee filter */}
+                      {/* <div className="border rounded-full p-2">
                       <input
                         type="range"
                         min="0"
@@ -651,209 +658,221 @@ const CoursePage = () => {
                         }
                       />
                     </div> */}
-                </HorizontalScroll>
-              </div>
-            </div>
-
-            <div>
-              {/* Selected Filters */}
-              {Object.entries(filters).some(([key, value]) => value) && (
-                <div className="px-6 pb-6">
-                  <h3 className="mb-2 text-sm font-bold">Selected Filters:</h3>
-                  <div className="flex gap-2 flex-wrap items-center">
-                    {Object.entries(filters).map(([key, value]) =>
-                      value ? (
-                        <div
-                          key={key}
-                          className="bg-white border-2 font-semibold border-second text-second px-3 py-1  rounded-full flex items-center gap-2 text-xs"
-                        >
-                          <span>{value}</span>
-                          <button
-                            onClick={() => handleFilterChange(key, "")}
-                            className="text-second font-bold"
-                          >
-                            &times;
-                          </button>
-                        </div>
-                      ) : null
-                    )}
-
-                    {/* Clear Filters Button */}
-                    <button
-                      onClick={handleClearFilters}
-                      className="bg-second text-white border-2 border-second px-3 rounded-full py-1 text-xs"
-                    >
-                      Clear All
-                    </button>
+                    </HorizontalScroll>
                   </div>
                 </div>
-              )}
-            </div>
-          </div>
 
-          {/* Filtered Data */}
-          <div className="bg-white rounded-lg p-6">
-            <h3 className="text-xl font-semibold border-b pb-2 mb-4">
-              Found {filteredData.length}{" "}
-              {filteredData.length > 1 ? "Colleges" : "College"}
-            </h3>
-            {loading ? (
-              <div className="animate-pulse">
-                {/* Skeleton Preloader */}
-                <div className="h-6 bg-gray-200 rounded mb-4"></div>
-                <div className="space-y-4">
-                  <div className="h-4 bg-gray-200 rounded"></div>
-                  <div className="h-4 bg-gray-200 rounded"></div>
-                  <div className="h-4 bg-gray-200 rounded"></div>
+                <div>
+                  {/* Selected Filters */}
+                  {Object.entries(filters).some(([key, value]) => value) && (
+                    <div className="px-6 pb-6">
+                      <h3 className="mb-2 text-sm font-bold">
+                        Selected Filters:
+                      </h3>
+                      <div className="flex gap-2 flex-wrap items-center">
+                        {Object.entries(filters).map(([key, value]) =>
+                          value ? (
+                            <div
+                              key={key}
+                              className="bg-white border-2 font-semibold border-second text-second px-3 py-1  rounded-full flex items-center gap-2 text-xs"
+                            >
+                              <span>{value}</span>
+                              <button
+                                onClick={() => handleFilterChange(key, "")}
+                                className="text-second font-bold"
+                              >
+                                &times;
+                              </button>
+                            </div>
+                          ) : null
+                        )}
+
+                        {/* Clear Filters Button */}
+                        <button
+                          onClick={handleClearFilters}
+                          className="bg-second text-white border-2 border-second px-3 rounded-full py-1 text-xs"
+                        >
+                          Clear All
+                        </button>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
-            ) : filteredData.length > 0 ? (
-              <table className="min-w-full table-auto border-collapse">
-                <thead>
-                  <tr className="bg-gray-100">
-                    <th className="border px-4 py-2 text-left">S.No</th>
-                    <th className="border px-4 py-2 text-left">Colleges</th>
-                    <th className="border px-4 py-2 text-left">Courses Fee</th>
-                    <th className="border px-4 py-2 text-left">College Type</th>
-                    <th className="border px-4 py-2 text-left">
-                      Specialization
-                    </th>
-                    <th className="border px-4 py-2 text-left">Placement</th>
-                    <th className="border px-4 py-2 text-left">Grade</th>
-                    {/* Add more columns as needed */}
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredData.map((college, index) => (
-                    <tr key={college.collegeId} className="border-b">
-                      <td className="border px-4 py-2 align-top">
-                        {index + 1}
-                      </td>
-                      <td className="border px-4 py-2 align-top">
-                        <div className="flex gap-2">
-                          <img
-                            src={college.collegeLogo}
-                            alt=""
-                            className="rounded-lg w-20 h-20"
-                          />
-                          <div>
-                            <h4 className="text-lg font-medium text-black">
-                              {college.collegeName}
-                            </h4>
-                            <p className="text-textClr text-sm">
-                              {college.collegeAddress.city},{" "}
-                              {college.collegeAddress.state}
-                            </p>
-                            <p className="text-textClr text-sm">
-                              Approved by:{" "}
-                              {college.approvedBy.map((approval, index) => (
-                                <span key={index}>
-                                  {approval}
-                                  {index < college.approvedBy.length - 1 &&
-                                    ", "}
-                                </span>
-                              ))}
-                            </p>
-                          </div>
-                        </div>
-                      </td>
-                      <td className="border px-4 py-2 align-top">
-                        <div>
-                          <div className="text-green-600 font-semibold">
-                            {(() => {
-                              const { minFee, maxFee } =
-                                calculateMinMaxFees(college);
-                              return `₹ ${formatNumberWithCommas(
-                                minFee
-                              )} - ₹ ${formatNumberWithCommas(maxFee)}`;
-                            })()}{" "}
-                            <span className="text-textClr font-normal text-xs">
-                              (all-courses)
-                            </span>
-                          </div>
-                          <p className="text-sm text-textClr mt-2">
-                            - First Year Fees
-                          </p>
-                        </div>
-                      </td>
 
-                      <td className="border px-4 py-2 align-top">
-                        <p className="capitalize">
-                          {college.collegeType} College
-                        </p>
-                      </td>
-                      <td className="border px-4 py-2 align-top">
-                        <div>
-                          (
-                          <span className="text-orange-500">
-                            {calculateSpecializations(college)}
-                          </span>
-                          ) Specializations
-                        </div>
-                      </td>
-                      <td className="border px-4 py-2 align-top">
-                        <div>
-                          {!college.placements[0].lowest &&
-                          !college.placements[0].average &&
-                          !college.placements[0].highest ? (
-                            <p className="text-red-500 font-light">
-                              - No Placement Stats -
-                            </p>
-                          ) : (
-                            <>
-                              {college.placements[0].lowest && (
-                                <div className="mb-2">
-                                  <p className="text-green-600">
-                                    ₹ {college.placements[0].lowest}
-                                  </p>
-                                  <p className="text-xs text-textClr">
-                                    (Lowest Package)
-                                  </p>
-                                </div>
-                              )}
-                              {college.placements[0].average && (
-                                <div className="mb-2">
-                                  <p className="text-green-600">
-                                    ₹ {college.placements[0].average}
-                                  </p>
-                                  <p className="text-xs text-textClr">
-                                    (Average Package)
-                                  </p>
-                                </div>
-                              )}
+              {/* Filtered Data */}
+              <div className="bg-white rounded-lg p-6">
+                <h3 className="text-xl font-semibold border-b pb-2 mb-4">
+                  Found {filteredData.length}{" "}
+                  {filteredData.length > 1 ? "Colleges" : "College"}
+                </h3>
+                {loading ? (
+                  <div className="animate-pulse">
+                    {/* Skeleton Preloader */}
+                    <div className="h-6 bg-gray-200 rounded mb-4"></div>
+                    <div className="space-y-4">
+                      <div className="h-4 bg-gray-200 rounded"></div>
+                      <div className="h-4 bg-gray-200 rounded"></div>
+                      <div className="h-4 bg-gray-200 rounded"></div>
+                    </div>
+                  </div>
+                ) : filteredData.length > 0 ? (
+                  <table className="min-w-full table-auto border-collapse">
+                    <thead>
+                      <tr className="bg-gray-100">
+                        <th className="border px-4 py-2 text-left">S.No</th>
+                        <th className="border px-4 py-2 text-left">Colleges</th>
+                        <th className="border px-4 py-2 text-left">
+                          Courses Fee
+                        </th>
+                        <th className="border px-4 py-2 text-left">
+                          College Type
+                        </th>
+                        <th className="border px-4 py-2 text-left">
+                          Specialization
+                        </th>
+                        <th className="border px-4 py-2 text-left">
+                          Placement
+                        </th>
+                        <th className="border px-4 py-2 text-left">Grade</th>
+                        {/* Add more columns as needed */}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filteredData.map((college, index) => (
+                        <tr key={college.collegeId} className="border-b">
+                          <td className="border px-4 py-2 align-top">
+                            {index + 1}
+                          </td>
+                          <td className="border px-4 py-2 align-top">
+                            <div className="flex gap-2">
+                              <img
+                                src={college.collegeLogo}
+                                alt=""
+                                className="rounded-lg w-20 h-20"
+                              />
                               <div>
-                                <p className="text-green-600">
-                                  ₹ {college.placements[0].highest}
+                                <h4 className="text-lg font-medium text-black">
+                                  {college.collegeName}
+                                </h4>
+                                <p className="text-textClr text-sm">
+                                  {college.collegeAddress.city},{" "}
+                                  {college.collegeAddress.state}
                                 </p>
-                                <p className="text-xs text-textClr">
-                                  (Highest Package)
+                                <p className="text-textClr text-sm">
+                                  Approved by:{" "}
+                                  {college.approvedBy.map((approval, index) => (
+                                    <span key={index}>
+                                      {approval}
+                                      {index < college.approvedBy.length - 1 &&
+                                        ", "}
+                                    </span>
+                                  ))}
                                 </p>
                               </div>
-                            </>
-                          )}
-                        </div>
-                      </td>
-                      <td className="border px-4 py-2 align-top">
-                        {!college.NAACGrade ? (
-                          <p className="text-red-500 font-light">- N/A -</p>
-                        ) : (
-                          <>NAAC: {college.NAACGrade}</>
-                        )}
-                      </td>
-                      {/* Add more columns for additional data */}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            ) : (
-              <>
-                <p>No colleges found with the given filters.</p>
-                <button onClick={handleClearFilters}>Show All Colleges</button>
-              </>
-            )}
+                            </div>
+                          </td>
+                          <td className="border px-4 py-2 align-top">
+                            <div>
+                              <div className="text-green-600 font-semibold">
+                                {(() => {
+                                  const { minFee, maxFee } =
+                                    calculateMinMaxFees(college);
+                                  return `₹ ${formatNumberWithCommas(
+                                    minFee
+                                  )} - ₹ ${formatNumberWithCommas(maxFee)}`;
+                                })()}{" "}
+                                <span className="text-textClr font-normal text-xs">
+                                  (all-courses)
+                                </span>
+                              </div>
+                              <p className="text-sm text-textClr mt-2">
+                                - First Year Fees
+                              </p>
+                            </div>
+                          </td>
+
+                          <td className="border px-4 py-2 align-top">
+                            <p className="capitalize">
+                              {college.collegeType} College
+                            </p>
+                          </td>
+                          <td className="border px-4 py-2 align-top">
+                            <div>
+                              (
+                              <span className="text-orange-500">
+                                {calculateSpecializations(college)}
+                              </span>
+                              ) Specializations
+                            </div>
+                          </td>
+                          <td className="border px-4 py-2 align-top">
+                            <div>
+                              {!college.placements[0].lowest &&
+                              !college.placements[0].average &&
+                              !college.placements[0].highest ? (
+                                <p className="text-red-500 font-light">
+                                  - No Placement Stats -
+                                </p>
+                              ) : (
+                                <>
+                                  {college.placements[0].lowest && (
+                                    <div className="mb-2">
+                                      <p className="text-green-600">
+                                        ₹ {college.placements[0].lowest}
+                                      </p>
+                                      <p className="text-xs text-textClr">
+                                        (Lowest Package)
+                                      </p>
+                                    </div>
+                                  )}
+                                  {college.placements[0].average && (
+                                    <div className="mb-2">
+                                      <p className="text-green-600">
+                                        ₹ {college.placements[0].average}
+                                      </p>
+                                      <p className="text-xs text-textClr">
+                                        (Average Package)
+                                      </p>
+                                    </div>
+                                  )}
+                                  <div>
+                                    <p className="text-green-600">
+                                      ₹ {college.placements[0].highest}
+                                    </p>
+                                    <p className="text-xs text-textClr">
+                                      (Highest Package)
+                                    </p>
+                                  </div>
+                                </>
+                              )}
+                            </div>
+                          </td>
+                          <td className="border px-4 py-2 align-top">
+                            {!college.NAACGrade ? (
+                              <p className="text-red-500 font-light">- N/A -</p>
+                            ) : (
+                              <>NAAC: {college.NAACGrade}</>
+                            )}
+                          </td>
+                          {/* Add more columns for additional data */}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                ) : (
+                  <>
+                    <p>No colleges found with the given filters.</p>
+                    <button onClick={handleClearFilters}>
+                      Show All Colleges
+                    </button>
+                  </>
+                )}
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        </>
+      )}
 
       <Footer />
     </div>

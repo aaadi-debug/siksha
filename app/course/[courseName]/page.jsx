@@ -94,8 +94,7 @@ const CoursePage = () => {
     collegeType: "",
     feeRange: [0, 1000000],
   });
-  const [loading, setLoading] = useState(false); // Add loading state
-
+  const [loading, setLoading] = useState(true); // Add loading state
 
   const college = collegeDataJson.data;
 
@@ -108,10 +107,13 @@ const CoursePage = () => {
   useEffect(() => {
     // If the courseName exists in the URL, set it as the default courseName filter
     if (decodedCourseName) {
-      setFilters((prevFilters) => ({
-        ...prevFilters,
-        courseName: decodedCourseName,
-      }));
+      setLoading(true);
+      setTimeout(() => {
+        setFilters((prevFilters) => ({
+          ...prevFilters,
+          courseName: decodedCourseName,
+        }));
+      }, 500); // 2-second delay
     }
 
     // Set default department based on the courseName

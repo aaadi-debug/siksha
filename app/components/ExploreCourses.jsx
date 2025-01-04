@@ -1,163 +1,73 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ArrowLeft, ArrowRight, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import CollegeData from "../data/collegeData.json";
 
+const data = CollegeData.data;
+const processData = (data, degree) => {
+  return data
+    .flatMap((college) =>
+      college.departments.flatMap((department) =>
+        department.courses
+          .filter((course) => course.courseDegree === degree)
+          .flatMap((course) =>
+            course.specialization.map((specialization) => {
+              // Ensure fee.general is an array before processing
+              const generalFees = Array.isArray(specialization.fee?.general)
+                ? specialization.fee.general
+                : [];
 
-const tabsData = [
-  {
-    id: "Bachelors",
-    label: "Bachelors",
-    courseCategory: "bachelors",
-    content: [
-      {
-        _id: 1,
-        time: "Full Time",
-        courseName: "B.Com General",
-        stream: "commerce",
-        subStream: "commerce",
-        courseCategory: "bachelor of commerce",
-        duration: 3,
-        avgFees: "69.11 K",
-        noOfColleges: "6728",
-        link: "bachelor of commerce bcom",
-      },
-      {
-        _id: 2,
-        time: "Full Time",
-        courseName: "B.Ed General",
-        courseCategory: "bachelor of education",
-        duration: 3,
-        avgFees: "69.11 K",
-        noOfColleges: "6728",
-        link: "bachelor of commerce bcom",
-      },
-      {
-        _id: 3,
-        time: "Full Time",
-        courseName: "BCA General",
-        courseCategory: "bachelor of computer application",
-        duration: 3,
-        avgFees: "69.11 K",
-        noOfColleges: "6728",
-        link: "bachelor of commerce bcom",
-      },
-      {
-        _id: 4,
-        time: "Full Time",
-        courseName: "Bachelor of Arts",
-        courseCategory: "bachelor of arts",
-        duration: 3,
-        avgFees: "69.11 K",
-        noOfColleges: "6728",
-        link: "bachelor of commerce bcom",
-      },
-      {
-        _id: 5,
-        time: "Full Time",
-        courseName: "BBA General",
-        courseCategory: "bachelor of business administration",
-        duration: 3,
-        avgFees: "69.11 K",
-        noOfColleges: "6728",
-        link: "bachelor of commerce bcom",
-      },
-    ],
-  },
-  {
-    id: "Masters",
-    label: "Masters",
-    courseCategory: "masters",
-    content: [
-      {
-        _id: 7,
-        time: "Full Time",
-        courseName: "MBA General",
-        courseCategory: "bachelor of commerce",
-        duration: 3,
-        avgFees: "69.11 K",
-        noOfColleges: "6728",
-        link: "master-of-business-administration-mba",
-      },
-      {
-        _id: 8,
-        time: "Full Time",
-        courseName: "Master of Computer Applications[MCA]",
-        courseCategory: "bachelor of commerce",
-        duration: 3,
-        avgFees: "69.11 K",
-        noOfColleges: "6728",
-        link: "master-of-computer-applications-mca",
-      },
-      {
-        _id: 9,
-        time: "Full Time",
-        courseName: "B.Com General",
-        courseCategory: "bachelor of commerce",
-        duration: 3,
-        avgFees: "69.11 K",
-        noOfColleges: "6728",
-        link: "bachelor of commerce bcom",
-      },
-      {
-        _id: 10,
-        time: "Full Time",
-        courseName: "B.Com General",
-        courseCategory: "bachelor of commerce",
-        duration: 3,
-        avgFees: "69.11 K",
-        noOfColleges: "6728",
-        link: "bachelor of commerce bcom",
-      },
-      {
-        _id: 11,
-        time: "Full Time",
-        courseName: "B.Com General",
-        courseCategory: "bachelor of commerce",
-        duration: 3,
-        avgFees: "69.11 K",
-        noOfColleges: "6728",
-        link: "bachelor of commerce bcom",
-      },
-      {
-        _id: 12,
-        time: "Full Time",
-        courseName: "B.Com General",
-        courseCategory: "bachelor of commerce",
-        duration: 3,
-        avgFees: "69.11 K",
-        noOfColleges: "6728",
-        link: "bachelor of commerce bcom",
-      },
-    ],
-  },
-  {
-    id: "Doctorate",
-    label: "Doctorate",
-    courseCategory: "doctorate",
-    content: [
-      {
-        _id: 13,
-        time: "Full Time",
-        courseName: "Ph.D Chemistry",
-        courseCategory: "phd chemistry",
-        duration: 3,
-        avgFees: "69.11 K",
-        noOfColleges: "6728",
-        link: "master-of-business-administration-mba",
-      },
-      {
-        _id: 14,
-        time: "Full Time",
-        courseName: "Ph.D Physics",
-        courseCategory: "phd phsics",
-        duration: 3,
-        avgFees: "69.11 K",
-        noOfColleges: "6728",
-        link: "phd-physics",
-      },
-    ],
-  },
-];
+              const avgFees = generalFees.length
+                ? generalFees.reduce(
+                    (total, item) => total + Number(item.tuitionFee || 0),
+                    0
+                  ) / generalFees.length
+                : 0;
+
+              return {
+                courseId: course.id,
+                courseName: `${course.courseSlug} ${specialization.name}`,
+                courseType: specialization.courseType,
+                duration: specialization.courseDuration,
+                avgFees,
+                noOfColleges: 1, // Adjust as needed for calculating college counts
+                courseCategory: course.courseUrl,
+              };
+            })
+          )
+      )
+    )
+    .flat();
+};
+
+const generateTabsData = (data) => {
+  // Extract unique degrees from the nested structure
+  const uniqueDegrees = [
+    ...new Set(
+      data.flatMap((college) =>
+        college.departments.flatMap((department) =>
+          department.courses.map((course) => course.courseDegree)
+        )
+      )
+    ),
+  ].filter(Boolean); // Filter out any undefined or null degrees
+
+  console.log("Unique degrees", uniqueDegrees);
+
+  // Create tabs data dynamically
+  return uniqueDegrees.map((degree) => ({
+    id: degree,
+    label: degree,
+    courseCategory: degree.toLowerCase(),
+    content: processData(data, degree),
+  }));
+};
+
+// (course) => course.courseDegree)
+// Usage
+const tabsData = generateTabsData(data);
+
+console.log("Tab 2", tabsData);
 
 const ExploreCourses = () => {
   const [activeTab, setActiveTab] = useState(tabsData[0]?.id || "");
@@ -222,34 +132,9 @@ const ExploreCourses = () => {
     handleScroll(tabId); // Update scroll positions for new tab
   };
 
-  const handleCardClick = (course) => {
-    // Find the selected course from the content arrays within tabsData
-    let selectedCourse;
-    tabsData.forEach((tab) => {
-      const foundCourse = tab.content.find(
-        (c) => c.courseName === course.courseName
-      );
-      if (foundCourse) {
-        selectedCourse = foundCourse;
-      }
-    });
-
-    if (selectedCourse) {
-      // Construct query parameters for navigation
-      const query = new URLSearchParams({
-        courseName: selectedCourse.courseName,
-        courseCategory: selectedCourse.courseCategory,
-      }).toString();
-
-      // Redirect to the course page with the constructed query string
-      window.location.href = `/course/${selectedCourse.courseCategory}?${query}`;
-    } else {
-      console.error("Course not found.");
-    }
-  };
 
   return (
-    <div className="bg-secondary-light">
+    <div className="bg-skin">
       <div className="container  pt-48 pb-10 lg:px-32 mx-auto explorecourses">
         <h2 className="text-black text-3xl font-semibold ">Explore Courses</h2>
         <div className="w-full mt-4">
@@ -280,108 +165,111 @@ const ExploreCourses = () => {
 
             {/* Tab Content */}
             <div className="mt-2 relative ">
-              {tabsData.map(
-                (tab) =>
-                  activeTab === tab.id && (
-                    <div
-                      key={tab.id}
-                      className="relative border-x border-secondary-light rounded"
-                    >
+              {tabsData.length > 0 ? (
+                tabsData.map(
+                  (tab) =>
+                    activeTab === tab.id && (
                       <div
-                        id={`${tab.id}-slider`}
-                        className="flex gap-4 overflow-x-auto no-scrollbar"
-                        ref={scrollContainerRef}
-                        onMouseDown={handleMouseDown}
-                        onMouseMove={handleMouseMove}
-                        onMouseUp={handleMouseUp}
-                        onMouseLeave={handleMouseUp} // Stop dragging if the mouse leaves
+                        key={tab.id}
+                        className="relative border-x border-secondary-light rounded"
                       >
-                        {tab?.content?.map((data) => (
-                          <div
-                            key={data._id}
-                            className="min-w-[300px] max-w-[300px] p-3 bg-white border rounded-lg flex-shrink-0 flex flex-col justify-between"
-                          >
-                            <div>
-                              <p className="capitalize text-xs p-2 bg-secondary-light rounded inline">
-                                {data.time}
-                              </p>
-                              <h3 className="text-lg font-semibold mb-2 mt-2">
-                                {data.courseName}
-                              </h3>
+                        <div
+                          id={`${tab.id}-slider`}
+                          className="flex gap-4 overflow-x-auto no-scrollbar"
+                          ref={scrollContainerRef}
+                          onMouseDown={handleMouseDown}
+                          onMouseMove={handleMouseMove}
+                          onMouseUp={handleMouseUp}
+                          onMouseLeave={handleMouseUp} // Stop dragging if the mouse leaves
+                        >
+                          {tab?.content?.map((data) => (
+                            <div
+                              key={data._id}
+                              className="min-w-[300px] max-w-[300px] p-3 bg-white border rounded-lg flex-shrink-0 flex flex-col justify-between"
+                            >
                               <div>
-                                <div className="flex justify-between text-sm mb-1">
-                                  <p className="text-textClr">Duration</p>
-                                  <p className="text-black">
-                                    {data.duration} Years
-                                  </p>
-                                </div>
-                                <div className="flex justify-between text-sm mb-1">
-                                  <p className="text-textClr">
-                                    Total Avg. Fees
-                                  </p>
-                                  <p className="text-black">{data.avgFees}</p>
-                                </div>
-                                <div className="flex justify-between text-sm">
-                                  <p className="text-textClr">Colleges</p>
-                                  <p className="text-black">
-                                    {data.noOfColleges}
-                                  </p>
+                                <p className="capitalize text-xs p-2 bg-skin rounded inline">
+                                  {data.courseType}
+                                </p>
+                                <h3 className="text-lg font-semibold mb-2 mt-2">
+                                  {data.courseName}
+                                </h3>
+                                <div>
+                                  <div className="flex justify-between text-sm mb-1">
+                                    <p className="text-textClr">Duration</p>
+                                    <p className="text-black">
+                                      {data.duration} Years
+                                    </p>
+                                  </div>
+                                  <div className="flex justify-between text-sm mb-1">
+                                    <p className="text-textClr">
+                                      Total Avg. Fees
+                                    </p>
+                                    <p className="text-black">{data.avgFees}</p>
+                                  </div>
+                                  <div className="flex justify-between text-sm">
+                                    <p className="text-textClr">Colleges</p>
+                                    <p className="text-black">
+                                      {data.noOfColleges}
+                                    </p>
+                                  </div>
                                 </div>
                               </div>
+                              <div className="flex justify-between items-center pt-2 mt-3 text-sm border-t group">
+                                <Link
+                                  href={`/course/${data.courseCategory}`}
+                                  className="text-textClr hover:text-primary"
+                                >
+                                  Course Overview
+                                </Link>
+                                <span className="text-black hover:text-primary">
+                                  <ChevronRight size={16} />
+                                </span>
+                              </div>
                             </div>
-                            <div className="flex justify-between items-center pt-2 mt-3 text-sm border-t group">
-                              <button
-                                href={`/courses/${data.courseCategory}`}
-                                className="text-textClr hover:text-primary"
-                                onClick={() => handleCardClick(data)}
-                              >
-                                Course Overview
-                              </button>
-                              <span className="text-black hover:text-primary">
-                                <ChevronRight size={16} />
-                              </span>
-                            </div>
-                          </div>
-                        ))}
+                          ))}
+                        </div>
+
+                        {/* Left Scroll Button */}
+                        {scrollPositions[tab.id]?.canScrollLeft && (
+                          <button
+                            className="absolute top-[40%] -left-6 z-10 bg-white rounded-full px-3 py-3 shadow"
+                            onClick={() => {
+                              const container = document.getElementById(
+                                `${tab.id}-slider`
+                              );
+                              container.scrollBy({
+                                left: -200,
+                                behavior: "smooth",
+                              });
+                            }}
+                          >
+                            <ArrowLeft size={16} />
+                          </button>
+                        )}
+
+                        {/* Right Scroll Button */}
+                        {scrollPositions[tab.id]?.canScrollRight && (
+                          <button
+                            className="absolute top-[40%] -right-6 z-10 bg-white rounded-full px-3 py-3 shadow"
+                            onClick={() => {
+                              const container = document.getElementById(
+                                `${tab.id}-slider`
+                              );
+                              container.scrollBy({
+                                left: 200,
+                                behavior: "smooth",
+                              });
+                            }}
+                          >
+                            <ArrowRight size={16} />
+                          </button>
+                        )}
                       </div>
-
-                      {/* Left Scroll Button */}
-                      {scrollPositions[tab.id]?.canScrollLeft && (
-                        <button
-                          className="absolute top-[40%] -left-6 z-10 bg-white rounded-full px-3 py-3 shadow"
-                          onClick={() => {
-                            const container = document.getElementById(
-                              `${tab.id}-slider`
-                            );
-                            container.scrollBy({
-                              left: -200,
-                              behavior: "smooth",
-                            });
-                          }}
-                        >
-                          <ArrowLeft size={16} />
-                        </button>
-                      )}
-
-                      {/* Right Scroll Button */}
-                      {scrollPositions[tab.id]?.canScrollRight && (
-                        <button
-                          className="absolute top-[40%] -right-6 z-10 bg-white rounded-full px-3 py-3 shadow"
-                          onClick={() => {
-                            const container = document.getElementById(
-                              `${tab.id}-slider`
-                            );
-                            container.scrollBy({
-                              left: 200,
-                              behavior: "smooth",
-                            });
-                          }}
-                        >
-                          <ArrowRight size={16} />
-                        </button>
-                      )}
-                    </div>
-                  )
+                    )
+                )
+              ) : (
+                <p className="text-gray-400 text-sm">No courses found.</p>
               )}
             </div>
           </div>

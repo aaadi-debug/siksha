@@ -21,12 +21,15 @@
             {
               "id": 1,
               "courseName": "Bachelor of Technology [B.tech]",
+              "courseUrl": "btech-colleges",
+              "courseSlug": "B.Tech",
+              "courseDegree": "Bachelors",
               "specialization": [
                 {
                   "id": 1,
                   "name": "Information Technology",
                   "courseType": "Full Time",
-                  "courseDuration": "4 years",
+                  "courseDuration": "4",
                   "fee": {
                     "general": [
                       {
@@ -53,7 +56,7 @@
                   "id": 2,
                   "name": "Artificial Intelligence & Machine Learning",
                   "courseType": "Full Time",
-                  "courseDuration": "4 years",
+                  "courseDuration": "4",
                   "fee": {
                     "general": [
                       {
@@ -80,7 +83,7 @@
                   "id": 3,
                   "name": "Genetic Engineering",
                   "courseType": "Full Time",
-                  "courseDuration": "4 years",
+                  "courseDuration": "4",
                   "fee": {
                     "general": [
                       {
@@ -108,12 +111,15 @@
             {
               "id": 2,
               "courseName": "Bachelor of Science [B.Sc]",
+              "courseUrl": "bsc-colleges",
+              "courseSlug": "B.Sc",
+              "courseDegree": "Bachelors",
               "specialization": [
                 {
                   "id": 1,
                   "name": "Information Technology",
                   "courseType": "Full Time",
-                  "courseDuration": "3 years",
+                  "courseDuration": "3",
                   "fee": {
                     "general": [
                       {
@@ -136,7 +142,7 @@
                   "id": 2,
                   "name": "Computer Science",
                   "courseType": "Full Time",
-                  "courseDuration": "3 years",
+                  "courseDuration": "3",
                   "fee": {
                     "general": [
                       {
@@ -159,7 +165,7 @@
                   "id": 3,
                   "name": "Electronics",
                   "courseType": "Full Time",
-                  "courseDuration": "3 years",
+                  "courseDuration": "3",
                   "fee": {
                     "general": [
                       {
@@ -183,12 +189,15 @@
             {
               "id": 3,
               "courseName": "Master of Computer Applications [M.C.A]",
+              "courseUrl": "mca-colleges",
+              "courseSlug": "M.C.A",
+              "courseDegree": "Masters",
               "specialization": [
                 {
                   "id": 1,
                   "name": "Master of Computer Applications [MCA] ",
                   "courseType": "Full Time",
-                  "courseDuration": "2 years",
+                  "courseDuration": "2",
                   "fee": {
                     "general": [
                       {
@@ -208,21 +217,33 @@
             {
               "id": 4,
               "courseName": "Master of Science [M.Sc]",
+              "courseUrl": "msc-colleges",
+              "courseSlug": "M.Sc",
+              "courseDegree": "Masters",
               "specialization": []
             },
             {
               "id": 5,
-              "courseName": "Master of Technology [M.Tech] ",
+              "courseName": "Master of Technology [M.Tech]",
+              "courseUrl": "mtech-colleges",
+              "courseSlug": "M.Tech",
+              "courseDegree": "Masters",
               "specialization": []
             },
             {
               "id": 6,
-              "courseName": "Ph.D. (Biotechnology) ",
-              "specialization": []
+              "courseName": "Ph.D (Biotechnology)",
+              "courseUrl": "phd-colleges",
+              "courseSlug": "Ph.D",
+              "courseDegree": "Doctorate",
+              "specialization": [              ]
             },
             {
               "id": 7,
-              "courseName": "Bachelor of Computer Application [BCA] ",
+              "courseName": "Bachelor of Computer Application [BCA]",
+              "courseUrl": "bcs-colleges",
+              "courseSlug": "BCA",
+              "courseDegree": "Bachelors",
               "specialization": []
             }
           ]
@@ -234,12 +255,15 @@
             {
               "id": 1,
               "courseName": "Bachelor of Dental Surgery [BDS]",
+              "courseUrl": "bds-colleges",
+              "courseSlug": "BDS",
+              "courseDegree": "Bachelors",
               "specialization": [
                 {
                   "id": 1,
                   "name": "Bachelor of Dental Surgery [BDS]",
                   "courseType": "Full Time",
-                  "courseDuration": "5 years",
+                  "courseDuration": "5",
                   "fee": {
                     "general": [
                       {
@@ -292,12 +316,15 @@
             {
               "id": 2,
               "courseName": "Master of Dental Surgery [MDS]",
+              "courseUrl": "mds-colleges",
+              "courseSlug": "MDS",
+              "courseDegree": "Masters",
               "specialization": [
                 {
                   "id": 1,
                   "name": "Conservative Dentistry & Endodontics",
                   "courseType": "Full Time",
-                  "courseDuration": "3 years",
+                  "courseDuration": "3",
                   "fee": {
                     "general": [
                       {
@@ -333,7 +360,7 @@
                   "id": 2,
                   "name": "Oral & Maxillofacial Surgery",
                   "courseType": "Full Time",
-                  "courseDuration": "3 years",
+                  "courseDuration": "3",
                   "fee": {
                     "general": [
                       {
@@ -370,6 +397,9 @@
             {
               "id": 3,
               "courseName": "Ph.D",
+              "courseUrl": "phd-colleges",
+              "courseSlug": "Ph.D",
+              "courseDegree": "Doctorate",
               "specialization": []
             }
           ]
@@ -381,12 +411,15 @@
             {
               "id": 1,
               "courseName": "Bachelor of Business Administration + Bachelor of Laws [BBALLB] {Hons.}",
+              "courseUrl": "llb-colleges",
+              "courseSlug": "BBALLB",
+              "courseDegree": "Bachelors",
               "specialization": [
                 {
                   "id": 1,
                   "name": "Bachelor of Business Administration + Bachelor of Laws [BBALLB] {Hons.}",
                   "courseType": "Full Time",
-                  "courseDuration": "5 years",
+                  "courseDuration": "5",
                   "fee": {
                     "general": [
                       {
@@ -439,6 +472,9 @@
             {
               "id": 2,
               "courseName": "Master of Laws [L.L.M]",
+              "courseUrl": "llm-colleges",
+              "courseSlug": "L.L.M",
+              "courseDegree": "Masters",
               "specialization": [
                 {
                   "id": 1,
@@ -472,7 +508,15 @@
           "average": "",
           "highest": "40 LPA",
           "noOfRecruiters": "600+",
-          "topRecruiters": ["Cognizant", "Amazon", "Jonhson Controls", "Mahindra Rise", "Videocon", "MTS", "Tech Mahindra"]
+          "topRecruiters": [
+            "Cognizant",
+            "Amazon",
+            "Jonhson Controls",
+            "Mahindra Rise",
+            "Videocon",
+            "MTS",
+            "Tech Mahindra"
+          ]
         },
         {
           "year": "2023",
@@ -480,7 +524,16 @@
           "average": "5.65 LPA",
           "highest": "40 LPA",
           "noOfRecruiters": "600+",
-          "topRecruiters": ["Unacademy", "Infosys", "Wipro", "HCL", "TCS", "EY", "Deloitte", "KPMG"]
+          "topRecruiters": [
+            "Unacademy",
+            "Infosys",
+            "Wipro",
+            "HCL",
+            "TCS",
+            "EY",
+            "Deloitte",
+            "KPMG"
+          ]
         }
       ]
     },
@@ -505,12 +558,15 @@
             {
               "id": 1,
               "courseName": "Bachelor of Arts [BA] {Hons.}",
+              "courseUrl": "ba-colleges",
+              "courseSlug": "BA",
+              "courseDegree": "Bachelors",
               "specialization": [
                 {
                   "id": 1,
                   "name": "Bachelor of Arts [BA] {Hons.} (English)",
                   "courseType": "Full Time",
-                  "courseDuration": "3 years",
+                  "courseDuration": "3",
                   "fee": {
                     "general": [
                       {
@@ -534,12 +590,15 @@
             {
               "id": 2,
               "courseName": "Master of Arts [MA]",
+              "courseUrl": "ma-colleges",
+              "courseSlug": "MA",
+              "courseDegree": "Masters",
               "specialization": [
                 {
                   "id": 1,
                   "name": "Master of Arts [MA] (English)",
                   "courseType": "Full Time",
-                  "courseDuration": "2 years",
+                  "courseDuration": "2",
                   "fee": {
                     "general": [
                       {
@@ -559,12 +618,15 @@
             {
               "id": 3,
               "courseName": "Bachelor of Arts [BA] {Hons.} + Bachelor of Education [B.Ed.]",
+              "courseUrl": "bed-colleges",
+              "courseSlug": "B.Ed.",
+              "courseDegree": "Bachelors",
               "specialization": [
                 {
                   "id": 1,
                   "name": "Bachelor of Arts [BA] {Hons.} (English) + Bachelor of Education [B.Ed.]",
                   "courseType": "Full Time",
-                  "courseDuration": "5 years",
+                  "courseDuration": "5",
                   "fee": {
                     "general": [
                       {
@@ -601,13 +663,16 @@
           "courses": [
             {
               "id": 1,
-              "courseName": "Bachelor of Technology [B.Tech]",
+              "courseName": "Bachelor of Technology [B.tech]",
+              "courseUrl": "btech-colleges",
+              "courseSlug": "B.Tech",
+              "courseDegree": "Bachelors",
               "specialization": [
                 {
                   "id": 1,
                   "name": "Computer Science and Engineering",
                   "courseType": "Full Time",
-                  "courseDuration": "4 years",
+                  "courseDuration": "4",
                   "fee": {
                     "general": [
                       {
@@ -634,7 +699,7 @@
                   "id": 2,
                   "name": "Aerospace Engineering",
                   "courseType": "Full Time",
-                  "courseDuration": "4 years",
+                  "courseDuration": "4",
                   "fee": {
                     "general": [
                       {
@@ -661,7 +726,7 @@
                   "id": 3,
                   "name": "Electronics & Communication Engineering",
                   "courseType": "Full Time",
-                  "courseDuration": "4 years",
+                  "courseDuration": "4",
                   "fee": {
                     "general": [
                       {
@@ -695,12 +760,15 @@
             {
               "id": 1,
               "courseName": "Bachelor of Science [B.Sc]",
+              "courseUrl": "bsc-colleges",
+              "courseSlug": "B.Sc",
+              "courseDegree": "Bachelors",
               "specialization": [
                 {
                   "id": 1,
                   "name": "Bachelor of Science [B.Sc] (Nanoscience)",
                   "courseType": "Full Time",
-                  "courseDuration": "3 years",
+                  "courseDuration": "3",
                   "fee": {
                     "general": [
                       {
@@ -724,12 +792,15 @@
             {
               "id": 2,
               "courseName": "Master of Science [M.Sc] (Nanoscience) + Master of Technology [M.Tech]",
+              "courseUrl": "mtech-colleges",
+              "courseSlug": "M.Tech+M.Sc",
+              "courseDegree": "Masters",
               "specialization": [
                 {
                   "id": 1,
                   "name": "Master of Science [M.Sc] (Nanoscience) + Master of Technology [M.Tech] (Nanotechnology)",
                   "courseType": "Full Time",
-                  "courseDuration": "3 years",
+                  "courseDuration": "3",
                   "fee": {
                     "general": [
                       {
@@ -753,12 +824,15 @@
             {
               "id": 3,
               "courseName": "Master of Science [M.Sc]",
+              "courseUrl": "msc-colleges",
+              "courseSlug": "M.Sc",
+              "courseDegree": "Masters",
               "specialization": [
                 {
                   "id": 1,
                   "name": "Master of Science [M.Sc] (Nano Science)",
                   "courseType": "Full Time",
-                  "courseDuration": "2 years",
+                  "courseDuration": "2",
                   "fee": {
                     "general": [
                       {
@@ -785,7 +859,13 @@
           "average": "",
           "highest": "61.75 LPA",
           "noOfRecruiters": "1050",
-          "topRecruiters": ["Adobe", "Accenture", "TCS", "Flipkart", "Microsoft "]
+          "topRecruiters": [
+            "Adobe",
+            "Accenture",
+            "TCS",
+            "Flipkart",
+            "Microsoft "
+          ]
         }
       ]
     }

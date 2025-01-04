@@ -92,7 +92,7 @@ const Footer = () => {
                         <span><a href="https://x.com/Siksha_Helpline?t=trstRpmhjj-gQEetDt9O6w&s=09" target='_blank'><FaTwitter /></a></span>
                         <span><a href="https://www.youtube.com/@Siksha_Helpline" target='_blank'><FaYoutube /></a></span>
                     </div>
-                    <div className="copyright">&copy; {currentYear} Siksha-Helpline</div>
+                    <div className="copyright">&copy; {currentYear} Siksha-Helpline Design & Developed by <a href='https://rapiddigitalgrowth.com/' className='hover:underline font-semibold'>Rapid Digital Growth</a></div>
                 </div>
             </div>
         </div>

@@ -195,13 +195,13 @@ const Navbar = () => {
                                         {notifications.filter(notification => notification.type === notificationType).map(notification => (
                                             <div className="nav_notification_div" key={notification.id}>
                                                 <div className="d-flex align-items-start">
-                                                    <img src={notification.images} alt="" />
+                                                    <img src={notification.image} alt="" />
                                                     <div className="nav_notification_title ml-2">{notification.title || "N/A"}</div>
                                                 </div>
                                                 <p className="nav_notification_para">{notification.message || "N/A"}</p>
                                                 <div className="d-flex justify-content-between">
                                                     <div className="nav_noti_date">{new Date(notification.date).toLocaleDateString()}</div>
-                                                    <button className="nav_noti_readMore" onClick={() => handleReadMore(notification.title)}>Read More</button>
+                                                    <button className="nav_noti_readMore" onClick={() => handleReadMore(notification.url)}>Read More</button>
                                                 </div>
                                             </div>
                                         ))}

@@ -9,8 +9,8 @@ export default async function handler(req, res) {
   
     switch (method) {
       case 'GET':
-        if(req.query?.title){
-          const Notifications = await Notification.find({title:req.query.title})
+        if(req.query?.url){
+          const Notifications = await Notification.findOne({url:req.query.url})
           res.status(200).json({ success: true, data: Notifications });
         }
         try {

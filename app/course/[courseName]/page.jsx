@@ -80,8 +80,10 @@ const CoursePage = () => {
   const { courseName } = useParams(); // Get courseName from the URL using useParams
   const router = useRouter(); // Initialize the router
 
-  const decodedCourseName = decodeURIComponent(courseName); // Decode the URL-encoded courseName
-  console.log(decodedCourseName); // This will now print the correct course name
+  // const decodedCourseName = decodeURIComponent(courseName); // Decode the URL-encoded courseName
+  // console.log(decodedCourseName); // This will now print the correct course name
+  const decodedCourseName = decodeURIComponent(courseName); // Decode the URL-encoded courseUrl
+  console.log(decodedCourseName); // This will now print the correct course URL
 
   const [collegeData, setCollegeData] = useState([]); // Renamed to avoid conflict
   const [filteredData, setFilteredData] = useState([]);
@@ -246,12 +248,62 @@ const CoursePage = () => {
     setLoading(false); // Set loading to false when filtering is complete
   }, [filters, collegeData]); // Add collegeData to the dependency array
 
+  // const handleFilterChange = (filterType, value) => {
+  //   setLoading(true); // Set loading to true when filter changes
+  //   // setTimeout(() => {
+  //   setFilters((prev) => {
+  //     const newFilters = { ...prev, [filterType]: value };
+
+  //     // If the courseName filter is changed, update the department filter accordingly
+  //     if (filterType === "courseName") {
+  //       const selectedCourse = value;
+  //       const matchingCollege = collegeData.find((college) =>
+  //         college.departments.some((dept) =>
+  //           dept.courses.some((course) => course.courseName === selectedCourse)
+  //         )
+  //       );
+
+  //       if (matchingCollege) {
+  //         const department = matchingCollege.departments.find((dept) =>
+  //           dept.courses.some((course) => course.courseName === selectedCourse)
+  //         );
+  //         newFilters.departmentName = department?.departmentName || "";
+  //       }
+
+  //       // Update the URL to reflect the courseName filter
+  //       router.push(`/course/${value}`); // Push the new courseName to the URL
+  //     }
+
+  //     // If the departmentName filter is changed, update the courseName filter with the first course in that department
+  //     if (filterType === "departmentName") {
+  //       const selectedDepartment = value;
+  //       const matchingCollege = collegeData.find((college) =>
+  //         college.departments.some(
+  //           (dept) => dept.departmentName === selectedDepartment
+  //         )
+  //       );
+
+  //       if (matchingCollege) {
+  //         const department = matchingCollege.departments.find(
+  //           (dept) => dept.departmentName === selectedDepartment
+  //         );
+  //         const firstCourse = department?.courses[0]?.courseName || "";
+  //         newFilters.courseName = firstCourse;
+  //       }
+  //     }
+
+  //     return newFilters;
+  //   });
+  //   // }, 500); // 2-second delay
+  // };
+
+
   const handleFilterChange = (filterType, value) => {
     setLoading(true); // Set loading to true when filter changes
-    // setTimeout(() => {
+    
     setFilters((prev) => {
       const newFilters = { ...prev, [filterType]: value };
-
+  
       // If the courseName filter is changed, update the department filter accordingly
       if (filterType === "courseName") {
         const selectedCourse = value;
@@ -260,18 +312,24 @@ const CoursePage = () => {
             dept.courses.some((course) => course.courseName === selectedCourse)
           )
         );
-
+  
         if (matchingCollege) {
           const department = matchingCollege.departments.find((dept) =>
             dept.courses.some((course) => course.courseName === selectedCourse)
           );
           newFilters.departmentName = department?.departmentName || "";
+  
+          // Update the URL with the courseUrl from the matching course
+          const matchingCourse = department.courses.find(
+            (course) => course.courseName === selectedCourse
+          );
+          if (matchingCourse) {
+            const courseUrl = matchingCourse.courseUrl;
+            router.push(`/course/${courseUrl}`); // Push the new courseUrl to the URL
+          }
         }
-
-        // Update the URL to reflect the courseName filter
-        router.push(`/course/${value}`); // Push the new courseName to the URL
       }
-
+  
       // If the departmentName filter is changed, update the courseName filter with the first course in that department
       if (filterType === "departmentName") {
         const selectedDepartment = value;
@@ -280,7 +338,7 @@ const CoursePage = () => {
             (dept) => dept.departmentName === selectedDepartment
           )
         );
-
+  
         if (matchingCollege) {
           const department = matchingCollege.departments.find(
             (dept) => dept.departmentName === selectedDepartment
@@ -289,11 +347,11 @@ const CoursePage = () => {
           newFilters.courseName = firstCourse;
         }
       }
-
+  
       return newFilters;
     });
-    // }, 500); // 2-second delay
   };
+  
 
   const handleClearFilters = () => {
     setLoading(true); // Set loading to true when clearing filters

@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect, useRef, useState } from 'react';
 import Navbar from './Navbar';
 import SetYourGoal from './SetYourGoal';
@@ -27,7 +28,7 @@ const HeroSection = () => {
       <section className="herosection">
         {!videoLoaded && (
           <div className="video-placeholder">
-            <img src="path_to_low_quality_image.jpg" alt="Loading..." />
+            <img src="" alt="Loading..." />
           </div>
         )}
         <LazyLoadComponent>
@@ -43,7 +44,7 @@ const HeroSection = () => {
             <source src='/assets/videos/college1-crop.mp4' type="video/mp4" />
           </video>
         </LazyLoadComponent>
-        <Navbar />
+        {/* <Navbar /> */}
         <div className="herosection_wrapper">
           <h2>
             <span className='fixed_h'>Find Over</span> {' '}

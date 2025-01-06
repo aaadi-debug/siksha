@@ -7,13 +7,33 @@
       "collegeAddress": {
         "city": "Greater Noida",
         "state": "Uttar Pradesh",
-        "country": "India"
+        "country": "India",
+        "pincode": "1100XX",
+        "addressLine": ""
       },
       "collegeType": "private",
       "EstdYear": "2009",
       "NAACGrade": "A+",
       "approvedBy": ["NCTE", "DCI", "COA", "INC", "MCI"],
       "collegeAbout": "Sharda University is a reputated engineering college.",
+      "latestUpdates": [
+        {
+          "date": "26 Dec, 2024",
+          "update": [
+            "Amity University has announced the result of admissions for the 2023-24 session. The admissions process has been completed and the results are expected to be out soon.",
+            "Amity University has announced the result of admissions for the 2023-24 session. The admissions process has been completed and the results are expected to be out soon"
+          ],
+          "link": ""
+        },
+        {
+          "date": "23 Dec, 2024",
+          "update": [
+            "Amity University has announced the result of admissions for the 2023-24 session. The admissions process has been completed and the results are expected to be out soon.",
+            "Amity University has announced the result of admissions for the 2023-24 session. The admissions process has been completed and the results are expected to be out soon"
+          ],
+          "link": ""
+        }
+      ],
       "departments": [
         {
           "id": 1,
@@ -579,24 +599,6 @@
         }
       ],
       "admissions": {
-        "latestUpdates": [
-          {
-            "date": "26 Dec, 2024",
-            "update": [
-              "Amity University has announced the result of admissions for the 2023-24 session. The admissions process has been completed and the results are expected to be out soon.",
-              "Amity University has announced the result of admissions for the 2023-24 session. The admissions process has been completed and the results are expected to be out soon"
-            ],
-            "link": "Amity University has announced the result of admissions for the 2023-24 session. The admissions process has been completed and the results are expected to be out soon."
-          },
-          {
-            "date": "23 Dec, 2024",
-            "update": [
-              "Amity University has announced the result of admissions for the 2023-24 session. The admissions process has been completed and the results are expected to be out soon.",
-              "Amity University has announced the result of admissions for the 2023-24 session. The admissions process has been completed and the results are expected to be out soon"
-            ],
-            "link": "Amity University has announced the result of admissions for the 2023-24 session. The admissions process has been completed and the results are expected to be out soon."
-          }
-        ],
         "importantEvents": {
           "headers": ["Column 1", "Column 2", "Column 3"],
           "rows": [
@@ -756,40 +758,245 @@
       ],
       "newsArticles": [
         {
+          "id": "1",
           "category": "College",
-          "news": [
-            {
-              "date": "December 26, 2024",
-              "title": "Amity University Alumni Meet",
-              "imageUrl": "",
-              "description": "Amity University celebrated its 50th Anniversary with an alumni meet."
-            },
-            {
-              "date": "2024-01-01",
-              "title": "Top MBA Colleges other than IIMs accepting CAT 2024 Scores",
-              "imageUrl": "",
-              "description": "Amity University celebrated its 50th Anniversary with an alumni meet."
-            }
-          ]
+          "date": "2024-12-26",
+          "title": "Amity University Alumni Meet",
+          "imageUrl": "",
+          "author": "",
+          "description": "Amity University celebrated its 50th Anniversary with an alumni meet.",
+          "metaTitle": "",
+          "metaDesc": "",
+          "metaAuthor": "",
+          "metaKeywords": ""
         },
         {
+          "id": "2",
           "category": "Exam",
-          "news": [
-            {
-              "date": "December 26, 2024",
-              "title": "Amity University Alumni Meet",
-              "imageUrl": "",
-              "description": "Amity University celebrated its 50th Anniversary with an exam."
-            },
-            {
-              "date": "2024-01-01",
-              "title": "Top MBA Colleges other than IIMs accepting CAT 2024 Scores",
-              "imageUrl": "",
-              "description": "Amity University celebrated its 50th Anniversary with an exam."
-            }
-          ]
+          "date": "2024-12-26",
+          "title": "Top MBA Colleges other than IIMs accepting CAT 2024 Scores",
+          "imageUrl": "",
+          "author": "",
+          "description": "Explore top MBA colleges accepting CAT 2024 scores apart from IIMs.",
+          "metaTitle": "",
+          "metaDesc": "",
+          "metaAuthor": "",
+          "metaKeywords": ""
         }
-      ]
+      ],
+      "hostels": {
+        "male": [
+          {
+            "heading": "",
+            "hostelFeeTable": {
+              "headers": ["Column 1", "Column 2", "Column 3"],
+              "rows": [
+                [
+                  { "content": "Row 1, Col 1", "rowspan": 2, "colspan": 1 },
+                  { "content": "Row 1, Col 2", "rowspan": 1, "colspan": 2 }
+                ],
+                [{ "content": "Row 2, Col 3", "rowspan": 1, "colspan": 1 }],
+                [
+                  { "content": "Row 3, Col 1", "rowspan": 1, "colspan": 1 },
+                  { "content": "Row 3, Col 2", "rowspan": 1, "colspan": 1 },
+                  { "content": "Row 3, Col 3", "rowspan": 1, "colspan": 1 }
+                ]
+              ]
+            }
+          },
+          {
+            "heading": "",
+            "hostelFeeTable": {
+              "headers": ["Column 1", "Column 2", "Column 3"],
+              "rows": [
+                [
+                  { "content": "Row 1, Col 1", "rowspan": 2, "colspan": 1 },
+                  { "content": "Row 1, Col 2", "rowspan": 1, "colspan": 2 }
+                ],
+                [{ "content": "Row 2, Col 3", "rowspan": 1, "colspan": 1 }],
+                [
+                  { "content": "Row 3, Col 1", "rowspan": 1, "colspan": 1 },
+                  { "content": "Row 3, Col 2", "rowspan": 1, "colspan": 1 },
+                  { "content": "Row 3, Col 3", "rowspan": 1, "colspan": 1 }
+                ]
+              ]
+            }
+          }
+        ],
+        "female": [
+          {
+            "heading": "",
+            "hostelFeeTable": {
+              "headers": ["Column 1", "Column 2", "Column 3"],
+              "rows": [
+                [
+                  { "content": "Row 1, Col 1", "rowspan": 2, "colspan": 1 },
+                  { "content": "Row 1, Col 2", "rowspan": 1, "colspan": 2 }
+                ],
+                [{ "content": "Row 2, Col 3", "rowspan": 1, "colspan": 1 }],
+                [
+                  { "content": "Row 3, Col 1", "rowspan": 1, "colspan": 1 },
+                  { "content": "Row 3, Col 2", "rowspan": 1, "colspan": 1 },
+                  { "content": "Row 3, Col 3", "rowspan": 1, "colspan": 1 }
+                ]
+              ]
+            }
+          },
+          {
+            "heading": "",
+            "hostelFeeTable": {
+              "headers": ["Column 1", "Column 2", "Column 3"],
+              "rows": [
+                [
+                  { "content": "Row 1, Col 1", "rowspan": 2, "colspan": 1 },
+                  { "content": "Row 1, Col 2", "rowspan": 1, "colspan": 2 }
+                ],
+                [{ "content": "Row 2, Col 3", "rowspan": 1, "colspan": 1 }],
+                [
+                  { "content": "Row 3, Col 1", "rowspan": 1, "colspan": 1 },
+                  { "content": "Row 3, Col 2", "rowspan": 1, "colspan": 1 },
+                  { "content": "Row 3, Col 3", "rowspan": 1, "colspan": 1 }
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      "scholarships": {
+        "description": "Here description will be from text-editor",
+        "coursesAndFeeLink": "",
+        "scholarshipSections": [
+          {
+            "heading": "",
+            "description": "Here description will be from text-editor",
+            "scholarshipSectionsTable": {
+              "headers": ["Column 1", "Column 2", "Column 3"],
+              "rows": [
+                [
+                  { "content": "Row 1, Col 1", "rowspan": 2, "colspan": 1 },
+                  { "content": "Row 1, Col 2", "rowspan": 1, "colspan": 2 }
+                ],
+                [{ "content": "Row 2, Col 3", "rowspan": 1, "colspan": 1 }],
+                [
+                  { "content": "Row 3, Col 1", "rowspan": 1, "colspan": 1 },
+                  { "content": "Row 3, Col 2", "rowspan": 1, "colspan": 1 },
+                  { "content": "Row 3, Col 3", "rowspan": 1, "colspan": 1 }
+                ]
+              ]
+            }
+          },
+          {
+            "heading": "",
+            "description": "Here description will be from text-editor",
+            "scholarshipSectionsTable": {
+              "headers": ["Column 1", "Column 2", "Column 3"],
+              "rows": [
+                [
+                  { "content": "Row 1, Col 1", "rowspan": 2, "colspan": 1 },
+                  { "content": "Row 1, Col 2", "rowspan": 1, "colspan": 2 }
+                ],
+                [{ "content": "Row 2, Col 3", "rowspan": 1, "colspan": 1 }],
+                [
+                  { "content": "Row 3, Col 1", "rowspan": 1, "colspan": 1 },
+                  { "content": "Row 3, Col 2", "rowspan": 1, "colspan": 1 },
+                  { "content": "Row 3, Col 3", "rowspan": 1, "colspan": 1 }
+                ]
+              ]
+            }
+          }
+        ],
+        "admissionFaqs": [
+          {
+            "question": "What is the duration of the course?",
+            "answer": "The course duration is 3 years."
+          }
+        ]
+      },
+      "faculty": [
+        {
+          "id": 1,
+          "name": "Mr.Arun Kumar",
+          "designation": "Assistant Professor",
+          "department": "Department of Pharmacy"
+        },
+        {
+          "id": 2,
+          "name": "Dr. Vaishali Arora",
+          "designation": "Assistant Professor",
+          "department": "Department of Law"
+        }
+      ],
+      "rankings": {
+        "highlights": [
+          {
+            "area": "National",
+            "highlightsTable": [
+              {
+                "agency": "Name of University",
+                "ranking": "Sharda University"
+              }
+            ]
+          },
+          {
+            "area": "International",
+            "highlightsTable": [
+              {
+                "agency": "Name of University",
+                "ranking": "Sharda University"
+              }
+            ]
+          }
+        ],
+        "rankingSections": [
+          {
+            "heading": "",
+            "description": "Here description will be from text-editor",
+            "rankingSectionsTable": {
+              "headers": ["Column 1", "Column 2", "Column 3"],
+              "rows": [
+                [
+                  { "content": "Row 1, Col 1", "rowspan": 2, "colspan": 1 },
+                  { "content": "Row 1, Col 2", "rowspan": 1, "colspan": 2 }
+                ],
+                [{ "content": "Row 2, Col 3", "rowspan": 1, "colspan": 1 }],
+                [
+                  { "content": "Row 3, Col 1", "rowspan": 1, "colspan": 1 },
+                  { "content": "Row 3, Col 2", "rowspan": 1, "colspan": 1 },
+                  { "content": "Row 3, Col 3", "rowspan": 1, "colspan": 1 }
+                ]
+              ]
+            }
+          },
+          {
+            "heading": "",
+            "description": "Here description will be from text-editor",
+            "rankingSectionsTable": {
+              "headers": ["Column 1", "Column 2", "Column 3"],
+              "rows": [
+                [
+                  { "content": "Row 1, Col 1", "rowspan": 2, "colspan": 1 },
+                  { "content": "Row 1, Col 2", "rowspan": 1, "colspan": 2 }
+                ],
+                [{ "content": "Row 2, Col 3", "rowspan": 1, "colspan": 1 }],
+                [
+                  { "content": "Row 3, Col 1", "rowspan": 1, "colspan": 1 },
+                  { "content": "Row 3, Col 2", "rowspan": 1, "colspan": 1 },
+                  { "content": "Row 3, Col 3", "rowspan": 1, "colspan": 1 }
+                ]
+              ]
+            }
+          }
+        ],
+        "rankingFaqs": [
+          {
+            "question": "What is the duration of the course?",
+            "answer": "The course duration is 3 years."
+          }
+        ]
+      },
+      "results": {
+        "description": "Here, description will be from text editor"
+      }
     },
     {
       "collegeId": 2,

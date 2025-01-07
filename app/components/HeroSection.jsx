@@ -1,7 +1,8 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
-import { Search } from "lucide-react";
+import { Search, X } from "lucide-react";
+import Link from "next/link";
 
 // Lazy load Typewriter component
 const Typewriter = dynamic(() => import("../components/Typewriter"), {
@@ -10,8 +11,6 @@ const Typewriter = dynamic(() => import("../components/Typewriter"), {
 
 const HeroSection = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
-  const videoRef = useRef(null);
-
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([
@@ -31,6 +30,13 @@ const HeroSection = () => {
       belongsTo: "Exam",
     },
   ]);
+  const searchBarRef = useRef(null);
+  const videoRef = useRef(null);
+
+
+  const toggleSearch = () => {
+    setIsSearchOpen(!isSearchOpen);
+  };
 
   const handleSearch = async (e) => {
     setQuery(e.target.value);
@@ -43,6 +49,15 @@ const HeroSection = () => {
     const res = await fetch(`/api/search?query=${e.target.value}`);
     const data = await res.json();
     setResults(data);
+  };
+  const closeSearch = () => {
+    setIsSearchOpen(false);
+  };
+
+  const handleClickOutside = (event) => {
+    if (searchBarRef.current && !searchBarRef.current.contains(event.target)) {
+      closeSearch();
+    }
   };
 
   const handleType = (count) => {
@@ -73,6 +88,18 @@ const HeroSection = () => {
       return () => observer.disconnect();
     }
   }, []);
+
+  useEffect(() => {
+    if (isSearchOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isSearchOpen]);
 
   return (
     <div>
@@ -122,13 +149,15 @@ const HeroSection = () => {
               </span>
             </h1>
             <div className="mt-3 relative">
-              <input
-                type="text"
-                placeholder="Search for Colleges, Exams, News and more..."
-                className="rounded-full py-3 px-4 outline-none w-full text-black max-sm:text-sm"
-              />
-              <button className="bg-second text-white p-2 rounded-full absolute right-2 top-2">
-                <Search />
+              <button onClick={toggleSearch} className="w-full hover:cursor-pointer">
+                <input
+                  type="text"
+                  placeholder="Search for Colleges, Exams, News and more..."
+                  className="rounded-full py-3 px-4 outline-none w-full text-black max-sm:text-sm"
+                />
+                <div className="bg-second text-white p-2 rounded-full absolute right-2 top-2">
+                  <Search />
+                </div>
               </button>
             </div>
           </div>

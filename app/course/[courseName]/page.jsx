@@ -449,8 +449,7 @@ const CoursePage = () => {
   console.log("Final fileterd data: ", filteredData);
 
   return (
-    <div className="bg-skin about_us">
-      <Navbar />
+    <div className="bg-skin about_us pt-24">
 
       {loading ? (
         // Preloader section

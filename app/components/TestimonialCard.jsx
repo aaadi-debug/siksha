@@ -5,10 +5,10 @@ const TestimonialCard = (props) => {
     <div>
       <div data-aos="zoom-in-left" className="testimonial_card">
         <div className="testimonial_body_content">
-          {props.testimonial_body}
+          {props.feeback}
         </div>
         <div className="testimonial_header mt-4">
-          <img src={props.testimonial_img_link} alt="" />
+          <img src={props.imageUrl} alt={`${props.name} Image`} />
           <div className="testimonial_subheader">
             <div className="name">{props.name}</div>
             <div className="about">{props.about}</div>

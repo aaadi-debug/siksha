@@ -103,13 +103,13 @@ const HeroSection = () => {
 
   return (
     <div>
-      <section className="h-[65vh] overflow-hidden">
+      <section className="lg:h-[65vh] max-sm:h[40vh] overflow-hidden">
         <video
           ref={videoRef}
           loop
           muted
           playsInline
-          className={`absolute -top-5 left-0 homeVideo h-[72vh] ${
+          className={`absolute -top-5 left-0 homeVideo lg:h-[72vh] ${
             videoLoaded ? "visible" : "invisible"
           }`}
           preload="metadata"
@@ -118,7 +118,7 @@ const HeroSection = () => {
           <source src="/assets/videos/college1-crop.mp4" type="video/mp4" />
           <source src="/assets/videos/college1-crop.webm" type="video/webm" />
         </video>
-        <div className="h-full flex justify-center items-center bg-black/40">
+        <div className="h-full flex justify-center items-center ">
           <div className="lg:w-[40vw] md:w-[70vw] max-sm:w-[80vw]">
             <h1
               className="text-white text-4xl max-sm:text-lg"
@@ -148,7 +148,7 @@ const HeroSection = () => {
                 />
               </span>
             </h1>
-            <div className="mt-3 relative">
+            <div className="mt-3 relative lg:block md:hidden max-sm:hidden hidden">
               <button onClick={toggleSearch} className="w-full hover:cursor-pointer">
                 <input
                   type="text"

@@ -29,7 +29,7 @@ const BackToTop = () => {
   return (
     <>
       {isVisible && (
-        <div className="fixed lg:bottom-20 right-8 lg:right-8 z-10 bottom-36 max-sm:bottom-36 max-sm:right-4 shadow-lg rounded-full">
+        <div className="fixed right-8 bottom-20">
           <button
             onClick={scrollToTop}
             className="p-2 bg-second text-white rounded-full shadow-2xl hover:bg-primary/80 transition duration-300"

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import { usePathname  } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 import AOS from "aos";
 import Navbar from "../components/Navbar";
@@ -15,7 +15,7 @@ const About = () => {
   useEffect(() => {
     AOS.init();
   }, []);
-  const pathname  = usePathname();
+  const pathname = usePathname();
 
   useEffect(() => {
     console.log("Current path:", pathname); // Check the current path
@@ -145,13 +145,6 @@ const About = () => {
               testament to our dedication.
             </p>
           </div>
-          {/* 
-                    <div className="bg_reddish about_advertise py-5">
-                        <div className="container">
-                            <h3 data-aos="fade-up">Let Us Guide Your Admission Journey</h3>
-                            <p data-aos="fade-up">Whether you're applying for undergraduate or postgraduate programs, Siksha Helpline ensures you're informed and prepared for success.</p>
-                        </div>
-                    </div> */}
 
           <div className="bg_reddish about_advertise py-5">
             <div className="container lg:px-32">

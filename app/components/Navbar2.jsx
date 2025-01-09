@@ -42,13 +42,13 @@ const menuItems = [
     href: "/contact-us",
   },
   {
-    name: "Colleges",
+    name: "More",
     icon: <ChevronDown />,
     subMenu: [
-      { name: "IIT Delhi", href: "/collegepage/IIT Delhi (IIT-D)" },
-      { name: "IIT Madras", href: "/collegepage/IIT Madras (IIT-M)" },
-      { name: "IIT Kharagpur", href: "/collegepage/IIT Kharagpur (IIT-KGP)" },
-      { name: "IIT Roorkee", href: "/collegepage/IIT Roorkee (IIT-R)" },
+      { name: "Title 1", href: "" },
+      { name: "Title 2", href: "" },
+      { name: "Title 3", href: "" },
+      { name: "Title 4", href: "" },
     ],
   },
 ];
@@ -233,19 +233,21 @@ export default function Nav() {
             <img
               src="/assets/logo-white-box.png"
               alt="Logo"
-              className="w-16 rounded-full"
+              className="w-16 rounded-full max-sm:w-12"
             />
           </Link>
         </div>
         {/* Mega menu for desktop */}
         <div className="hidden grow items-center lg:flex">
-          <ul className="ml-12 inline-flex items-center space-x-2">
+          <ul className="ml-12 inline-flex items-center ">
             {menuItems.map((item) => (
               <li key={item.name} className="relative group">
                 {item.href ? (
                   <Link
                     href={item.href}
-                    className={`text-sm font-medium text-black uppercase transition-all duration-500 flex items-center hover:bg-second hover:text-white py-2 px-3 rounded-full group-hover:bg-second group-hover:text-white navbarLink ${isHomePage ? (isScrolled ? "" : "text-white") : ""}`}
+                    className={`text-sm font-medium text-black uppercase transition-all duration-500 flex items-center hover:bg-second hover:text-white py-2 px-3 rounded-full group-hover:bg-second group-hover:text-white navbarLink ${
+                      isHomePage ? (isScrolled ? "" : "text-white") : ""
+                    }`}
                   >
                     {item.name}
                     {item.icon && (
@@ -255,24 +257,29 @@ export default function Nav() {
                     )}
                   </Link>
                 ) : (
-                  <span className={`text-sm font-medium text-black uppercase transition-all duration-500 flex items-center py-2 px-3 rounded-full ${isHomePage ? (isScrolled ? "" : "text-white") : ""}`}>
+                  <span
+                    className={`text-sm font-medium text-black uppercase transition-all duration-500 flex items-center py-2 px-3 rounded-full ${
+                      isHomePage ? (isScrolled ? "" : "text-white") : ""
+                    }`}
+                  >
                     {item.name}
                     {item.icon && (
                       <span className="transform transition-transform duration-300 group-hover:rotate-180">
                         {item.icon}
                       </span>
                     )}
+                    
                     {item.subMenu && (
-                      <div className="absolute left-0 top-full mt-1 hidden w-64 bg-white shadow-xl rounded-lg opacity-0 transform translate-y-4 transition-transform duration-700 ease-in-out group-hover:opacity-100 group-hover:-translate-y-1 group-hover:block border-2 border-t-secondary border-b-secondary border-l-second border-r-second">
-                        <ul className="grid grid-cols-1 gap-4 p-4 pointer-auto">
+                      <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded hidden  transform translate-y-4 transition-transform duration-700 ease-in-out group-hover:opacity-100 group-hover:-translate-y-1 group-hover:block shadow-lg">
+                        <ul>
                           {item.subMenu.map((subItem) => (
                             <li
                               key={subItem.name}
-                              className="transition duration-500 rounded-lg"
+                              className="transition duration-500 rounded-lg hover:bg-gray-200 px-3 py-2"
                             >
                               <Link
                                 href={subItem.href}
-                                className="text-xs font-medium text-black transition duration-500 hover:text-secondary uppercase"
+                                className="text-xs font-medium transition text-black  duration-500 hover:text-secondary uppercase"
                               >
                                 {subItem.name}
                               </Link>
@@ -315,7 +322,7 @@ export default function Nav() {
             </div>
 
             <Link
-              href="/tutor/tutorDashboard"
+              href="/login"
               className="bg-second border-2 border-second flex gap-2 items-center py-2 px-4 rounded-full hover:bg-white hover:text-second transition duration-300 text-sm"
             >
               <span>Login/Signup</span>
@@ -323,43 +330,65 @@ export default function Nav() {
           </div>
         </div>
 
-        <div className="lg:hidden flex items-center gap-4">
+        <div className="lg:hidden flex items-center gap-2">
           <button
             onClick={toggleSearch}
-            className="text-primary transition-all duration-500 bg-white flex justify-center items-center hover:text-primaryClr hover:bg-whiteClr hover:rounded-full hover:text-secondary"
+            className="text-white p-2 transition-all duration-500 bg-second rounded-full flex justify-center align-middle hover:text-secondary py-2 hover:bg-whiteClr hover:rounded-full hover:shadow-gray-900 hover:shadow-whiteClr"
           >
-            <Search />
+            <Search size={18} />
           </button>
+          <div className="relative group">
+            <button
+              onClick={toggleNotificationSidebar}
+              className="relative rounded-3xl flex justify-center items-center border-2 border-second  bg-white text-second p-2 text-xs uppercase font-semibold transition ease-in-out duration-500 hover:border-2 hover:border-second hover:bg-white hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+            >
+              <IoMdNotifications size={16} />
+              {/* <span className="absolute bg-red-500 text-white rounded-full p-1 px-2 -top-3 -right-2 text-xs">
+                  {cart?.length}
+                </span> */}
+            </button>
+
+            {/* Tooltip */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 top-12 opacity-0 group-hover:opacity-100 bg-black text-white text-sm rounded-lg px-3 py-1 transition-opacity duration-300 pointer-events-none z-10">
+              Cart
+              <div className="absolute w-0 h-0 border-x-8 border-x-transparent border-b-8 border-b-black -top-2 left-1/2 -translate-x-1/2"></div>
+            </div>
+          </div>
           <Link
             href="/login"
-            className="rounded-3xl flex justify-center items-center border-2 border-primary  bg-primary text-white p-2 text-xs uppercase font-semibold transition ease-in-out duration-500 hover:border-2 hover:border-primary hover:bg-white hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+            className="bg-second border-2 border-second flex gap-2 items-center p-2 rounded-full hover:bg-white hover:text-second transition duration-300 text-sm"
           >
             <User size={16} />
             {/* <span>Login</span> */}
           </Link>
-          <Menu onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />
+
+          <Menu
+            onClick={toggleMenu}
+            className={`h-6 w-6 cursor-pointer ${
+              isScrolled ? "text-second" : "text-white"
+            }`}
+          />
         </div>
 
         {/* Mobile accordion menu */}
         {isMenuOpen && (
           <div className="absolute inset-x-0 top-0 z-50 origin-top-right transform transition lg:hidden">
             <div className="divide-y-2 divide-gray-50 bg-white shadow-lg ring-1 ring-black ring-opacity-5">
-              <div className="px-4 pb-6 pt-5">
+              <div className="px-4 py-4">
                 <div className="flex items-center justify-between">
                   <div className="inline-flex items-center space-x-2">
-                    <span>
+                    <Link href="/">
                       <img
-                        src="/assets/images/logo_dark.png"
+                        src="/assets/logo-white-box.png"
                         alt="Logo"
-                        height="100px"
-                        width="200px"
+                        className="w-16 rounded-full max-sm:w-12"
                       />
-                    </span>
+                    </Link>
                   </div>
                   <button
                     type="button"
                     onClick={toggleMenu}
-                    className="inline-flex items-center justify-center rounded-md text-gray-400 hover:bg-gray-100 hover:text-gray-500"
+                    className="p-2 inline-flex items-center justify-center rounded-full text-gray-400 hover:bg-second/60 hover:text-white transition duration-300"
                   >
                     <X className="h-6 w-6" aria-hidden="true" />
                   </button>
@@ -370,7 +399,7 @@ export default function Nav() {
                       <div key={item.name}>
                         <a
                           href={item.href || "#"}
-                          className="-m-3 flex items-center rounded-md p-3 text-sm font-semibold hover:bg-gray-50"
+                          className="-m-3 flex items-center rounded-md p-3 text-sm font-semibold hover:bg-gray-100"
                           onClick={() =>
                             item.subMenu && toggleSubMenu(item.name)
                           }
@@ -381,9 +410,9 @@ export default function Nav() {
                           {item.subMenu && (
                             <>
                               {activeSubMenu === item.name ? (
-                                <ChevronUp className="ml-auto" />
+                                <ChevronUp className="ml-auto text-gray-900" />
                               ) : (
-                                <ChevronDown className="ml-auto" />
+                                <ChevronDown className="ml-auto text-gray-900" />
                               )}
                             </>
                           )}
@@ -405,15 +434,6 @@ export default function Nav() {
                       </div>
                     ))}
                   </nav>
-                </div>
-                <div className="flex mt-4">
-                  <Link
-                    href="/signup-tutor"
-                    className="rounded-3xl flex gap-2 justify-center items-center border-2 border-primary  bg-primary text-white px-5 py-2 text-xs uppercase font-semibold transition ease-in-out duration-500 hover:border-2 hover:border-primary hover:bg-white hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                  >
-                    <GraduationCap size={20} />
-                    <span>Signup as Tutor</span>
-                  </Link>
                 </div>
               </div>
             </div>

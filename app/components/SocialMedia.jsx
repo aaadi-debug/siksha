@@ -13,7 +13,7 @@ import {
 const SocialMedia = () => {
   return (
     <>
-      <div className="fixed lg:bottom-4 lg:left-0 whatappButton z-10 bottom-20 max-sm:bottom-20 max-sm:right-4 ">
+      <div className="fixed bottom-4 left-0 whatappButton z-10">
         <div className="flex flex-col gap-3 bg-second text-white p-2 py-3 rounded-tr rounded-br-3xl">
           <Link
             href="https://www.facebook.com/profile.php?id=61550767657757&mibextid=LQQJ4d"

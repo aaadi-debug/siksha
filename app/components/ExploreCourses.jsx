@@ -41,7 +41,7 @@ const processData = (data, degree) => {
 };
 
 const generateTabsData = (data) => {
-  // Extract unique degrees from the nested structure
+  // Extract unique degrees from the nested structure of college Data array
   const uniqueDegrees = [
     ...new Set(
       data.flatMap((college) =>

@@ -51,9 +51,6 @@ export default function Content({ blogInfo }) {
         />
       </head>
 
-
-      <Navbar />
-
       <div className="container lg:px-32 py-5">
         <div className="flex max-sm:flex-col">
           <div className="w-2/3 px-2 max-sm:w-full">

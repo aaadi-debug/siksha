@@ -2,25 +2,25 @@ import React from "react";
 import { House, ChevronRight } from "lucide-react";
 import Link from "next/link";
 
-const Breadcrumbs2 = ({ breadcrumbs }) => {
+const Breadcrumbs2 = ({ breadcrumbs, linkColor, activeColor }) => {
   return (
     <div className="">
       <div className="flex items-center">
-        <Link href="/"><House size={16} className="" /></Link>
+        <Link href="/"><House size={16} className={linkColor}/></Link>
         <ChevronRight size={14} className="mx-1" />
 
         {breadcrumbs.map((breadcrumb, index) => (
           <React.Fragment key={index}>
-            {/* We are checking if it's the last breadcrumb */}
             {index === breadcrumbs.length - 1 ? (
-              <div className="text-textClr">{breadcrumb.title}</div>
+              // Last breadcrumb with active color
+              <div className={`${activeColor}`}>{breadcrumb.title}</div>
             ) : (
-              <Link href={breadcrumb.link} className="">
+              // Intermediate breadcrumbs with dynamic link color
+              <Link href={breadcrumb.link} className={`${linkColor}`}>
                 {breadcrumb.title}
               </Link>
             )}
 
-            {/* We are rendering Chevron only if it's not the last item */}
             {index < breadcrumbs.length - 1 && (
               <ChevronRight size={14} className="mx-1" />
             )}

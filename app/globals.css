@@ -19,6 +19,57 @@
   --main-theme-clr: #3D52A0;
 }
 
+.btn-style5 {
+  --btn-color: #fff;
+  --btn-hover-color: var(--star-clr);
+  --offset: 0.3em;
+
+  border: 1px solid var(--btn-color);
+  padding: 10px 20px;
+  border-radius: 30px;
+  color: var(--btn-color);
+  box-shadow: var(--offset) var(--offset) 0 var(--btn-hover-color);
+  transition: all 0.3s ease; /* Add a smooth transition for hover effects */
+}
+
+.btn-style5:hover {
+  box-shadow: calc(-1 * var(--offset)) calc(-1 * var(--offset)) 0 var(--btn-color);
+  background-color: var(--btn-hover-color);
+  border-color: var(--btn-hover-color);
+  color: #fff;
+}
+
+.btn-style6 {
+  --btn-color: var(--primary-clr);
+  --btn-hover-color: var(--star-clr);
+  --offset: 0.3em;
+
+  border: 1px solid var(--btn-color);
+  padding: 10px 20px;
+  border-radius: 30px;
+  color: var(--btn-color);
+  box-shadow: var(--offset) var(--offset) 0 var(--btn-hover-color);
+  transition: all 0.3s ease; /* Add a smooth transition for hover effects */
+}
+
+.btn-style6:hover {
+  box-shadow: calc(-1 * var(--offset)) calc(-1 * var(--offset)) 0 var(--btn-color);
+  background-color: var(--btn-hover-color);
+  border-color: var(--btn-hover-color);
+  color: #fff;
+}
+
+
+.zIndexCustom {
+  border: 1px solid red;
+  z-index: 1;
+}
+
+.zIndexCustom1 {
+  border: 1px solid red;
+  z-index: 999 !important;
+}
+
 /* Add this in your global CSS */
 .loader {
   border: 4px solid #f3f3f3;
@@ -743,6 +794,41 @@ Particular tabs tables litlle little styling below
   border-top-right-radius: 50px;
   background-color: var(--white-clr);
 }
+
+.animatedBorderBox .animatedBorderBoxImg {
+  transition: background-color 0.5s ease;
+}
+
+.animatedBorderBox:hover .animatedBorderBoxImg {
+  background-color: var(--primary-clr);
+}
+
+@keyframes left-right {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(20px);
+  }
+}
+
+@keyframes up-down {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-left-right {
+  animation: left-right 3s infinite ease-in-out;
+}
+
+.animate-up-down {
+  animation: up-down 3s infinite ease-in-out;
+}
+
 
 
 

@@ -17,6 +17,8 @@ import {
 } from "lucide-react";
 import { FaUserTie } from "react-icons/fa6";
 import { IoMdNotifications } from "react-icons/io";
+import DynamicThemeButton from "./DynamicThemeButton";
+import DynamicWhiteButton from "./DynamicWhiteButton";
 // import SearchBar from "./SearchBar";
 // import { testCategories } from "@/data/testCategories";
 
@@ -223,7 +225,7 @@ export default function Nav() {
   return (
     <div
       className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${
-        isHomePage ? (isScrolled ? "bg-white" : "bg-black/40") : "bg-white"
+        isHomePage ? (isScrolled ? "bg-white shadow-md" : "bg-black/60") : "bg-white shadow-md"
       }`}
     >
       <div className="mx-auto flex items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
@@ -268,7 +270,7 @@ export default function Nav() {
                         {item.icon}
                       </span>
                     )}
-                    
+
                     {item.subMenu && (
                       <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded hidden  transform translate-y-4 transition-transform duration-700 ease-in-out group-hover:opacity-100 group-hover:-translate-y-1 group-hover:block shadow-lg">
                         <ul>
@@ -321,12 +323,21 @@ export default function Nav() {
               </div>
             </div>
 
-            <Link
-              href="/login"
-              className="bg-second border-2 border-second flex gap-2 items-center py-2 px-4 rounded-full hover:bg-white hover:text-second transition duration-300 text-sm"
-            >
-              <span>Login/Signup</span>
-            </Link>
+            {isHomePage ? (
+              isScrolled ? (
+                <DynamicThemeButton href="/login">
+                  Login/Signup
+                </DynamicThemeButton>
+              ) : (
+                <DynamicWhiteButton href="/login">
+                  Login/Signup
+                </DynamicWhiteButton>
+              )
+            ) : (
+              <DynamicThemeButton href="/login">
+                Login/Signup
+              </DynamicThemeButton>
+            )}
           </div>
         </div>
 

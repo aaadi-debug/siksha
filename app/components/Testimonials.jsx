@@ -71,7 +71,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <div className="testimonials pb-5 pt-16">
+    <div className="testimonials pb-5 pt-16 lg:px-10 px-6">
       <h2 data-aos="fade-up" className="mb-4 text-black font-semibold text-3xl">
         Student's Feedback
       </h2>

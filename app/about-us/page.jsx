@@ -10,6 +10,7 @@ import { LiaUniversitySolid } from "react-icons/lia";
 import { FaBookOpenReader } from "react-icons/fa6";
 import { IoIosPeople } from "react-icons/io";
 import { GiCoffeeCup } from "react-icons/gi";
+import Breadcrumbs2 from "../components/Breadcrumbs2";
 
 const About = () => {
   useEffect(() => {
@@ -22,12 +23,26 @@ const About = () => {
   }, [pathname]);
   return (
     <>
+      <div className="pt-20 max-sm:pt-16">
+        <div
+          class="border-red-500 bg-cover bg-center bg-no-repeat  text-white lg:px-10 px-6 py-10"
+          style={{
+            backgroundImage: `url('/assets/images/new/about-bread.jpg')`,
+          }}
+        >
+          <Breadcrumbs2
+            breadcrumbs={[{ title: "About us", link: "" }]}
+            linkColor="text-white"
+            activeColor="text-white/70"
+          />
+          {/* <!-- Content inside your hero section --> */}
+          <h2 className="text-4xl font-bold pt-10 pb-16 text-center">
+            About Us
+          </h2>
+        </div>
+      </div>
       <div className="about_us">
         <div className="about_us_wrapper bg_reddish">
-          <div className="hero_about_us">
-            <h2 className="text-3xl font-semibold">About Us</h2>
-          </div>
-
           <div className="mission_vision py-5">
             <div className="m_s_div vision">
               <figure>

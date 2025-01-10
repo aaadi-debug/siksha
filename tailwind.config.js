@@ -14,7 +14,7 @@ module.exports = {
           dark: "#3d52a0",
         },
         second: {
-          light: "#ede8f5",
+          light: "#7091E6",
           DEFAULT: "#3D52A0",
         },
         skin: {

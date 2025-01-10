@@ -7,7 +7,7 @@ const Breadcrumbs2 = ({ breadcrumbs, linkColor, activeColor }) => {
     <div className="">
       <div className="flex items-center">
         <Link href="/"><House size={16} className={linkColor}/></Link>
-        <ChevronRight size={14} className="mx-1" />
+        <ChevronRight size={14} className={`mx-1 ${activeColor}`} />
 
         {breadcrumbs.map((breadcrumb, index) => (
           <React.Fragment key={index}>

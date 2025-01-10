@@ -3,20 +3,23 @@
 @tailwind utilities;
 
 :root {
-  --primary-clr: #3D52A0;
-  --secondary-color: #7091E6;
+  --primary-clr: #3d52a0;
+  --secondary-color: #7091e6;
   --dark-gray: #8697c4;
   --light-gray: #adbbda;
   --more-light-gray: #7091e610;
   --reddish-white: #ede8f5;
   --white-clr: #ffffff;
   --black_clr: #000000;
-  --star-clr: #FFA100;
+  --star-clr: #ffa100;
   --green-clr: #099250;
-  --red-clr: #D92D20;
+  --red-clr: #d92d20;
 
+  --main-theme-clr: #3d52a0;
+}
 
-  --main-theme-clr: #3D52A0;
+body {
+  scroll-behavior: smooth;
 }
 
 .btn-style5 {
@@ -33,7 +36,8 @@
 }
 
 .btn-style5:hover {
-  box-shadow: calc(-1 * var(--offset)) calc(-1 * var(--offset)) 0 var(--btn-color);
+  box-shadow: calc(-1 * var(--offset)) calc(-1 * var(--offset)) 0
+    var(--btn-color);
   background-color: var(--btn-hover-color);
   border-color: var(--btn-hover-color);
   color: #fff;
@@ -53,12 +57,12 @@
 }
 
 .btn-style6:hover {
-  box-shadow: calc(-1 * var(--offset)) calc(-1 * var(--offset)) 0 var(--btn-color);
+  box-shadow: calc(-1 * var(--offset)) calc(-1 * var(--offset)) 0
+    var(--btn-color);
   background-color: var(--btn-hover-color);
   border-color: var(--btn-hover-color);
   color: #fff;
 }
-
 
 .zIndexCustom {
   border: 1px solid red;
@@ -81,15 +85,18 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .preloader {
   background-color: white !important;
   z-index: 10000;
 }
-
 
 .swiper-scrollbar {
   display: none;
@@ -109,7 +116,6 @@
   scrollbar-width: none; /* Firefox */
 }
 
-
 .oneLinerTitle {
   display: -webkit-box;
   -webkit-line-clamp: 1; /* Number of lines */
@@ -125,6 +131,93 @@
   text-overflow: ellipsis;
 }
 
+.swiperButtonNone .swiper-button-prev {
+  display: none;
+}
+.swiperButtonNone .swiper-button-next {
+  display: none;
+}
+
+/* --------------------landing page ------------------------- */
+
+.all-shapes {
+  position: relative;
+  width: 700px;
+  height: 700px;
+  border-radius: 100%;
+  border: 1px dashed #ff70d2;
+  border-width: 1.75px;
+  animation: rotateDashedBorder 110s infinite linear;
+  z-index: 0;
+}
+
+.all-shapes::before,
+.all-shapes::after {
+  content: ""; /* Required for pseudo-elements */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 100%;
+}
+
+.all-shapes::before {
+  width: calc(100% - 15%);
+  height: calc(100% - 15%);
+  border: 1px dashed #8b74ff;
+  border-width: 1.8px !important;
+  animation: rotateDashedBorderRev 110s infinite linear;
+}
+
+.all-shapes::after {
+  width: calc(100% - 30%);
+  height: calc(100% - 30%);
+  border: 1px dashed #fdca92;
+  border-width: 1.5px !important;
+}
+
+@keyframes rotateDashedBorder {
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+@keyframes rotateDashedBorderRev {
+  100% {
+    transform: rotateZ(-360deg) translate(-50%, -50%);
+  }
+}
+
+.divMoveDiagonalOne {
+  animation: moveDiagonally 10s infinite linear;
+}
+.divMoveDiagonalTwo {
+  animation: moveDiagonallyReverse 10s infinite linear;
+}
+
+@keyframes moveDiagonally {
+  0% {
+    transform: translate(0%, 0%);
+  }
+  50% {
+    transform: translate(10%, 10%);
+  }
+  100% {
+    transform: translate(0%, 0%);
+  }
+}
+
+@keyframes moveDiagonallyReverse {
+  0% {
+    transform: translate(10%, 10%);
+  }
+  50% {
+    transform: translate(0%, 0%);
+  }
+  100% {
+    transform: translate(15%, 15%);
+  }
+}
 
 /* --------------------------- navbar -------------------- */
 /* Style for the parent list item */
@@ -177,8 +270,6 @@
   color: #007bff;
 }
 
-
-
 /* ------------- two cta button styling starts ---------------- */
 .cta_buttons {
   /* border: 1px solid red; */
@@ -204,7 +295,7 @@
   font-size: 18px;
   border-radius: 30px;
   padding: 8px 20px;
-  transition: all .4s;
+  transition: all 0.4s;
   outline: none;
   background-color: transparent;
   cursor: pointer;
@@ -243,7 +334,7 @@
   font-size: 18px;
   border-radius: 30px;
   padding: 8px 20px;
-  transition: all .4s;
+  transition: all 0.4s;
   outline: none;
   background-color: transparent;
   cursor: pointer;
@@ -268,12 +359,10 @@
 
 /* ------------- two cta button styling end ---------------- */
 
-
 /* -------------------navbar------------------------ */
 .navbarLink:hover {
   color: white !important;
 }
-
 
 /* ------------- also_check styling starts ---------------- */
 /* ------------- also_check styling starts ---------------- */
@@ -349,14 +438,17 @@
 
 /* -------------- progress_bars_div ends -------------- */
 
-
 /* -------------- locked_div -------------- */
 .locked_content {
   /* border: 1px solid red; */
   padding: 60px 0 30px 0;
   margin-top: -30px;
   border-radius: 0 0 10px 10px;
-  background: linear-gradient(to top, var(--white-clr) 50%, rgba(255, 255, 255, 0.473) 50%);
+  background: linear-gradient(
+    to top,
+    var(--white-clr) 50%,
+    rgba(255, 255, 255, 0.473) 50%
+  );
 }
 
 .locked_div {
@@ -395,8 +487,6 @@
   color: var(--black_clr);
 }
 
-
-
 /* ------------------------------------------------------- */
 /* -------------- tesrms and conditions --------------- */
 /* ------------------------------------------------------- */
@@ -425,7 +515,6 @@
   margin-left: 30px;
 }
 
-
 /* ------------------------------------------------------- */
 /* -------------- Error --------------- */
 /* ------------------------------------------------------- */
@@ -452,12 +541,12 @@
 }
 
 .error .error_wrapper h2 {
-  color: #3F3D56;
+  color: #3f3d56;
   font-size: 84px;
   padding-bottom: 50px;
 }
 
-@media(max-width: 425px) {
+@media (max-width: 425px) {
   .error .error_wrapper {
     background-position: top center;
     background-size: contain;
@@ -467,12 +556,11 @@
   }
 
   .error .error_wrapper h2 {
-    color: #3F3D56;
+    color: #3f3d56;
     font-size: 24px;
     padding-bottom: 0px;
   }
 }
-
 
 /* --------- all tables global style-------- */
 .table_wrapper {
@@ -508,7 +596,6 @@
   padding: 10px;
   border: 1px solid var(--light-gray);
 }
-
 
 /* ------------------------------------
 ------------------------------------
@@ -550,7 +637,6 @@ Particular tabs tables litlle little styling below
   color: var(--white-clr);
   text-align: center;
 }
-
 
 /* ----- courses tables -------- */
 
@@ -608,10 +694,6 @@ Particular tabs tables litlle little styling below
   font-weight: 500;
 }
 
-
-
-
-
 .homeVideo {
   z-index: -1;
 }
@@ -619,7 +701,6 @@ Particular tabs tables litlle little styling below
   color: cyan;
 }
 /* ----------------- Herosection ------------------ */
-
 
 .herosection {
   background: linear-gradient(#00000073, #00000077);
@@ -648,7 +729,6 @@ Particular tabs tables litlle little styling below
   margin-bottom: 10px;
 
   /* z-index: 9999 !important; */
-
 }
 
 .herosection_wrapper h2 .fixed_h {
@@ -709,7 +789,6 @@ Particular tabs tables litlle little styling below
   font-weight: 400;
   border-radius: 50%;
 }
-
 
 /* Responsive code */
 @media (max-width: 768px) {
@@ -776,8 +855,6 @@ Particular tabs tables litlle little styling below
   }
 }
 
-
-
 /* -==========================================
 ===========================================
 ===========================================
@@ -787,7 +864,8 @@ Particular tabs tables litlle little styling below
 .animatedBorderBox {
   border: 2px solid rgb(201, 201, 201);
   background-color: #ffffff8f;
-  transition: border 0.5s ease, border-radius 0.5s ease, background-color 0.5s ease;
+  transition: border 0.5s ease, border-radius 0.5s ease,
+    background-color 0.5s ease;
 }
 .animatedBorderBox:hover {
   border: 2px solid var(--main-theme-clr);
@@ -804,7 +882,8 @@ Particular tabs tables litlle little styling below
 }
 
 @keyframes left-right {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateX(0);
   }
   50% {
@@ -813,7 +892,8 @@ Particular tabs tables litlle little styling below
 }
 
 @keyframes up-down {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -828,11 +908,6 @@ Particular tabs tables litlle little styling below
 .animate-up-down {
   animation: up-down 3s infinite ease-in-out;
 }
-
-
-
-
-
 
 /* -==========================================
 ===========================================
@@ -942,8 +1017,6 @@ Particular tabs tables litlle little styling below
   display: none;
 }
 
-
-
 @media (max-width: 378px) {
   .slider {
     /* border: 1px solid red; */
@@ -1017,7 +1090,7 @@ Particular tabs tables litlle little styling below
   }
 }
 
-@media (min-width:379px) and (max-width: 480px) {
+@media (min-width: 379px) and (max-width: 480px) {
   .slider {
     /* border: 1px solid red; */
     height: 200px !important;
@@ -1090,7 +1163,7 @@ Particular tabs tables litlle little styling below
   }
 }
 
-@media (min-width:481px) and (max-width: 768px) {
+@media (min-width: 481px) and (max-width: 768px) {
   .slider {
     /* border: 1px solid red; */
     height: 200px !important;
@@ -1161,7 +1234,7 @@ Particular tabs tables litlle little styling below
   }
 }
 
-@media (min-width:769px) and (max-width: 1280px) {
+@media (min-width: 769px) and (max-width: 1280px) {
   .slider {
     /* border: 1px solid red; */
     height: 200px !important;
@@ -1232,7 +1305,7 @@ Particular tabs tables litlle little styling below
   }
 }
 
-@media (min-width:1281px) and (max-width: 1920px) {
+@media (min-width: 1281px) and (max-width: 1920px) {
   .slider_bg img {
     width: 100%;
     /* height: 200px; */
@@ -1290,11 +1363,6 @@ Particular tabs tables litlle little styling below
   }
 }
 
-
-
-
-
-
 /* -------------- top collection ------------------------------- */
 
 .topcollection {
@@ -1337,7 +1405,7 @@ Particular tabs tables litlle little styling below
 
 .img_wrapper_body {
   /* border: 1px solid red; */
-  background-color: rgba(61, 82, 160, 0.60);
+  background-color: rgba(61, 82, 160, 0.6);
   /* display: none; */
 
   width: 100%;
@@ -1405,9 +1473,6 @@ Particular tabs tables litlle little styling below
   margin-left: -10px;
 }
 
-
-
-
 /* -------------------- college-recommendations ------------------------ */
 .collegerecommmendations {
   background-color: var(--reddish-white);
@@ -1454,9 +1519,12 @@ Particular tabs tables litlle little styling below
   margin-top: 0px !important;
   /* background: linear-gradient(hsl(0 0% 0% / 0),hsl(20 0% 0% / 0.3) 20%,hsl(0 0% 0% / 1)); */
 
-  background: linear-gradient(to bottom, rgba(61, 82, 160, 0.60), rgba(61, 82, 160, 0.486));
+  background: linear-gradient(
+    to bottom,
+    rgba(61, 82, 160, 0.6),
+    rgba(61, 82, 160, 0.486)
+  );
   /* Improved gradient */
-
 }
 
 .college_title {
@@ -1496,20 +1564,25 @@ Particular tabs tables litlle little styling below
   /* Expand line on hover/focus */
 }
 
-
 @media (hover) {
   .college_details {
     transform: translateY(65%);
     transition: transform 500ms ease;
   }
 
-  .college_details>*:not(.college_title) {
+  .college_details > *:not(.college_title) {
     opacity: 1;
     transition: opacity 500ms linear;
   }
 
-  .collegerecommendations_wrapper .college_card:hover .college_details>*:not(.college_title),
-  .collegerecommendations_wrapper .college_card:focus-within .college_details>*:not(.college_title) {
+  .collegerecommendations_wrapper
+    .college_card:hover
+    .college_details
+    > *:not(.college_title),
+  .collegerecommendations_wrapper
+    .college_card:focus-within
+    .college_details
+    > *:not(.college_title) {
     opacity: 1;
     transition-delay: 0.7s;
   }
@@ -1540,7 +1613,6 @@ Particular tabs tables litlle little styling below
 }
 
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {
@@ -1552,7 +1624,6 @@ Particular tabs tables litlle little styling below
   }
 }
 
-
 @media (max-width: 375px) {
   .college_details {
     /* border: 1px solid red; */
@@ -1561,13 +1632,16 @@ Particular tabs tables litlle little styling below
     margin-top: 100px !important;
     /* background: linear-gradient(hsl(0 0% 0% / 0),hsl(20 0% 0% / 0.3) 20%,hsl(0 0% 0% / 1)); */
 
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.3)
+    );
     /* Improved gradient */
-
   }
 }
 
-@media (min-width:376px) and (max-width: 480px) {
+@media (min-width: 376px) and (max-width: 480px) {
   .college_details {
     /* border: 1px solid red; */
     padding: 20px;
@@ -1575,13 +1649,16 @@ Particular tabs tables litlle little styling below
     margin-top: 100px !important;
     /* background: linear-gradient(hsl(0 0% 0% / 0),hsl(20 0% 0% / 0.3) 20%,hsl(0 0% 0% / 1)); */
 
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.3)
+    );
     /* Improved gradient */
-
   }
 }
 
-@media (min-width:481px) and (max-width: 768px) {
+@media (min-width: 481px) and (max-width: 768px) {
   .college_details {
     /* border: 1px solid red; */
     padding: 20px;
@@ -1589,13 +1666,16 @@ Particular tabs tables litlle little styling below
     margin-top: 100px !important;
     /* background: linear-gradient(hsl(0 0% 0% / 0),hsl(20 0% 0% / 0.3) 20%,hsl(0 0% 0% / 1)); */
 
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.3)
+    );
     /* Improved gradient */
-
   }
 }
 
-@media (min-width:769px) and (max-width: 1280px) {
+@media (min-width: 769px) and (max-width: 1280px) {
   .college_details {
     /* border: 1px solid red; */
     padding: 20px;
@@ -1603,13 +1683,16 @@ Particular tabs tables litlle little styling below
     margin-top: 100px !important;
     /* background: linear-gradient(hsl(0 0% 0% / 0),hsl(20 0% 0% / 0.3) 20%,hsl(0 0% 0% / 1)); */
 
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.3)
+    );
     /* Improved gradient */
-
   }
 }
 
-@media (min-width:1281px) and (max-width: 1500px) {
+@media (min-width: 1281px) and (max-width: 1500px) {
   .college_details {
     /* border: 1px solid red; */
     padding: 20px;
@@ -1618,11 +1701,6 @@ Particular tabs tables litlle little styling below
     /* background: linear-gradient(hsl(0 0% 0% / 0),hsl(20 0% 0% / 0.3) 20%,hsl(0 0% 0% / 1)); */
   }
 }
-
-
-
-
-
 
 /* -------------------------- explore study ----------------------------- */
 .explorestudy {
@@ -1697,7 +1775,6 @@ Particular tabs tables litlle little styling below
     0 24px 46px var(--box-shadow-color);
 }
 
-
 .common_new_btn {
   /* border: 1px solid red; */
   margin: 0 auto;
@@ -1756,14 +1833,10 @@ Particular tabs tables litlle little styling below
   color: var(--primary-clr);
 }
 
-
-
-
 @media (max-width: 378px) {
   .explorestudy {
     height: 20vh;
   }
-
 
   .explorestudy_wrapper {
     /* border: 1px solid red; */
@@ -1806,7 +1879,6 @@ Particular tabs tables litlle little styling below
   .explorestudy_card {
     width: 50%;
     flex-direction: column;
-
   }
 
   .explorestudy_card img {
@@ -1860,14 +1932,12 @@ Particular tabs tables litlle little styling below
   .explorestudy_card {
     width: 50%;
     flex-direction: column;
-
   }
 
   .explorestudy_card img {
     margin-right: 0px;
   }
 }
-
 
 @media (min-width: 481px) and (max-width: 768px) {
   .explorestudy {
@@ -1918,7 +1988,6 @@ Particular tabs tables litlle little styling below
 }
 
 @media (min-width: 769px) and (max-width: 1280px) {
-
   .explorestudy {
     position: relative;
     background: linear-gradient(#00000073, #00000077);
@@ -1991,7 +2060,6 @@ Particular tabs tables litlle little styling below
       0 24px 46px var(--box-shadow-color);
   }
 
-
   .common_new_btn {
     /* border: 1px solid red; */
     margin: 0 auto;
@@ -2050,11 +2118,6 @@ Particular tabs tables litlle little styling below
     color: var(--primary-clr);
   }
 }
-
-
-
-
-
 
 /* ------------------ class exam ------------------------------ */
 
@@ -2176,7 +2239,6 @@ Particular tabs tables litlle little styling below
   transition: all 1s;
 }
 
-
 @media (max-width: 378px) {
   .explorecourses {
     padding-top: 700px;
@@ -2198,7 +2260,6 @@ Particular tabs tables litlle little styling below
   .classexam_widget .classexam_widget_icon {
     height: 26px;
     /* Add fixed height */
-
   }
 
   .classexam_widget span {
@@ -2224,10 +2285,9 @@ Particular tabs tables litlle little styling below
     transition: all 1s;
     margin-top: -5px;
   }
-
 }
 
-@media (min-width:379px) and (max-width: 480px) {
+@media (min-width: 379px) and (max-width: 480px) {
   .explorecourses {
     padding-top: 700px;
   }
@@ -2248,7 +2308,6 @@ Particular tabs tables litlle little styling below
   .classexam_widget .classexam_widget_icon {
     height: 26px;
     /* Add fixed height */
-
   }
 
   .classexam_widget span {
@@ -2391,7 +2450,7 @@ Particular tabs tables litlle little styling below
   }
 }
 
-@media (min-width:769px) and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1024px) {
   .explorecourses {
     padding-top: 250px;
   }
@@ -2403,7 +2462,7 @@ Particular tabs tables litlle little styling below
   }
 }
 
-@media (min-width:1025px) and (max-width: 1440px) {
+@media (min-width: 1025px) and (max-width: 1440px) {
   .classexam_wrapper {
     margin-top: 50px;
   }
@@ -2417,16 +2476,10 @@ Particular tabs tables litlle little styling below
   }
 }
 
-
-
-
-
-
 /* ------------------------ top exams --------------------------- */
 
 .topexam {
   background-color: var(--reddish-white);
-
 }
 
 .img_wrapper {
@@ -2461,7 +2514,6 @@ Particular tabs tables litlle little styling below
 .card:hover {
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
 }
-
 
 /**
 * DATE
@@ -2500,7 +2552,6 @@ Particular tabs tables litlle little styling below
   font-size: 10px;
 }
 
-
 /**
 * THUMB
 **/
@@ -2534,7 +2585,6 @@ Particular tabs tables litlle little styling below
   -webkit-transform: scale(1.2);
   transform: scale(1.2);
 }
-
 
 /**
 * card_BODY
@@ -2589,7 +2639,7 @@ Particular tabs tables litlle little styling below
   bottom: 56px;
   margin: 0;
   padding: 0;
-  color: #666C74;
+  color: #666c74;
   line-height: 27px;
   opacity: 0;
   -webkit-transform: translateY(45px);
@@ -2616,7 +2666,7 @@ Particular tabs tables litlle little styling below
   left: 20px;
   right: 20px;
   font-size: 11px;
-  color: #A3A9A2;
+  color: #a3a9a2;
 }
 
 .icon {
@@ -2626,10 +2676,9 @@ Particular tabs tables litlle little styling below
   font-size: 18px;
 }
 
-.icon+.icon {
+.icon + .icon {
   padding-left: 10px;
 }
-
 
 /* ---- my --- */
 
@@ -2672,7 +2721,6 @@ Particular tabs tables litlle little styling below
   background: transparent;
   color: var(--primary-clr);
 }
-
 
 @media (max-width: 378px) {
   .img_wrapper {
@@ -2719,7 +2767,7 @@ Particular tabs tables litlle little styling below
   }
 }
 
-@media (min-width:379px) and (max-width: 480px) {
+@media (min-width: 379px) and (max-width: 480px) {
   .img_wrapper {
     /* border: 1px solid blue; */
     height: 400px;
@@ -2760,7 +2808,7 @@ Particular tabs tables litlle little styling below
   }
 }
 
-@media (min-width:481px) and (max-width: 768px) {
+@media (min-width: 481px) and (max-width: 768px) {
   .img_wrapper {
     /* border: 1px solid blue; */
     height: 400px;
@@ -2800,7 +2848,6 @@ Particular tabs tables litlle little styling below
     left: 10px !important;
   }
 
-
   .card {
     /* border: 1px solid black; */
     position: absolute;
@@ -2824,7 +2871,6 @@ Particular tabs tables litlle little styling below
   .card:hover {
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
   }
-
 
   /**
   * DATE
@@ -2852,7 +2898,6 @@ Particular tabs tables litlle little styling below
     text-transform: uppercase;
     font-size: 10px;
   }
-
 
   /**
   * THUMB
@@ -2887,7 +2932,6 @@ Particular tabs tables litlle little styling below
     -webkit-transform: scale(1.2);
     transform: scale(1.2);
   }
-
 
   /**
   * card_BODY
@@ -2941,7 +2985,7 @@ Particular tabs tables litlle little styling below
     bottom: 56px;
     margin: 0;
     padding: 0;
-    color: #666C74;
+    color: #666c74;
     line-height: 27px;
     opacity: 0;
     -webkit-transform: translateY(45px);
@@ -2968,7 +3012,7 @@ Particular tabs tables litlle little styling below
     left: 20px;
     right: 20px;
     font-size: 11px;
-    color: #A3A9A2;
+    color: #a3a9a2;
   }
 
   .icon {
@@ -2978,7 +3022,7 @@ Particular tabs tables litlle little styling below
     font-size: 18px;
   }
 
-  .icon+.icon {
+  .icon + .icon {
     padding-left: 10px;
   }
 
@@ -3006,10 +3050,9 @@ Particular tabs tables litlle little styling below
     background: transparent;
     color: var(--primary-clr);
   }
-
 }
 
-@media (min-width:769px) and (max-width: 1280px) {
+@media (min-width: 769px) and (max-width: 1280px) {
   .img_wrapper {
     /* border: 1px solid blue; */
     height: 400px;
@@ -3054,7 +3097,7 @@ Particular tabs tables litlle little styling below
   }
 }
 
-@media (min-width:1281px) and (max-width: 1440px) {
+@media (min-width: 1281px) and (max-width: 1440px) {
   .img_wrapper {
     /* border: 1px solid blue; */
     height: 400px;
@@ -3103,11 +3146,6 @@ Particular tabs tables litlle little styling below
     font-size: 7px;
   }
 }
-
-
-
-
-
 
 /* ------------------------ latest news ------------------------------ */
 
@@ -3206,7 +3244,7 @@ Particular tabs tables litlle little styling below
 
   .slider_header .news_para {
     font-size: 10px;
-    line-height: 11px
+    line-height: 11px;
   }
 
   .slider_news .slider_header h5 {
@@ -3229,7 +3267,7 @@ Particular tabs tables litlle little styling below
   }
 }
 
-@media (min-width:379px) and (max-width: 480px) {
+@media (min-width: 379px) and (max-width: 480px) {
   .slider_news {
     /* border: 1px solid red; */
     position: absolute;
@@ -3243,7 +3281,7 @@ Particular tabs tables litlle little styling below
 
   .slider_header .news_para {
     font-size: 10px;
-    line-height: 11px
+    line-height: 11px;
   }
 
   .slider_news .slider_header h5 {
@@ -3266,7 +3304,7 @@ Particular tabs tables litlle little styling below
   }
 }
 
-@media (min-width:481px) and (max-width: 768px) {
+@media (min-width: 481px) and (max-width: 768px) {
   .slider_news {
     /* border: 1px solid red; */
     position: absolute;
@@ -3280,7 +3318,7 @@ Particular tabs tables litlle little styling below
 
   .slider_header .news_para {
     font-size: 10px;
-    line-height: 11px
+    line-height: 11px;
   }
 
   .slider_news .slider_header h5 {
@@ -3303,7 +3341,7 @@ Particular tabs tables litlle little styling below
   }
 }
 
-@media (min-width:769px) and (max-width: 1280px) {
+@media (min-width: 769px) and (max-width: 1280px) {
   .slider_news {
     /* border: 1px solid red; */
     position: absolute;
@@ -3317,7 +3355,7 @@ Particular tabs tables litlle little styling below
 
   .slider_header .news_para {
     font-size: 10px;
-    line-height: 11px
+    line-height: 11px;
   }
 
   .slider_news .slider_header h5 {
@@ -3339,14 +3377,6 @@ Particular tabs tables litlle little styling below
     padding: 0 0 20px 0;
   }
 }
-
-
-
-
-
-
-
-
 
 /* --------------------- study abroad ---------------------------- */
 
@@ -3361,7 +3391,10 @@ Particular tabs tables litlle little styling below
   /* border: 1px solid red; */
   z-index: 1 !important;
   margin-left: -20px !important;
-  background: linear-gradient(rgba(61, 82, 160, 0.60) 60%, rgba(61, 82, 160, 0.30));
+  background: linear-gradient(
+    rgba(61, 82, 160, 0.6) 60%,
+    rgba(61, 82, 160, 0.3)
+  );
 }
 
 .info_btn {
@@ -3391,7 +3424,6 @@ Particular tabs tables litlle little styling below
     transform: scale(1.4);
   }
 }
-
 
 .hide-body {
   display: none;
@@ -3432,7 +3464,6 @@ Particular tabs tables litlle little styling below
   font-size: 13px;
   font-weight: 400;
 }
-
 
 .colleges {
   /* border: 1px solid #000; */
@@ -3480,7 +3511,6 @@ Particular tabs tables litlle little styling below
   font-weight: 400;
 }
 
-
 .back_container_footer button {
   border: none;
   outline: none;
@@ -3521,9 +3551,7 @@ Particular tabs tables litlle little styling below
   margin: 0 auto;
 }
 
-
-@media(max-width: 768px) {
-
+@media (max-width: 768px) {
   .study_abroad_body {
     /* border: 1px solid red; */
     z-index: 1 !important;
@@ -3559,12 +3587,10 @@ Particular tabs tables litlle little styling below
     }
   }
 
-
   .hide-body {
     display: none;
     /* study_abroad_body hides back when back_container appers */
   }
-
 
   .back_container {
     /* border: 1px solid red; */
@@ -3599,7 +3625,6 @@ Particular tabs tables litlle little styling below
     font-size: 13px;
     font-weight: 400;
   }
-
 
   .colleges {
     /* border: 1px solid #000; */
@@ -3644,7 +3669,6 @@ Particular tabs tables litlle little styling below
     font-size: 10px;
   }
 
-
   .back_container_footer button {
     border: none;
     outline: none;
@@ -3686,7 +3710,7 @@ Particular tabs tables litlle little styling below
   }
 }
 
-@media(min-width: 1024px) and (max-width: 1440px) {
+@media (min-width: 1024px) and (max-width: 1440px) {
   .back_container {
     /* border: 1px solid red !important; */
     z-index: 2 !important;
@@ -3730,7 +3754,6 @@ Particular tabs tables litlle little styling below
     font-size: 13px;
     font-weight: 400;
   }
-
 
   .colleges {
     /* border: 1px solid #000; */
@@ -3777,7 +3800,6 @@ Particular tabs tables litlle little styling below
     font-size: 10px;
   }
 
-
   .back_container_footer button {
     border: none;
     outline: none;
@@ -3820,9 +3842,6 @@ Particular tabs tables litlle little styling below
   }
 }
 
-
-
-
 /* -------------------- testimonials ------------------------ */
 .testimonials {
   background-color: var(--reddish-white);
@@ -3849,7 +3868,6 @@ Particular tabs tables litlle little styling below
   display: block;
   width: 100%;
 }
-
 
 .testimonial_body {
   position: relative;
@@ -3923,11 +3941,6 @@ Particular tabs tables litlle little styling below
   font-size: 12px;
 }
 
-
-
-
-
-
 /* ------------------- footer ----------------------------- */
 
 footer {
@@ -3972,8 +3985,6 @@ footer {
   font-size: 14px;
 }
 
-
-
 .footer_footer {
   /* border: 1px solid red; */
   padding-right: 170px;
@@ -3984,7 +3995,6 @@ footer {
 
 .footer_buttons {
   /* border: 1px solid red; */
-
 }
 
 .footer_buttons ul {
@@ -4001,7 +4011,6 @@ footer {
   color: var(--white-clr);
   font-weight: 500;
 }
-
 
 .icons span a {
   display: flex;
@@ -4024,7 +4033,6 @@ footer {
 .footer_social_media_links .copyright {
   color: var(--white-clr);
 }
-
 
 @media (max-width: 768px) {
   footer {
@@ -4066,7 +4074,6 @@ footer {
     margin-bottom: 8px;
   }
 
-
   .footer_footer {
     /* border: 1px solid red; */
     padding-right: 0px;
@@ -4076,7 +4083,6 @@ footer {
 
   .footer_buttons {
     /* border: 1px solid red; */
-
   }
 
   .footer_buttons ul {
@@ -4091,14 +4097,6 @@ footer {
   }
 }
 
-
-
-
-
-
-
-
-
 /* ----------------------------------------
 ---------- about us --------------------
 ---------------------------------------- */
@@ -4106,7 +4104,6 @@ footer {
 .bg_reddish {
   background-color: var(--reddish-white);
 }
-
 
 .about_us .navbar {
   /* border: 1px solid #000; */
@@ -4119,7 +4116,11 @@ footer {
 }
 
 .hero_about_us {
-  background-image: linear-gradient(180deg, rgba(150, 105, 97, 0.67) 0%, rgba(2, 0, 76, 0.84) 100%),
+  background-image: linear-gradient(
+      180deg,
+      rgba(150, 105, 97, 0.67) 0%,
+      rgba(2, 0, 76, 0.84) 100%
+    ),
     url(https://www.elegantthemes.com/layouts/wp-content/uploads/2018/04/architect-firm-03.jpg) !important;
   height: 40vh;
   display: flex;
@@ -4206,7 +4207,7 @@ footer {
 .aobut_for_wrapper .about_for_card {
   width: 30%;
   border-radius: 10px 10px 0 0;
-  height: 400px
+  height: 400px;
 }
 
 .about_long_way {
@@ -4229,8 +4230,6 @@ footer {
   margin: 0 50px;
 }
 
-
-
 .about_long_way_wrapper .long_way_card .no_of_colleges {
   font-weight: 600;
   margin-top: 20px;
@@ -4241,8 +4240,12 @@ footer {
 }
 
 .team_img {
-  background-image: linear-gradient(180deg, rgba(83, 81, 80, 0.67) 0%, rgba(2, 0, 76, 0.84) 100%),
-    url('/assets/images/about/group-people-working-out-business-plan-office.jpg');
+  background-image: linear-gradient(
+      180deg,
+      rgba(83, 81, 80, 0.67) 0%,
+      rgba(2, 0, 76, 0.84) 100%
+    ),
+    url("/assets/images/about/group-people-working-out-business-plan-office.jpg");
   background-size: cover;
   background-position: center center;
   height: 80vh;
@@ -4312,8 +4315,6 @@ footer {
     width: 80%;
   }
 
-
-
   .aobut_for_wrapper {
     flex-direction: column;
     padding-bottom: 20px;
@@ -4346,7 +4347,6 @@ footer {
     padding: 0 10px;
     text-align: center;
   }
-
 }
 
 @media (min-width: 426px) and (max-width: 768px) {
@@ -4393,9 +4393,6 @@ footer {
     width: 90%;
   }
 
-
-
-
   .aobut_for_wrapper {
     flex-direction: column;
     padding-bottom: 20px;
@@ -4439,7 +4436,6 @@ footer {
     text-align: center;
   }
 
-
   .mission_vision .siksha_helpline {
     /* border: 1px solid red; */
     width: 40%;
@@ -4482,8 +4478,6 @@ footer {
   }
 }
 
-
-
 /* ----------------------------------------
 ---------- contact us --------------------
 ---------------------------------------- */
@@ -4498,7 +4492,7 @@ footer {
 }
 
 .hero_contact_us {
-  background-image: url('/assets/images/hero-contact-us.jpg');
+  background-image: url("/assets/images/hero-contact-us.jpg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -4509,8 +4503,6 @@ footer {
   align-items: center;
   color: var(--white-clr);
 }
-
-
 
 .contact_us_wrapper {
   background-color: var(--reddish-white);
@@ -4618,15 +4610,12 @@ footer {
   color: var(--black_clr);
 }
 
-
 .map_integration iframe {
   width: 100%;
 }
 
-
-
 /* -------------- responsive --------------- */
-@media(max-width: 425px) {
+@media (max-width: 425px) {
   .hero_contact_us {
     height: 20vh;
   }
@@ -4649,7 +4638,6 @@ footer {
   .contact_details .details .items p a {
     font-size: 14px;
   }
-
 }
 
 @media (min-width: 426px) and (max-width: 768px) {
@@ -4680,11 +4668,7 @@ footer {
   .contact_details .details .items p a {
     font-size: 12px;
   }
-
 }
-
-
-
 
 /* -------------- top10colleges ------------------------ */
 
@@ -4704,7 +4688,6 @@ footer {
   border: 1px solid var(--primary-clr);
 }
 
-
 .top10colleges_video_bg {
   width: 100%;
   position: absolute;
@@ -4712,7 +4695,6 @@ footer {
   top: 0;
   z-index: -1;
 }
-
 
 .top10colleges .nav-item button {
   /* border: 1px solid red; */
@@ -4759,7 +4741,6 @@ footer {
   flex-wrap: wrap !important;
   padding-left: 40px;
 }
-
 
 .top10college_card {
   /* border: 1px solid red; */
@@ -4891,7 +4872,6 @@ footer {
     overflow: hidden !important;
   }
 
-
   .top10college_card {
     /* border: 1px solid red; */
     margin-right: 10px;
@@ -5006,7 +4986,6 @@ footer {
     overflow: hidden !important;
   }
 
-
   .top10college_card {
     /* border: 1px solid red; */
     margin-right: 10px;
@@ -5080,7 +5059,6 @@ footer {
 
 /* Repsonsive code  */
 @media (min-width: 481px) and (max-width: 768px) {
-
   .top10colleges {
     padding-bottom: 180% !important;
   }
@@ -5093,7 +5071,6 @@ footer {
     padding: 3px 5px;
   }
 
-
   .tab {
     position: absolute;
     /* border: 1px solid green; */
@@ -5105,7 +5082,6 @@ footer {
     padding-left: 0px;
     overflow: hidden !important;
   }
-
 
   .top10college_card {
     /* border: 1px solid red; */
@@ -5172,14 +5148,7 @@ footer {
     line-height: 10px;
     font-size: 10px;
   }
-
 }
-
-
-
-
-
-
 
 /* ----------------------------------------
 ---------- collegepage --------------------
@@ -5285,7 +5254,6 @@ footer {
   padding-left: 10px;
 }
 
-
 .college_about_footer {
   /* border: 1px solid red; */
   padding: 0 20px;
@@ -5327,7 +5295,7 @@ footer {
   border: 1px solid var(--secondary-color);
   width: 100%;
   padding: 5px 20px;
-  transition: all .6s;
+  transition: all 0.6s;
 }
 
 .will_you_get_btn a:hover {
@@ -5369,19 +5337,17 @@ footer {
 
 .claim_this_college_tooltip ul li {
   list-style: none;
-  list-style: '-';
+  list-style: "-";
 }
 
 .claim_this_college:hover .claim_this_college_tooltip {
   display: block !important;
 }
 
-
 .collegepage_content {
   background-color: var(--reddish-white);
   padding-top: 1px;
 }
-
 
 /* --------------------- collegepage_tab_wrapper --------------- */
 .collegepage_tab_wrapper {
@@ -5419,7 +5385,6 @@ footer {
   color: var(--white-clr);
 }
 
-
 /* STUB  LINKS */
 a {
   color: var(--white-clr);
@@ -5451,7 +5416,6 @@ a:hover {
   background-color: var(--primary-clr) !important;
   margin: 3px 0;
 }
-
 
 /* ------------- responsive controls ------------- */
 @media (max-width: 320px) {
@@ -5524,7 +5488,7 @@ a:hover {
 
   .will_you_get_btn a {
     padding: 3px 16px;
-    transition: all .6s;
+    transition: all 0.6s;
     font-size: 12px;
   }
 
@@ -5654,7 +5618,7 @@ a:hover {
 
   .will_you_get_btn a {
     padding: 3px 16px;
-    transition: all .6s;
+    transition: all 0.6s;
     font-size: 12px;
   }
 
@@ -5784,7 +5748,7 @@ a:hover {
 
   .will_you_get_btn a {
     padding: 3px 16px;
-    transition: all .6s;
+    transition: all 0.6s;
     font-size: 12px;
   }
 
@@ -5914,7 +5878,7 @@ a:hover {
 
   .will_you_get_btn a {
     padding: 3px 16px;
-    transition: all .6s;
+    transition: all 0.6s;
     font-size: 12px;
   }
 
@@ -5998,7 +5962,7 @@ a:hover {
 
   .will_you_get_btn a {
     padding: 3px 16px;
-    transition: all .6s;
+    transition: all 0.6s;
     font-size: 12px;
   }
 
@@ -6011,7 +5975,6 @@ a:hover {
     padding-top: 100px;
   }
 }
-
 
 /* --------------------- info css ----------------------- */
 
@@ -6095,7 +6058,6 @@ a:hover {
   font-weight: 500;
 }
 
-
 /* ----- about_college --------- */
 .about_college {
   padding: 20px 60px 20px 30px;
@@ -6131,9 +6093,7 @@ a:hover {
   color: var(--dark-gray);
 }
 
-
 @media (max-width: 320px) {
-
   /* ------ quick_updates ------- */
   .quick_updates {
     padding: 20px;
@@ -6213,11 +6173,6 @@ a:hover {
   }
 }
 
-
-
-
-
-
 /* ----------------------- courses css -------------------------- */
 
 .courses_section {
@@ -6264,8 +6219,6 @@ a:hover {
   /* border: 1px solid red; */
 }
 
-
-
 .search_input {
   /* border: 1px solid red; */
   margin-top: 20px;
@@ -6287,7 +6240,6 @@ a:hover {
   left: 1%;
   color: var(--secondary-color);
 }
-
 
 .courses_offered_card_container {
   /* border: 1px solid green; */
@@ -6355,7 +6307,6 @@ a:hover {
   font-weight: 600;
 }
 
-
 .courses_offered_card_content_2 {
   /* border: 1px solid red; */
 }
@@ -6369,7 +6320,7 @@ a:hover {
 .courses_offered_card_content_2 .app_date_box span {
   color: var(--green-clr);
   font-weight: 600;
-  font-size: 17px
+  font-size: 17px;
 }
 
 .modal_btn {
@@ -6387,8 +6338,6 @@ a:hover {
 .modal_btn span {
   color: var(--secondary-color) !important;
 }
-
-
 
 /* ------- nirf_rank_insights ------ */
 .nirf_rank_insights {
@@ -6510,7 +6459,6 @@ a:hover {
   margin: 20px;
 }
 
-
 .compare_div input {
   background-color: transparent;
   border: none;
@@ -6540,8 +6488,6 @@ a:hover {
   font-size: 18px;
   font-weight: 600;
 }
-
-
 
 /* ----------------- admissions css ------------------------- */
 
@@ -6596,8 +6542,6 @@ a:hover {
   color: white;
 }
 
-
-
 .filterContentWrapper .table_wrapper .upcoming small {
   font-size: 11px;
   color: var(--white-clr);
@@ -6624,7 +6568,6 @@ a:hover {
   padding: 4px 10px;
   letter-spacing: 0.4px;
 }
-
 
 /* ----------- cut_off ------- */
 
@@ -6661,16 +6604,13 @@ a:hover {
   border: 1px solid var(--star-clr);
   padding: 6px 30px;
   border-radius: 30px;
-  transition: .4s all;
+  transition: 0.4s all;
 }
 
 .cut_off_card_content .view_exam_btn input:hover {
   background-color: var(--star-clr);
   color: var(--white-clr);
 }
-
-
-
 
 /* -------------------- reviews css ------------------------- */
 
@@ -6693,10 +6633,9 @@ a:hover {
 
 .overall_reviews_wrapper .section1 {
   display: flex;
-  border-bottom: 1px solid #DFE2E6;
+  border-bottom: 1px solid #dfe2e6;
   padding-bottom: 10px;
 }
-
 
 .overall_reviews_wrapper_1 {
   width: 30%;
@@ -6747,7 +6686,6 @@ a:hover {
   padding-left: 10px;
 }
 
-
 .overall_reviews_wrapper .section2 {
   /* border: 1px solid red; */
   display: flex;
@@ -6787,8 +6725,6 @@ a:hover {
   padding-bottom: 5px;
   padding-left: 5px;
 }
-
-
 
 .review_title {
   /* border: 1px solid red; */
@@ -6907,9 +6843,6 @@ a:hover {
 
 /* ----------------- */
 
-
-
-
 /* ------------------ department css ------------------- */
 department_section {
   color: var(--black_clr);
@@ -6924,7 +6857,6 @@ department_section {
   border-radius: 10px;
   background-color: var(--white-clr);
 }
-
 
 .department {
   border: 1px solid var(--light-gray);
@@ -6973,7 +6905,6 @@ department_section {
   font-weight: 500;
 }
 
-
 /* ----  website_rating ---- */
 .website_rating {
   margin-top: 20px;
@@ -7002,7 +6933,7 @@ department_section {
   width: 50px;
   height: 50px;
   font-weight: 600;
-  transition: .6s all;
+  transition: 0.6s all;
 }
 
 .website_rating .likely .number span:hover {
@@ -7037,7 +6968,7 @@ department_section {
   text-decoration: none;
   border-radius: 30px;
   padding: 4px 20px;
-  transition: .4s all;
+  transition: 0.4s all;
 }
 
 .answered_ques .qna_page_link a:hover {
@@ -7144,8 +7075,6 @@ department_section {
   color: var(--secondary-color);
 }
 
-
-
 /* ---------------------- cut off css --------------------------- */
 
 .cutoff_section {
@@ -7175,7 +7104,6 @@ department_section {
   margin-right: 5px;
 }
 
-
 /* --------- accordion styling -------- */
 .accordion-button:not(.collapsed) {
   color: var(--white-clr);
@@ -7190,7 +7118,6 @@ department_section {
 .accordion-button:not(.collapsed)::after {
   background-image: url(/assets/images/arrow-down-sign-to-navigate.png);
 }
-
 
 /* ------------------- placements ------------------------ */
 
@@ -7221,9 +7148,6 @@ department_section {
   margin-right: 5px;
 }
 
-
-
-
 /* ---------------- needleToggler ------------- */
 .needleToggler {
   margin-left: 300px;
@@ -7248,7 +7172,8 @@ department_section {
   bottom: 0;
   transform: rotate(20deg) translateX(2px) translateY(-3px);
   z-index: 0;
-  box-shadow: 0 0 30px var(--secondary-color), 0 0 20px var(--secondary-color), 0 0 50px var(--secondary-color);
+  box-shadow: 0 0 30px var(--secondary-color), 0 0 20px var(--secondary-color),
+    0 0 50px var(--secondary-color);
   opacity: 0;
   transition: all 0.5s ease;
 }
@@ -7257,7 +7182,8 @@ department_section {
   left: auto;
   right: 0;
   transform: rotate(-20deg) translateX(-2px) translateY(-3px);
-  box-shadow: 0 0 30px var(--primary-clr), 0 0 20px var(--primary-clr), 0 0 50px var(--primary-clr);
+  box-shadow: 0 0 30px var(--primary-clr), 0 0 20px var(--primary-clr),
+    0 0 50px var(--primary-clr);
 }
 
 .toggle {
@@ -7265,17 +7191,19 @@ department_section {
   width: 160px;
   height: 80px;
   border-radius: 80px 80px 0 0;
-  background-image:
-    conic-gradient(from 180deg at bottom center, var(--primary-clr) 0%,
-      var(--primary-clr) 34%,
-      var(--primary-clr) 34%,
-      transparent 34.5%,
-      transparent 45%,
-      transparent 50%,
-      transparent 55%,
-      transparent 65.5%,
-      var(--primary-clr) 66%,
-      var(--primary-clr) 66%);
+  background-image: conic-gradient(
+    from 180deg at bottom center,
+    var(--primary-clr) 0%,
+    var(--primary-clr) 34%,
+    var(--primary-clr) 34%,
+    transparent 34.5%,
+    transparent 45%,
+    transparent 50%,
+    transparent 55%,
+    transparent 65.5%,
+    var(--primary-clr) 66%,
+    var(--primary-clr) 66%
+  );
   z-index: 1;
 }
 
@@ -7300,7 +7228,13 @@ department_section {
   width: 5px;
   height: 70px;
   border-radius: 5px;
-  background: conic-gradient(from 0deg at center top, transparent 49%, white 49.5%, white 50.5%, transparent 51%);
+  background: conic-gradient(
+    from 0deg at center top,
+    transparent 49%,
+    white 49.5%,
+    white 50.5%,
+    transparent 51%
+  );
   position: absolute;
   left: calc(50% - 2.5px);
   bottom: 0px;
@@ -7372,8 +7306,6 @@ department_section {
   }
 }
 
-
-
 /* -------------- rankings css ----------------- */
 
 .ranking_section {
@@ -7389,7 +7321,6 @@ department_section {
   border-radius: 10px;
   background-color: var(--white-clr);
 }
-
 
 /* -------------- gallery css ----------------- */
 .gallery_section {
@@ -7417,7 +7348,6 @@ department_section {
   /* border: 1px solid var(--light-gray); */
 }
 
-
 .gallery_video_div {
   padding: 20px 60px 20px 30px;
   border-radius: 10px;
@@ -7437,9 +7367,6 @@ department_section {
   /* border: 1px solid var(--light-gray); */
 }
 
-
-
-
 /* --------------------- Scholarships css --------------------- */
 
 .scholarship_section {
@@ -7456,7 +7383,6 @@ department_section {
   background-color: var(--white-clr);
 }
 
-
 .scholarship_section_wrapper small {
   display: flex;
   margin-top: 30px;
@@ -7469,8 +7395,6 @@ department_section {
   height: 20px;
   margin-right: 5px;
 }
-
-
 
 /* -------------- faculty css ---------------------- */
 
@@ -7487,8 +7411,6 @@ department_section {
   border-radius: 10px;
   background-color: var(--white-clr);
 }
-
-
 
 .faculty_div_wrapper {
   /* border: 1px solid red; */
@@ -7538,8 +7460,6 @@ department_section {
   color: var(--dark-gray);
 }
 
-
-
 /* --------------------------- news articles css --------------------------- */
 
 .newsArticles_section {
@@ -7555,7 +7475,6 @@ department_section {
   border-radius: 10px;
   background-color: var(--white-clr);
 }
-
 
 .news_card_wrapper {
   display: flex;
@@ -7603,7 +7522,6 @@ department_section {
   margin-right: 20px;
 }
 
-
 #filterBtnWrapper .btn {
   border: none;
   outline: none;
@@ -7649,9 +7567,6 @@ department_section {
   font-weight: 600;
 }
 
-
-
-
 /* -------------------- college compare css ---------------------------------- */
 
 .college_compare_section {
@@ -7689,7 +7604,7 @@ department_section {
 
 .compare_colleges_card .colored_bg {
   /* border: 1px solid red; */
-  background-color: #73FFD6;
+  background-color: #73ffd6;
   height: 80px;
   width: 100%;
   border-radius: 10px 10px 0 0;
@@ -7708,7 +7623,7 @@ department_section {
   justify-content: center;
   align-items: center;
   padding: 20px;
-  margin-top: -40px
+  margin-top: -40px;
 }
 
 .compare_colleges_card .college_name {
@@ -7738,11 +7653,6 @@ department_section {
   font-weight: 500;
 }
 
-
-
-
-
-
 /* ------------------------------ QNA Css ---------------------------------- */
 
 .bg_reddish {
@@ -7763,16 +7673,19 @@ department_section {
   margin-top: 20px;
 }
 
-
 .qna_about_us {
-  background-image: linear-gradient(180deg, rgba(150, 105, 97, 0.67) 0%, rgba(2, 0, 76, 0.84) 100%), url(https://png.pngtree.com/thumb_back/fh260/background/20201010/pngtree-thumb-up-sign-with-neon-effect-lights-like-in-silhouette-ok-image_407900.jpg) !important;
+  background-image: linear-gradient(
+      180deg,
+      rgba(150, 105, 97, 0.67) 0%,
+      rgba(2, 0, 76, 0.84) 100%
+    ),
+    url(https://png.pngtree.com/thumb_back/fh260/background/20201010/pngtree-thumb-up-sign-with-neon-effect-lights-like-in-silhouette-ok-image_407900.jpg) !important;
   height: 40vh;
   display: flex;
   justify-content: center;
   align-items: center;
   color: var(--white-clr);
 }
-
 
 .qna_filters {
   background-color: var(--white-clr);
@@ -7871,8 +7784,6 @@ department_section {
   background-color: var(--primary-clr);
 }
 
-
-
 /* ----------------------- notifications ---------------------------- */
 
 /* .notification_page{
@@ -7889,8 +7800,12 @@ department_section {
 }
 
 .hero_notifications {
-  background-image: linear-gradient(180deg, rgba(150, 105, 97, 0.67) 0%, rgba(2, 0, 76, 0.84) 100%),
-    url('/assets/images/noti.jpg');
+  background-image: linear-gradient(
+      180deg,
+      rgba(150, 105, 97, 0.67) 0%,
+      rgba(2, 0, 76, 0.84) 100%
+    ),
+    url("/assets/images/noti.jpg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -7902,12 +7817,9 @@ department_section {
   color: var(--white-clr);
 }
 
-
-
 .notification_page_wrapper {
   background-color: var(--reddish-white);
 }
-
 
 .main_noti_img {
   height: 80px;
@@ -7930,7 +7842,8 @@ department_section {
   border: 1px solid var(--light-gray);
 }
 
-.noti_page_author_content {}
+.noti_page_author_content {
+}
 
 .noti_page_author_content p {
   color: var(--secondary-color);
@@ -7958,23 +7871,16 @@ department_section {
   color: var(--black_clr);
 }
 
-
-
-
-
-
-
-
-
-
-
-
 /* ---------------------------------------
 ---------------- blogs ---------------
 -------------------------------------- */
 
 .hero_blogs {
-  background-image: linear-gradient(180deg, rgba(150, 105, 97, 0.67) 0%, rgba(2, 0, 76, 0.84) 100%),
+  background-image: linear-gradient(
+      180deg,
+      rgba(150, 105, 97, 0.67) 0%,
+      rgba(2, 0, 76, 0.84) 100%
+    ),
     url(https://www.schudio.com/wp-content/uploads/2017/11/best-school-websites-banner.png) !important;
   height: 40vh;
   display: flex;
@@ -8093,8 +7999,12 @@ department_section {
 }
 
 @keyframes vertical-marquee {
-  0% { top: 0; }
-  100% { top: -100%; }
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -100%;
+  }
 }
 
 .table-container {
@@ -8102,12 +8012,9 @@ department_section {
   -webkit-overflow-scrolling: touch; /* For smooth scrolling on touch devices */
 }
 
-
-
 /* ================================================
 ---------------- courses page ------------------
 ================================================ */
-
 
 .textEditor p {
   font-family: sans-serif;

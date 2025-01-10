@@ -47,7 +47,7 @@ const menuItems = [
     name: "More",
     icon: <ChevronDown />,
     subMenu: [
-      { name: "Title 1", href: "" },
+      { name: "Landing Page", href: "/landing-page" },
       { name: "Title 2", href: "" },
       { name: "Title 3", href: "" },
       { name: "Title 4", href: "" },
@@ -58,6 +58,8 @@ const menuItems = [
 export default function Nav() {
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+
+  const [isloggedIn, SetIsloggedIn] = useState(true);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSubMenu, setActiveSubMenu] = useState(null); // For mobile accordion
@@ -225,7 +227,11 @@ export default function Nav() {
   return (
     <div
       className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${
-        isHomePage ? (isScrolled ? "bg-white shadow-md" : "bg-black/60") : "bg-white shadow-md"
+        isHomePage
+          ? isScrolled
+            ? "bg-white shadow-md"
+            : "bg-black/60"
+          : "bg-white shadow-md"
       }`}
     >
       <div className="mx-auto flex items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
@@ -277,11 +283,11 @@ export default function Nav() {
                           {item.subMenu.map((subItem) => (
                             <li
                               key={subItem.name}
-                              className="transition duration-500 rounded-lg hover:bg-gray-200 px-3 py-2"
+                              className="transition duration-500 rounded-lg hover:bg-gray-200"
                             >
                               <Link
                                 href={subItem.href}
-                                className="text-xs font-medium transition text-black  duration-500 hover:text-secondary uppercase"
+                                className="text-xs font-medium transition text-black  duration-500 hover:text-secondary uppercase w-full block px-3 py-2"
                               >
                                 {subItem.name}
                               </Link>
@@ -325,18 +331,42 @@ export default function Nav() {
 
             {isHomePage ? (
               isScrolled ? (
-                <DynamicThemeButton href="/login">
-                  Login/Signup
-                </DynamicThemeButton>
+                <>
+                  {isloggedIn ? (
+                    <DynamicThemeButton href="/login">
+                      Hi, Aditya
+                    </DynamicThemeButton>
+                  ) : (
+                    <DynamicThemeButton href="/login">
+                      Login/Signup
+                    </DynamicThemeButton>
+                  )}
+                </>
               ) : (
-                <DynamicWhiteButton href="/login">
-                  Login/Signup
-                </DynamicWhiteButton>
+                <>
+                  {isloggedIn ? (
+                    <DynamicWhiteButton href="/login">
+                      Hi, Aditya
+                    </DynamicWhiteButton>
+                  ) : (
+                    <DynamicWhiteButton href="/login">
+                      Login/Signup
+                    </DynamicWhiteButton>
+                  )}
+                </>
               )
             ) : (
-              <DynamicThemeButton href="/login">
-                Login/Signup
-              </DynamicThemeButton>
+              <>
+                {isloggedIn ? (
+                  <DynamicThemeButton href="/login">
+                    Hi, Aditya
+                  </DynamicThemeButton>
+                ) : (
+                  <DynamicThemeButton href="/login">
+                    Login/Signup
+                  </DynamicThemeButton>
+                )}
+              </>
             )}
           </div>
         </div>

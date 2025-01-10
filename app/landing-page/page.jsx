@@ -138,8 +138,8 @@ const Page = () => {
           <div
             className="lg:px-10 px-6 pt-10"
             style={{
-              backgroundImage: `url('/assets/bg_elem/patterns.png')`,
-              backgroundColor: "#3D52A0", // Background color
+              backgroundImage: `url('/assets/bg_elem/landing-page-bg.jpg')`,
+              //   backgroundColor: "#3D52A0", // Background color
               backgroundSize: "cover", // Adjust size as needed
               backgroundRepeat: "no-repeat", // Prevent tiling
               backgroundPosition: "center", // Center the image
@@ -148,86 +148,164 @@ const Page = () => {
           >
             <div className="text-white">
               <Breadcrumbs2
-                breadcrumbs={[{ title: "Siksha Helpline", link: "" }]}
-                linkColor="text-white"
-                activeColor="text-white/70"
+                breadcrumbs={[{ title: "Landing Page", link: "" }]}
+                linkColor="text-second"
+                activeColor="text-textClr"
               />
             </div>
 
             <div className="grid gap-10 lg:grid-cols-2 grid-cols-1 mt-5 lg:pt-10 lg:pb-0 pb-10">
-              <div>
-                <h1 className="text-4xl max-sm:text-3xl text-white font-semibold">
-                  Who We Are
-                </h1>
-                <p className="mt-4 text-white/70 mb-10">
-                  Founded in 2019, Siksha Helpline is one of the most reputable
-                  educational consulting companies in India. Our goal is to
-                  provide clear, individualized guidance on the path to higher
-                  education. The Siksha Helpline offers professional advice and
-                  tools to assist you in understanding the complexity of the
-                  educational system, whether you're looking for aid with exam
-                  preparation, career counseling, school admissions, or academic
-                  planning. Our qualified experts give you individualized
-                  support, address your inquiries, and offer insightful advice
-                  to help you reach your learning objectives and make wise
-                  decisions. For everything related to education, the Siksha
-                  Helpline is your go-to source because of its emphasis on
-                  empowerment, clarity, and assistance.
+              <div className="2xl:mb-48 2xl:mt-20 xl:mb-56 xl:pb-16 lg:pb-20">
+                <h3 className="font-bold text-lg text-second uppercase tracking-widest mb-2">
+                  Online education
+                </h3>
+                <h2 className="text-6xl max-sm:text-3xl text-black font-bold">
+                  Learn The
+                </h2>
+                <h2 className="text-6xl max-sm:text-3xl text-black font-bold">
+                  Skills You Need
+                </h2>
+                <h2 className="text-6xl max-sm:text-3xl text-black font-bold">
+                  To Succeed
+                </h2>
+                <p className="mt-4 text-lg text-black/70 mb-10">
+                  Free online courses from the world’s Leading experts. join 18+
+                  million Learners today.
                 </p>
 
                 <div className="flex gap-6 flex-wrap items-center py-2 max-sm:flex-col max-sm:items-start max-sm:space-x-0 max-sm:space-y-4">
-                  <DynamicWhiteButton href="#emailUsForm">
-                    Contact Us Now
-                  </DynamicWhiteButton>
+                  <DynamicThemeButton href="#enquireNowForm">
+                    Enquire Now
+                  </DynamicThemeButton>
                   <div className="flex items-center">
                     <img
                       src="/assets/images/new/student-overlaped.png"
                       alt=""
                     />
-                    <p className="text-white text-lg max-sm:text-sm">
+                    <p className="text-black text-lg max-sm:text-sm">
                       24k + Happy Students
                     </p>
                   </div>
                 </div>
               </div>
-              <div className="lg:flex hidden justify-center items-end">
-                <div className="flex justify-center">
-                  <div className="relative flex justify-center items-end">
-                    <img
-                      loading="lazy"
-                      src="https://getmasum.com/html-preview/edumon/assets/img/banner.png"
-                      alt="Siksha-Helpline Image"
-                      className="rounded-tl-3xl rounded-tr-5xl w-[80%]"
-                    />
-                    <div className=" absolute top-20 -left-10 w-40 h-40 rounded-lg bg-white shadow-lg shadow-white animate-left-right flex flex-col justify-center items-center">
-                      <div className="bg-second w-20 h-20 rounded-full p-3">
-                        <img
-                          src="/assets/icons/student.png"
-                          alt="Student Icon"
-                        />
-                      </div>
-                      <h3 className="font-bold text-black mt-3 text-lg">28K</h3>
-                      <p className="text-textClr text-base">Total Students</p>
-                    </div>
-                    <div className="border absolute -bottom-16 -right-10 w-64 h-28 rounded-lg bg-white shadow-lg shadow-white animate-up-down flex gap-2 justify-center items-center">
-                      <div className="bg-second w-20 h-20 rounded-full p-3">
-                        <img
-                          src="/assets/icons/college.png"
-                          alt="Student Icon"
-                        />
-                      </div>
-                      <div>
-                        <h3 className="font-bold text-black text-lg">750+</h3>
-                        <p className="text-textClr text-base">Total Colleges</p>
-                      </div>
-                    </div>
+              <div className="relative lg:block hidden">
+                <img
+                  src="/assets/images/new/landing-page-girl.png"
+                  alt="Landing Page Student Image"
+                  className="absolute z-10 bottom-0"
+                />
+                <div className="2xl:block  hidden">
+                  <div className="absolute bottom-0 left-10 ">
+                    <div class="all-shapes"></div>
+                  </div>
+                  <div
+                    className="absolute top-[20%] left-[0%] px-4 rounded-lg py-2 text-lg text-white divMoveDiagonalOne"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(to left, #00c0a6, #00b1c9, #009df4, #0080ff, #1d4dfa);",
+                    }}
+                  >
+                    200+ Colleges Partners
+                  </div>
+                  <div
+                    className="absolute top-[20%] right-[10%] px-4 rounded-lg py-2 text-lg text-white divMoveDiagonalTwo  z-10"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(to right, #52f781, #a5e150, #d3c83a, #f0ae43, #fe955c);",
+                    }}
+                  >
+                    200+ Colleges Partners
+                  </div>
+                  <div
+                    className="absolute top-[40%] right-[0%] px-4 rounded-lg py-2 text-lg text-white divMoveDiagonalOne z-10"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(to right, #fe955c, #ff816d, #ff6d86, #ff5fa7, #ff5dcc);",
+                    }}
+                  >
+                    200+ Colleges Partners
+                  </div>
+                  <div
+                    className="absolute top-[60%] right-[15%] px-4 rounded-lg py-2 text-lg text-white divMoveDiagonalTwo z-10"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(to right, #785eff, #009fff, #00c8ff, #00e4ce, #52f781);",
+                    }}
+                  >
+                    200+ Colleges Partners
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <div className="lg:px-10 px-6 py-10 bg-skin flex items-center max-sm:flex-col">
+            <h2 className="text-4xl max-sm:text-2xl text-black font-semibold w-1/4 max-sm:w-full ">
+              Our Students Placed in
+            </h2>
+            <div className="mt-3 w-3/4 swiperButtonNone max-sm:w-full">
+              <Swiper
+                spaceBetween={30}
+                slidesPerView={1.5}
+                loop={true}
+                autoplay={{
+                  delay: 0,
+                  disableOnInteraction: true,
+                  pauseOnMouseEnter: true,
+                }}
+                speed={2000}
+                // navigation
+                scrollbar={{ draggable: true }}
+                breakpoints={{
+                  320: {
+                    slidesPerView: 3, // 1 slide on very small screens
+                  },
+                  500: {
+                    slidesPerView: 5,
+                  },
+                  768: {
+                    slidesPerView: 6, // Can show partial next slide
+                  },
+                  1024: {
+                    slidesPerView: 8, // Showing 2 slides
+                  },
+                  1300: {
+                    slidesPerView: 10, // Show 2.5 slides
+                  },
+                  1500: {
+                    slidesPerView: 12, // Show 3 full slides
+                  },
+                }}
+                navigation={true}
+                //  modules={[Autoplay, Pagination, Navigation]}
+                modules={[Autoplay, Navigation, A11y]}
+                className="swiper-wrapper"
+              >
+                {placedCompanies.length > 0 ? (
+                  placedCompanies.map((company, index) => (
+                    <SwiperSlide
+                      key={index}
+                      className="flex items-end justify-center rounded"
+                    >
+                      <img
+                        src={company.companyLogo}
+                        alt={company.companyName || "Company Logo"}
+                        className="rounded"
+                      />
+                      {/* <h3 className="text-gray-700 text-lg font-semibold mt-2 twoLinerTitle2">
+                          {company.companyName}
+                        </h3> */}
+                    </SwiperSlide>
+                  ))
+                ) : (
+                  <p className="text-center text-gray-600">
+                    No best sellers available.
+                  </p>
+                )}
+              </Swiper>
+            </div>
+          </div>
 
-          <div className="lg:px-10 px-6 pt-10">
+          <div className="lg:px-10 px-6 py-10">
             <div className="py-10">
               <h2 className="text-4xl max-sm:text-3xl text-black font-semibold ">
                 Our Services
@@ -292,154 +370,15 @@ const Page = () => {
             </div>
 
             <div className="py-10">
-              <h2 className="text-4xl max-sm:text-3xl text-black font-semibold">
-                Our Partners(200+ Partners)
+              <h2 className="text-4xl max-sm:text-3xl text-black font-semibold ">
+                Process(How do we Full Fill there Requirements) (usp)
               </h2>
-              <div className="mt-4 swiperButtonNone">
-                <Swiper
-                  spaceBetween={10}
-                  slidesPerView={1.5}
-                  loop={true}
-                  autoplay={{
-                    delay: 3000,
-                    disableOnInteraction: true,
-                    pauseOnMouseEnter: true,
-                  }}
-                  speed={1000}
-                  touchStartPreventDefault={false} // Prevents unwanted scrolling
-                  preventInteractionOnTransition={true} // Improves mobile interaction
-                  // navigation
-                  pagination={{ clickable: true }}
-                  scrollbar={{ draggable: true }}
-                  breakpoints={{
-                    // Mobile small (smaller than 500px)
-                    320: {
-                      slidesPerView: 2, // 1 slide on very small screens
-                    },
-                    500: {
-                      slidesPerView: 4,
-                    },
-                    // Tablets (around 768px)
-                    768: {
-                      slidesPerView: 5, // Can show partial next slide
-                    },
-                    1024: {
-                      slidesPerView: 6, // Showing 2 slides
-                    },
-                    1300: {
-                      slidesPerView: 8, // Show 2.5 slides
-                    },
-                    1500: {
-                      slidesPerView: 8, // Show 3 full slides
-                    },
-                  }}
-                  navigation={true}
-                  //  modules={[Autoplay, Pagination, Navigation]}
-                  modules={[Autoplay, Navigation, A11y]}
-                  className="swiper-wrapper"
-                >
-                  {colleges.length > 0 ? (
-                    colleges.map((college) => (
-                      <SwiperSlide
-                        key={college.collegeId}
-                        className="rounded-lg bg-white border"
-                      >
-                        <div className="p-4 text-sm">
-                          <img
-                            className="h[auto] w-full object-cover rounded-lg mr-4"
-                            src={college.collegeLogo}
-                            alt=""
-                          />
-                          <h3 className="text-gray-700 text-lg font-semibold mt-2 twoLinerTitle2">
-                            {college.collegeName}
-                          </h3>
-                        </div>
-                      </SwiperSlide>
-                    ))
-                  ) : (
-                    <p className="text-center text-gray-600">
-                      No best sellers available.
-                    </p>
-                  )}
-                </Swiper>
-              </div>
             </div>
           </div>
 
           <Testimonials />
 
-          <div className="lg:px-10 px-6 py-10 bg-skin">
-            <h2 className="text-4xl max-sm:text-3xl text-black font-semibold mt-10">
-              Our Students Placed in
-            </h2>
-            <div className="mt-3 swiperButtonNone">
-              <Swiper
-                spaceBetween={10}
-                slidesPerView={1.5}
-                loop={true}
-                autoplay={{
-                  delay: 0,
-                  disableOnInteraction: true,
-                  pauseOnMouseEnter: true,
-                }}
-                speed={2000}
-                touchStartPreventDefault={false} // Prevents unwanted scrolling
-                preventInteractionOnTransition={true} // Improves mobile interaction
-                // navigation
-                pagination={{ clickable: true }}
-                scrollbar={{ draggable: true }}
-                breakpoints={{
-                  320: {
-                    slidesPerView: 3, // 1 slide on very small screens
-                  },
-                  500: {
-                    slidesPerView: 5,
-                  },
-                  768: {
-                    slidesPerView: 6, // Can show partial next slide
-                  },
-                  1024: {
-                    slidesPerView: 8, // Showing 2 slides
-                  },
-                  1300: {
-                    slidesPerView: 9, // Show 2.5 slides
-                  },
-                  1500: {
-                    slidesPerView: 10, // Show 3 full slides
-                  },
-                }}
-                navigation={true}
-                //  modules={[Autoplay, Pagination, Navigation]}
-                modules={[Autoplay, Navigation, A11y]}
-                className="swiper-wrapper"
-              >
-                {placedCompanies.length > 0 ? (
-                  placedCompanies.map((company, index) => (
-                    <SwiperSlide key={index} className="rounded-lg ">
-                      <div className="p-4 text-sm rounded-lg  bg-white/40 hover:bg-white transition duration-300 scale-100">
-                        <div className=" max-h-40 flex justify-center items-center">
-                          <img
-                            className="h[auto] w-full object-cover rounded-lg "
-                            src={company.companyLogo}
-                            alt=""
-                          />
-                        </div>
-                        <h3 className="text-gray-700 text-lg font-semibold mt-2 twoLinerTitle2">
-                          {company.companyName}
-                        </h3>
-                      </div>
-                    </SwiperSlide>
-                  ))
-                ) : (
-                  <p className="text-center text-gray-600">
-                    No best sellers available.
-                  </p>
-                )}
-              </Swiper>
-            </div>
-          </div>
-
-          <div className="2xl:px-40 lg:px-10  px-6 py-20" id="emailUsForm">
+          <div className="2xl:px-40 lg:px-10  px-6 py-20" id="enquireNowForm">
             <div className="grid gap-4 2xl:grid-cols-2 xl:grid-cols-2 lg:grid-cols-1 grid-cols-1">
               <div>
                 <div className="flex justify-center">
@@ -472,7 +411,7 @@ const Page = () => {
               </div>
               <div className="">
                 <h5 className="text-second font-medium text-xl mb-2">
-                  Send us email
+                  Enquire Us
                 </h5>
                 <h2 className="text-black font-semibold text-4xl">
                   Feel Free to write
@@ -555,32 +494,32 @@ const Page = () => {
                         </div>
                       </div>
 
-                      {/* Subject and Phone (Second Row) */}
+                      {/* Course and Phone (Second Row) */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                           <label
-                            htmlFor="subject"
+                            htmlFor="course"
                             className="block text-sm font-medium text-gray-500"
                           >
-                            Subject
+                            Course
                           </label>
                           <input
-                            id="subject"
+                            id="course"
                             type="text"
-                            placeholder="Enter Subject"
-                            {...register("subject", {
-                              required: "Subject is required",
+                            placeholder="Enter course"
+                            {...register("course", {
+                              required: "Course is required",
                               minLength: {
                                 value: 6,
                                 message:
-                                  "Subject should be at-least 6 characters.",
+                                  "Course should be at-least 6 characters.",
                               },
                             })}
                             className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                           />
-                          {errors.subject && (
+                          {errors.course && (
                             <p className="text-red-500 text-sm">
-                              {errors.subject.message}
+                              {errors.course.message}
                             </p>
                           )}
                         </div>
@@ -613,33 +552,20 @@ const Page = () => {
                         </div>
                       </div>
 
-                      {/* Message (Third Row) */}
-                      <div>
+                      {/* Loan Assistance Checkbox */}
+                      <div className="flex items-center gap-2 pb-6">
+                        <input
+                          id="loanAssistance"
+                          type="checkbox"
+                          {...register("loanAssistance")}
+                          className="h-5 w-5 text-blue-500 focus:ring-blue-500 border-gray-300 rounded"
+                        />
                         <label
-                          htmlFor="message"
-                          className="block text-sm font-medium text-gray-500"
+                          htmlFor="loanAssistance"
+                          className="text-sm font-medium text-gray-500"
                         >
-                          Message
+                          I also need loan assistance
                         </label>
-                        <textarea
-                          id="message"
-                          placeholder="Enter Message"
-                          {...register("message", {
-                            required: "Message is required",
-                            minLength: {
-                              value: 20,
-                              message:
-                                "Message should be at-least 20 characters long.",
-                            },
-                          })}
-                          className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                          rows="4"
-                        ></textarea>
-                        {errors.message && (
-                          <p className="text-red-500 text-sm">
-                            {errors.message.message}
-                          </p>
-                        )}
                       </div>
 
                       <div className="flex gap-2 items-center">
@@ -658,21 +584,6 @@ const Page = () => {
                       </div>
                     </form>
                   )}
-
-                  {/* Success Message Image (Displayed for 2 seconds) */}
-                  {/* {isSubmitted && (
-                    <div className="border flex flex-col justify-center items-center gap-2">
-                      <img
-                        src="/assets/animated_gif/tick.gif"
-                        alt="Success"
-                        className="w-24 h-24"
-                      />
-                      <span>Thanks For Reaching Out</span>
-                      <span className="font-semibold text-xl text-green-500">
-                        Form Submitted Successfully!
-                      </span>
-                    </div>
-                  )} */}
                 </div>
               </div>
             </div>

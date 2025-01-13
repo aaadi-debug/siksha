@@ -67,6 +67,8 @@ export default function Nav() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isNotificationSidebarOpen, setIsNotificationSidebarOpen] =
     useState(false); // State for sidebar
+    const [isUserSidebarOpen, setIsUserSidebarOpen] =
+    useState(false); // State for sidebar
   const sidebarRef = useRef(null);
   const searchBarRef = useRef(null);
 
@@ -125,9 +127,16 @@ export default function Nav() {
   const toggleNotificationSidebar = () => {
     setIsNotificationSidebarOpen(!isNotificationSidebarOpen);
   };
+  const toggleUserSidebar = () => {
+    setIsUserSidebarOpen(!isUserSidebarOpen);
+  };
 
   const closeCartSidebar = () => {
     setIsNotificationSidebarOpen(false);
+  };
+
+  const closeUserSidebar = () => {
+    setIsUserSidebarOpen(false);
   };
 
   const fetchNotifications = async () => {
@@ -333,7 +342,7 @@ export default function Nav() {
               isScrolled ? (
                 <>
                   {isloggedIn ? (
-                    <DynamicThemeButton href="/login">
+                    <DynamicThemeButton onClick={toggleUserSidebar}>
                       Hi, Aditya
                     </DynamicThemeButton>
                   ) : (
@@ -345,7 +354,7 @@ export default function Nav() {
               ) : (
                 <>
                   {isloggedIn ? (
-                    <DynamicWhiteButton href="/login">
+                    <DynamicWhiteButton onClick={toggleUserSidebar}>
                       Hi, Aditya
                     </DynamicWhiteButton>
                   ) : (
@@ -358,7 +367,7 @@ export default function Nav() {
             ) : (
               <>
                 {isloggedIn ? (
-                  <DynamicThemeButton href="/login">
+                  <DynamicThemeButton onClick={toggleUserSidebar}>
                     Hi, Aditya
                   </DynamicThemeButton>
                 ) : (
@@ -643,6 +652,41 @@ export default function Nav() {
           <div
             className="fixed inset-0 bg-black opacity-50 z-20"
             onClick={toggleNotificationSidebar}
+          />
+        </>
+      )}
+
+      {/* Cart Sidebar */}
+      {isUserSidebarOpen && (
+        <>
+          <div
+            ref={sidebarRef}
+            className={`fixed inset-y-0 right-0 z-50 w-96 max-sm:w-72 p-4 bg-white shadow-l transition-transform transform ${
+              isUserSidebarOpen ? "translate-x-0" : "translate-x-full"
+            } duration-700 ease-in-out`}
+          >
+            <div className="flex items-center justify-between pt-1 pb-2 border-textClr border-b">
+              <h2 className="lg:text-2xl text-blackClr font-bold">
+                Hi, Aditya
+              </h2>
+              <button
+                onClick={closeUserSidebar}
+                className="text-gray-600 hover:text-gray-900"
+              >
+                <X
+                  className="h-10 w-10 rounded-full p-2 transition duration-500 hover:bg-primary/80 hover:text-white"
+                  aria-hidden="true"
+                />
+              </button>
+            </div>
+            <div className="py-2 pb-16">
+              
+            </div>
+          </div>
+          {/* Overlay */}
+          <div
+            className="fixed inset-0 bg-black opacity-50 z-20"
+            onClick={toggleUserSidebar}
           />
         </>
       )}

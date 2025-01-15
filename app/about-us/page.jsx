@@ -25,7 +25,7 @@ const About = () => {
     <>
       <div className="pt-20 max-sm:pt-16">
         <div
-          class="border-red-500 bg-cover bg-center bg-no-repeat  text-white lg:px-10 px-6 py-10"
+          className="border-red-500 bg-cover bg-center bg-no-repeat  text-white lg:px-10 px-6 py-10"
           style={{
             backgroundImage: `url('/assets/images/new/about-bread.jpg')`,
           }}

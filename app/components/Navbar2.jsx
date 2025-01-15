@@ -67,8 +67,7 @@ export default function Nav() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isNotificationSidebarOpen, setIsNotificationSidebarOpen] =
     useState(false); // State for sidebar
-    const [isUserSidebarOpen, setIsUserSidebarOpen] =
-    useState(false); // State for sidebar
+  const [isUserSidebarOpen, setIsUserSidebarOpen] = useState(false); // State for sidebar
   const sidebarRef = useRef(null);
   const searchBarRef = useRef(null);
 
@@ -100,8 +99,8 @@ export default function Nav() {
   ]);
 
   const isHomePage = pathname === "/"; // Check if the current page is the homepage
-  if (isHomePage) console.log("Home");
-  else console.log("Not hjopme");
+  // if (isHomePage) console.log("Home");
+  // else console.log("Not hjopme");
 
   const handleSearch = async (e) => {
     setQuery(e.target.value);
@@ -315,14 +314,16 @@ export default function Nav() {
           <div className="flex gap-4 items-center responsive_css_buttonDiv">
             <button
               onClick={toggleSearch}
+              aria-label="Search Button"
               className="text-white p-2 transition-all duration-500 bg-second rounded-full flex justify-center align-middle hover:text-secondary py-2 hover:bg-whiteClr hover:rounded-full hover:shadow-gray-900 hover:shadow-whiteClr"
             >
               <Search size={18} />
             </button>
             {/* Cart */}
-            <div className="relative group">
+            <div className="group">
               <button
                 onClick={toggleNotificationSidebar}
+                aria-label="Notification Button"
                 className="relative rounded-3xl flex justify-center items-center border-2 border-second  bg-white text-second p-2 text-xs uppercase font-semibold transition ease-in-out duration-500 hover:border-2 hover:border-second hover:bg-white hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
               >
                 <IoMdNotifications size={16} />
@@ -330,12 +331,6 @@ export default function Nav() {
                   {cart?.length}
                 </span> */}
               </button>
-
-              {/* Tooltip */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 top-12 opacity-0 group-hover:opacity-100 bg-black text-white text-sm rounded-lg px-3 py-1 transition-opacity duration-300 pointer-events-none z-10">
-                Cart
-                <div className="absolute w-0 h-0 border-x-8 border-x-transparent border-b-8 border-b-black -top-2 left-1/2 -translate-x-1/2"></div>
-              </div>
             </div>
 
             {isHomePage ? (
@@ -679,9 +674,7 @@ export default function Nav() {
                 />
               </button>
             </div>
-            <div className="py-2 pb-16">
-              
-            </div>
+            <div className="py-2 pb-16"></div>
           </div>
           {/* Overlay */}
           <div

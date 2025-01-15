@@ -17,6 +17,7 @@
     "crypto-js": "^4.2.0",
     "dotenv": "^16.4.5",
     "dropbox": "^10.34.0",
+    "framer-motion": "^11.18.0",
     "lodash": "^4.17.21",
     "lucide-react": "^0.427.0",
     "mongoose": "^8.4.4",
@@ -41,6 +42,7 @@
     "reactstrap": "^9.2.2",
     "recharts": "^2.12.7",
     "swiper": "^11.1.9",
+    "three": "^0.172.0",
     "video-react": "^0.16.0"
   },
   "devDependencies": {

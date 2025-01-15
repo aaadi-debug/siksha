@@ -80,7 +80,7 @@ export default function Content({ blogInfo }) {
                   </p>
                 </div>
 
-                <hr class="h-px my-8 dark:bg-gray-700" />
+                <hr className="h-px my-8 dark:bg-gray-700" />
 
                 <div
                   className="text-lg blog_content"

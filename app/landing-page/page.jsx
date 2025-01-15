@@ -11,9 +11,11 @@ import "swiper/css/navigation";
 import collegeDataJson from "../data/collegeData.json";
 import Testimonials from "../components/Testimonials";
 import Breadcrumbs2 from "../components/Breadcrumbs2";
+import TestimonialSlider from "../components/TestimonialSlider";
 import DynamicWhiteButton from "../components/DynamicWhiteButton";
 import { PhoneCall, Mail, MapPin } from "lucide-react";
 import DynamicThemeButton from "../components/DynamicThemeButton";
+import { motion } from "framer-motion";
 
 const placedCompanies = [
   {
@@ -104,6 +106,39 @@ const placedCompanies = [
 
 const Page = () => {
   const colleges = collegeDataJson.data;
+  const [isHovered, setIsHovered] = useState(false);
+  const timelineData = [
+    {
+      id: 1,
+      title: "Brief",
+      description: "Lorem ipsum dolor sit amet.",
+      color: "bg-red-500",
+    },
+    {
+      id: 2,
+      title: "Sketch",
+      description: "Consectetur adipiscing elit.",
+      color: "bg-green-500",
+    },
+    {
+      id: 3,
+      title: "Solution",
+      description: "Sed do eiusmod tempor incididunt.",
+      color: "bg-purple-500",
+    },
+    {
+      id: 4,
+      title: "Design",
+      description: "Labore et dolore magna aliqua.",
+      color: "bg-orange-500",
+    },
+    {
+      id: 5,
+      title: "Revision",
+      description: "Ut enim ad minim veniam.",
+      color: "bg-blue-500",
+    },
+  ];
 
   const {
     register,
@@ -135,7 +170,7 @@ const Page = () => {
     <>
       <div className="mx-auto pt-20 max-sm:pt-16">
         <div className="">
-          <div
+          <section
             className="lg:px-10 px-6 pt-10"
             style={{
               backgroundImage: `url('/assets/bg_elem/landing-page-bg.jpg')`,
@@ -156,21 +191,24 @@ const Page = () => {
 
             <div className="grid gap-10 lg:grid-cols-2 grid-cols-1 mt-5 lg:pt-10 lg:pb-0 pb-10">
               <div className="2xl:mb-48 2xl:mt-20 xl:mb-56 xl:pb-16 lg:pb-20">
-                <h3 className="font-bold text-lg text-second uppercase tracking-widest mb-2">
-                  Online education
-                </h3>
-                <h2 className="text-6xl max-sm:text-3xl text-black font-bold">
-                  Learn The
+                <div className="font-medium text-second tracking-widest mb-2">
+                  Welcome to <span className="font-bold">Siksha Helpline</span>{" "}
+                  <span className="text-sm">
+                    - India’s Most Loved Educational Portal
+                  </span>
+                </div>
+                <h2 className="lg:text-6xl md:text-5xl max-sm:text-3xl text-4xl text-black font-bold">
+                  Empowering Your Future,
                 </h2>
-                <h2 className="text-6xl max-sm:text-3xl text-black font-bold">
-                  Skills You Need
-                </h2>
-                <h2 className="text-6xl max-sm:text-3xl text-black font-bold">
-                  To Succeed
+                <h2 className="lg:text-6xl md:text-5xl max-sm:text-3xl text-4xl text-black font-bold"></h2>
+                <h2 className="lg:text-6xl md:text-5xl max-sm:text-3xl text-4xl text-black font-bold">
+                  Step by Step
                 </h2>
                 <p className="mt-4 text-lg text-black/70 mb-10">
-                  Free online courses from the world’s Leading experts. join 18+
-                  million Learners today.
+                  At Siksha Helpline, we are more than just a portal – we are
+                  your partners in success, from admission to placement. Join
+                  thousands of students who have trusted us to guide their
+                  educational journey.
                 </p>
 
                 <div className="flex gap-6 flex-wrap items-center py-2 max-sm:flex-col max-sm:items-start max-sm:space-x-0 max-sm:space-y-4">
@@ -196,49 +234,280 @@ const Page = () => {
                 />
                 <div className="2xl:block  hidden">
                   <div className="absolute bottom-0 left-10 ">
-                    <div class="all-shapes"></div>
+                    <div className="all-shapes"></div>
                   </div>
-                  <div
-                    className="absolute top-[20%] left-[0%] px-4 rounded-lg py-2 text-lg text-white divMoveDiagonalOne"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(to left, #00c0a6, #00b1c9, #009df4, #0080ff, #1d4dfa);",
-                    }}
-                  >
+                  <div className="absolute top-[20%] left-[0%] px-4 rounded-lg py-2 text-lg text-white divMoveDiagonalOne gradientOne">
                     200+ Colleges Partners
                   </div>
-                  <div
-                    className="absolute top-[20%] right-[10%] px-4 rounded-lg py-2 text-lg text-white divMoveDiagonalTwo  z-10"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(to right, #52f781, #a5e150, #d3c83a, #f0ae43, #fe955c);",
-                    }}
-                  >
+                  <div className="absolute top-[20%] right-[10%] px-4 rounded-lg py-2 text-lg text-white divMoveDiagonalTwo  z-10 gradientTwo">
                     200+ Colleges Partners
                   </div>
-                  <div
-                    className="absolute top-[40%] right-[0%] px-4 rounded-lg py-2 text-lg text-white divMoveDiagonalOne z-10"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(to right, #fe955c, #ff816d, #ff6d86, #ff5fa7, #ff5dcc);",
-                    }}
-                  >
+                  <div className="absolute top-[40%] right-[0%] px-4 rounded-lg py-2 text-lg text-white divMoveDiagonalOne z-10 gradientThree">
                     200+ Colleges Partners
                   </div>
-                  <div
-                    className="absolute top-[60%] right-[15%] px-4 rounded-lg py-2 text-lg text-white divMoveDiagonalTwo z-10"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(to right, #785eff, #009fff, #00c8ff, #00e4ce, #52f781);",
-                    }}
-                  >
+                  <div className="absolute top-[60%] right-[15%] px-4 rounded-lg py-2 text-lg text-white divMoveDiagonalTwo z-10 gradientFour">
                     200+ Colleges Partners
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="lg:px-10 px-6 py-10 bg-skin flex items-center max-sm:flex-col">
+          </section>
+
+          {/* why siksha helpline starts */}
+          <section className="2xl:px-64 xl:px-56 lg:px-32 px-10 py-10">
+            <div className="flex gap-4 justify-center items-center">
+              <div className="border-2 border-second w-24"></div>
+              <h2 className="text-3xl font-semibold text-black text-center ">
+                Why <span className="text-second">Siksha Helpline</span>?
+              </h2>
+              <div className="border-2 border-second w-24"></div>
+            </div>
+
+            <div className="grid grid-cols-3 max-sm:grid-cols-1 gap-8 mt-5">
+              <div className="border-2 border-dashed rounded-lg p-4 flex flex-col justify-center items-center text-center relative cursor-pointer hover:bg-second-light/40 transition duration-500 group">
+                <h3 className="text-lg font-bold text-black">
+                  Trusted by Students Across India
+                </h3>
+                <p className="mt-3 text-textClr font-light">
+                  250+ universities & colleges partnerships
+                </p>
+
+                <div className="bg-second-light rounded-full p-3 absolute -top-6 -left-6 group-hover:bg-second transition duration-500">
+                  {/* Default Image */}
+                  <img
+                    src="/assets/icons/trust-theme.png"
+                    alt="Trust Icon Default"
+                    className="w-8 h-8 transition-hidden duration-500 group-hover:hidden"
+                  />
+                  {/* Hover Image */}
+                  <img
+                    src="/assets/icons/trust-white.png"
+                    alt="Trust Icon Hover"
+                    className="w-8 h-8 hidden transition-hiden duration-500 group-hover:block"
+                  />
+                </div>
+              </div>
+
+              <div className="border-2 border-dashed rounded-lg p-4 flex flex-col justify-center items-center text-center relative cursor-pointer hover:bg-second-light/40 transition duration-500 group">
+                <h3 className="text-lg font-bold text-black">
+                  Personalized Support
+                </h3>
+                <p className="mt-3 text-textClr font-light">
+                  From counseling to placement, we stay with you.
+                </p>
+
+                <div className="bg-second-light rounded-full p-3 absolute -top-6 -left-6 group-hover:bg-second transition duration-500">
+                  {/* Default Image */}
+                  <img
+                    src="/assets/icons/support-theme.png"
+                    alt="Support Icon Default"
+                    className="w-8 h-8 transition-hidden duration-500 group-hover:hidden"
+                  />
+                  {/* Hover Image */}
+                  <img
+                    src="/assets/icons/support-white.png"
+                    alt="Support Icon Hover"
+                    className="w-8 h-8 hidden transition-hiden duration-500 group-hover:block"
+                  />
+                </div>
+              </div>
+
+              <div className="border-2 border-dashed rounded-lg p-4 flex flex-col justify-center items-center text-center relative cursor-pointer hover:bg-second-light/40 transition duration-500 group">
+                <h3 className="text-lg font-bold text-black">
+                  One-Stop Solution
+                </h3>
+                <p className="mt-3 text-textClr font-light">
+                  Admission, loans, internships, placements – all under one roof
+                </p>
+
+                <div className="bg-second-light rounded-full p-3 absolute -top-6 -left-6 group-hover:bg-second transition duration-500">
+                  {/* Default Image */}
+                  <img
+                    src="/assets/icons/solution-theme.png"
+                    alt="Solution Icon Default"
+                    className="w-8 h-8 transition-hidden duration-500 group-hover:hidden"
+                  />
+                  {/* Hover Image */}
+                  <img
+                    src="/assets/icons/solution-white.png"
+                    alt="Solution Icon Hover"
+                    className="w-8 h-8 hidden transition-hiden duration-500 group-hover:block"
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
+          {/* why siksha helpline ends */}
+
+          {/* roadmap starts */}
+          <section className="py-10">
+            <div className="mt-10">
+              <div className="text-4xl max-sm:text-3xl text-black font-semibold text-center">
+                Our Roadmap to Your Success
+              </div>
+              <div className="mt-4">
+                <div className="relative bg-prim/20 py-20">
+                  <div className="relative flex items-center justify-center">
+                    {/* Road Path */}
+                    <div className="absolute w-full h-10 bg-black/50 rounded-full top-1/2 transform -translate-y-1/2"></div>
+
+                    {/* Timeline Items */}
+                    <div className="flex justify-between w-full px-10">
+                      {timelineData.map((item, index) => (
+                        <motion.div
+                          key={item.id}
+                          className="relative flex flex-col items-center text-center"
+                          initial={{ opacity: 0, y: 50 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.5, delay: index * 0.2 }}
+                          viewport={{ once: true }}
+                        >
+                          {/* Icon */}
+                          <div
+                            className={`${item.color} w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg`}
+                          >
+                            {item.id}
+                          </div>
+                          {/* Connector */}
+                          <div className="h-16 w-1 bg-black"></div>
+                          {/* Title */}
+                          <h3 className="text-xl font-bold mt-2">
+                            {item.title}
+                          </h3>
+                          {/* Description */}
+                          <p className="text-sm mt-1 text-gray-700">
+                            {item.description}
+                          </p>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          {/* roadmap ends */}
+
+          {/* our services starts */}
+          <section className="lg:px-10 px-6 py-10">
+            <div className="mt-10">
+              <div className="text-4xl max-sm:text-3xl text-black font-semibold text-center">
+                Our Services
+              </div>
+              <div className="grid gap-10 lg:grid-cols-5 md:grid-cols-2 max-sm:grid-cols-1 mt-4">
+                <div className="rounded-lg p-4 py-5 flex flex-col justify-center items-center text-center animatedBorderBox shadow-sm group">
+                  <div className="rounded-full border h-20 w-20 bg-second/20 flex justify-center items-center animatedBorderBoxImg ">
+                    <div className="flex justify-center items-center p-2">
+                      <img
+                        src="/assets/icons/guidance-theme.png"
+                        alt=""
+                        className="w-10 h-10 group-hover:hidden"
+                      />
+
+                      <img
+                        src="/assets/icons/guidance-white.png"
+                        alt=""
+                        className="w-10 h-10 hidden group-hover:block"
+                      />
+                    </div>
+                  </div>
+                  <h3 className="text-black font-semibold text-2xl mt-3">
+                    Admission Guidance
+                  </h3>
+                  <p className="mt-2">
+                    Personalized counseling for informed decisions
+                  </p>
+                </div>
+                <div className="rounded-lg p-4 py-5 flex flex-col justify-center items-center text-center animatedBorderBox shadow-sm group">
+                  <div className="rounded-full border h-20 w-20 bg-second/20 flex justify-center items-center animatedBorderBoxImg">
+                    <div className="flex justify-center items-center p-2">
+                      <img
+                        src="/assets/icons/loan-theme.png"
+                        alt=""
+                        className="w-10 h-10 group-hover:hidden"
+                      />
+
+                      <img
+                        src="/assets/icons/loan-white.png"
+                        alt=""
+                        className="w-10 h-10 hidden group-hover:block"
+                      />
+                    </div>
+                  </div>
+                  <h3 className="text-black font-semibold text-2xl mt-3">
+                    Educational Loan Assistance
+                  </h3>
+                  <p className="mt-2">Funding your dreams made easier</p>
+                </div>
+                <div className="rounded-lg p-4 py-5 flex flex-col justify-center items-center text-center animatedBorderBox shadow-sm group">
+                  <div className="rounded-full border h-20 w-20 bg-second/20 flex justify-center items-center animatedBorderBoxImg">
+                    <div className="flex justify-center items-center p-2">
+                      <img
+                        src="/assets/icons/internship-theme.png"
+                        alt=""
+                        className="w-10 h-10 group-hover:hidden"
+                      />
+
+                      <img
+                        src="/assets/icons/internship-white.png"
+                        alt=""
+                        className="w-10 h-10 hidden group-hover:block"
+                      />
+                    </div>
+                  </div>
+                  <h3 className="text-black font-semibold text-2xl mt-3">
+                    Internship Opportunities
+                  </h3>
+                  <p className="mt-2">Gain hands-on experience</p>
+                </div>
+                <div className="rounded-lg p-4 py-5 flex flex-col justify-center items-center text-center animatedBorderBox shadow-sm group">
+                  <div className="rounded-full border h-20 w-20 bg-second/20 flex justify-center items-center animatedBorderBoxImg">
+                    <div className="flex justify-center items-center p-2">
+                      <img
+                        src="/assets/icons/placement-theme.png"
+                        alt=""
+                        className="w-10 h-10 group-hover:hidden"
+                      />
+
+                      <img
+                        src="/assets/icons/placement-white.png"
+                        alt=""
+                        className="w-10 h-10 hidden group-hover:block"
+                      />
+                    </div>
+                  </div>
+                  <h3 className="text-black font-semibold text-2xl mt-3">
+                    Placement Assistance
+                  </h3>
+                  <p className="mt-2">Start your career with top companies</p>
+                </div>
+                <div className="rounded-lg p-4 py-5 flex flex-col justify-center items-center text-center animatedBorderBox shadow-sm group">
+                  <div className="rounded-full border h-20 w-20 bg-second/20 flex justify-center items-center animatedBorderBoxImg">
+                    <div className="flex justify-center items-center p-2">
+                      <img
+                        src="/assets/icons/review-theme.png"
+                        alt=""
+                        className="w-10 h-10 group-hover:hidden"
+                      />
+
+                      <img
+                        src="/assets/icons/review-white.png"
+                        alt=""
+                        className="w-10 h-10 hidden group-hover:block"
+                      />
+                    </div>
+                  </div>
+                  <h3 className="text-black font-semibold text-2xl mt-3">
+                    Rewards on Reviews
+                  </h3>
+                  <p className="mt-2">Share your experience and get rewarded</p>
+                </div>
+              </div>
+            </div>
+          </section>
+          {/* our services ends */}
+
+          <div className="lg:px-10 px-6 py-10 bg-skin flex items-center max-sm:flex-col mt-5">
             <h2 className="text-4xl max-sm:text-2xl text-black font-semibold w-1/4 max-sm:w-full ">
               Our Students Placed in
             </h2>
@@ -305,78 +574,11 @@ const Page = () => {
             </div>
           </div>
 
-          <div className="lg:px-10 px-6 py-10">
-            <div className="py-10">
-              <h2 className="text-4xl max-sm:text-3xl text-black font-semibold ">
-                Our Services
-              </h2>
-              <div className="grid gap-10 lg:grid-cols-5 md:grid-cols-2 max-sm:grid-cols-1 mt-4">
-                <div className="rounded-lg p-4 py-5 flex flex-col justify-center items-center text-center animatedBorderBox shadow-sm">
-                  <div className="rounded-full border h-20 w-20 bg-second/20 flex justify-center items-center animatedBorderBoxImg">
-                    <img src="" alt="" className="" />
-                  </div>
-                  <h3 className="text-black font-semibold text-2xl mt-3">
-                    Service Name
-                  </h3>
-                  <p className="mt-2">
-                    This is the description of this service.
-                  </p>
-                </div>
-                <div className="rounded-lg p-4 py-5 flex flex-col justify-center items-center text-center animatedBorderBox shadow-sm">
-                  <div className="rounded-full border h-20 w-20 bg-second/20 flex justify-center items-center animatedBorderBoxImg">
-                    <img src="" alt="" className="" />
-                  </div>
-                  <h3 className="text-black font-semibold text-2xl mt-3">
-                    Service Name
-                  </h3>
-                  <p className="mt-2">
-                    This is the description of this service.
-                  </p>
-                </div>
-                <div className="rounded-lg p-4 py-5 flex flex-col justify-center items-center text-center animatedBorderBox shadow-sm">
-                  <div className="rounded-full border h-20 w-20 bg-second/20 flex justify-center items-center animatedBorderBoxImg">
-                    <img src="" alt="" className="" />
-                  </div>
-                  <h3 className="text-black font-semibold text-2xl mt-3">
-                    Service Name
-                  </h3>
-                  <p className="mt-2">
-                    This is the description of this service.
-                  </p>
-                </div>
-                <div className="rounded-lg p-4 py-5 flex flex-col justify-center items-center text-center animatedBorderBox shadow-sm">
-                  <div className="rounded-full border h-20 w-20 bg-second/20 flex justify-center items-center animatedBorderBoxImg">
-                    <img src="" alt="" className="" />
-                  </div>
-                  <h3 className="text-black font-semibold text-2xl mt-3">
-                    Service Name
-                  </h3>
-                  <p className="mt-2">
-                    This is the description of this service.
-                  </p>
-                </div>
-                <div className="rounded-lg p-4 py-5 flex flex-col justify-center items-center text-center animatedBorderBox shadow-sm">
-                  <div className="rounded-full border h-20 w-20 bg-second/20 flex justify-center items-center animatedBorderBoxImg">
-                    <img src="" alt="" className="" />
-                  </div>
-                  <h3 className="text-black font-semibold text-2xl mt-3">
-                    Service Name
-                  </h3>
-                  <p className="mt-2">
-                    This is the description of this service.
-                  </p>
-                </div>
-              </div>
-            </div>
 
-            <div className="py-10">
-              <h2 className="text-4xl max-sm:text-3xl text-black font-semibold ">
-                Process(How do we Full Fill there Requirements) (usp)
-              </h2>
-            </div>
+          <div>
+            <TestimonialSlider />
           </div>
 
-          <Testimonials />
 
           <div className="2xl:px-40 lg:px-10  px-6 py-20" id="enquireNowForm">
             <div className="grid gap-4 2xl:grid-cols-2 xl:grid-cols-2 lg:grid-cols-1 grid-cols-1">

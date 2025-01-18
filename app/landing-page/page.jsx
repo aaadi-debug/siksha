@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { Plane } from "lucide-react";
 
 //imports for swiper.js
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -12,10 +13,12 @@ import collegeDataJson from "../data/collegeData.json";
 import Testimonials from "../components/Testimonials";
 import Breadcrumbs2 from "../components/Breadcrumbs2";
 import TestimonialSlider from "../components/TestimonialSlider";
+import TestimonialSlider2 from "../components/TestimonialSlider2";
 import DynamicWhiteButton from "../components/DynamicWhiteButton";
 import { PhoneCall, Mail, MapPin } from "lucide-react";
 import DynamicThemeButton from "../components/DynamicThemeButton";
 import { motion } from "framer-motion";
+import Services from "../components/Services";
 
 const placedCompanies = [
   {
@@ -106,6 +109,7 @@ const placedCompanies = [
 
 const Page = () => {
   const colleges = collegeDataJson.data;
+  const [departments, setDepartments] = useState([]);
   const [isHovered, setIsHovered] = useState(false);
   const timelineData = [
     {
@@ -165,6 +169,15 @@ const Page = () => {
       }, 3000);
     }, 2000); // Simulate server request for 2 seconds
   };
+
+  useEffect(() => {
+    // Extract unique department names
+    const allDepartments = colleges.flatMap((college) =>
+      college.departments.map((dept) => dept.departmentName)
+    );
+    const uniqueDepartments = [...new Set(allDepartments)];
+    setDepartments(uniqueDepartments);
+  }, [colleges]);
 
   return (
     <>
@@ -339,6 +352,14 @@ const Page = () => {
           </section>
           {/* why siksha helpline ends */}
 
+          {/* our services starts */}
+          <Services />
+          {/* our services ends */}
+
+          <div>
+            <TestimonialSlider2 />
+          </div>
+
           {/* roadmap starts */}
           <section className="py-10">
             <div className="mt-10">
@@ -388,197 +409,7 @@ const Page = () => {
           </section>
           {/* roadmap ends */}
 
-          {/* our services starts */}
-          <section className="lg:px-10 px-6 py-10">
-            <div className="mt-10">
-              <div className="text-4xl max-sm:text-3xl text-black font-semibold text-center">
-                Our Services
-              </div>
-              <div className="grid gap-10 lg:grid-cols-5 md:grid-cols-2 max-sm:grid-cols-1 mt-4">
-                <div className="rounded-lg p-4 py-5 flex flex-col justify-center items-center text-center animatedBorderBox shadow-sm group">
-                  <div className="rounded-full border h-20 w-20 bg-second/20 flex justify-center items-center animatedBorderBoxImg ">
-                    <div className="flex justify-center items-center p-2">
-                      <img
-                        src="/assets/icons/guidance-theme.png"
-                        alt=""
-                        className="w-10 h-10 group-hover:hidden"
-                      />
-
-                      <img
-                        src="/assets/icons/guidance-white.png"
-                        alt=""
-                        className="w-10 h-10 hidden group-hover:block"
-                      />
-                    </div>
-                  </div>
-                  <h3 className="text-black font-semibold text-2xl mt-3">
-                    Admission Guidance
-                  </h3>
-                  <p className="mt-2">
-                    Personalized counseling for informed decisions
-                  </p>
-                </div>
-                <div className="rounded-lg p-4 py-5 flex flex-col justify-center items-center text-center animatedBorderBox shadow-sm group">
-                  <div className="rounded-full border h-20 w-20 bg-second/20 flex justify-center items-center animatedBorderBoxImg">
-                    <div className="flex justify-center items-center p-2">
-                      <img
-                        src="/assets/icons/loan-theme.png"
-                        alt=""
-                        className="w-10 h-10 group-hover:hidden"
-                      />
-
-                      <img
-                        src="/assets/icons/loan-white.png"
-                        alt=""
-                        className="w-10 h-10 hidden group-hover:block"
-                      />
-                    </div>
-                  </div>
-                  <h3 className="text-black font-semibold text-2xl mt-3">
-                    Educational Loan Assistance
-                  </h3>
-                  <p className="mt-2">Funding your dreams made easier</p>
-                </div>
-                <div className="rounded-lg p-4 py-5 flex flex-col justify-center items-center text-center animatedBorderBox shadow-sm group">
-                  <div className="rounded-full border h-20 w-20 bg-second/20 flex justify-center items-center animatedBorderBoxImg">
-                    <div className="flex justify-center items-center p-2">
-                      <img
-                        src="/assets/icons/internship-theme.png"
-                        alt=""
-                        className="w-10 h-10 group-hover:hidden"
-                      />
-
-                      <img
-                        src="/assets/icons/internship-white.png"
-                        alt=""
-                        className="w-10 h-10 hidden group-hover:block"
-                      />
-                    </div>
-                  </div>
-                  <h3 className="text-black font-semibold text-2xl mt-3">
-                    Internship Opportunities
-                  </h3>
-                  <p className="mt-2">Gain hands-on experience</p>
-                </div>
-                <div className="rounded-lg p-4 py-5 flex flex-col justify-center items-center text-center animatedBorderBox shadow-sm group">
-                  <div className="rounded-full border h-20 w-20 bg-second/20 flex justify-center items-center animatedBorderBoxImg">
-                    <div className="flex justify-center items-center p-2">
-                      <img
-                        src="/assets/icons/placement-theme.png"
-                        alt=""
-                        className="w-10 h-10 group-hover:hidden"
-                      />
-
-                      <img
-                        src="/assets/icons/placement-white.png"
-                        alt=""
-                        className="w-10 h-10 hidden group-hover:block"
-                      />
-                    </div>
-                  </div>
-                  <h3 className="text-black font-semibold text-2xl mt-3">
-                    Placement Assistance
-                  </h3>
-                  <p className="mt-2">Start your career with top companies</p>
-                </div>
-                <div className="rounded-lg p-4 py-5 flex flex-col justify-center items-center text-center animatedBorderBox shadow-sm group">
-                  <div className="rounded-full border h-20 w-20 bg-second/20 flex justify-center items-center animatedBorderBoxImg">
-                    <div className="flex justify-center items-center p-2">
-                      <img
-                        src="/assets/icons/review-theme.png"
-                        alt=""
-                        className="w-10 h-10 group-hover:hidden"
-                      />
-
-                      <img
-                        src="/assets/icons/review-white.png"
-                        alt=""
-                        className="w-10 h-10 hidden group-hover:block"
-                      />
-                    </div>
-                  </div>
-                  <h3 className="text-black font-semibold text-2xl mt-3">
-                    Rewards on Reviews
-                  </h3>
-                  <p className="mt-2">Share your experience and get rewarded</p>
-                </div>
-              </div>
-            </div>
-          </section>
-          {/* our services ends */}
-
-          <div className="lg:px-10 px-6 py-10 bg-skin flex items-center max-sm:flex-col mt-5">
-            <h2 className="text-4xl max-sm:text-2xl text-black font-semibold w-1/4 max-sm:w-full ">
-              Our Students Placed in
-            </h2>
-            <div className="mt-3 w-3/4 swiperButtonNone max-sm:w-full">
-              <Swiper
-                spaceBetween={30}
-                slidesPerView={1.5}
-                loop={true}
-                autoplay={{
-                  delay: 0,
-                  disableOnInteraction: true,
-                  pauseOnMouseEnter: true,
-                }}
-                speed={2000}
-                // navigation
-                scrollbar={{ draggable: true }}
-                breakpoints={{
-                  320: {
-                    slidesPerView: 3, // 1 slide on very small screens
-                  },
-                  500: {
-                    slidesPerView: 5,
-                  },
-                  768: {
-                    slidesPerView: 6, // Can show partial next slide
-                  },
-                  1024: {
-                    slidesPerView: 8, // Showing 2 slides
-                  },
-                  1300: {
-                    slidesPerView: 10, // Show 2.5 slides
-                  },
-                  1500: {
-                    slidesPerView: 12, // Show 3 full slides
-                  },
-                }}
-                navigation={true}
-                //  modules={[Autoplay, Pagination, Navigation]}
-                modules={[Autoplay, Navigation, A11y]}
-                className="swiper-wrapper"
-              >
-                {placedCompanies.length > 0 ? (
-                  placedCompanies.map((company, index) => (
-                    <SwiperSlide
-                      key={index}
-                      className="flex items-end justify-center rounded"
-                    >
-                      <img
-                        src={company.companyLogo}
-                        alt={company.companyName || "Company Logo"}
-                        className="rounded"
-                      />
-                      {/* <h3 className="text-gray-700 text-lg font-semibold mt-2 twoLinerTitle2">
-                          {company.companyName}
-                        </h3> */}
-                    </SwiperSlide>
-                  ))
-                ) : (
-                  <p className="text-center text-gray-600">
-                    No best sellers available.
-                  </p>
-                )}
-              </Swiper>
-            </div>
-          </div>
-
-
-          <div>
-            <TestimonialSlider />
-          </div>
-
+          <TestimonialSlider />
 
           <div className="2xl:px-40 lg:px-10  px-6 py-20" id="enquireNowForm">
             <div className="grid gap-4 2xl:grid-cols-2 xl:grid-cols-2 lg:grid-cols-1 grid-cols-1">
@@ -615,8 +446,8 @@ const Page = () => {
                 <h5 className="text-second font-medium text-xl mb-2">
                   Enquire Us
                 </h5>
-                <h2 className="text-black font-semibold text-4xl">
-                  Feel Free to write
+                <h2 className="text-black font-semibold text-4xl capitalize">
+                  our expert counselors will get in touch with you
                 </h2>
 
                 <div className="mt-10 mx-auto">
@@ -705,7 +536,7 @@ const Page = () => {
                           >
                             Course
                           </label>
-                          <input
+                          {/* <input
                             id="course"
                             type="text"
                             placeholder="Enter course"
@@ -718,7 +549,23 @@ const Page = () => {
                               },
                             })}
                             className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                          />
+                          /> */}
+                          <select
+                            id="course"
+                            {...register("course", {
+                              required: "Course is required",
+                            })}
+                            className="mt-1 block w-full px-4 py-3 border border-gray-300 text-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          >
+                            <option value="" disabled>
+                              Select a course
+                            </option>
+                            {departments.map((department, index) => (
+                              <option key={index} value={department}>
+                                {department}
+                              </option>
+                            ))}
+                          </select>
                           {errors.course && (
                             <p className="text-red-500 text-sm">
                               {errors.course.message}
@@ -754,6 +601,35 @@ const Page = () => {
                         </div>
                       </div>
 
+                      {/* Location Field */}
+                      <div>
+                        <label
+                          htmlFor="location"
+                          className="block text-sm font-medium text-gray-500"
+                        >
+                          Location
+                        </label>
+                        <input
+                          id="location"
+                          type="text"
+                          placeholder="Enter Location"
+                          {...register("location", {
+                            required: "Location is required",
+                            minLength: {
+                              value: 3,
+                              message:
+                                "Location should be at least 3 characters.",
+                            },
+                          })}
+                          className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                        {errors.location && (
+                          <p className="text-red-500 text-sm">
+                            {errors.location.message}
+                          </p>
+                        )}
+                      </div>
+
                       {/* Loan Assistance Checkbox */}
                       <div className="flex items-center gap-2 pb-6">
                         <input
@@ -786,6 +662,13 @@ const Page = () => {
                       </div>
                     </form>
                   )}
+                </div>
+
+                <div className=" text-white rounded-lg p-2 mt-5 flex gap-2 items-center">
+                  <p className="bg-prim flex items-center rounded-lg gap-2 p-2">
+                    <Plane size={16} /> Ready to start your journey? Let’s make
+                    your dreams a reality together!
+                  </p>
                 </div>
               </div>
             </div>

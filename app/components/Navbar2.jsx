@@ -238,7 +238,7 @@ export default function Nav() {
         isHomePage
           ? isScrolled
             ? "bg-white shadow-md"
-            : "bg-black/60"
+            : "bg-black/80"
           : "bg-white shadow-md"
       }`}
     >
@@ -247,9 +247,15 @@ export default function Nav() {
           {/* <Logo /> */}
           <Link href="/">
             <img
-              src="/assets/logo-white-box.png"
+              src={`/assets/logos/${
+                isHomePage
+                  ? isScrolled
+                    ? "logo-purple-orange"
+                    : "logo-purple-white"
+                  : "logo-purple-orange"
+              }.png`}
               alt="Logo"
-              className="w-16 rounded-full max-sm:w-12"
+              className="w-64 max-sm:w-12"
             />
           </Link>
         </div>

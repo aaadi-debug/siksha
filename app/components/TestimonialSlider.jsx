@@ -12,7 +12,7 @@ const studentTestimonials = [
     name: "Priya Sharma",
     description:
       "Siksha Helpline made my journey from admission to placement smooth and stress-free. Their support was invaluable!",
-    image: "https://getmasum.com/html-preview/edumon/assets/img/review/1.jpg",
+    image: "",
     course: "PGDM Finance",
   },
   {
@@ -28,7 +28,7 @@ const studentTestimonials = [
     name: "Sachin Kumar",
     description:
       "The personalized counseling and guidance I received helped me choose the  perfect college for my MB",
-    image: "https://getmasum.com/html-preview/edumon/assets/img/review/2.jpg",
+    image: "",
     course: "B.tech",
   },
   {
@@ -36,7 +36,7 @@ const studentTestimonials = [
     name: "Anjali",
     description:
       "The personalized counseling and guidance I received helped me choose the  perfect college for my MB",
-    image: "https://getmasum.com/html-preview/edumon/assets/img/review/1.jpg",
+    image: "",
     course: "BBA LLB",
   },
   {
@@ -44,7 +44,7 @@ const studentTestimonials = [
     name: " Vishal Ayansh",
     description:
       "The personalized counseling and guidance I received helped me choose the  perfect college for my MB",
-    image: "https://getmasum.com/html-preview/edumon/assets/img/review/1.jpg",
+    image: "",
     course: "PGDM",
   },
   {
@@ -62,7 +62,7 @@ const TestimonialSlider = () => {
     <div className="testimonialSliderWrapper relative">
       <div className="2xl:px-48 xl:px-32 lg:px-20 px-6 py-28">
         <div>
-          <div className="text-white font-medium">Our Students Review</div>
+          <div className="text-white text-lg font-semibold">Our Students Review</div>
           <div className="text-4xl max-sm:text-3xl text-white font-semibold">
             Hear From Our Students
           </div>
@@ -114,7 +114,7 @@ const TestimonialSlider = () => {
                 <div className="flex flex-col items-center text-center ">
                   <div className="w-28 h-28 relative mb-10">
                     <img
-                      src={student.image}
+                      src={student.image || "/assets/testimonial_noImage.png"}
                       alt={student.name}
                       className="rounded-lg w-full object-cover "
                     />

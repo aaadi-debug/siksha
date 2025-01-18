@@ -22,6 +22,7 @@ module.exports = {
           DEFAULT: "#2fa97c",
         },
         textClr: "#6B7385",
+        blackClr: "#292323",
       },
     },
   },

@@ -245,7 +245,7 @@ export default function Nav() {
       <div className="mx-auto flex items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
         <div className="inline-flex items-center space-x-2 responsive_css_logo">
           {/* <Logo /> */}
-          <Link href="/">
+          <a href="/">
             <img
               src={`/assets/logos/${
                 isHomePage
@@ -257,7 +257,7 @@ export default function Nav() {
               alt="Logo"
               className="w-64 max-sm:w-12"
             />
-          </Link>
+          </a>
         </div>
         {/* Mega menu for desktop */}
         <div className="hidden grow items-center lg:flex">
@@ -265,7 +265,7 @@ export default function Nav() {
             {menuItems.map((item) => (
               <li key={item.name} className="relative group">
                 {item.href ? (
-                  <Link
+                  <a
                     href={item.href}
                     className={`text-sm font-medium text-black uppercase transition-all duration-500 flex items-center hover:bg-second hover:text-white py-2 px-3 rounded-full group-hover:bg-second group-hover:text-white navbarLink ${
                       isHomePage ? (isScrolled ? "" : "text-white") : ""
@@ -277,7 +277,7 @@ export default function Nav() {
                         {item.icon}
                       </span>
                     )}
-                  </Link>
+                  </a>
                 ) : (
                   <span
                     className={`text-sm font-medium text-black uppercase transition-all duration-500 flex items-center py-2 px-3 rounded-full ${
@@ -299,12 +299,12 @@ export default function Nav() {
                               key={subItem.name}
                               className="transition duration-500 rounded-lg hover:bg-gray-200"
                             >
-                              <Link
+                              <a
                                 href={subItem.href}
                                 className="text-xs font-medium transition text-black  duration-500 hover:text-secondary uppercase w-full block px-3 py-2"
                               >
                                 {subItem.name}
-                              </Link>
+                              </a>
                             </li>
                           ))}
                         </ul>
@@ -405,13 +405,13 @@ export default function Nav() {
               <div className="absolute w-0 h-0 border-x-8 border-x-transparent border-b-8 border-b-black -top-2 left-1/2 -translate-x-1/2"></div>
             </div>
           </div>
-          <Link
+          <a
             href="/login"
             className="bg-second border-2 border-second flex gap-2 items-center p-2 rounded-full hover:bg-white hover:text-second transition duration-300 text-sm"
           >
             <User size={16} />
             {/* <span>Login</span> */}
-          </Link>
+          </a>
 
           <Menu
             onClick={toggleMenu}
@@ -428,13 +428,13 @@ export default function Nav() {
               <div className="px-4 py-4">
                 <div className="flex items-center justify-between">
                   <div className="inline-flex items-center space-x-2">
-                    <Link href="/">
+                    <a href="/">
                       <img
                         src="/assets/logo-white-box.png"
                         alt="Logo"
                         className="w-16 rounded-full max-sm:w-12"
                       />
-                    </Link>
+                    </a>
                   </div>
                   <button
                     type="button"
@@ -512,7 +512,7 @@ export default function Nav() {
                 className="text-gray-600 hover:text-gray-900 mt-2"
               >
                 <X
-                  className="h-10 w-10 rounded-full p-2 transition duration-500 hover:bg-primary/80 hover:text-white"
+                  className="h-10 w-10 rounded-full p-2 transition duration-500 hover:bg-prim/80 hover:text-white"
                   aria-hidden="true"
                 />
               </button>
@@ -523,7 +523,7 @@ export default function Nav() {
             <div className="grid grid-cols-1 gap-6 mt-4 max-h-[70vh] overflow-y-auto">
               {results.length > 0 ? (
                 results.map((result, index) => (
-                  <Link key={index} href={`/product/${result.url}`}>
+                  <a key={index} href={`/product/${result.url}`}>
                     <div className="flex gap-2 border rounded-lg p-2">
                       <img
                         src={result.image}
@@ -537,7 +537,7 @@ export default function Nav() {
                         <p className="text-textClr"> {result.belongsTo} </p>
                       </div>
                     </div>
-                  </Link>
+                  </a>
                 ))
               ) : query.length > 1 ? (
                 <p>No result found for {query} 🥺</p>

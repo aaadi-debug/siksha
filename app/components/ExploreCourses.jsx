@@ -132,7 +132,6 @@ const ExploreCourses = () => {
     handleScroll(tabId); // Update scroll positions for new tab
   };
 
-
   return (
     <div className="bg-skin">
       <div className="container  pt-48 pb-10 lg:px-32 mx-auto explorecourses">
@@ -166,9 +165,9 @@ const ExploreCourses = () => {
             {/* Tab Content */}
             <div className="mt-2 relative ">
               {tabsData.length > 0 ? (
-                tabsData.map(
-                  (tab) =>
-                    activeTab === tab.id && (
+                tabsData.map((tab) => {
+                  if (activeTab === tab.id) {
+                    return (
                       <div
                         key={tab.id}
                         className="relative border-x border-secondary-light rounded"
@@ -266,8 +265,10 @@ const ExploreCourses = () => {
                           </button>
                         )}
                       </div>
-                    )
-                )
+                    );
+                  }
+                  return null; // Don't render inactive tabs
+                })
               ) : (
                 <p className="text-gray-400 text-sm">No courses found.</p>
               )}

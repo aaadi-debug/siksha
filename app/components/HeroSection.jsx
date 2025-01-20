@@ -184,7 +184,7 @@ const HeroSection = () => {
                 className="text-gray-600 hover:text-gray-900 mt-2"
               >
                 <X
-                  className="h-10 w-10 rounded-full p-2 transition duration-500 hover:bg-primary/80 hover:text-white"
+                  className="h-10 w-10 rounded-full p-2 transition duration-500 hover:bg-prim/80 hover:text-white"
                   aria-hidden="true"
                 />
               </button>

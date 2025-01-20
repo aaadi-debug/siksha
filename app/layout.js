@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect, Suspense, memo, lazy } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { Inter } from "next/font/google";
 import "bootstrap/dist/css/bootstrap.css";
 import "./globals.css";
@@ -26,24 +26,18 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
   const [isLoading, setIsLoading] = useState(true);
-  const router = useRouter();
 
   useEffect(() => {
-    setIsLoading(false); // Ensure no loader on initial load
+    // Check if the page has already loaded
+    if (document.readyState === "complete") {
+      setIsLoading(false);
+    } else {
+      window.addEventListener("load", () => setIsLoading(false));
+    }
 
-    const handleStart = () => setIsLoading(true);
-    const handleComplete = () => setIsLoading(false);
-
-    router.events?.on("routeChangeStart", handleStart);
-    router.events?.on("routeChangeComplete", handleComplete);
-    router.events?.on("routeChangeError", handleComplete);
-
-    return () => {
-      router.events?.off("routeChangeStart", handleStart);
-      router.events?.off("routeChangeComplete", handleComplete);
-      router.events?.off("routeChangeError", handleComplete);
-    };
-  }, [router]);
+    // Cleanup the event listener (important!)
+    return () => window.removeEventListener("load", () => setIsLoading(false));
+  }, []);
 
   return (
     <html lang="en">
@@ -85,11 +79,10 @@ export default function RootLayout({ children }) {
         {isLoading && <Preloader />}
         {children}
 
-        <Footer />
-
         <SocialMedia />
         <WhatsAppButton />
         <BackToTop />
+        <Footer />
       </body>
     </html>
   );

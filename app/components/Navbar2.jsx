@@ -48,7 +48,7 @@ const menuItems = [
     icon: <ChevronDown />,
     subMenu: [
       { name: "Landing Page", href: "/landing-page" },
-      { name: "Title 2", href: "" },
+      { name: "Advertise With Us", href: "/advertise-with-us" },
       { name: "Title 3", href: "" },
       { name: "Title 4", href: "" },
     ],

@@ -8541,3 +8541,87 @@ department_section {
     transform: translateY(-10px);
   }
 }
+
+
+/* ------------------------ advertise with us ----------------------- */
+.advertiseSwiper {
+  background-image: url('/assets/bg_elem/banner-bg-white2.png');
+}
+/* Word by word text animation */
+@keyframes fadeInWord {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.advetiseWithUs .fade-in {
+  animation: fadeInWord 0.5s ease-out forwards;
+  animation-delay: 0.3s; /* Delay to make words appear one by one */
+}
+
+.advetiseWithUs .fade-in p {
+  display: inline-block;
+  opacity: 0;
+  animation: fadeInWord 1s forwards;
+}
+
+.advetiseWithUs .fade-in p:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.advetiseWithUs .fade-in p:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.advetiseWithUs .fade-in p:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+/* Animation for background image */
+.advetiseWithUs .swiper-slide {
+  transition: background-position 1s ease-out;
+}
+
+
+
+.advertiseSwiper .swiper-button-prev,
+.swiper-rtl .swiper-button-next {
+  background-color: white;
+  width: 30px;
+  height: 30px;
+  color: var(--primary-clr) !important;
+  transition: left 0.5s;
+  left: -30px;
+}
+
+.advertiseSwiper:hover .swiper-button-prev,
+.swiper-rtl .swiper-button-next {
+  left: 30px;
+}
+.advertiseSwiper .swiper-button-prev:after,
+.swiper-rtl .swiper-button-next:after {
+  font-size: 16px;
+}
+
+.advertiseSwiper .swiper-button-next,
+.swiper-rtl .swiper-button-prev {
+  background-color: white;
+  width: 30px;
+  height: 30px;
+  color: var(--primary-clr) !important;
+  transition: right 0.5s;
+  right: -30px;
+}
+
+.advertiseSwiper:hover .swiper-button-next,
+.swiper-rtl .swiper-button-prev {
+  right: 30px;
+}
+
+.advertiseSwiper .swiper-button-next:after,
+.swiper-rtl .swiper-button-prev:after {
+  font-size: 16px;
+}

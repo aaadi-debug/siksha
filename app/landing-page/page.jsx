@@ -665,7 +665,7 @@ const Page = () => {
                 </div>
 
                 <div className=" text-white rounded-lg p-2 mt-5 flex gap-2 items-center">
-                  <p className="bg-prim flex items-center rounded-lg gap-2 p-2">
+                  <p className="bg-prim flex items-center rounded-lg gap-2 px-4 py-2">
                     <Plane size={16} /> Ready to start your journey? Let’s make
                     your dreams a reality together!
                   </p>

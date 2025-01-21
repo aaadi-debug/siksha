@@ -15,6 +15,9 @@ module.exports = {
           light: "#c3d3f8",
           DEFAULT: "#3D52A0",
         },
+        tertiary: {
+          DEFAULT: "#292323",
+        },
         skin: {
           DEFAULT: "#ede8f5",
         },

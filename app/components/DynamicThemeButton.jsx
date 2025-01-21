@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 const DynamicThemeButton = ({
   children,
   href = null,
@@ -13,9 +11,9 @@ const DynamicThemeButton = ({
   if (href) {
     // Here, Rendering a <Link> if href is provided
     return (
-      <Link href={href} {...props} className={baseClasses}>
+      <a href={href} {...props} className={baseClasses}>
         {children}
-      </Link>
+      </a>
     );
   }
 

@@ -29,9 +29,11 @@ const Page = () => {
   );
 
   return (
-    <div className="relative h-[180vh] w-full bg-gradient-to-b from-blue-500 to-gray-200 road">
+    <>
+    <p>This is the creation of a websiote This is the creation of a websiote This is the creation of a websiote This is the creation of a websiote This is the creation of a websiote This is the creation of a websiote This is the creation of a websiote This is the creation of a websiote This is the creation of a websiote This is the creation of a websiote This is the creation of a websiote This is the creation of a websiote This is the creation of a websiote This is the creation of a websiote This is the creation of a websiote This is the creation of a websiote This is the creation of a websiote This is the creation of a websiote This is the creation of a websiote This is the creation of a websiote This is the creation of a websiote This is the creation of a websiote This is the creation of a websiote This is the creation of a websiote This is the creation of a websiote This is the creation of a websiote This is the creation of a websiote This is the creation of a websiote This is the creation of a websiote This is the creation of a websiote This is the creation of a websiote This is the creation of a websiote This is the creation of a websiote </p>
+      <div className="relative h-[180vh] w-full bg-gradient-to-b from-blue-500 to-gray-200 road">
       {/* Road Background */}
-      <div className="road absolute top-0 left-0 w-full h-full"></div>
+      {/* <div className="road absolute top-0 left-0 w-full h-full"></div> */}
 
       {/* Points on the Path */}
       {points.map((point, index) => {
@@ -89,6 +91,7 @@ const Page = () => {
         />
       </motion.div>
     </div>
+    </>
   );
 };
 

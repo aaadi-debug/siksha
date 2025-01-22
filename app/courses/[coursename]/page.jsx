@@ -1,233 +1,297 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import AOS from "aos";
-import Navbar from "@/app/components/Navbar";
-import Footer from "@/app/components/Footer";
 
-import { LiaUniversitySolid } from "react-icons/lia";
-import { FaBookOpenReader } from "react-icons/fa6";
-import { IoIosPeople } from "react-icons/io";
-import { GiCoffeeCup } from "react-icons/gi";
-import Breadcrumbs from "@/app/components/Breadcrubms";
+import { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
+import collegeDataJson from "../../data/collegeData.json"; // Rename the imported data to avoid conflict
+import { useRouter } from "next/navigation"; // Import useRouter
+import Breadcrumbs2 from "@/app/components/Breadcrumbs2";
 
-// Mock Data
-const courses = [
-  {
-    name: "B.Com",
-    stream: "Commerce",
-    subStreams: ["General", "Accounting", "Taxation"],
-  },
-  {
-    name: "MBA/PGDM",
-    stream: "Management",
-    subStreams: ["Finance", "Marketing", "Human Resources"],
-  },
-  {
-    name: "M.Phil",
-    stream: "Research",
-    subStreams: ["Physics", "Chemistry", "Biology"],
-  },
-  // Add more courses here
-];
+const FilterableCoursePage = () => {
+  const pathname = usePathname();
+  const courseUrlFromPath = pathname.split("/").pop() || ""; // Extracting courseUrl from the path
+  const collegeData = collegeDataJson;
+  const router = useRouter();
 
-const colleges = [
-  {
-    sno: 1,
-    name: "ABC College",
-    city: "Delhi",
-    state: "Delhi",
-    courseFee: "50,000-1,00,000",
-    type: "Private",
-    specializations: 30,
-    placement: "4 LPA Avg, 10 LPA Highest",
-    grade: "A+",
-    course: "B.Com",
-    stream: "Commerce",
-    subStream: "General",
-  },
-  {
-    sno: 2,
-    name: "XYZ University",
-    city: "Mumbai",
-    state: "Maharashtra",
-    courseFee: "2,00,000-3,00,000",
-    type: "Government",
-    specializations: 42,
-    placement: "5 LPA Avg, 12 LPA Highest",
-    grade: "A",
-    course: "MBA/PGDM",
-    stream: "Management",
-    subStream: "Finance",
-  },
-  // Add more colleges here
-];
+  // Default filters based on URL
+  const defaultDepartment = collegeData.data
+    .flatMap((college) => college.departments)
+    .find((department) =>
+      department.courses.some(
+        (course) => course.courseUrl === courseUrlFromPath
+      )
+    )?.departmentName;
 
-const Page = ({ params }) => {
-  const { coursename } = params;
-  const urldata = decodeURIComponent(coursename);
+  const defaultCourse = collegeData.data
+    .flatMap((college) =>
+      college.departments.flatMap((department) => department.courses)
+    )
+    .find((course) => course.courseUrl === courseUrlFromPath)?.courseName;
 
-  const [selectedCourse, setSelectedCourse] = useState("MBA/PGDM");
-  const [selectedStream, setSelectedStream] = useState("Management");
-  const [selectedSubStream, setSelectedSubStream] = useState("Finance");
+  const [selectedDepartment, setSelectedDepartment] =
+    useState(defaultDepartment);
+  const [selectedCourse, setSelectedCourse] = useState(defaultCourse);
   const [filteredColleges, setFilteredColleges] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [isDepartmentDropdownOpen, setIsDepartmentDropdownOpen] =
+    useState(false);
+  const [isCourseDropdownOpen, setIsCourseDropdownOpen] = useState(false);
 
-  useEffect(() => {
-    // Filter colleges based on selected filters
-    setLoading(true);
-    const timeout = setTimeout(() => {
-      const result = colleges.filter(
-        (college) =>
-          college.course === selectedCourse &&
-          college.stream === selectedStream &&
-          college.subStream === selectedSubStream
-      );
-      setFilteredColleges(result);
-      setLoading(false);
-    }, 500); // Simulate API call
-    return () => clearTimeout(timeout);
-  }, [selectedCourse, selectedStream, selectedSubStream]);
+  const departmentDropdownRef = useRef(null);
+  const courseDropdownRef = useRef(null);
 
-  // Dynamically update stream and sub-stream based on course selection
-  const handleCourseChange = (courseName) => {
-    const course = courses.find((c) => c.name === courseName);
-    setSelectedCourse(courseName);
-    setSelectedStream(course.stream);
-    setSelectedSubStream(course.subStreams[0]);
+  const toggleDepartmentDropdown = () => {
+    setIsDepartmentDropdownOpen((prev) => !prev);
   };
 
+  const toggleCourseDropdown = () => {
+    setIsCourseDropdownOpen((prev) => !prev);
+  };
+
+  // Extract unique departments and courses
+  const uniqueDepartments = [
+    ...new Set(
+      collegeData.data.flatMap((college) =>
+        college.departments.map((department) => department.departmentName)
+      )
+    ),
+  ];
+
+  const uniqueCourses = [
+    ...new Set(
+      collegeData.data.flatMap((college) =>
+        college.departments.flatMap((department) =>
+          department.courses.map((course) => course.courseName)
+        )
+      )
+    ),
+  ];
+
+  // Update filtered colleges whenever filters change
   useEffect(() => {
-    const query = new URLSearchParams({
-      course: selectedCourse,
-      stream: selectedStream,
-      subStream: selectedSubStream,
-    }).toString();
-    window.history.pushState(null, "", `/course/${selectedCourse}?${query}`);
-  }, [selectedCourse, selectedStream, selectedSubStream]);
+    const filtered = collegeData.data.filter((college) => {
+      if (!selectedDepartment && !selectedCourse) {
+        return true; // No filters selected, show all colleges
+      }
+      return college.departments.some(
+        (department) =>
+          (selectedDepartment
+            ? department.departmentName === selectedDepartment
+            : true) &&
+          (selectedCourse
+            ? department.courses.some(
+                (course) => course.courseName === selectedCourse
+              )
+            : true)
+      );
+    });
+    setFilteredColleges(filtered);
+  }, [selectedDepartment, selectedCourse, collegeData]);
+
+  const handleDepartmentChange = (department) => {
+    setSelectedDepartment(department);
+
+    // Find the first course in the selected department
+    const firstCourseInDepartment = collegeData.data
+      .flatMap((college) =>
+        college.departments.filter((dep) => dep.departmentName === department)
+      )
+      .flatMap((department) => department.courses[0])
+      .find((course) => course);
+
+    if (firstCourseInDepartment) {
+      setSelectedCourse(firstCourseInDepartment.courseName);
+      router.push(firstCourseInDepartment.courseUrl, undefined, {
+        shallow: true,
+      });
+    }
+  };
+
+  const handleCourseChange = (course) => {
+    setSelectedCourse(course);
+
+    // Automatically update department based on the selected course
+    const relatedDepartment = collegeData.data
+      .flatMap((college) =>
+        college.departments.filter((department) =>
+          department.courses.some((crs) => crs.courseName === course)
+        )
+      )
+      .find((department) => department)?.departmentName;
+
+    setSelectedDepartment(relatedDepartment);
+
+    // Update the URL based on selected course's courseUrl
+    const selectedCourseObj = collegeData.data
+      .flatMap((college) =>
+        college.departments.flatMap((department) =>
+          department.courses.filter((crs) => crs.courseName === course)
+        )
+      )
+      .find((course) => course);
+
+    if (selectedCourseObj) {
+      router.push(selectedCourseObj.courseUrl, undefined, { shallow: true });
+    }
+  };
+
+  // =====================================================
+  // =====================================================
+  // For dropdown close when we click outside fo it
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        departmentDropdownRef.current &&
+        !departmentDropdownRef.current.contains(event.target)
+      ) {
+        setIsDepartmentDropdownOpen(false);
+      }
+      if (
+        courseDropdownRef.current &&
+        !courseDropdownRef.current.contains(event.target)
+      ) {
+        setIsCourseDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+  // =====================================================
+  // =====================================================
+
+  // =====================================================
+  // =====================================================
+  // Find the matching course based on courseUrlFromPath
+  const matchedCourse = collegeData.data
+    .flatMap((college) =>
+      college.departments.flatMap((department) =>
+        department.courses.find(
+          (course) => course.courseUrl === courseUrlFromPath
+        )
+      )
+    )
+    .find((course) => course);
+
+  const courseNameForBreadcrumb = matchedCourse
+    ? matchedCourse.courseSlug
+    : courseUrlFromPath.replace(/-/g, " ");
+
+  const courseNameForPageTitle = matchedCourse
+    ? matchedCourse.courseName
+    : courseUrlFromPath.replace(/-/g, " ");
+  // =====================================================
+  // =====================================================
+
+  const clearFilters = () => {
+    setSelectedDepartment(null); // Reset to no department selected
+    setSelectedCourse(null); // Reset to no course selected
+    router.push("/courses/india-colleges", undefined, { shallow: true }); // Redirect to all-colleges and reset filters
+  };
 
   return (
-    <>
-      <div className="bg-skin">
-        <Navbar />
-        <Breadcrumbs page_title="Course" page_title2={urldata} page_title3="" />
+    <div className="pt-24 px-6">
+      <Breadcrumbs2
+        breadcrumbs={[
+          {
+            title: `${
+              !selectedDepartment && !selectedCourse
+                ? "India Colleges"
+                : `${courseNameForBreadcrumb} Colleges`
+            } `,
+            link: "",
+          }, // Displaying matched course name
+        ]}
+        linkColor="text-second"
+        activeColor="text-textClr"
+      />
 
-        <div className="py-8 lg:px-20 px-6">
-          <h2 className="text-4xl font-bold text-black capitalize mb-4">
-            {urldata}
-          </h2>
-          <div className="textEditor">
-            <h3>Bachelor of Commerce (B.Com): A Comprehensive Overview</h3>
-            <p>
-              The Bachelor of Commerce (B.Com) is one of the most sought-after
-              undergraduate programs in commerce and business disciplines
-              worldwide...
-            </p>
+      <h2 className="text-2xl font-semibold mb-6">
+        {!selectedDepartment && !selectedCourse
+          ? "All India Colleges"
+          : `${courseNameForPageTitle} Colleges`}
+      </h2>
 
-            <h3>Why Choose a Bachelor of Commerce?</h3>
-            <ol>
-              <li>
-                <h4>Diverse Career Opportunities</h4>
-                <p>
-                  A B.Com degree prepares students for various career paths...
-                </p>
-              </li>
-              <li>
-                <h4>Professional Courses and Certifications</h4>
-                <p>The B.Com degree lays the groundwork for pursuing advanced certifications...</p>
-                <ul>
-                  <li>Chartered Accountancy (CA)</li>
-                  <li>Certified Public Accountant (CPA)</li>
-                  <li>Cost and Management Accounting (CMA)</li>
-                  <li>Master of Business Administration (MBA)</li>
-                </ul>
-              </li>
-            </ol>
-          </div>
-        </div>
-
-        <div>
-          <h1>College Page</h1>
-
-          {/* Filters */}
-          <div className="filters">
-            <select
-              value={selectedCourse}
-              onChange={(e) => handleCourseChange(e.target.value)}
-            >
-              {courses.map((course) => (
-                <option key={course.name} value={course.name}>
-                  {course.name}
-                </option>
+      <div className="flex gap-4 mb-6">
+        {/* Department Filter */}
+        <div className="relative" ref={departmentDropdownRef}>
+          <button
+            className="px-4 py-2 bg-gray-200 rounded"
+            onClick={toggleDepartmentDropdown}
+          >
+            {selectedDepartment || "Select Department"}
+          </button>
+          {isDepartmentDropdownOpen && (
+            <div className="absolute bg-white shadow rounded mt-2">
+              {uniqueDepartments.map((department) => (
+                <div
+                  key={department}
+                  className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                  onClick={() => {
+                    handleDepartmentChange(department);
+                    setIsDepartmentDropdownOpen(false);
+                  }}
+                >
+                  {department}
+                </div>
               ))}
-            </select>
-
-            <select
-              value={selectedStream}
-              onChange={(e) => setSelectedStream(e.target.value)}
-            >
-              {courses
-                .find((course) => course.name === selectedCourse)
-                ?.stream.split(",")
-                .map((stream) => (
-                  <option key={stream} value={stream}>
-                    {stream}
-                  </option>
-                ))}
-            </select>
-
-            <select
-              value={selectedSubStream}
-              onChange={(e) => setSelectedSubStream(e.target.value)}
-            >
-              {courses
-                .find((course) => course.name === selectedCourse)
-                ?.subStreams.map((subStream) => (
-                  <option key={subStream} value={subStream}>
-                    {subStream}
-                  </option>
-                ))}
-            </select>
-          </div>
-
-          {/* Table */}
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            <table>
-              <thead>
-                <tr>
-                  <th>S.No</th>
-                  <th>College Name</th>
-                  <th>City, State</th>
-                  <th>Course Fee</th>
-                  <th>College Type</th>
-                  <th>Specializations</th>
-                  <th>Placement</th>
-                  <th>Grade</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredColleges.map((college) => (
-                  <tr key={college.sno}>
-                    <td>{college.sno}</td>
-                    <td>
-                      {college.name} ({college.city}, {college.state})
-                    </td>
-                    <td>{college.courseFee}</td>
-                    <td>{college.type}</td>
-                    <td>{college.specializations}</td>
-                    <td>{college.placement}</td>
-                    <td>{college.grade}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            </div>
           )}
         </div>
-        <Footer />
+
+        {/* Course Filter */}
+        <div className="relative" ref={courseDropdownRef}>
+          <button
+            className="px-4 py-2 bg-gray-200 rounded"
+            onClick={toggleCourseDropdown}
+          >
+            {selectedCourse || "Select Course"}
+          </button>
+          {isCourseDropdownOpen && (
+            <div className="absolute bg-white shadow rounded mt-2">
+              {uniqueCourses.map((course) => (
+                <div
+                  key={course}
+                  className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                  onClick={() => {
+                    handleCourseChange(course);
+                    setIsCourseDropdownOpen(false);
+                  }}
+                >
+                  {course}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
-    </>
+
+      {/* Selected Filters */}
+      <div className="mb-6">
+        <h3 className="text-lg font-semibold mb-2">Selected Filters:</h3>
+        <p>Department: {selectedDepartment}</p>
+        <p>Course: {selectedCourse}</p>
+        <button
+          onClick={clearFilters}
+          className="mt-2 px-4 py-2 bg-red-500 text-white rounded"
+        >
+          Clear Filters
+        </button>
+      </div>
+
+      {/* Filtered Colleges */}
+      <div>
+        <h3 className="text-lg font-semibold mb-4">Colleges:</h3>
+        {filteredColleges.map((college) => (
+          <div key={college.collegeId} className="mb-4 p-4 border rounded">
+            <h4 className="text-xl font-semibold">{college.collegeName}</h4>
+            <p>Type: {college.collegeType}</p>
+            <p>Established: {college.EstdYear}</p>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 
-export default Page;
+export default FilterableCoursePage;

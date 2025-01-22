@@ -6,7 +6,9 @@ const Breadcrumbs2 = ({ breadcrumbs, linkColor, activeColor }) => {
   return (
     <div className="">
       <div className="flex items-center">
-        <Link href="/"><House size={16} className={linkColor}/></Link>
+        <Link href="/">
+          <House size={16} className={linkColor} />
+        </Link>
         <ChevronRight size={14} className={`mx-1 ${activeColor}`} />
 
         {breadcrumbs.map((breadcrumb, index) => (
@@ -32,3 +34,9 @@ const Breadcrumbs2 = ({ breadcrumbs, linkColor, activeColor }) => {
 };
 
 export default Breadcrumbs2;
+
+{/* <Breadcrumbs2
+  breadcrumbs={[{ title: "Advertise With Siksha Helpline", link: "" }]}
+  linkColor="text-second"
+  activeColor="text-textClr"
+/>; */}

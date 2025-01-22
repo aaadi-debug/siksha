@@ -215,12 +215,12 @@ const ExploreCourses = () => {
                                 </div>
                               </div>
                               <div className="flex justify-between items-center pt-2 mt-3 text-sm border-t group">
-                                <Link
-                                  href={`/course/${data.courseCategory}`}
+                                <a
+                                  href={`/courses/${data.courseCategory}`}
                                   className="text-textClr hover:text-primary"
                                 >
                                   Course Overview
-                                </Link>
+                                </a>
                                 <span className="text-black hover:text-primary">
                                   <ChevronRight size={16} />
                                 </span>

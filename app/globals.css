@@ -8610,9 +8610,12 @@ department_section {
 
 
 /* ---------------------------- parallax----------------------------- */
-/* .road {
-  background: url('/images/road.png') no-repeat center center;
-  background-size: contain;
+.road {
+  background: url('/assets/images/others/road1.png') ;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left center;
+  border: 1px solid red;
 }
 
 .location img {
@@ -8626,11 +8629,6 @@ department_section {
   50% {
     transform: translateY(-10px);
   }
-} */
-
-.road {
-  background: url('/assets/road.png') no-repeat center center;
-  background-size: contain;
 }
 
 .location img {

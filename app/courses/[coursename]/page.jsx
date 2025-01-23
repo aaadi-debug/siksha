@@ -27,16 +27,28 @@ const FilterableCoursePage = () => {
     )
     .find((course) => course.courseUrl === courseUrlFromPath)?.courseName;
 
+  // =====================================================
+  // =====================================================
+  // hooks
   const [selectedDepartment, setSelectedDepartment] =
     useState(defaultDepartment);
   const [selectedCourse, setSelectedCourse] = useState(defaultCourse);
-  const [filteredColleges, setFilteredColleges] = useState([]);
+  const [selectedSpecialization, setSelectedSpecialization] = useState(null); // Specialization filter
+
   const [isDepartmentDropdownOpen, setIsDepartmentDropdownOpen] =
     useState(false);
   const [isCourseDropdownOpen, setIsCourseDropdownOpen] = useState(false);
+  const [isSpecializationDropdownOpen, setIsSpecializationDropdownOpen] =
+    useState(false);
+
+  const [filteredColleges, setFilteredColleges] = useState([]);
 
   const departmentDropdownRef = useRef(null);
   const courseDropdownRef = useRef(null);
+  const specializationDropdownRef = useRef(null);
+
+  // =====================================================
+  // =====================================================
 
   const toggleDepartmentDropdown = () => {
     setIsDepartmentDropdownOpen((prev) => !prev);
@@ -46,7 +58,9 @@ const FilterableCoursePage = () => {
     setIsCourseDropdownOpen((prev) => !prev);
   };
 
-  // Extract unique departments and courses
+  // =====================================================
+  // =====================================================
+  // Unique values from college data for all filters
   const uniqueDepartments = [
     ...new Set(
       collegeData.data.flatMap((college) =>
@@ -65,27 +79,64 @@ const FilterableCoursePage = () => {
     ),
   ];
 
+  // Update unique specializations based on selected department and course
+  const uniqueSpecializations = [
+    ...new Set(
+      collegeData.data.flatMap((college) =>
+        college.departments
+          .filter((department) =>
+            selectedDepartment
+              ? department.departmentName === selectedDepartment
+              : true
+          )
+          .flatMap((department) =>
+            department.courses
+              .filter((course) =>
+                selectedCourse ? course.courseName === selectedCourse : true
+              )
+              .flatMap((course) =>
+                course.specialization.map((special) => special.name || [])
+              )
+          )
+      )
+    ),
+  ];
+
+  console.log("Filtered unique specializations", uniqueSpecializations);
+  // =====================================================
+  // =====================================================
+
   // Update filtered colleges whenever filters change
   useEffect(() => {
     const filtered = collegeData.data.filter((college) => {
-      if (!selectedDepartment && !selectedCourse) {
+      if (!selectedDepartment && !selectedCourse && !selectedSpecialization) {
         return true; // No filters selected, show all colleges
       }
-      return college.departments.some(
-        (department) =>
-          (selectedDepartment
-            ? department.departmentName === selectedDepartment
-            : true) &&
-          (selectedCourse
-            ? department.courses.some(
-                (course) => course.courseName === selectedCourse
-              )
-            : true)
-      );
+      return college.departments.some((department) => {
+        const matchesDepartment = selectedDepartment
+          ? department.departmentName === selectedDepartment
+          : true;
+  
+        const matchesCourse = selectedCourse
+          ? department.courses.some(
+              (course) =>
+                course.courseName === selectedCourse &&
+                (!selectedSpecialization ||
+                  course.specialization.some(
+                    (special) => special.name === selectedSpecialization
+                  ))
+            )
+          : true;
+  
+        return matchesDepartment && matchesCourse;
+      });
     });
     setFilteredColleges(filtered);
-  }, [selectedDepartment, selectedCourse, collegeData]);
+  }, [selectedDepartment, selectedCourse, selectedSpecialization, collegeData]);
 
+  // =====================================================
+  // =====================================================
+  // Handle changes in filters
   const handleDepartmentChange = (department) => {
     setSelectedDepartment(department);
 
@@ -133,6 +184,12 @@ const FilterableCoursePage = () => {
     }
   };
 
+  const handleSpecializationChange = (specialization) => {
+    setSelectedSpecialization(specialization);
+  };
+  // =====================================================
+  // =====================================================
+
   // =====================================================
   // =====================================================
   // For dropdown close when we click outside fo it
@@ -149,6 +206,12 @@ const FilterableCoursePage = () => {
         !courseDropdownRef.current.contains(event.target)
       ) {
         setIsCourseDropdownOpen(false);
+      }
+      if (
+        specializationDropdownRef.current &&
+        !specializationDropdownRef.current.contains(event.target)
+      ) {
+        setIsSpecializationDropdownOpen(false);
       }
     };
 
@@ -186,6 +249,7 @@ const FilterableCoursePage = () => {
   const clearFilters = () => {
     setSelectedDepartment(null); // Reset to no department selected
     setSelectedCourse(null); // Reset to no course selected
+    setSelectedSpecialization(null);
     router.push("/courses/india-colleges", undefined, { shallow: true }); // Redirect to all-colleges and reset filters
   };
 
@@ -261,6 +325,38 @@ const FilterableCoursePage = () => {
                   {course}
                 </div>
               ))}
+            </div>
+          )}
+        </div>
+
+        {/* Specialization Filter */}
+        <div className="relative" ref={specializationDropdownRef}>
+          <button
+            className="px-4 py-2 bg-gray-200 rounded"
+            onClick={() => setIsSpecializationDropdownOpen((prev) => !prev)}
+          >
+            {selectedSpecialization || "Select Specialization"}
+          </button>
+          {isSpecializationDropdownOpen && (
+            <div className="absolute bg-white shadow rounded mt-2">
+              {uniqueSpecializations.length > 0 ? (
+                uniqueSpecializations.map((specialization) => (
+                  <div
+                    key={specialization}
+                    className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                    onClick={() => {
+                      handleSpecializationChange(specialization);
+                      setIsSpecializationDropdownOpen(false);
+                    }}
+                  >
+                    {specialization}
+                  </div>
+                ))
+              ) : (
+                <div className="px-4 py-2 text-gray-500">
+                  No specializations available
+                </div>
+              )}
             </div>
           )}
         </div>

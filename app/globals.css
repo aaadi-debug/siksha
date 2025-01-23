@@ -138,6 +138,100 @@ body {
   display: none;
 }
 
+/* ------------------------------ dangerousHTML --------------------- */
+
+.dangerousHTML p {
+  font-family: sans-serif;
+  line-height: 1.4;
+  font-size: 16px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.dangerousHTML a {
+  color: var(--primary-clr);
+  transition: 0.3 s all ease-in-out;
+}
+.dangerousHTML a:hover {
+  color: var(--star-clr);
+}
+
+.dangerousHTML h1 {
+  font-family: sans-serif;
+  font-size: 48px;
+  font-weight: 700;  /* Changed from 70 to 700 for bold */
+  line-height: 1.6;
+}
+
+.dangerousHTML h2 {
+  font-family: sans-serif;
+  font-size: 36px; /* Adjusted to a larger size for consistency */
+  font-weight: 700; /* Added bold font weight */
+  line-height: 1.6;
+}
+
+.dangerousHTML h3 {
+  font-family: sans-serif;
+  font-size: 30px; /* Adjusted to a larger size for consistency */
+  font-weight: 600; /* Semi-bold font weight */
+  line-height: 1.6;
+}
+
+.dangerousHTML h4 {
+  font-family: sans-serif;
+  font-size: 24px; /* Adjusted to a larger size for consistency */
+  font-weight: 600; /* Semi-bold font weight */
+  line-height: 1.6;
+}
+
+.dangerousHTML h5 {
+  font-family: sans-serif;
+  font-size: 20px; /* Adjusted to a larger size for consistency */
+  font-weight: 600; /* Semi-bold font weight */
+  line-height: 1.6;
+}
+
+.dangerousHTML h6 {
+  font-family: sans-serif;
+  font-size: 18px; /* Adjusted to a larger size for consistency */
+  font-weight: 500; /* Medium font weight */
+  line-height: 1.6;
+}
+
+
+.dangerousHTML ul {
+  margin-left: 30px;
+}
+
+.dangerousHTML ol {
+  margin-left: 30px;
+}
+
+.dangerousHTML ul li {
+  font-family: sans-serif;
+  list-style: disc;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+.dangerousHTML ol li {
+  font-family: sans-serif;
+  list-style: disc;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+.dangerousHTML img {
+  border-radius: 4px;
+  width: 100%;
+}
+
+.dangerousHTML iframe {
+  margin-top: 10px;
+  border-radius: 4px;
+  width: 325px;
+}
+
 /* --------------------landing page ------------------------- */
 
 .all-shapes {
@@ -440,7 +534,6 @@ body {
   }
 }
 
-
 /* ---------------------- testimonialSlider2 ------------------------ */
 /* .testimonialSliderWrapper2 {
   background: rgb(2, 0, 36);
@@ -619,7 +712,6 @@ body {
   }
 }
 
-
 /* --------------------- animated circles -------------------------------- */
 
 .animatedCicrlesWrapper .circles {
@@ -722,7 +814,6 @@ body {
     border-radius: 50%;
   }
 }
-
 
 /* --------------------------- navbar -------------------- */
 /* Style for the parent list item */
@@ -8607,11 +8698,9 @@ department_section {
   width: 325px;
 }
 
-
-
 /* ---------------------------- parallax----------------------------- */
 .road {
-  background: url('/assets/images/others/road1.png') ;
+  background: url("/assets/images/others/road1.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: left center;
@@ -8623,7 +8712,8 @@ department_section {
 }
 
 @keyframes bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -8645,10 +8735,9 @@ department_section {
   }
 }
 
-
 /* ------------------------ advertise with us ----------------------- */
 .advertiseSwiper {
-  background-image: url('/assets/bg_elem/banner-bg-white2.png');
+  background-image: url("/assets/bg_elem/banner-bg-white2.png");
 }
 /* Word by word text animation */
 @keyframes fadeInWord {
@@ -8687,8 +8776,6 @@ department_section {
 .advetiseWithUs .swiper-slide {
   transition: background-position 1s ease-out;
 }
-
-
 
 .advertiseSwiper .swiper-button-prev,
 .swiper-rtl .swiper-button-next {

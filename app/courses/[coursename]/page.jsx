@@ -5,8 +5,17 @@ import { usePathname } from "next/navigation";
 import collegeDataJson from "../../data/collegeData.json"; // Rename the imported data to avoid conflict
 import { useRouter } from "next/navigation"; // Import useRouter
 import Breadcrumbs2 from "@/app/components/Breadcrumbs2";
-import { X, Filter, ArrowRight, Scale, Download } from "lucide-react";
+import {
+  X,
+  Filter,
+  ArrowRight,
+  Scale,
+  Download,
+  ChevronDown,
+  ChevronUp,
+} from "lucide-react";
 import DynamicThemeButton from "@/app/components/DynamicThemeButton";
+import DynamicSidebarModal from "@/app/components/DynamicSidebarModal";
 
 function calculateMinMaxFees(data) {
   let minFee = Infinity;
@@ -120,6 +129,9 @@ const FilterableCoursePage = () => {
   const [isFeeRangeDropdownOpen, setIsFeeRangeDropdownOpen] = useState(false);
 
   const [filteredColleges, setFilteredColleges] = useState([]);
+
+  const [openAccordion, setOpenAccordion] = useState(null);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const departmentDropdownRef = useRef(null);
   const courseDropdownRef = useRef(null);
@@ -360,6 +372,14 @@ const FilterableCoursePage = () => {
     setSelectedFeeRange(values);
   };
 
+  const toggleAccordion = (index) => {
+    setOpenAccordion(openAccordion === index ? null : index);
+  };
+
+  const toggleReadMore = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   // =====================================================
   // =====================================================
 
@@ -460,15 +480,7 @@ const FilterableCoursePage = () => {
 
   return (
     <div className="mx-auto pt-20 max-sm:pt-16 ">
-      <div
-        className="lg:px-10 px-6 pt-10 overflow-hidden"
-        // style={{
-        //   backgroundImage: "url(/assets/bg_elem/courses-bg3.png)",
-        //   // backgroundColor: "#3d52a0",
-        //   backgroundSize: "100%",
-        //   backgroundRepeat: "no-repeat",
-        // }}
-      >
+      <div className="lg:px-10 px-6 pt-10 overflow-hidden">
         <Breadcrumbs2
           breadcrumbs={[
             {
@@ -483,507 +495,1027 @@ const FilterableCoursePage = () => {
           linkColor="text-second"
           activeColor="text-textClr"
         />
-        <div className="bg-gray-100 p-6 mt-10 rounded-lg relative pr-32">
-          <h1 className="text-4xl font-semibold mb-6 text-prim">
+        <div className="bg-gray-100 p-6 mt-10 rounded-lg relative">
+          <h1 className="text-4xl max-sm:text-2xl font-semibold mb-6 max-sm:mb-2 text-prim">
             {!selectedDepartment && !selectedCourse
               ? "Top all India Colleges"
               : `Top ${courseNameForPageTitle} Colleges`}
           </h1>
 
-          {!selectedDepartment && !selectedCourse ? (
-            <div>
-              <p>
-                India is home to some of the world’s finest colleges and
-                universities, offering a diverse range of courses and programs
-                to cater to every student’s aspirations. From historic
-                institutions with decades of academic excellence to modern
-                universities embracing cutting-edge technology, the Indian
-                education system is designed to empower students for global
-                opportunities. Whether you’re looking for engineering, medical
-                sciences, arts, commerce, or professional courses, India’s
-                colleges provide a strong foundation for your future.
-              </p>
-              <h2 className="text-2xl text-tertiary font-semibold mt-3 mb-2">
-                Diverse Educational Opportunities
-              </h2>
-              <p>
-                One of the standout features of India’s college ecosystem is its
-                diversity. With over 40,000 colleges and 900 universities,
-                students have the flexibility to choose from undergraduate,
-                postgraduate, diploma, and doctoral programs in virtually every
-                field imaginable. India’s colleges cater to a wide array of
-                interests, such as:
-              </p>
-              <ul className="pl-6 list-disc mt-2">
-                <li className="pb-2">
-                  <b>Engineering and Technology:</b> Institutes like the IITs,
-                  NITs, and IIITs are globally recognized for their excellence
-                  in engineering and technology education.
-                </li>
-                <li className="pb-2">
-                  <b>Medical Sciences:</b> Prestigious colleges like AIIMS,
-                  JIPMER, and CMC Vellore offer world-class medical training and
-                  research opportunities.
-                </li>
-
-                <li className="pb-2">
-                  <b>Arts and Humanities: </b> For creative minds, institutions
-                  like Delhi University, JNU, and Jadavpur University provide
-                  robust programs in literature, history, sociology, and fine
-                  arts.
-                </li>
-                <li className="pb-2">
-                  <b>Commerce and Business: </b> Colleges like SRCC, IIMs, and
-                  Christ University lead the way in nurturing tomorrow’s
-                  business leaders.
-                </li>
-              </ul>
-              <h2 className="text-2xl text-tertiary font-semibold mt-3 mb-2">
-                Colleges Across States
-              </h2>
-              <p>
-                India’s colleges are spread across its vast geographical
-                landscape, ensuring access to quality education in every state.
-                From the bustling academic hubs of Delhi NCR, Mumbai, and
-                Bangalore to the serene campuses of Kerala, Rajasthan, and
-                Himachal Pradesh, every region offers unique academic
-                environments. Whether you’re seeking opportunities in
-                metropolitan cities or looking for a more peaceful learning
-                experience in smaller towns, there’s a college in India tailored
-                for your needs.
-              </p>
-              <h2 className="text-2xl text-tertiary font-semibold mt-3 mb-2">
-                Campus Life in India
-              </h2>
-              <p>
-                Beyond academics, India’s colleges are renowned for their
-                vibrant campus culture. Students can engage in extracurricular
-                activities such as cultural fests, sports tournaments, and
-                technical competitions. Facilities like libraries,
-                state-of-the-art laboratories, and modern hostels ensure a
-                comfortable and enriching student life.
-              </p>
-              <h2 className="text-2xl text-tertiary font-semibold mt-3 mb-2">
-                Begin Your Journey Today
-              </h2>
-              <p>
-                Whether you’re a student from India or abroad, exploring
-                colleges in India is your first step toward a bright future.
-                With so many options available, finding the right college can be
-                overwhelming—but it’s also an exciting journey filled with
-                potential and promise. Let us help you filter through courses,
-                departments, states, and fee ranges to find the perfect
-                institution for your needs. Start exploring now, and take a step
-                closer to your dreams!
-              </p>
-            </div>
-          ) : (
+          <div className="relative">
             <div
-              dangerouslySetInnerHTML={{
-                __html: courseAboutForPageTitle,
-              }}
-              className="dangerousHTML"
-            />
-          )}
+              className={`overflow-hidden transition-all duration-300 ${
+                isExpanded ? "max-h-none" : "max-h-[10rem]"
+              }`}
+            >
+              {!selectedDepartment && !selectedCourse ? (
+                <div>
+                  {/* Default data when no filter is selected */}
+                  <p>
+                    India is home to some of the world’s finest colleges and
+                    universities, offering a diverse range of courses and
+                    programs to cater to every student’s aspirations. From
+                    historic institutions with decades of academic excellence to
+                    modern universities embracing cutting-edge technology, the
+                    Indian education system is designed to empower students for
+                    global opportunities. Whether you’re looking for
+                    engineering, medical sciences, arts, commerce, or
+                    professional courses, India’s colleges provide a strong
+                    foundation for your future.
+                  </p>
+                  <h2 className="text-2xl text-tertiary font-semibold mt-3 mb-2">
+                    Diverse Educational Opportunities
+                  </h2>
+                  <p>
+                    One of the standout features of India’s college ecosystem is
+                    its diversity. With over 40,000 colleges and 900
+                    universities, students have the flexibility to choose from
+                    undergraduate, postgraduate, diploma, and doctoral programs
+                    in virtually every field imaginable. India’s colleges cater
+                    to a wide array of interests, such as:
+                  </p>
+                  <ul className="pl-6 list-disc mt-2">
+                    <li className="pb-2">
+                      <b>Engineering and Technology:</b> Institutes like the
+                      IITs, NITs, and IIITs are globally recognized for their
+                      excellence in engineering and technology education.
+                    </li>
+                    <li className="pb-2">
+                      <b>Medical Sciences:</b> Prestigious colleges like AIIMS,
+                      JIPMER, and CMC Vellore offer world-class medical training
+                      and research opportunities.
+                    </li>
+
+                    <li className="pb-2">
+                      <b>Arts and Humanities: </b> For creative minds,
+                      institutions like Delhi University, JNU, and Jadavpur
+                      University provide robust programs in literature, history,
+                      sociology, and fine arts.
+                    </li>
+                    <li className="pb-2">
+                      <b>Commerce and Business: </b> Colleges like SRCC, IIMs,
+                      and Christ University lead the way in nurturing tomorrow’s
+                      business leaders.
+                    </li>
+                  </ul>
+                  <h2 className="text-2xl text-tertiary font-semibold mt-3 mb-2">
+                    Colleges Across States
+                  </h2>
+                  <p>
+                    India’s colleges are spread across its vast geographical
+                    landscape, ensuring access to quality education in every
+                    state. From the bustling academic hubs of Delhi NCR, Mumbai,
+                    and Bangalore to the serene campuses of Kerala, Rajasthan,
+                    and Himachal Pradesh, every region offers unique academic
+                    environments. Whether you’re seeking opportunities in
+                    metropolitan cities or looking for a more peaceful learning
+                    experience in smaller towns, there’s a college in India
+                    tailored for your needs.
+                  </p>
+                  <h2 className="text-2xl text-tertiary font-semibold mt-3 mb-2">
+                    Campus Life in India
+                  </h2>
+                  <p>
+                    Beyond academics, India’s colleges are renowned for their
+                    vibrant campus culture. Students can engage in
+                    extracurricular activities such as cultural fests, sports
+                    tournaments, and technical competitions. Facilities like
+                    libraries, state-of-the-art laboratories, and modern hostels
+                    ensure a comfortable and enriching student life.
+                  </p>
+                  <h2 className="text-2xl text-tertiary font-semibold mt-3 mb-2">
+                    Begin Your Journey Today
+                  </h2>
+                  <p>
+                    Whether you’re a student from India or abroad, exploring
+                    colleges in India is your first step toward a bright future.
+                    With so many options available, finding the right college
+                    can be overwhelming—but it’s also an exciting journey filled
+                    with potential and promise. Let us help you filter through
+                    courses, departments, states, and fee ranges to find the
+                    perfect institution for your needs. Start exploring now, and
+                    take a step closer to your dreams!
+                  </p>
+                </div>
+              ) : (
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: courseAboutForPageTitle,
+                  }}
+                  className="dangerousHTML"
+                />
+              )}
+            </div>
+            {/* Blurred Effect */}
+            {!isExpanded && (
+              <div className="w-full h-8 bg-gradient-to-t from-white via-white/10 to-transparent"></div>
+            )}
+
+            <div className="flex justify-center items-center bg-white rounded-b-lg">
+              {/* Action Buttons */}
+              <button
+                onClick={toggleReadMore}
+                className="text-second font-medium hover:underline focus:outline-none text-center py-2 rounded-b-lg"
+              >
+                {isExpanded ? "Read Less" : "Read More"}
+              </button>
+            </div>
+          </div>
 
           <img
             src="/assets/bg_elem/hat-docs.png"
             alt="Graduation Hat Image"
-            className="absolute -top-24 -right-24"
+            className="absolute lg:-top-20 lg:-right-20 2xl:w-56 xl:w-56 lg:w-56 md:w-32 max-sm:w-20 w-28 md:-top-10 md:-right-10 max-sm:-top-6 max-sm:-right-6 -top-10 -right-10"
           />
         </div>
       </div>
 
       <div className="lg:px-10 px-6">
         {/* Filters */}
-        <div className=" sticky top-20 z-10 bg-gray-100 py-4 px-4 mt-6">
-          <div className="flex gap-4 items-center">
-            <div className="px-3 py-1 border-2 bg-gray-200 rounded-full flex items-center gap-2 text-sm">
-              <Filter size={14} /> All Filters
-            </div>
 
-            {/* Department Filter */}
-            <div className="relative" ref={departmentDropdownRef}>
-              <button
-                className={`px-3 py-1 border-2 rounded-full flex items-center gap-2 text-sm ${
-                  selectedDepartment
-                    ? "border-prim text-tertiary bg-prim/20"
-                    : "border-gray-300 bg-white text-gray-800"
-                }`}
-                onClick={() => setIsDepartmentDropdownOpen((prev) => !prev)}
+        {/* for mobile and tab view */}
+        <div className="lg:hidden md:block max-sm:block">
+          <div className="flex flex-col bg-gray-100 py-4 px-4 mt-6">
+            <div className="px-3 py-1 border-2 bg-gray-200 rounded-full flex items-center gap-2 text-sm mr-auto">
+              <Filter size={14} />{" "}
+              <DynamicSidebarModal
+                headerText="All Filters"
+                headerIcon=<Filter size={16} />
+                triggerText="Filter Colleges"
+                sidebarWidth=""
               >
-                Department
-              </button>
-              {isDepartmentDropdownOpen && (
-                <div className="absolute bg-white shadow rounded-lg mt-2 w-96 p-3 h-auto max-h-96 overflow-y-auto custom-course-scrollbar">
-                  <div className="rounded-lg flex flex-wrap gap-2">
-                    {uniqueDepartments.map((department) => (
-                      <div
-                        key={department}
-                        className={`px-3 py-1 cursor-pointer text-sm rounded-full ${
-                          department === selectedDepartment
-                            ? "border-2 border-orange-500 bg-orange-100 text-orange-600"
-                            : "hover:bg-gray-100 border"
-                        }`}
-                        onClick={() => {
-                          handleDepartmentChange(department);
-                          setIsDepartmentDropdownOpen(false);
-                        }}
-                      >
-                        {department}
+                <div className="space-y-4 overflow-y-auto h-[80vh] custom-course-scrollbar">
+                  {/* Department Filter Mobile View */}
+                  <div>
+                    <button
+                      className={`w-full text-left px-4 py-2 rounded-lg border-2 focus:outline-none flex justify-between items-center ${
+                        selectedDepartment
+                          ? "border-prim text-tertiary bg-prim/20"
+                          : "border-gray-300 bg-white text-gray-800"
+                      }`}
+                      onClick={() => toggleAccordion(0)}
+                    >
+                      Department{" "}
+                      {openAccordion === 0 ? <ChevronUp /> : <ChevronDown />}
+                    </button>
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                        openAccordion === 0 ? "h-auto p-1" : "h-0"
+                      }`}
+                    >
+                      <div className="">
+                        {uniqueSpecializations?.length > 0 ? (
+                          uniqueDepartments?.map((department) => (
+                            <div
+                              key={department}
+                              className={`p-2 cursor-pointer text-sm rounded-lg mt-2 ${
+                                department === selectedDepartment
+                                  ? "border-2 border-orange-500 bg-orange-100 text-orange-600"
+                                  : "hover:bg-gray-100 border"
+                              }`}
+                              onClick={() => {
+                                handleDepartmentChange(department);
+                                setIsDepartmentDropdownOpen(false);
+                              }}
+                            >
+                              {department}
+                            </div>
+                          ))
+                        ) : (
+                          <div className="px-4 py-2 text-gray-500">
+                            No department available
+                          </div>
+                        )}
                       </div>
-                    ))}
+                    </div>
                   </div>
-                </div>
-              )}
-            </div>
 
-            {/* Course Filter */}
-            <div className="relative" ref={courseDropdownRef}>
-              <button
-                className={`px-3 py-1 border-2 rounded-full flex items-center gap-2 text-sm ${
-                  selectedCourse
-                    ? "border-prim text-tertiary bg-prim/20"
-                    : "border-gray-300 bg-white text-gray-800"
-                }`}
-                onClick={() => setIsCourseDropdownOpen((prev) => !prev)}
-              >
-                Course
-              </button>
-              {isCourseDropdownOpen && (
-                <div className="absolute bg-white shadow rounded-lg mt-2 w-96 p-3 h-auto max-h-96 overflow-y-auto custom-course-scrollbar">
-                  <div className="rounded-lg flex flex-wrap gap-2">
-                    {uniqueCourses.map((course) => (
-                      <div
-                        key={course}
-                        className={`px-3 py-1 cursor-pointer text-sm rounded-full ${
-                          course === selectedCourse
-                            ? "border-2 border-orange-500 bg-orange-100 text-orange-600"
-                            : "hover:bg-gray-100 border"
-                        }`}
-                        onClick={() => {
-                          handleCourseChange(course);
-                          setIsCourseDropdownOpen(false);
-                        }}
-                      >
-                        {course}
+                  {/* Course Filter Mobile View */}
+                  <div>
+                    <button
+                      className={`w-full text-left px-4 py-2 rounded-lg border-2 focus:outline-none flex justify-between items-center ${
+                        selectedCourse
+                          ? "border-prim text-tertiary bg-prim/20"
+                          : "border-gray-300 bg-white text-gray-800"
+                      }`}
+                      onClick={() => toggleAccordion(1)}
+                    >
+                      Course{" "}
+                      {openAccordion === 1 ? <ChevronUp /> : <ChevronDown />}
+                    </button>
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                        openAccordion === 1 ? "h-auto p-1" : "h-0"
+                      }`}
+                    >
+                      <div className="">
+                        {uniqueCourses?.length > 0 ? (
+                          uniqueCourses?.map((course) => (
+                            <div
+                              key={course}
+                              className={`p-2 cursor-pointer text-sm rounded-lg mt-2 ${
+                                course === selectedCourse
+                                  ? "border-2 border-orange-500 bg-orange-100 text-orange-600"
+                                  : "hover:bg-gray-100 border"
+                              }`}
+                              onClick={() => {
+                                handleCourseChange(course);
+                                setIsCourseDropdownOpen(false);
+                              }}
+                            >
+                              {course}
+                            </div>
+                          ))
+                        ) : (
+                          <div className="px-4 py-2 text-gray-500">
+                            No course available
+                          </div>
+                        )}
                       </div>
-                    ))}
+                    </div>
                   </div>
-                </div>
-              )}
-            </div>
 
-            {/* Specialization Filter */}
-            <div className="relative" ref={specializationDropdownRef}>
-              <button
-                className={`px-3 py-1 border-2 rounded-full flex items-center gap-2 text-sm ${
-                  selectedSpecialization
-                    ? "border-prim text-tertiary bg-prim/20"
-                    : "border-gray-300 bg-white text-gray-800"
-                }`}
-                onClick={() => setIsSpecializationDropdownOpen((prev) => !prev)}
-              >
-                Specialization
-              </button>
-              {isSpecializationDropdownOpen && (
-                <div className="absolute bg-white shadow rounded-lg mt-2 w-96 p-3 h-auto max-h-96 overflow-y-auto custom-course-scrollbar">
-                  <div className="rounded-lg flex flex-wrap gap-2">
-                    {uniqueSpecializations.length > 0 ? (
-                      uniqueSpecializations.map((specialization) => (
-                        <div
-                          key={specialization}
-                          className={`px-3 py-1 cursor-pointer text-sm rounded-full ${
-                            specialization === selectedSpecialization
-                              ? "border-2 border-orange-500 bg-orange-100 text-orange-600"
-                              : "hover:bg-gray-100 border"
-                          }`}
-                          onClick={() => {
-                            handleSpecializationChange(specialization);
-                            setIsSpecializationDropdownOpen(false);
-                          }}
-                        >
-                          {specialization}
+                  {/* Specialization Mobile View */}
+                  <div>
+                    <button
+                      className={`w-full text-left px-4 py-2 rounded-lg border-2 focus:outline-none flex justify-between items-center ${
+                        selectedSpecialization
+                          ? "border-prim text-tertiary bg-prim/20"
+                          : "border-gray-300 bg-white text-gray-800"
+                      }`}
+                      onClick={() => toggleAccordion(2)}
+                    >
+                      Specialization{" "}
+                      {openAccordion === 2 ? <ChevronUp /> : <ChevronDown />}
+                    </button>
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                        openAccordion === 2 ? "h-auto p-1" : "h-0"
+                      }`}
+                    >
+                      <div className="">
+                        {uniqueSpecializations.length > 0 ? (
+                          uniqueSpecializations.map((specialization) => (
+                            <div
+                              key={specialization}
+                              className={`p-2 cursor-pointer text-sm rounded-lg mt-2 ${
+                                specialization === selectedSpecialization
+                                  ? "border-2 border-orange-500 bg-orange-100 text-orange-600"
+                                  : "hover:bg-gray-100 border"
+                              }`}
+                              onClick={() => {
+                                handleSpecializationChange(specialization);
+                                setIsSpecializationDropdownOpen(false);
+                              }}
+                            >
+                              {specialization}
+                            </div>
+                          ))
+                        ) : (
+                          <div className="px-4 py-2 text-gray-500">
+                            No specializations available
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* State Filter Mobile View */}
+                  <div>
+                    <button
+                      className={`w-full text-left px-4 py-2 rounded-lg border-2 focus:outline-none flex justify-between items-center ${
+                        selectedState
+                          ? "border-prim text-tertiary bg-prim/20"
+                          : "border-gray-300 bg-white text-gray-800"
+                      }`}
+                      onClick={() => toggleAccordion(3)}
+                    >
+                      State{" "}
+                      {openAccordion === 3 ? <ChevronUp /> : <ChevronDown />}
+                    </button>
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                        openAccordion === 3 ? "h-auto p-1" : "h-0"
+                      }`}
+                    >
+                      <div className="">
+                        {states?.length ? (
+                          states?.map((state) => (
+                            <div
+                              key={state}
+                              onClick={() => {
+                                handleStateChange(state);
+                                setIsStateDropdownOpen(false);
+                              }}
+                              className={`p-2 cursor-pointer text-sm rounded-lg mt-2 ${
+                                state === selectedState
+                                  ? "border-2 border-orange-500 bg-orange-100 text-orange-600"
+                                  : "hover:bg-gray-100 border"
+                              }`}
+                            >
+                              {state}
+                            </div>
+                          ))
+                        ) : (
+                          <div className="px-4 py-2 text-gray-500">
+                            No state available
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* City filter mobile view */}
+                  <div>
+                    <button
+                      className={`w-full text-left px-4 py-2 rounded-lg border-2 focus:outline-none flex justify-between items-center ${
+                        selectedCity
+                          ? "border-prim text-tertiary bg-prim/20"
+                          : "border-gray-300 bg-white text-gray-800"
+                      }`}
+                      onClick={() => toggleAccordion(4)}
+                    >
+                      City{" "}
+                      {openAccordion === 4 ? <ChevronUp /> : <ChevronDown />}
+                    </button>
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                        openAccordion === 4 ? "h-auto p-1" : "h-0"
+                      }`}
+                    >
+                      <div className="">
+                        {cities?.length ? (
+                          cities?.map((city) => (
+                            <div
+                              key={city}
+                              onClick={() => {
+                                handleCityChange(city);
+                                setIsCityDropdownOpen(false);
+                              }}
+                              className={`p-2 cursor-pointer text-sm rounded-lg mt-2 ${
+                                city === selectedCity
+                                  ? "border-2 border-orange-500 bg-orange-100 text-orange-600"
+                                  : "hover:bg-gray-100 border"
+                              }`}
+                            >
+                              {city}
+                            </div>
+                          ))
+                        ) : (
+                          <div className="px-4 py-2 text-gray-500">
+                            No city available
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* College Type filter mobile view */}
+                  <div>
+                    <button
+                      className={`w-full text-left px-4 py-2 rounded-lg border-2 focus:outline-none flex justify-between items-center ${
+                        selectedCollegeType
+                          ? "border-prim text-tertiary bg-prim/20"
+                          : "border-gray-300 bg-white text-gray-800"
+                      }`}
+                      onClick={() => toggleAccordion(5)}
+                    >
+                      College Type{" "}
+                      {openAccordion === 5 ? <ChevronUp /> : <ChevronDown />}
+                    </button>
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                        openAccordion === 5 ? "h-auto p-1" : "h-0"
+                      }`}
+                    >
+                      <div className="">
+                        {collegeTypes?.length ? (
+                          collegeTypes?.map((type) => (
+                            <div
+                              key={type}
+                              onClick={() => {
+                                handleCollegeTypeChange(type);
+                                setIsCollegeTypeDropdownOpen(false);
+                              }}
+                              className={`p-2 cursor-pointer text-sm rounded-lg mt-2 capitalize ${
+                                type === selectedCollegeType
+                                  ? "border-2 border-orange-500 bg-orange-100 text-orange-600"
+                                  : "hover:bg-gray-100 border"
+                              }`}
+                            >
+                              {type}
+                            </div>
+                          ))
+                        ) : (
+                          <div className="px-4 py-2 text-gray-500">
+                            No college type available
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Fee Range filter mobile view */}
+                  <div>
+                    <button
+                      className={`w-full text-left px-4 py-2 rounded-lg border-2 focus:outline-none flex justify-between items-center ${
+                        selectedFeeRange[0]
+                          ? "border-prim text-tertiary bg-prim/20"
+                          : "border-gray-300 bg-white text-gray-800"
+                      }`}
+                      onClick={() => toggleAccordion(6)}
+                    >
+                      Fee Range{" "}
+                      {openAccordion === 6 ? <ChevronUp /> : <ChevronDown />}
+                    </button>
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                        openAccordion === 6 ? "h-auto p-2" : "h-0"
+                      }`}
+                    >
+                      <div className="rounded-lg mt-2">
+                        <div className="flex justify-between items-center text-sm mb-2">
+                          <span>
+                            Min: ₹{formatNumberWithCommas(selectedFeeRange[0])}
+                          </span>
+                          <span>
+                            Max: ₹{formatNumberWithCommas(selectedFeeRange[1])}
+                          </span>
                         </div>
-                      ))
-                    ) : (
-                      <div className="px-4 py-2 text-gray-500">
-                        No specializations available
+                        <input
+                          id="feeRange"
+                          type="range"
+                          min={0}
+                          max={maxFee}
+                          step={1000}
+                          value={selectedFeeRange[0]} // Assuming it's the start of the range
+                          onChange={(e) =>
+                            handleFeeChange([
+                              parseInt(e.target.value, 10),
+                              selectedFeeRange[1],
+                            ])
+                          }
+                          className="range-input mb-4"
+                        />
+                        <input
+                          id="feeRangeMax"
+                          type="range"
+                          min={0}
+                          max={maxFee}
+                          step={1000}
+                          value={selectedFeeRange[1]} // Assuming it's the end of the range
+                          onChange={(e) =>
+                            handleFeeChange([
+                              selectedFeeRange[0],
+                              parseInt(e.target.value, 10),
+                            ])
+                          }
+                          className="range-input"
+                        />
                       </div>
-                    )}
+                    </div>
                   </div>
                 </div>
-              )}
+              </DynamicSidebarModal>
             </div>
-
-            {/* State Filter */}
-            <div className="relative" ref={stateDropdownRef}>
-              <button
-                className={`px-3 py-1 border-2 rounded-full flex items-center gap-2 text-sm ${
-                  selectedState
-                    ? "border-prim text-tertiary bg-prim/20"
-                    : "border-gray-300 bg-white text-gray-800"
-                }`}
-                onClick={() => setIsStateDropdownOpen((prev) => !prev)}
-              >
-                State
-              </button>
-              {isStateDropdownOpen && (
-                <div className="absolute bg-white shadow rounded-lg mt-2 w-96 p-3 h-auto max-h-96 overflow-y-auto custom-course-scrollbar">
-                  <div className="rounded-lg flex flex-wrap gap-2">
-                    {states.map((state) => (
-                      <div
-                        key={state}
-                        onClick={() => {
-                          handleStateChange(state);
-                          setIsStateDropdownOpen(false);
-                        }}
-                        className={`px-3 py-1 cursor-pointer text-sm rounded-full ${
-                          state === selectedState
-                            ? "border-2 border-orange-500 bg-orange-100 text-orange-600"
-                            : "hover:bg-gray-100 border"
-                        }`}
-                      >
-                        {state}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* City Filter */}
-            <div className="relative" ref={cityDropdownRef}>
-              <button
-                className={`px-3 py-1 border-2 rounded-full flex items-center gap-2 text-sm ${
-                  selectedCity
-                    ? "border-prim text-tertiary bg-prim/20"
-                    : "border-gray-300 bg-white text-gray-800"
-                }`}
-                onClick={() => setIsCityDropdownOpen((prev) => !prev)}
-              >
-                City
-              </button>
-              {isCityDropdownOpen && (
-                <div className="absolute bg-white shadow rounded-lg mt-2 w-96 p-3 h-auto max-h-96 overflow-y-auto custom-course-scrollbar">
-                  <div className="rounded-lg flex flex-wrap gap-2">
-                    {cities.map((city) => (
-                      <div
-                        key={city}
-                        onClick={() => {
-                          handleCityChange(city);
-                          setIsCityDropdownOpen(false);
-                        }}
-                        className={`px-3 py-1 cursor-pointer text-sm rounded-full ${
-                          city === selectedCity
-                            ? "border-2 border-orange-500 bg-orange-100 text-orange-600"
-                            : "hover:bg-gray-100 border"
-                        }`}
-                      >
-                        {city}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* College type Filter */}
-            <div className="relative" ref={collegeTypeDropdownRef}>
-              <button
-                className={`px-3 py-1 border-2 rounded-full flex items-center gap-2 text-sm ${
-                  selectedCollegeType
-                    ? "border-prim text-tertiary bg-prim/20"
-                    : "border-gray-300 bg-white text-gray-800"
-                }`}
-                onClick={() => setIsCollegeTypeDropdownOpen((prev) => !prev)}
-              >
-                College Type
-              </button>
-              {isCollegeTypeDropdownOpen && (
-                <div className="absolute bg-white shadow rounded-lg mt-2 w-96 p-3 h-auto max-h-96 overflow-y-auto custom-course-scrollbar">
-                  <div className="rounded-lg flex flex-wrap gap-2">
-                    {collegeTypes.map((type) => (
-                      <div
-                        key={type}
-                        onClick={() => {
-                          handleCollegeTypeChange(type);
-                          setIsCollegeTypeDropdownOpen(false);
-                        }}
-                        className={`px-3 py-1 cursor-pointer text-sm rounded-full ${
-                          type === selectedCollegeType
-                            ? "border-2 border-orange-500 bg-orange-100 text-orange-600"
-                            : "hover:bg-gray-100 border"
-                        }`}
-                      >
-                        {type}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Fee range Filter */}
-            <div className="relative" ref={feeRangeDropdownRef}>
-              <button
-                className={`px-3 py-1 border-2 rounded-full flex items-center gap-2 text-sm ${
-                  selectedFeeRange[0]
-                    ? "border-prim text-tertiary bg-prim/20"
-                    : "border-gray-300 bg-white text-gray-800"
-                }`}
-                onClick={() => setIsFeeRangeDropdownOpen((prev) => !prev)}
-              >
-                Fee Range
-              </button>
-              {isFeeRangeDropdownOpen && (
-                <div className="absolute bg-white shadow rounded-lg mt-2 w-96 p-3 h-auto max-h-96 overflow-y-auto custom-course-scrollbar">
-                  <div className="rounded-lg">
-                    <div className="flex justify-between items-center text-sm mb-2">
-                      <span>Min: ₹{formatNumberWithCommas(selectedFeeRange[0])}</span>
-                      <span>Max: ₹{formatNumberWithCommas(selectedFeeRange[1])}</span>
-                    </div>
-                    <input
-                      id="feeRange"
-                      type="range"
-                      min={0}
-                      max={maxFee}
-                      step={1000}
-                      value={selectedFeeRange[0]} // Assuming it's the start of the range
-                      onChange={(e) =>
-                        handleFeeChange([
-                          parseInt(e.target.value, 10),
-                          selectedFeeRange[1],
-                        ])
-                      }
-                      className="range-input mb-4"
-                    />
-                    <input
-                      id="feeRangeMax"
-                      type="range"
-                      min={0}
-                      max={maxFee}
-                      step={1000}
-                      value={selectedFeeRange[1]} // Assuming it's the end of the range
-                      onChange={(e) =>
-                        handleFeeChange([
-                          selectedFeeRange[0],
-                          parseInt(e.target.value, 10),
-                        ])
-                      }
-                      className="range-input"
-                    />
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Selected Filters */}
-          <div className="mt-3">
-            {(selectedDepartment ||
-              selectedCourse ||
-              selectedSpecialization ||
-              selectedState ||
-              selectedCity ||
-              selectedCollegeType ||
-              (selectedFeeRange &&
-                selectedFeeRange[0] !== 0 &&
-                selectedFeeRange[1] !== 0)) && ( // Only render this section if at least one filter is selected
-              <>
-                <h3 className="text-sm text-tertiary font-semibold mb-2">
-                  Selected Filters:
-                </h3>
-                <div className="flex items-center gap-2">
-                  {selectedDepartment && (
-                    <div className="border-2 border-prim  text-tertiary rounded-full text-xs px-3 py-1 flex items-center">
-                      {selectedDepartment}
-                      <button
-                        className="ml-2 text-red-500"
-                        onClick={() => setSelectedDepartment(null)}
-                      >
-                        <X size={12} />
-                      </button>
-                    </div>
-                  )}
-                  {selectedCourse && (
-                    <div className="border-2 border-prim  text-tertiary rounded-full text-xs px-3 py-1 flex items-center">
-                      {selectedCourse}
-                      <button
-                        className="ml-2 text-red-500"
-                        onClick={() => setSelectedCourse(null)}
-                      >
-                        <X size={12} />
-                      </button>
-                    </div>
-                  )}
-                  {selectedSpecialization && (
-                    <div className="border-2 border-prim  text-tertiary rounded-full text-xs px-3 py-1 flex items-center">
-                      {selectedSpecialization}
-                      <button
-                        className="ml-2 text-red-500"
-                        onClick={() => setSelectedSpecialization(null)}
-                      >
-                        <X size={12} />
-                      </button>
-                    </div>
-                  )}
-                  {selectedState && (
-                    <div className="border-2 border-prim  text-tertiary rounded-full text-xs px-3 py-1 flex items-center">
-                      {selectedState}
-                      <button
-                        className="ml-2 text-red-500"
-                        onClick={() => setSelectedState(null)}
-                      >
-                        <X size={12} />
-                      </button>
-                    </div>
-                  )}
-                  {selectedCity && (
-                    <div className="border-2 border-prim  text-tertiary rounded-full text-xs px-3 py-1 flex items-center">
-                      {selectedCity}
-                      <button
-                        className="ml-2 text-red-500"
-                        onClick={() => setSelectedCity(null)}
-                      >
-                        <X size={12} />
-                      </button>
-                    </div>
-                  )}
-                  {selectedCollegeType && (
-                    <div className="border-2 border-prim  text-tertiary rounded-full text-xs px-3 py-1 flex items-center capitalize">
-                      {selectedCollegeType}
-                      <button
-                        className="ml-2 text-red-500"
-                        onClick={() => setSelectedCollegeType(null)}
-                      >
-                        <X size={12} />
-                      </button>
-                    </div>
-                  )}
-                  {selectedFeeRange &&
-                    selectedFeeRange[0] !== 0 &&
-                    selectedFeeRange[1] !== 0 && (
+            {/* Selected Filters */}
+            <div className="">
+              {(selectedDepartment ||
+                selectedCourse ||
+                selectedSpecialization ||
+                selectedState ||
+                selectedCity ||
+                selectedCollegeType ||
+                (selectedFeeRange &&
+                  selectedFeeRange[0] !== 0 &&
+                  selectedFeeRange[1] !== 0)) && ( // Only render this section if at least one filter is selected
+                <>
+                  <h3 className="text-sm text-tertiary font-semibold mb-2 mt-3">
+                    Selected Filters:
+                  </h3>
+                  <div className="flex flex-wrap items-center gap-2">
+                    {selectedDepartment && (
                       <div className="border-2 border-prim  text-tertiary rounded-full text-xs px-3 py-1 flex items-center">
-                        Fee Range: ₹{formatNumberWithCommas(selectedFeeRange[0])} - ₹
-                        {formatNumberWithCommas(selectedFeeRange[1])}
+                        {selectedDepartment}
                         <button
                           className="ml-2 text-red-500"
-                          onClick={() => setSelectedFeeRange([0, maxFee])} // Reset fee range to default
+                          onClick={() => setSelectedDepartment(null)}
                         >
                           <X size={12} />
                         </button>
                       </div>
                     )}
-                  <button
-                    onClick={clearFilters}
-                    className="bg-gray-200 border-2 text-tertiary rounded-full text-xs px-3 py-1"
-                  >
-                    Clear All
-                  </button>
-                </div>
-              </>
-            )}
+                    {selectedCourse && (
+                      <div className="border-2 border-prim  text-tertiary rounded-full text-xs px-3 py-1 flex items-center">
+                        {selectedCourse}
+                        <button
+                          className="ml-2 text-red-500"
+                          onClick={() => setSelectedCourse(null)}
+                        >
+                          <X size={12} />
+                        </button>
+                      </div>
+                    )}
+                    {selectedSpecialization && (
+                      <div className="border-2 border-prim  text-tertiary rounded-full text-xs px-3 py-1 flex items-center">
+                        {selectedSpecialization}
+                        <button
+                          className="ml-2 text-red-500"
+                          onClick={() => setSelectedSpecialization(null)}
+                        >
+                          <X size={12} />
+                        </button>
+                      </div>
+                    )}
+                    {selectedState && (
+                      <div className="border-2 border-prim  text-tertiary rounded-full text-xs px-3 py-1 flex items-center">
+                        {selectedState}
+                        <button
+                          className="ml-2 text-red-500"
+                          onClick={() => setSelectedState(null)}
+                        >
+                          <X size={12} />
+                        </button>
+                      </div>
+                    )}
+                    {selectedCity && (
+                      <div className="border-2 border-prim  text-tertiary rounded-full text-xs px-3 py-1 flex items-center">
+                        {selectedCity}
+                        <button
+                          className="ml-2 text-red-500"
+                          onClick={() => setSelectedCity(null)}
+                        >
+                          <X size={12} />
+                        </button>
+                      </div>
+                    )}
+                    {selectedCollegeType && (
+                      <div className="border-2 border-prim  text-tertiary rounded-full text-xs px-3 py-1 flex items-center capitalize">
+                        {selectedCollegeType}
+                        <button
+                          className="ml-2 text-red-500"
+                          onClick={() => setSelectedCollegeType(null)}
+                        >
+                          <X size={12} />
+                        </button>
+                      </div>
+                    )}
+                    {selectedFeeRange &&
+                      selectedFeeRange[0] !== 0 &&
+                      selectedFeeRange[1] !== 0 && (
+                        <div className="border-2 border-prim  text-tertiary rounded-full text-xs px-3 py-1 flex items-center">
+                          Fee Range: ₹
+                          {formatNumberWithCommas(selectedFeeRange[0])} - ₹
+                          {formatNumberWithCommas(selectedFeeRange[1])}
+                          <button
+                            className="ml-2 text-red-500"
+                            onClick={() => setSelectedFeeRange([0, maxFee])} // Reset fee range to default
+                          >
+                            <X size={12} />
+                          </button>
+                        </div>
+                      )}
+                    <button
+                      onClick={clearFilters}
+                      className="bg-gray-200 border-2 text-tertiary rounded-full text-xs px-3 py-1"
+                    >
+                      Clear All
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* for dekstop view */}
+        <div className="lg:block hidden">
+          <div className="z-10 bg-gray-100 py-4 px-4 mt-6">
+            <div className="flex flex-wrap 2xl:gap-4 xl:gap-4 lg:gap-2 items-center">
+              <div className="px-3 py-1 border-2 bg-gray-200 rounded-full flex items-center gap-2 text-sm">
+                <Filter size={14} /> All Filters
+              </div>
+
+              {/* Department Filter */}
+              <div className="relative" ref={departmentDropdownRef}>
+                <button
+                  className={`px-3 py-1 border-2 rounded-full flex items-center gap-2 text-sm ${
+                    selectedDepartment
+                      ? "border-prim text-tertiary bg-prim/20"
+                      : "border-gray-300 bg-white text-gray-800"
+                  }`}
+                  onClick={() => setIsDepartmentDropdownOpen((prev) => !prev)}
+                >
+                  Department
+                </button>
+                {isDepartmentDropdownOpen && (
+                  <div className="absolute bg-white shadow rounded-lg mt-2 w-96 p-3 h-auto max-h-96 overflow-y-auto custom-course-scrollbar">
+                    <div className="rounded-lg flex flex-wrap gap-2">
+                      {uniqueDepartments?.length > 0 ? (
+                        uniqueDepartments?.map((department) => (
+                          <div
+                            key={department}
+                            className={`px-3 py-1 cursor-pointer text-sm rounded-full ${
+                              department === selectedDepartment
+                                ? "border-2 border-orange-500 bg-orange-100 text-orange-600"
+                                : "hover:bg-gray-100 border"
+                            }`}
+                            onClick={() => {
+                              handleDepartmentChange(department);
+                              setIsDepartmentDropdownOpen(false);
+                            }}
+                          >
+                            {department}
+                          </div>
+                        ))
+                      ) : (
+                        <div className="px-4 py-2 text-gray-500">
+                          No department available
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Course Filter */}
+              <div className="relative" ref={courseDropdownRef}>
+                <button
+                  className={`px-3 py-1 border-2 rounded-full flex items-center gap-2 text-sm ${
+                    selectedCourse
+                      ? "border-prim text-tertiary bg-prim/20"
+                      : "border-gray-300 bg-white text-gray-800"
+                  }`}
+                  onClick={() => setIsCourseDropdownOpen((prev) => !prev)}
+                >
+                  Course
+                </button>
+                {isCourseDropdownOpen && (
+                  <div className="absolute bg-white shadow rounded-lg mt-2 w-96 p-3 h-auto max-h-96 overflow-y-auto custom-course-scrollbar">
+                    <div className="rounded-lg flex flex-wrap gap-2">
+                      {uniqueCourses?.length > 0 ? (
+                        uniqueCourses?.map((course) => (
+                          <div
+                            key={course}
+                            className={`px-3 py-1 cursor-pointer text-sm rounded-full ${
+                              course === selectedCourse
+                                ? "border-2 border-orange-500 bg-orange-100 text-orange-600"
+                                : "hover:bg-gray-100 border"
+                            }`}
+                            onClick={() => {
+                              handleCourseChange(course);
+                              setIsCourseDropdownOpen(false);
+                            }}
+                          >
+                            {course}
+                          </div>
+                        ))
+                      ) : (
+                        <div className="px-4 py-2 text-gray-500">
+                          No course available
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Specialization Filter */}
+              <div className="relative" ref={specializationDropdownRef}>
+                <button
+                  className={`px-3 py-1 border-2 rounded-full flex items-center gap-2 text-sm ${
+                    selectedSpecialization
+                      ? "border-prim text-tertiary bg-prim/20"
+                      : "border-gray-300 bg-white text-gray-800"
+                  }`}
+                  onClick={() =>
+                    setIsSpecializationDropdownOpen((prev) => !prev)
+                  }
+                >
+                  Specialization
+                </button>
+                {isSpecializationDropdownOpen && (
+                  <div className="absolute bg-white shadow rounded-lg mt-2 w-96 p-3 h-auto max-h-96 overflow-y-auto custom-course-scrollbar">
+                    <div className="rounded-lg flex flex-wrap gap-2">
+                      {uniqueSpecializations?.length > 0 ? (
+                        uniqueSpecializations?.map((specialization) => (
+                          <div
+                            key={specialization}
+                            className={`px-3 py-1 cursor-pointer text-sm rounded-full ${
+                              specialization === selectedSpecialization
+                                ? "border-2 border-orange-500 bg-orange-100 text-orange-600"
+                                : "hover:bg-gray-100 border"
+                            }`}
+                            onClick={() => {
+                              handleSpecializationChange(specialization);
+                              setIsSpecializationDropdownOpen(false);
+                            }}
+                          >
+                            {specialization}
+                          </div>
+                        ))
+                      ) : (
+                        <div className="px-4 py-2 text-gray-500">
+                          No specializations available
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* State Filter */}
+              <div className="relative" ref={stateDropdownRef}>
+                <button
+                  className={`px-3 py-1 border-2 rounded-full flex items-center gap-2 text-sm ${
+                    selectedState
+                      ? "border-prim text-tertiary bg-prim/20"
+                      : "border-gray-300 bg-white text-gray-800"
+                  }`}
+                  onClick={() => setIsStateDropdownOpen((prev) => !prev)}
+                >
+                  State
+                </button>
+                {isStateDropdownOpen && (
+                  <div className="absolute bg-white shadow rounded-lg mt-2 w-96 p-3 h-auto max-h-96 overflow-y-auto custom-course-scrollbar">
+                    <div className="rounded-lg flex flex-wrap gap-2">
+                      {states?.length > 0 ? (
+                        states?.map((state) => (
+                          <div
+                            key={state}
+                            onClick={() => {
+                              handleStateChange(state);
+                              setIsStateDropdownOpen(false);
+                            }}
+                            className={`px-3 py-1 cursor-pointer text-sm rounded-full ${
+                              state === selectedState
+                                ? "border-2 border-orange-500 bg-orange-100 text-orange-600"
+                                : "hover:bg-gray-100 border"
+                            }`}
+                          >
+                            {state}
+                          </div>
+                        ))
+                      ) : (
+                        <div className="px-4 py-2 text-gray-500">
+                          No state available
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* City Filter */}
+              <div className="relative" ref={cityDropdownRef}>
+                <button
+                  className={`px-3 py-1 border-2 rounded-full flex items-center gap-2 text-sm ${
+                    selectedCity
+                      ? "border-prim text-tertiary bg-prim/20"
+                      : "border-gray-300 bg-white text-gray-800"
+                  }`}
+                  onClick={() => setIsCityDropdownOpen((prev) => !prev)}
+                >
+                  City
+                </button>
+                {isCityDropdownOpen && (
+                  <div className="absolute bg-white shadow rounded-lg mt-2 w-96 p-3 h-auto max-h-96 overflow-y-auto custom-course-scrollbar">
+                    <div className="rounded-lg flex flex-wrap gap-2">
+                      {cities?.length > 0 ? (
+                        cities?.map((city) => (
+                          <div
+                            key={city}
+                            onClick={() => {
+                              handleCityChange(city);
+                              setIsCityDropdownOpen(false);
+                            }}
+                            className={`px-3 py-1 cursor-pointer text-sm rounded-full ${
+                              city === selectedCity
+                                ? "border-2 border-orange-500 bg-orange-100 text-orange-600"
+                                : "hover:bg-gray-100 border"
+                            }`}
+                          >
+                            {city}
+                          </div>
+                        ))
+                      ) : (
+                        <div className="px-4 py-2 text-gray-500">
+                          No city available
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* College type Filter */}
+              <div className="relative" ref={collegeTypeDropdownRef}>
+                <button
+                  className={`px-3 py-1 border-2 rounded-full flex items-center gap-2 text-sm ${
+                    selectedCollegeType
+                      ? "border-prim text-tertiary bg-prim/20"
+                      : "border-gray-300 bg-white text-gray-800"
+                  }`}
+                  onClick={() => setIsCollegeTypeDropdownOpen((prev) => !prev)}
+                >
+                  College Type
+                </button>
+                {isCollegeTypeDropdownOpen && (
+                  <div className="absolute bg-white shadow rounded-lg mt-2 w-96 p-3 h-auto max-h-96 overflow-y-auto custom-course-scrollbar">
+                    <div className="rounded-lg flex flex-wrap gap-2">
+                      {collegeTypes?.length > 0 ? (
+                        collegeTypes?.map((type) => (
+                          <div
+                            key={type}
+                            onClick={() => {
+                              handleCollegeTypeChange(type);
+                              setIsCollegeTypeDropdownOpen(false);
+                            }}
+                            className={`px-3 py-1 cursor-pointer text-sm rounded-full ${
+                              type === selectedCollegeType
+                                ? "border-2 border-orange-500 bg-orange-100 text-orange-600"
+                                : "hover:bg-gray-100 border"
+                            }`}
+                          >
+                            {type}
+                          </div>
+                        ))
+                      ) : (
+                        <div className="px-4 py-2 text-gray-500">
+                          No college type available
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Fee range Filter */}
+              <div className="relative" ref={feeRangeDropdownRef}>
+                <button
+                  className={`px-3 py-1 border-2 rounded-full flex items-center gap-2 text-sm ${
+                    selectedFeeRange[0]
+                      ? "border-prim text-tertiary bg-prim/20"
+                      : "border-gray-300 bg-white text-gray-800"
+                  }`}
+                  onClick={() => setIsFeeRangeDropdownOpen((prev) => !prev)}
+                >
+                  Fee Range
+                </button>
+                {isFeeRangeDropdownOpen && (
+                  <div className="absolute bg-white shadow rounded-lg mt-2 w-96 p-3 h-auto max-h-96 overflow-y-auto custom-course-scrollbar">
+                    <div className="rounded-lg">
+                      <div className="flex justify-between items-center text-sm mb-2">
+                        <span>
+                          Min: ₹{formatNumberWithCommas(selectedFeeRange[0])}
+                        </span>
+                        <span>
+                          Max: ₹{formatNumberWithCommas(selectedFeeRange[1])}
+                        </span>
+                      </div>
+                      <input
+                        id="feeRange"
+                        type="range"
+                        min={0}
+                        max={maxFee}
+                        step={1000}
+                        value={selectedFeeRange[0]} // Assuming it's the start of the range
+                        onChange={(e) =>
+                          handleFeeChange([
+                            parseInt(e.target.value, 10),
+                            selectedFeeRange[1],
+                          ])
+                        }
+                        className="range-input mb-4"
+                      />
+                      <input
+                        id="feeRangeMax"
+                        type="range"
+                        min={0}
+                        max={maxFee}
+                        step={1000}
+                        value={selectedFeeRange[1]} // Assuming it's the end of the range
+                        onChange={(e) =>
+                          handleFeeChange([
+                            selectedFeeRange[0],
+                            parseInt(e.target.value, 10),
+                          ])
+                        }
+                        className="range-input"
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Selected Filters */}
+            <div className="mt-3">
+              {(selectedDepartment ||
+                selectedCourse ||
+                selectedSpecialization ||
+                selectedState ||
+                selectedCity ||
+                selectedCollegeType ||
+                (selectedFeeRange &&
+                  selectedFeeRange[0] !== 0 &&
+                  selectedFeeRange[1] !== 0)) && ( // Only render this section if at least one filter is selected
+                <>
+                  <h3 className="text-sm text-tertiary font-semibold mb-2">
+                    Selected Filters:
+                  </h3>
+                  <div className="flex flex-wrap items-center gap-2">
+                    {selectedDepartment && (
+                      <div className="border-2 border-prim  text-tertiary rounded-full text-xs px-3 py-1 flex items-center">
+                        {selectedDepartment}
+                        <button
+                          className="ml-2 text-red-500"
+                          onClick={() => setSelectedDepartment(null)}
+                        >
+                          <X size={12} />
+                        </button>
+                      </div>
+                    )}
+                    {selectedCourse && (
+                      <div className="border-2 border-prim  text-tertiary rounded-full text-xs px-3 py-1 flex items-center">
+                        {selectedCourse}
+                        <button
+                          className="ml-2 text-red-500"
+                          onClick={() => setSelectedCourse(null)}
+                        >
+                          <X size={12} />
+                        </button>
+                      </div>
+                    )}
+                    {selectedSpecialization && (
+                      <div className="border-2 border-prim  text-tertiary rounded-full text-xs px-3 py-1 flex items-center">
+                        {selectedSpecialization}
+                        <button
+                          className="ml-2 text-red-500"
+                          onClick={() => setSelectedSpecialization(null)}
+                        >
+                          <X size={12} />
+                        </button>
+                      </div>
+                    )}
+                    {selectedState && (
+                      <div className="border-2 border-prim  text-tertiary rounded-full text-xs px-3 py-1 flex items-center">
+                        {selectedState}
+                        <button
+                          className="ml-2 text-red-500"
+                          onClick={() => setSelectedState(null)}
+                        >
+                          <X size={12} />
+                        </button>
+                      </div>
+                    )}
+                    {selectedCity && (
+                      <div className="border-2 border-prim  text-tertiary rounded-full text-xs px-3 py-1 flex items-center">
+                        {selectedCity}
+                        <button
+                          className="ml-2 text-red-500"
+                          onClick={() => setSelectedCity(null)}
+                        >
+                          <X size={12} />
+                        </button>
+                      </div>
+                    )}
+                    {selectedCollegeType && (
+                      <div className="border-2 border-prim  text-tertiary rounded-full text-xs px-3 py-1 flex items-center capitalize">
+                        {selectedCollegeType}
+                        <button
+                          className="ml-2 text-red-500"
+                          onClick={() => setSelectedCollegeType(null)}
+                        >
+                          <X size={12} />
+                        </button>
+                      </div>
+                    )}
+                    {selectedFeeRange &&
+                      selectedFeeRange[0] !== 0 &&
+                      selectedFeeRange[1] !== 0 && (
+                        <div className="border-2 border-prim  text-tertiary rounded-full text-xs px-3 py-1 flex items-center">
+                          Fee Range: ₹
+                          {formatNumberWithCommas(selectedFeeRange[0])} - ₹
+                          {formatNumberWithCommas(selectedFeeRange[1])}
+                          <button
+                            className="ml-2 text-red-500"
+                            onClick={() => setSelectedFeeRange([0, maxFee])} // Reset fee range to default
+                          >
+                            <X size={12} />
+                          </button>
+                        </div>
+                      )}
+                    <button
+                      onClick={clearFilters}
+                      className="bg-gray-200 border-2 text-tertiary rounded-full text-xs px-3 py-1"
+                    >
+                      Clear All
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
           </div>
         </div>
 
@@ -996,166 +1528,179 @@ const FilterableCoursePage = () => {
           </h3>
 
           {filteredColleges?.length > 0 ? (
-            <table className="min-w-full table-auto border-collapse">
-              <thead>
-                <tr className="bg-gray-200">
-                  <th className="border px-4 py-2 text-left">S.No</th>
-                  <th className="border px-4 py-2 text-left">Colleges</th>
-                  <th className="border px-4 py-2 text-left">Courses Fee</th>
-                  <th className="border px-4 py-2 text-left">College Type</th>
-                  <th className="border px-4 py-2 text-left">Specialization</th>
-                  <th className="border px-4 py-2 text-left">Placement</th>
-                  <th className="border px-4 py-2 text-left">Grade</th>
-                  {/* Add more columns as needed */}
-                </tr>
-              </thead>
-              <tbody className="bg-white">
-                {filteredColleges?.map((college, index) => (
-                  <tr key={college.collegeId} className="border-b">
-                    <td className="border px-4 py-2 align-top">{index + 1}</td>
-                    <td className="border px-4 py-2 align-top">
-                      <div className="flex gap-2">
-                        <a href={`/collegepage/${college.collegeName}`}>
-                          <img
-                            src={college.collegeLogo}
-                            alt=""
-                            className="rounded-lg w-12 h-12"
-                          />
-                        </a>
-                        <div>
+            <div className="border overflow-x-auto">
+              <table className="min-w-full table-auto border-collapse">
+                <thead>
+                  <tr className="bg-gray-200">
+                    <th className="border px-4 py-2 text-left">S.No</th>
+                    <th className="border px-4 py-2 text-left">Colleges</th>
+                    <th className="border px-4 py-2 text-left">Courses Fee</th>
+                    <th className="border px-4 py-2 text-left">College Type</th>
+                    <th className="border px-4 py-2 text-left">
+                      Specialization
+                    </th>
+                    <th className="border px-4 py-2 text-left">Placement</th>
+                    <th className="border px-4 py-2 text-left">Grade</th>
+                    {/* Add more columns as needed */}
+                  </tr>
+                </thead>
+                <tbody className="bg-white">
+                  {filteredColleges?.map((college, index) => (
+                    <tr key={college.collegeId} className="border-b">
+                      <td className="border px-4 py-2 align-top">
+                        {index + 1}
+                      </td>
+                      <td className="border px-4 py-2 align-top">
+                        <div className="flex gap-2">
                           <a
                             href={`/collegepage/${college.collegeName}`}
-                            className="text-tertiary hover:underline text-lg font-semibold"
+                            className="lg:w-auto w-1/3"
                           >
-                            {college.collegeName}
+                            <img
+                              src={college.collegeLogo}
+                              alt=""
+                              className="rounded-lg w-12 h-12"
+                            />
                           </a>
-                          <p className="text-textClr text-sm">
-                            {college.collegeAddress.city},{" "}
-                            {college.collegeAddress.state}
-                          </p>
-                          <p className="text-textClr text-sm">
-                            Approved by:{" "}
-                            {college.approvedBy.map((approval, index) => (
-                              <span key={index}>
-                                {approval}
-                                {index < college.approvedBy.length - 1 && ", "}
-                              </span>
-                            ))}
+                          <div>
+                            <a
+                              href={`/collegepage/${college.collegeName}`}
+                              className="text-tertiary hover:underline text-lg font-semibold"
+                            >
+                              {college.collegeName}
+                            </a>
+                            <p className="text-textClr text-sm">
+                              {college.collegeAddress.city},{" "}
+                              {college.collegeAddress.state}
+                            </p>
+                            <p className="text-textClr text-sm">
+                              Approved by:{" "}
+                              {college.approvedBy.map((approval, index) => (
+                                <span key={index}>
+                                  {approval}
+                                  {index < college.approvedBy.length - 1 &&
+                                    ", "}
+                                </span>
+                              ))}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="mt-3 bg-gray-50 p-2 rounded-lg flex justify-between gap-2">
+                          <button
+                            onClick={() => alert("Button clicked!")}
+                            className="text-xs text-prim flex items-center font-medium gap-1"
+                          >
+                            <ArrowRight size={16} />
+                            Apply Now
+                          </button>
+                          <button
+                            onClick={() => alert("Button clicked!")}
+                            className="text-xs text-green-600 flex items-center font-medium gap-1"
+                          >
+                            <Download size={16} />
+                            Apply Now
+                          </button>
+                          <button
+                            onClick={() => alert("Button clicked!")}
+                            className="text-xs text-prim flex items-center font-medium gap-1"
+                          >
+                            <Scale size={16} />
+                            Compare
+                          </button>
+                        </div>
+                      </td>
+                      <td className="border px-4 py-2 align-top">
+                        <div>
+                          <div className="text-green-600 font-semibold">
+                            {(() => {
+                              const { minFee, maxFee } =
+                                calculateMinMaxFees(college);
+                              return `₹ ${formatNumberWithCommas(
+                                minFee
+                              )} - ₹ ${formatNumberWithCommas(maxFee)}`;
+                            })()}{" "}
+                            <span className="text-textClr font-normal text-xs">
+                              (all-courses)
+                            </span>
+                          </div>
+                          <p className="text-sm text-textClr mt-2">
+                            - First Year Fees
                           </p>
                         </div>
-                      </div>
-                      <div className="mt-3 bg-gray-50 p-2 rounded-lg flex justify-between gap-2">
-                        <button
-                          onClick={() => alert("Button clicked!")}
-                          className="text-xs text-prim flex items-center font-medium gap-1"
-                        >
-                          <ArrowRight size={16} />Apply Now
-                        </button>
-                        <button
-                          onClick={() => alert("Button clicked!")}
-                          className="text-xs text-green-600 flex items-center font-medium gap-1"
-                        >
-                          <Download size={16} />Apply Now
-                        </button>
-                        <button
-                          onClick={() => alert("Button clicked!")}
-                          className="text-xs text-prim flex items-center font-medium gap-1"
-                        >
-                          <Scale size={16} />Compare
-                        </button>
-                      </div>
-                    </td>
-                    <td className="border px-4 py-2 align-top">
-                      <div>
-                        <div className="text-green-600 font-semibold">
-                          {(() => {
-                            const { minFee, maxFee } =
-                              calculateMinMaxFees(college);
-                            return `₹ ${formatNumberWithCommas(
-                              minFee
-                            )} - ₹ ${formatNumberWithCommas(maxFee)}`;
-                          })()}{" "}
-                          <span className="text-textClr font-normal text-xs">
-                            (all-courses)
-                          </span>
-                        </div>
-                        <p className="text-sm text-textClr mt-2">
-                          - First Year Fees
-                        </p>
-                      </div>
-                    </td>
+                      </td>
 
-                    <td className="border px-4 py-2 align-top">
-                      <p className="capitalize">
-                        {college.collegeType} College
-                      </p>
-                    </td>
-                    <td className="border px-4 py-2 align-top">
-                      <a
-                        href={`/collegepage/${college.collegeName}`}
-                        className="text-tertiary hover:underline"
-                      >
-                        (
-                        <span className="text-orange-500">
-                          {calculateSpecializations(college)}
-                        </span>
-                        ) Specializations
-                      </a>
-                    </td>
-                    <td className="border px-4 py-2 align-top">
-                      <div>
-                        {!college.placements[0].lowest &&
-                        !college.placements[0].average &&
-                        !college.placements[0].highest ? (
-                          <p className="text-red-500 font-light">
-                            - No Placement Stats -
-                          </p>
+                      <td className="border px-4 py-2 align-top">
+                        <p className="capitalize">
+                          {college.collegeType} College
+                        </p>
+                      </td>
+                      <td className="border px-4 py-2 align-top">
+                        <a
+                          href={`/collegepage/${college.collegeName}`}
+                          className="text-tertiary hover:underline"
+                        >
+                          (
+                          <span className="text-orange-500">
+                            {calculateSpecializations(college)}
+                          </span>
+                          ) Specializations
+                        </a>
+                      </td>
+                      <td className="border px-4 py-2 align-top">
+                        <div>
+                          {!college.placements[0].lowest &&
+                          !college.placements[0].average &&
+                          !college.placements[0].highest ? (
+                            <p className="text-red-500 font-light">
+                              - No Placement Stats -
+                            </p>
+                          ) : (
+                            <>
+                              {college.placements[0].lowest && (
+                                <div className="mb-2">
+                                  <p className="text-green-600">
+                                    ₹ {college.placements[0].lowest}
+                                  </p>
+                                  <p className="text-xs text-textClr">
+                                    (Lowest Package)
+                                  </p>
+                                </div>
+                              )}
+                              {college.placements[0].average && (
+                                <div className="mb-2">
+                                  <p className="text-green-600">
+                                    ₹ {college.placements[0].average}
+                                  </p>
+                                  <p className="text-xs text-textClr">
+                                    (Average Package)
+                                  </p>
+                                </div>
+                              )}
+                              <div>
+                                <p className="text-green-600">
+                                  ₹ {college.placements[0].highest}
+                                </p>
+                                <p className="text-xs text-textClr">
+                                  (Highest Package)
+                                </p>
+                              </div>
+                            </>
+                          )}
+                        </div>
+                      </td>
+                      <td className="border px-4 py-2 align-top">
+                        {!college.NAACGrade ? (
+                          <p className="text-red-500 font-light">- N/A -</p>
                         ) : (
-                          <>
-                            {college.placements[0].lowest && (
-                              <div className="mb-2">
-                                <p className="text-green-600">
-                                  ₹ {college.placements[0].lowest}
-                                </p>
-                                <p className="text-xs text-textClr">
-                                  (Lowest Package)
-                                </p>
-                              </div>
-                            )}
-                            {college.placements[0].average && (
-                              <div className="mb-2">
-                                <p className="text-green-600">
-                                  ₹ {college.placements[0].average}
-                                </p>
-                                <p className="text-xs text-textClr">
-                                  (Average Package)
-                                </p>
-                              </div>
-                            )}
-                            <div>
-                              <p className="text-green-600">
-                                ₹ {college.placements[0].highest}
-                              </p>
-                              <p className="text-xs text-textClr">
-                                (Highest Package)
-                              </p>
-                            </div>
-                          </>
+                          <>NAAC: {college.NAACGrade}</>
                         )}
-                      </div>
-                    </td>
-                    <td className="border px-4 py-2 align-top">
-                      {!college.NAACGrade ? (
-                        <p className="text-red-500 font-light">- N/A -</p>
-                      ) : (
-                        <>NAAC: {college.NAACGrade}</>
-                      )}
-                    </td>
-                    {/* Add more columns for additional data */}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                      </td>
+                      {/* Add more columns for additional data */}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           ) : (
             <div className="text-red-500 text-center py-10">
               No college available.

@@ -33,7 +33,6 @@ const HeroSection = () => {
   const searchBarRef = useRef(null);
   const videoRef = useRef(null);
 
-
   const toggleSearch = () => {
     setIsSearchOpen(!isSearchOpen);
   };
@@ -103,66 +102,124 @@ const HeroSection = () => {
 
   return (
     <div>
-      <section className="lg:h-[65vh] max-sm:h[40vh] overflow-hidden">
-        <video
-          ref={videoRef}
-          loop
-          muted
-          playsInline
-          className={`absolute -top-5 left-0 homeVideo lg:h-[72vh] ${
-            videoLoaded ? "visible" : "invisible"
-          }`}
-          preload="metadata"
-          poster="/assets/images/video-poster.jpg"
-        >
-          <source src="/assets/videos/college1-crop.mp4" type="video/mp4" />
-          <source src="/assets/videos/college1-crop.webm" type="video/webm" />
-        </video>
-        <div className="h-full flex justify-center items-center ">
-          <div className="lg:w-[40vw] md:w-[70vw] max-sm:w-[80vw]">
-            <h1
-              className="text-white text-4xl max-sm:text-lg"
-              style={{
-                paddingTop: "3.5rem",
-                margin: "auto 0",
-                fontWeight: "bold",
-              }}
-            >
-              Find Over{" "}
-              <span style={{ color: "#00f1ff", fontWeight: "bold" }}>
-                <Typewriter
-                  words={[
-                    "3500+ Colleges in India",
-                    "500+ Exams in India",
-                    "1100+ Exams in India",
-                    "1 Lakh Reviews in India!",
-                  ]}
-                  loop={9}
-                  cursor
-                  cursorStyle="_"
-                  typeSpeed={50}
-                  deleteSpeed={30}
-                  delaySpeed={800}
-                  onLoopDone={handleDone}
-                  onType={handleType}
-                />
-              </span>
-            </h1>
-            <div className="mt-3 relative lg:block md:hidden max-sm:hidden hidden">
-              <button onClick={toggleSearch} className="w-full hover:cursor-pointer">
-                <input
-                  type="text"
-                  placeholder="Search for Colleges, Exams, News and more..."
-                  className="rounded-full py-3 px-4 outline-none w-full text-black max-sm:text-sm"
-                />
-                <div className="bg-second text-white p-2 rounded-full absolute right-2 top-2">
-                  <Search />
-                </div>
-              </button>
+      <div className="lg:block hidden">
+        <div className="lg:h-[65vh] overflow-hidden">
+          <video
+            ref={videoRef}
+            loop
+            muted
+            playsInline
+            className={`absolute -top-5 left-0 homeVideo lg:h-[72vh] ${
+              videoLoaded ? "visible" : "invisible"
+            }`}
+            preload="metadata"
+            poster="/assets/images/video-poster.jpg"
+          >
+            <source src="/assets/videos/college1-crop.mp4" type="video/mp4" />
+            <source src="/assets/videos/college1-crop.webm" type="video/webm" />
+          </video>
+          <div className="h-full flex justify-center items-center ">
+            <div className="lg:w-[40vw] md:w-[70vw] max-sm:w-[80vw]">
+              <h1
+                className="text-white text-4xl max-sm:text-lg"
+                style={{
+                  paddingTop: "3.5rem",
+                  margin: "auto 0",
+                  fontWeight: "bold",
+                }}
+              >
+                Find Over{" "}
+                <span style={{ color: "#00f1ff", fontWeight: "bold" }}>
+                  <Typewriter
+                    words={[
+                      "3500+ Colleges in India",
+                      "500+ Exams in India",
+                      "1100+ Exams in India",
+                      "1 Lakh Reviews in India!",
+                    ]}
+                    loop={9}
+                    cursor
+                    cursorStyle="_"
+                    typeSpeed={50}
+                    deleteSpeed={30}
+                    delaySpeed={800}
+                    onLoopDone={handleDone}
+                    onType={handleType}
+                  />
+                </span>
+              </h1>
+              <div className="mt-3 relative lg:block md:hidden max-sm:hidden hidden">
+                <button
+                  onClick={toggleSearch}
+                  className="w-full hover:cursor-pointer"
+                >
+                  <input
+                    type="text"
+                    placeholder="Search for Colleges, Exams, News and more..."
+                    className="rounded-full py-3 px-4 outline-none w-full text-black max-sm:text-sm"
+                  />
+                  <div className="bg-second text-white p-2 rounded-full absolute right-2 top-2">
+                    <Search />
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+
+      <div className="lg:hidden block">
+        <div className="overflow-hidden relative ">
+          <img src="/assets/videos/hero_image.webp" alt="College Are Image" className="h-[60vh] object-cover" />
+
+          <div className="absolute top-[40%] left-[10%]">
+            <div className="lg:w-[40vw] md:w-[70vw] max-sm:w-[80vw]">
+              <h1
+                className="text-white text-3xl max-sm:text-2xl h-[50px]"
+                style={{
+                  margin: "auto 0",
+                  fontWeight: "bold",
+                }}
+              >
+                Find Over{" "}
+                <span style={{ color: "#00f1ff", fontWeight: "bold" }}>
+                  <Typewriter
+                    words={[
+                      "3500+ Colleges in India",
+                      "500+ Exams in India",
+                      "1100+ Exams in India",
+                      "1 Lakh Reviews in India!",
+                    ]}
+                    loop={9}
+                    cursor
+                    cursorStyle="_"
+                    typeSpeed={50}
+                    deleteSpeed={30}
+                    delaySpeed={800}
+                    onLoopDone={handleDone}
+                    onType={handleType}
+                  />
+                </span>
+              </h1>
+              <div className="mt-3 relative">
+                <button
+                  onClick={toggleSearch}
+                  className="w-full hover:cursor-pointer"
+                >
+                  <input
+                    type="text"
+                    placeholder="Search for Colleges, Exams, News and more..."
+                    className="rounded-full py-3 px-3 outline-none w-full text-black max-sm:text-sm"
+                  />
+                  <div className="bg-second text-white p-2 rounded-full absolute right-2 top-2 ">
+                    <Search size={20} />
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Search Bar */}
       {isSearchOpen && (

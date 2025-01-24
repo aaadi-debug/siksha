@@ -242,9 +242,9 @@ export default function Nav() {
           : "bg-white shadow-md"
       }`}
     >
-      <div className="mx-auto flex items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
+      <div className="mx-auto flex items-center justify-between py-2 lg:px-8 px-2">
+        {/* <Logo /> */}
         <div className="inline-flex items-center space-x-2 responsive_css_logo">
-          {/* <Logo /> */}
           <a href="/">
             <img
               src={`/assets/logos/${
@@ -255,7 +255,7 @@ export default function Nav() {
                   : "logo-purple-orange"
               }.png`}
               alt="Logo"
-              className="w-64 max-sm:w-12"
+              className="w-64 max-sm:w-48 max-sm:py-3"
             />
           </a>
         </div>
@@ -267,7 +267,7 @@ export default function Nav() {
                 {item.href ? (
                   <a
                     href={item.href}
-                    className={`text-sm font-medium text-black uppercase transition-all duration-500 flex items-center hover:bg-second hover:text-white py-2 px-3 rounded-full group-hover:bg-second group-hover:text-white navbarLink ${
+                    className={`2xl:text-sm xl:text-sm lg:text-xs font-medium text-black uppercase transition-all duration-500 flex items-center hover:bg-second hover:text-white py-2 2xl:px-3 xl:px-3 lg:px-2 rounded-full group-hover:bg-second group-hover:text-white navbarLink ${
                       isHomePage ? (isScrolled ? "" : "text-white") : ""
                     }`}
                   >
@@ -386,14 +386,14 @@ export default function Nav() {
             onClick={toggleSearch}
             className="text-white p-2 transition-all duration-500 bg-second rounded-full flex justify-center align-middle hover:text-secondary py-2 hover:bg-whiteClr hover:rounded-full hover:shadow-gray-900 hover:shadow-whiteClr"
           >
-            <Search size={18} />
+            <Search size={14} />
           </button>
           <div className="relative group">
             <button
               onClick={toggleNotificationSidebar}
               className="relative rounded-3xl flex justify-center items-center border-2 border-second  bg-white text-second p-2 text-xs uppercase font-semibold transition ease-in-out duration-500 hover:border-2 hover:border-second hover:bg-white hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
             >
-              <IoMdNotifications size={16} />
+              <IoMdNotifications size={14} />
               {/* <span className="absolute bg-red-500 text-white rounded-full p-1 px-2 -top-3 -right-2 text-xs">
                   {cart?.length}
                 </span> */}
@@ -409,14 +409,18 @@ export default function Nav() {
             href="/login"
             className="bg-second border-2 border-second flex gap-2 items-center p-2 rounded-full hover:bg-white hover:text-second transition duration-300 text-sm"
           >
-            <User size={16} />
+            <User size={14} />
             {/* <span>Login</span> */}
           </a>
 
           <Menu
             onClick={toggleMenu}
             className={`h-6 w-6 cursor-pointer ${
-              isScrolled ? "text-second" : "text-white"
+              isHomePage
+                ? isScrolled
+                  ? "text-second"
+                  : "text-white"
+                : "text-second"
             }`}
           />
         </div>
@@ -430,9 +434,9 @@ export default function Nav() {
                   <div className="inline-flex items-center space-x-2">
                     <a href="/">
                       <img
-                        src="/assets/logo-white-box.png"
+                        src="/assets/logos/logo-purple-orange.png"
                         alt="Logo"
-                        className="w-16 rounded-full max-sm:w-12"
+                        className="w-64 max-sm:w-48 max-sm:py-3"
                       />
                     </a>
                   </div>
@@ -470,11 +474,11 @@ export default function Nav() {
                         </a>
                         {item.subMenu && activeSubMenu === item.name && (
                           <ul className="ml-6 mt-2">
-                            {item.subMenu.map((subItem) => (
-                              <li key={subItem.name} className="py-2">
+                            {item.subMenu.map((subItem, index) => (
+                              <li key={index} className=" border">
                                 <a
                                   href={subItem.href}
-                                  className="text-sm text-gray-700 hover:text-gray-900"
+                                  className="text-sm text-gray-700 hover:text-gray-900 border w-full py-2"
                                 >
                                   {subItem.name}
                                 </a>
@@ -657,7 +661,7 @@ export default function Nav() {
         </>
       )}
 
-      {/* Cart Sidebar */}
+      {/* User Sidebar */}
       {isUserSidebarOpen && (
         <>
           <div

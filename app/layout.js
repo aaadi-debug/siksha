@@ -76,13 +76,17 @@ export default function RootLayout({ children }) {
       </head>
       <body className={inter.className}>
         <MemoizedNavbar />
-        {isLoading && <Preloader />}
-        {children}
+        <div>
+          {isLoading && <Preloader />}
 
-        <SocialMedia />
-        <WhatsAppButton />
-        <BackToTop />
+          {children}
+
+          <SocialMedia />
+          <WhatsAppButton />
+        </div>
+
         <Footer />
+          <BackToTop />
       </body>
     </html>
   );

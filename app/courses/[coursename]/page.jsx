@@ -5,7 +5,74 @@ import { usePathname } from "next/navigation";
 import collegeDataJson from "../../data/collegeData.json"; // Rename the imported data to avoid conflict
 import { useRouter } from "next/navigation"; // Import useRouter
 import Breadcrumbs2 from "@/app/components/Breadcrumbs2";
-import { X, Filter } from "lucide-react";
+import { X, Filter, ArrowRight, Scale, Download } from "lucide-react";
+import DynamicThemeButton from "@/app/components/DynamicThemeButton";
+
+function calculateMinMaxFees(data) {
+  let minFee = Infinity;
+  let maxFee = -Infinity;
+
+  data.departments.map((department) => {
+    department.courses.map((course) => {
+      course.specialization.map((specialization) => {
+        if (
+          specialization.fee &&
+          specialization.fee.general &&
+          specialization.fee.general.length > 0
+        ) {
+          specialization.fee.general.map((feeDetail) => {
+            const tuitionFee = parseInt(feeDetail.tuitionFee, 10);
+            if (!isNaN(tuitionFee)) {
+              minFee = Math.min(minFee, tuitionFee);
+              maxFee = Math.max(maxFee, tuitionFee);
+            }
+          });
+          console.log("1.", specialization.fee.general[0].tuitionFee);
+          console.log("2.", specialization.fee.general[1]);
+        } else {
+          console.log(
+            "Fee data is not available for specialization:",
+            specialization.name
+          );
+        }
+      });
+    });
+  });
+
+  return {
+    minFee: minFee === Infinity ? "N/A" : minFee,
+    maxFee: maxFee === -Infinity ? "N/A" : maxFee,
+  };
+}
+
+function calculateSpecializations(data) {
+  let specializationCount = 0;
+  data.departments.map((department) => {
+    department.courses.map((course) => {
+      // console.log("Specila len", course.specialization.length);
+      specializationCount += course.specialization.length;
+    });
+  });
+
+  return specializationCount;
+}
+
+function formatNumberWithCommas(number) {
+  // Handle cases where the number is less than 1000
+  if (number < 1000) {
+    return number.toString();
+  }
+
+  let numStr = number.toString();
+  let lastThreeDigits = numStr.slice(-3);
+  let remainingDigits = numStr.slice(0, -3);
+
+  // Add commas to the remaining part
+  remainingDigits = remainingDigits.replace(/\B(?=(\d{2})+(?!\d))/g, ",");
+
+  // Combine the parts
+  return remainingDigits + "," + lastThreeDigits;
+}
 
 const FilterableCoursePage = () => {
   const pathname = usePathname();
@@ -417,18 +484,107 @@ const FilterableCoursePage = () => {
           activeColor="text-textClr"
         />
         <div className="bg-gray-100 p-6 mt-10 rounded-lg relative pr-32">
-          <h2 className="text-4xl font-semibold mb-6 text-prim">
+          <h1 className="text-4xl font-semibold mb-6 text-prim">
             {!selectedDepartment && !selectedCourse
               ? "Top all India Colleges"
               : `Top ${courseNameForPageTitle} Colleges`}
-          </h2>
+          </h1>
 
-          <div
-            dangerouslySetInnerHTML={{
-              __html: courseAboutForPageTitle,
-            }}
-            className="dangerousHTML"
-          />
+          {!selectedDepartment && !selectedCourse ? (
+            <div>
+              <p>
+                India is home to some of the world’s finest colleges and
+                universities, offering a diverse range of courses and programs
+                to cater to every student’s aspirations. From historic
+                institutions with decades of academic excellence to modern
+                universities embracing cutting-edge technology, the Indian
+                education system is designed to empower students for global
+                opportunities. Whether you’re looking for engineering, medical
+                sciences, arts, commerce, or professional courses, India’s
+                colleges provide a strong foundation for your future.
+              </p>
+              <h2 className="text-2xl text-tertiary font-semibold mt-3 mb-2">
+                Diverse Educational Opportunities
+              </h2>
+              <p>
+                One of the standout features of India’s college ecosystem is its
+                diversity. With over 40,000 colleges and 900 universities,
+                students have the flexibility to choose from undergraduate,
+                postgraduate, diploma, and doctoral programs in virtually every
+                field imaginable. India’s colleges cater to a wide array of
+                interests, such as:
+              </p>
+              <ul className="pl-6 list-disc mt-2">
+                <li className="pb-2">
+                  <b>Engineering and Technology:</b> Institutes like the IITs,
+                  NITs, and IIITs are globally recognized for their excellence
+                  in engineering and technology education.
+                </li>
+                <li className="pb-2">
+                  <b>Medical Sciences:</b> Prestigious colleges like AIIMS,
+                  JIPMER, and CMC Vellore offer world-class medical training and
+                  research opportunities.
+                </li>
+
+                <li className="pb-2">
+                  <b>Arts and Humanities: </b> For creative minds, institutions
+                  like Delhi University, JNU, and Jadavpur University provide
+                  robust programs in literature, history, sociology, and fine
+                  arts.
+                </li>
+                <li className="pb-2">
+                  <b>Commerce and Business: </b> Colleges like SRCC, IIMs, and
+                  Christ University lead the way in nurturing tomorrow’s
+                  business leaders.
+                </li>
+              </ul>
+              <h2 className="text-2xl text-tertiary font-semibold mt-3 mb-2">
+                Colleges Across States
+              </h2>
+              <p>
+                India’s colleges are spread across its vast geographical
+                landscape, ensuring access to quality education in every state.
+                From the bustling academic hubs of Delhi NCR, Mumbai, and
+                Bangalore to the serene campuses of Kerala, Rajasthan, and
+                Himachal Pradesh, every region offers unique academic
+                environments. Whether you’re seeking opportunities in
+                metropolitan cities or looking for a more peaceful learning
+                experience in smaller towns, there’s a college in India tailored
+                for your needs.
+              </p>
+              <h2 className="text-2xl text-tertiary font-semibold mt-3 mb-2">
+                Campus Life in India
+              </h2>
+              <p>
+                Beyond academics, India’s colleges are renowned for their
+                vibrant campus culture. Students can engage in extracurricular
+                activities such as cultural fests, sports tournaments, and
+                technical competitions. Facilities like libraries,
+                state-of-the-art laboratories, and modern hostels ensure a
+                comfortable and enriching student life.
+              </p>
+              <h2 className="text-2xl text-tertiary font-semibold mt-3 mb-2">
+                Begin Your Journey Today
+              </h2>
+              <p>
+                Whether you’re a student from India or abroad, exploring
+                colleges in India is your first step toward a bright future.
+                With so many options available, finding the right college can be
+                overwhelming—but it’s also an exciting journey filled with
+                potential and promise. Let us help you filter through courses,
+                departments, states, and fee ranges to find the perfect
+                institution for your needs. Start exploring now, and take a step
+                closer to your dreams!
+              </p>
+            </div>
+          ) : (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: courseAboutForPageTitle,
+              }}
+              className="dangerousHTML"
+            />
+          )}
 
           <img
             src="/assets/bg_elem/hat-docs.png"
@@ -456,26 +612,28 @@ const FilterableCoursePage = () => {
                 }`}
                 onClick={() => setIsDepartmentDropdownOpen((prev) => !prev)}
               >
-                {selectedDepartment || "Department"}
+                Department
               </button>
               {isDepartmentDropdownOpen && (
-                <div className="absolute bg-white shadow rounded mt-2">
-                  {uniqueDepartments.map((department) => (
-                    <div
-                      key={department}
-                      className={`px-4 py-2 cursor-pointer ${
-                        department === selectedDepartment
-                          ? "border-2 border-orange-500 bg-orange-100 text-orange-600"
-                          : "hover:bg-gray-100"
-                      }`}
-                      onClick={() => {
-                        handleDepartmentChange(department);
-                        setIsDepartmentDropdownOpen(false);
-                      }}
-                    >
-                      {department}
-                    </div>
-                  ))}
+                <div className="absolute bg-white shadow rounded-lg mt-2 w-96 p-3 h-auto max-h-96 overflow-y-auto custom-course-scrollbar">
+                  <div className="rounded-lg flex flex-wrap gap-2">
+                    {uniqueDepartments.map((department) => (
+                      <div
+                        key={department}
+                        className={`px-3 py-1 cursor-pointer text-sm rounded-full ${
+                          department === selectedDepartment
+                            ? "border-2 border-orange-500 bg-orange-100 text-orange-600"
+                            : "hover:bg-gray-100 border"
+                        }`}
+                        onClick={() => {
+                          handleDepartmentChange(department);
+                          setIsDepartmentDropdownOpen(false);
+                        }}
+                      >
+                        {department}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
@@ -490,26 +648,28 @@ const FilterableCoursePage = () => {
                 }`}
                 onClick={() => setIsCourseDropdownOpen((prev) => !prev)}
               >
-                {selectedCourse || "Course"}
+                Course
               </button>
               {isCourseDropdownOpen && (
-                <div className="absolute bg-white shadow rounded mt-2">
-                  {uniqueCourses.map((course) => (
-                    <div
-                      key={course}
-                      className={`px-4 py-2 cursor-pointer ${
-                        course === selectedCourse
-                          ? "border-2 border-orange-500 bg-orange-100 text-orange-600"
-                          : "hover:bg-gray-100"
-                      }`}
-                      onClick={() => {
-                        handleCourseChange(course);
-                        setIsCourseDropdownOpen(false);
-                      }}
-                    >
-                      {course}
-                    </div>
-                  ))}
+                <div className="absolute bg-white shadow rounded-lg mt-2 w-96 p-3 h-auto max-h-96 overflow-y-auto custom-course-scrollbar">
+                  <div className="rounded-lg flex flex-wrap gap-2">
+                    {uniqueCourses.map((course) => (
+                      <div
+                        key={course}
+                        className={`px-3 py-1 cursor-pointer text-sm rounded-full ${
+                          course === selectedCourse
+                            ? "border-2 border-orange-500 bg-orange-100 text-orange-600"
+                            : "hover:bg-gray-100 border"
+                        }`}
+                        onClick={() => {
+                          handleCourseChange(course);
+                          setIsCourseDropdownOpen(false);
+                        }}
+                      >
+                        {course}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
@@ -524,32 +684,34 @@ const FilterableCoursePage = () => {
                 }`}
                 onClick={() => setIsSpecializationDropdownOpen((prev) => !prev)}
               >
-                {selectedSpecialization || "Specialization"}
+                Specialization
               </button>
               {isSpecializationDropdownOpen && (
-                <div className="absolute bg-white shadow rounded mt-2">
-                  {uniqueSpecializations.length > 0 ? (
-                    uniqueSpecializations.map((specialization) => (
-                      <div
-                        key={specialization}
-                        className={`px-4 py-2 cursor-pointer ${
-                          specialization === selectedSpecialization
-                            ? "border-2 border-orange-500 bg-orange-100 text-orange-600"
-                            : "hover:bg-gray-100"
-                        }`}
-                        onClick={() => {
-                          handleSpecializationChange(specialization);
-                          setIsSpecializationDropdownOpen(false);
-                        }}
-                      >
-                        {specialization}
+                <div className="absolute bg-white shadow rounded-lg mt-2 w-96 p-3 h-auto max-h-96 overflow-y-auto custom-course-scrollbar">
+                  <div className="rounded-lg flex flex-wrap gap-2">
+                    {uniqueSpecializations.length > 0 ? (
+                      uniqueSpecializations.map((specialization) => (
+                        <div
+                          key={specialization}
+                          className={`px-3 py-1 cursor-pointer text-sm rounded-full ${
+                            specialization === selectedSpecialization
+                              ? "border-2 border-orange-500 bg-orange-100 text-orange-600"
+                              : "hover:bg-gray-100 border"
+                          }`}
+                          onClick={() => {
+                            handleSpecializationChange(specialization);
+                            setIsSpecializationDropdownOpen(false);
+                          }}
+                        >
+                          {specialization}
+                        </div>
+                      ))
+                    ) : (
+                      <div className="px-4 py-2 text-gray-500">
+                        No specializations available
                       </div>
-                    ))
-                  ) : (
-                    <div className="px-4 py-2 text-gray-500">
-                      No specializations available
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </div>
               )}
             </div>
@@ -557,25 +719,35 @@ const FilterableCoursePage = () => {
             {/* State Filter */}
             <div className="relative" ref={stateDropdownRef}>
               <button
-                className="px-3 py-1 border-2 bg-white rounded-full flex items-center gap-2 text-sm"
+                className={`px-3 py-1 border-2 rounded-full flex items-center gap-2 text-sm ${
+                  selectedState
+                    ? "border-prim text-tertiary bg-prim/20"
+                    : "border-gray-300 bg-white text-gray-800"
+                }`}
                 onClick={() => setIsStateDropdownOpen((prev) => !prev)}
               >
-                {selectedState || "State"}
+                State
               </button>
               {isStateDropdownOpen && (
-                <div className="absolute bg-white shadow rounded mt-2">
-                  {states.map((state) => (
-                    <div
-                      key={state}
-                      onClick={() => {
-                        handleStateChange(state);
-                        setIsStateDropdownOpen(false);
-                      }}
-                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                    >
-                      {state}
-                    </div>
-                  ))}
+                <div className="absolute bg-white shadow rounded-lg mt-2 w-96 p-3 h-auto max-h-96 overflow-y-auto custom-course-scrollbar">
+                  <div className="rounded-lg flex flex-wrap gap-2">
+                    {states.map((state) => (
+                      <div
+                        key={state}
+                        onClick={() => {
+                          handleStateChange(state);
+                          setIsStateDropdownOpen(false);
+                        }}
+                        className={`px-3 py-1 cursor-pointer text-sm rounded-full ${
+                          state === selectedState
+                            ? "border-2 border-orange-500 bg-orange-100 text-orange-600"
+                            : "hover:bg-gray-100 border"
+                        }`}
+                      >
+                        {state}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
@@ -583,25 +755,35 @@ const FilterableCoursePage = () => {
             {/* City Filter */}
             <div className="relative" ref={cityDropdownRef}>
               <button
-                className="px-3 py-1 border-2 bg-white rounded-full flex items-center gap-2 text-sm"
+                className={`px-3 py-1 border-2 rounded-full flex items-center gap-2 text-sm ${
+                  selectedCity
+                    ? "border-prim text-tertiary bg-prim/20"
+                    : "border-gray-300 bg-white text-gray-800"
+                }`}
                 onClick={() => setIsCityDropdownOpen((prev) => !prev)}
               >
-                {selectedCity || "City"}
+                City
               </button>
               {isCityDropdownOpen && (
-                <div className="absolute bg-white shadow rounded mt-2">
-                  {cities.map((city) => (
-                    <div
-                      key={city}
-                      onClick={() => {
-                        handleCityChange(city);
-                        setIsCityDropdownOpen(false);
-                      }}
-                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                    >
-                      {city}
-                    </div>
-                  ))}
+                <div className="absolute bg-white shadow rounded-lg mt-2 w-96 p-3 h-auto max-h-96 overflow-y-auto custom-course-scrollbar">
+                  <div className="rounded-lg flex flex-wrap gap-2">
+                    {cities.map((city) => (
+                      <div
+                        key={city}
+                        onClick={() => {
+                          handleCityChange(city);
+                          setIsCityDropdownOpen(false);
+                        }}
+                        className={`px-3 py-1 cursor-pointer text-sm rounded-full ${
+                          city === selectedCity
+                            ? "border-2 border-orange-500 bg-orange-100 text-orange-600"
+                            : "hover:bg-gray-100 border"
+                        }`}
+                      >
+                        {city}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
@@ -609,25 +791,35 @@ const FilterableCoursePage = () => {
             {/* College type Filter */}
             <div className="relative" ref={collegeTypeDropdownRef}>
               <button
-                className="px-3 py-1 border-2 bg-white rounded-full flex items-center gap-2 text-sm"
+                className={`px-3 py-1 border-2 rounded-full flex items-center gap-2 text-sm ${
+                  selectedCollegeType
+                    ? "border-prim text-tertiary bg-prim/20"
+                    : "border-gray-300 bg-white text-gray-800"
+                }`}
                 onClick={() => setIsCollegeTypeDropdownOpen((prev) => !prev)}
               >
-                {selectedCollegeType || "College Type"}
+                College Type
               </button>
               {isCollegeTypeDropdownOpen && (
-                <div className="absolute bg-white shadow rounded mt-2">
-                  {collegeTypes.map((type) => (
-                    <div
-                      key={type}
-                      onClick={() => {
-                        handleCollegeTypeChange(type);
-                        setIsCollegeTypeDropdownOpen(false);
-                      }}
-                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer capitalize"
-                    >
-                      {type}
-                    </div>
-                  ))}
+                <div className="absolute bg-white shadow rounded-lg mt-2 w-96 p-3 h-auto max-h-96 overflow-y-auto custom-course-scrollbar">
+                  <div className="rounded-lg flex flex-wrap gap-2">
+                    {collegeTypes.map((type) => (
+                      <div
+                        key={type}
+                        onClick={() => {
+                          handleCollegeTypeChange(type);
+                          setIsCollegeTypeDropdownOpen(false);
+                        }}
+                        className={`px-3 py-1 cursor-pointer text-sm rounded-full ${
+                          type === selectedCollegeType
+                            ? "border-2 border-orange-500 bg-orange-100 text-orange-600"
+                            : "hover:bg-gray-100 border"
+                        }`}
+                      >
+                        {type}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
@@ -635,56 +827,52 @@ const FilterableCoursePage = () => {
             {/* Fee range Filter */}
             <div className="relative" ref={feeRangeDropdownRef}>
               <button
-                className="px-3 py-1 border-2 bg-white rounded-full flex items-center gap-2 text-sm"
+                className={`px-3 py-1 border-2 rounded-full flex items-center gap-2 text-sm ${
+                  selectedFeeRange[0]
+                    ? "border-prim text-tertiary bg-prim/20"
+                    : "border-gray-300 bg-white text-gray-800"
+                }`}
                 onClick={() => setIsFeeRangeDropdownOpen((prev) => !prev)}
               >
                 Fee Range
               </button>
               {isFeeRangeDropdownOpen && (
-                <div className="absolute bg-white shadow rounded mt-2">
-                  <input
-                    id="feeRange"
-                    type="range"
-                    min={0}
-                    max={maxFee}
-                    step={1000}
-                    value={selectedFeeRange[0]} // Assuming it's the start of the range
-                    onChange={(e) =>
-                      handleFeeChange([
-                        parseInt(e.target.value, 10),
-                        selectedFeeRange[1],
-                      ])
-                    }
-                    style={{
-                      width: "100%",
-                      height: "6px",
-                      backgroundColor: "lightgray",
-                      borderRadius: "5px",
-                    }}
-                  />
-                  <input
-                    id="feeRangeMax"
-                    type="range"
-                    min={0}
-                    max={maxFee}
-                    step={1000}
-                    value={selectedFeeRange[1]} // Assuming it's the end of the range
-                    onChange={(e) =>
-                      handleFeeChange([
-                        selectedFeeRange[0],
-                        parseInt(e.target.value, 10),
-                      ])
-                    }
-                    style={{
-                      width: "100%",
-                      height: "6px",
-                      backgroundColor: "lightgray",
-                      borderRadius: "5px",
-                    }}
-                  />
-                  <div>
-                    <span>Min: {selectedFeeRange[0]}</span>
-                    <span> | Max: {selectedFeeRange[1]}</span>
+                <div className="absolute bg-white shadow rounded-lg mt-2 w-96 p-3 h-auto max-h-96 overflow-y-auto custom-course-scrollbar">
+                  <div className="rounded-lg">
+                    <div className="flex justify-between items-center text-sm mb-2">
+                      <span>Min: ₹{formatNumberWithCommas(selectedFeeRange[0])}</span>
+                      <span>Max: ₹{formatNumberWithCommas(selectedFeeRange[1])}</span>
+                    </div>
+                    <input
+                      id="feeRange"
+                      type="range"
+                      min={0}
+                      max={maxFee}
+                      step={1000}
+                      value={selectedFeeRange[0]} // Assuming it's the start of the range
+                      onChange={(e) =>
+                        handleFeeChange([
+                          parseInt(e.target.value, 10),
+                          selectedFeeRange[1],
+                        ])
+                      }
+                      className="range-input mb-4"
+                    />
+                    <input
+                      id="feeRangeMax"
+                      type="range"
+                      min={0}
+                      max={maxFee}
+                      step={1000}
+                      value={selectedFeeRange[1]} // Assuming it's the end of the range
+                      onChange={(e) =>
+                        handleFeeChange([
+                          selectedFeeRange[0],
+                          parseInt(e.target.value, 10),
+                        ])
+                      }
+                      className="range-input"
+                    />
                   </div>
                 </div>
               )}
@@ -708,7 +896,7 @@ const FilterableCoursePage = () => {
                 </h3>
                 <div className="flex items-center gap-2">
                   {selectedDepartment && (
-                    <div className="border-2 border-prim bg-prim/20 text-tertiary rounded-full text-xs px-3 py-1 flex items-center">
+                    <div className="border-2 border-prim  text-tertiary rounded-full text-xs px-3 py-1 flex items-center">
                       {selectedDepartment}
                       <button
                         className="ml-2 text-red-500"
@@ -719,7 +907,7 @@ const FilterableCoursePage = () => {
                     </div>
                   )}
                   {selectedCourse && (
-                    <div className="border-2 border-prim bg-prim/20 text-tertiary rounded-full text-xs px-3 py-1 flex items-center">
+                    <div className="border-2 border-prim  text-tertiary rounded-full text-xs px-3 py-1 flex items-center">
                       {selectedCourse}
                       <button
                         className="ml-2 text-red-500"
@@ -730,7 +918,7 @@ const FilterableCoursePage = () => {
                     </div>
                   )}
                   {selectedSpecialization && (
-                    <div className="border-2 border-prim bg-prim/20 text-tertiary rounded-full text-xs px-3 py-1 flex items-center">
+                    <div className="border-2 border-prim  text-tertiary rounded-full text-xs px-3 py-1 flex items-center">
                       {selectedSpecialization}
                       <button
                         className="ml-2 text-red-500"
@@ -741,7 +929,7 @@ const FilterableCoursePage = () => {
                     </div>
                   )}
                   {selectedState && (
-                    <div className="border-2 border-prim bg-prim/20 text-tertiary rounded-full text-xs px-3 py-1 flex items-center">
+                    <div className="border-2 border-prim  text-tertiary rounded-full text-xs px-3 py-1 flex items-center">
                       {selectedState}
                       <button
                         className="ml-2 text-red-500"
@@ -752,7 +940,7 @@ const FilterableCoursePage = () => {
                     </div>
                   )}
                   {selectedCity && (
-                    <div className="border-2 border-prim bg-prim/20 text-tertiary rounded-full text-xs px-3 py-1 flex items-center">
+                    <div className="border-2 border-prim  text-tertiary rounded-full text-xs px-3 py-1 flex items-center">
                       {selectedCity}
                       <button
                         className="ml-2 text-red-500"
@@ -763,7 +951,7 @@ const FilterableCoursePage = () => {
                     </div>
                   )}
                   {selectedCollegeType && (
-                    <div className="border-2 border-prim bg-prim/20 text-tertiary rounded-full text-xs px-3 py-1 flex items-center">
+                    <div className="border-2 border-prim  text-tertiary rounded-full text-xs px-3 py-1 flex items-center capitalize">
                       {selectedCollegeType}
                       <button
                         className="ml-2 text-red-500"
@@ -776,8 +964,9 @@ const FilterableCoursePage = () => {
                   {selectedFeeRange &&
                     selectedFeeRange[0] !== 0 &&
                     selectedFeeRange[1] !== 0 && (
-                      <div className="border-2 border-prim bg-prim/20 text-tertiary rounded-full text-xs px-3 py-1 flex items-center">
-                        Fee Range: {selectedFeeRange[0]} - {selectedFeeRange[1]}
+                      <div className="border-2 border-prim  text-tertiary rounded-full text-xs px-3 py-1 flex items-center">
+                        Fee Range: ₹{formatNumberWithCommas(selectedFeeRange[0])} - ₹
+                        {formatNumberWithCommas(selectedFeeRange[1])}
                         <button
                           className="ml-2 text-red-500"
                           onClick={() => setSelectedFeeRange([0, maxFee])} // Reset fee range to default
@@ -799,48 +988,174 @@ const FilterableCoursePage = () => {
         </div>
 
         {/* Filtered Colleges */}
-        <div>
-          <h3 className="text-lg font-semibold mb-4">Colleges:</h3>
+        <div className="mt-3 mb-20 p-4 bg-gray-100">
+          <h3 className="text-lg font-semibold mb-4">
+            Found{" "}
+            {filteredColleges?.length > 0 ? `${filteredColleges?.length}` : `0`}{" "}
+            {filteredColleges?.length > 1 ? "Colleges" : "College"}
+          </h3>
+
           {filteredColleges?.length > 0 ? (
-            filteredColleges?.map((college) => (
-              <div key={college.collegeId} className="mb-4 p-4 border rounded">
-                <h4 className="text-xl font-semibold">{college.collegeName}</h4>
-                <p>Type: {college.collegeType}</p>
-                <p>Established: {college.EstdYear}</p>
-              </div>
-            ))
-          ) : (
-            <div className="text-red-500 text-center py-10">
-              No college available.
-            </div>
-          )}
-        </div>
-        <div>
-          <h3 className="text-lg font-semibold mb-4">Colleges:</h3>
-          {filteredColleges?.length > 0 ? (
-            filteredColleges?.map((college) => (
-              <div key={college.collegeId} className="mb-4 p-4 border rounded">
-                <h4 className="text-xl font-semibold">{college.collegeName}</h4>
-                <p>Type: {college.collegeType}</p>
-                <p>Established: {college.EstdYear}</p>
-              </div>
-            ))
-          ) : (
-            <div className="text-red-500 text-center py-10">
-              No college available.
-            </div>
-          )}
-        </div>
-        <div>
-          <h3 className="text-lg font-semibold mb-4">Colleges:</h3>
-          {filteredColleges?.length > 0 ? (
-            filteredColleges?.map((college) => (
-              <div key={college.collegeId} className="mb-4 p-4 border rounded">
-                <h4 className="text-xl font-semibold">{college.collegeName}</h4>
-                <p>Type: {college.collegeType}</p>
-                <p>Established: {college.EstdYear}</p>
-              </div>
-            ))
+            <table className="min-w-full table-auto border-collapse">
+              <thead>
+                <tr className="bg-gray-200">
+                  <th className="border px-4 py-2 text-left">S.No</th>
+                  <th className="border px-4 py-2 text-left">Colleges</th>
+                  <th className="border px-4 py-2 text-left">Courses Fee</th>
+                  <th className="border px-4 py-2 text-left">College Type</th>
+                  <th className="border px-4 py-2 text-left">Specialization</th>
+                  <th className="border px-4 py-2 text-left">Placement</th>
+                  <th className="border px-4 py-2 text-left">Grade</th>
+                  {/* Add more columns as needed */}
+                </tr>
+              </thead>
+              <tbody className="bg-white">
+                {filteredColleges?.map((college, index) => (
+                  <tr key={college.collegeId} className="border-b">
+                    <td className="border px-4 py-2 align-top">{index + 1}</td>
+                    <td className="border px-4 py-2 align-top">
+                      <div className="flex gap-2">
+                        <a href={`/collegepage/${college.collegeName}`}>
+                          <img
+                            src={college.collegeLogo}
+                            alt=""
+                            className="rounded-lg w-12 h-12"
+                          />
+                        </a>
+                        <div>
+                          <a
+                            href={`/collegepage/${college.collegeName}`}
+                            className="text-tertiary hover:underline text-lg font-semibold"
+                          >
+                            {college.collegeName}
+                          </a>
+                          <p className="text-textClr text-sm">
+                            {college.collegeAddress.city},{" "}
+                            {college.collegeAddress.state}
+                          </p>
+                          <p className="text-textClr text-sm">
+                            Approved by:{" "}
+                            {college.approvedBy.map((approval, index) => (
+                              <span key={index}>
+                                {approval}
+                                {index < college.approvedBy.length - 1 && ", "}
+                              </span>
+                            ))}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="mt-3 bg-gray-50 p-2 rounded-lg flex justify-between gap-2">
+                        <button
+                          onClick={() => alert("Button clicked!")}
+                          className="text-xs text-prim flex items-center font-medium gap-1"
+                        >
+                          <ArrowRight size={16} />Apply Now
+                        </button>
+                        <button
+                          onClick={() => alert("Button clicked!")}
+                          className="text-xs text-green-600 flex items-center font-medium gap-1"
+                        >
+                          <Download size={16} />Apply Now
+                        </button>
+                        <button
+                          onClick={() => alert("Button clicked!")}
+                          className="text-xs text-prim flex items-center font-medium gap-1"
+                        >
+                          <Scale size={16} />Compare
+                        </button>
+                      </div>
+                    </td>
+                    <td className="border px-4 py-2 align-top">
+                      <div>
+                        <div className="text-green-600 font-semibold">
+                          {(() => {
+                            const { minFee, maxFee } =
+                              calculateMinMaxFees(college);
+                            return `₹ ${formatNumberWithCommas(
+                              minFee
+                            )} - ₹ ${formatNumberWithCommas(maxFee)}`;
+                          })()}{" "}
+                          <span className="text-textClr font-normal text-xs">
+                            (all-courses)
+                          </span>
+                        </div>
+                        <p className="text-sm text-textClr mt-2">
+                          - First Year Fees
+                        </p>
+                      </div>
+                    </td>
+
+                    <td className="border px-4 py-2 align-top">
+                      <p className="capitalize">
+                        {college.collegeType} College
+                      </p>
+                    </td>
+                    <td className="border px-4 py-2 align-top">
+                      <a
+                        href={`/collegepage/${college.collegeName}`}
+                        className="text-tertiary hover:underline"
+                      >
+                        (
+                        <span className="text-orange-500">
+                          {calculateSpecializations(college)}
+                        </span>
+                        ) Specializations
+                      </a>
+                    </td>
+                    <td className="border px-4 py-2 align-top">
+                      <div>
+                        {!college.placements[0].lowest &&
+                        !college.placements[0].average &&
+                        !college.placements[0].highest ? (
+                          <p className="text-red-500 font-light">
+                            - No Placement Stats -
+                          </p>
+                        ) : (
+                          <>
+                            {college.placements[0].lowest && (
+                              <div className="mb-2">
+                                <p className="text-green-600">
+                                  ₹ {college.placements[0].lowest}
+                                </p>
+                                <p className="text-xs text-textClr">
+                                  (Lowest Package)
+                                </p>
+                              </div>
+                            )}
+                            {college.placements[0].average && (
+                              <div className="mb-2">
+                                <p className="text-green-600">
+                                  ₹ {college.placements[0].average}
+                                </p>
+                                <p className="text-xs text-textClr">
+                                  (Average Package)
+                                </p>
+                              </div>
+                            )}
+                            <div>
+                              <p className="text-green-600">
+                                ₹ {college.placements[0].highest}
+                              </p>
+                              <p className="text-xs text-textClr">
+                                (Highest Package)
+                              </p>
+                            </div>
+                          </>
+                        )}
+                      </div>
+                    </td>
+                    <td className="border px-4 py-2 align-top">
+                      {!college.NAACGrade ? (
+                        <p className="text-red-500 font-light">- N/A -</p>
+                      ) : (
+                        <>NAAC: {college.NAACGrade}</>
+                      )}
+                    </td>
+                    {/* Add more columns for additional data */}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           ) : (
             <div className="text-red-500 text-center py-10">
               No college available.

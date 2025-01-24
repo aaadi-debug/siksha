@@ -19,16 +19,16 @@ import Head from "next/head";
 import { usePathname } from "next/navigation";
 
 export default function Home() {
-  const pathname = usePathname();
+  // const pathname = usePathname();
 
-  useEffect(() => {
-    console.log("Current path:", pathname); // Check the current path
-  }, [pathname]);
+  // useEffect(() => {
+  //   console.log("Current path:", pathname); // Check the current path
+  // }, [pathname]);
 
   return (
     <>
       <Head>
-        <title>sikshahelpline</title>
+        <title>Siksha Helpline</title>
         <meta
           name="description"
           content="Solve all your education-related queries with Siksha and get admission to the top colleges, institutes, and universities in India. Discover everything you need to know about the best courses and scholarship programs."

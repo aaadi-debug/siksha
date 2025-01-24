@@ -73,6 +73,88 @@ body {
   border: 1px solid red;
   z-index: 999 !important;
 }
+/* ------------------------ custom scrollbar ---------------------- */
+/* Add this to your global CSS file */
+.custom-course-scrollbar::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+  border-radius: 10px;
+}
+
+.custom-course-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #bdbdbd; /* Scrollbar color */
+  border-radius: 10px; /* Round edges */
+}
+
+.custom-course-scrollbar::-webkit-scrollbar-track {
+  background-color: #edf2f7; /* Track color */
+}
+/* ------------------------ ---------------- ---------------------- */
+
+/* ------------------------ custom range picker ---------------------- */
+.range-input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  margin: 10px 0;
+  background: lightgray; /* Track background color */
+  border-radius: 5px; /* Track corner rounding */
+  outline: none;
+}
+
+.range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px; /* Thumb width */
+  height: 18px; /* Thumb height */
+  background-color: var(--star-clr); /* Thumb color */
+  border: 2px solid white; /* Thumb border */
+  border-radius: 50%; /* Make thumb circular */
+  cursor: pointer;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2); /* Optional shadow */
+  margin-top: -5px;
+}
+
+.range-input::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  background-color: #4a90e2;
+  border: 2px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.range-input::-ms-thumb {
+  width: 18px;
+  height: 18px;
+  background-color: #4a90e2;
+  border: 2px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.range-input::-webkit-slider-runnable-track {
+  background: lightgray;
+  height: 6px;
+  border-radius: 5px;
+}
+
+.range-input::-moz-range-track {
+  background: lightgray;
+  height: 6px;
+  border-radius: 5px;
+}
+
+.range-input::-ms-track {
+  background: transparent;
+  height: 6px;
+  border-radius: 5px;
+}
+
+/* ------------------------ ---------------- ---------------------- */
+
 
 /* Add this in your global CSS */
 .loader {

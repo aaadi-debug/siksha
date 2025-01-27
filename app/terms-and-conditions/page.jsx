@@ -1,8 +1,5 @@
 import React from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import Breadcrumbs2 from "../components/Breadcrumbs2";
-import Footer2 from "../components/Footer2";
 
 const TermsAndConditions = () => {
   return (

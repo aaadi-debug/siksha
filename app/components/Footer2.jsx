@@ -152,6 +152,41 @@ const Footer2 = () => {
         </div>
 
         <div>
+          <div className="text-xl text-white font-semibold">Our Policies</div>
+          <ul className="mt-6">
+            <li className="mt-2">
+              <a
+                href="/privacy-policy"
+                className="hover:text-prim transition duration-300"
+              >
+                Privacy Policy
+              </a>
+            </li>
+            <li className="mt-2">
+              <a
+                href="/terms-and-conditions"
+                className="hover:text-prim transition duration-300"
+              >
+                Terms & Conditions
+              </a>
+            </li>
+            <li className="mt-2">
+              <a href="/refund-policy" className="hover:text-prim transition duration-300">
+                Refund Policy
+              </a>
+            </li>
+            <li className="mt-2">
+              <a
+                href="/sitemap"
+                className="hover:text-prim transition duration-300"
+              >
+                Sitemap
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
           <div className="text-xl text-white font-semibold">Top Courses</div>
           <ul className="mt-6">
             <li className="mt-2">
@@ -262,44 +297,6 @@ const Footer2 = () => {
                 className="hover:text-prim transition duration-300"
               >
                 Singapore
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <div className="text-xl text-white font-semibold">Board Exams</div>
-          <ul className="mt-6">
-            <li className="mt-2">
-              <a
-                href="/collegepage/IIT Madras (IIT-M)"
-                className="hover:text-prim transition duration-300"
-              >
-                CBSE Class 10th
-              </a>
-            </li>
-            <li className="mt-2">
-              <a
-                href="/collegepage/IIT Kharagpur (IIT-KGP)"
-                className="hover:text-prim transition duration-300"
-              >
-                NCERT Solutions Class 10th Maths
-              </a>
-            </li>
-            <li className="mt-2">
-              <a
-                href="/collegepage/IIT Roorkee (IIT-R)"
-                className="hover:text-prim transition duration-300"
-              >
-                CBSE Class 12th
-              </a>
-            </li>
-            <li className="mt-2">
-              <a
-                href="/collegepage/IIT Bombay (IIT-B)"
-                className="hover:text-prim transition duration-300"
-              >
-                NCERT Solutions Class 12th Physics
               </a>
             </li>
           </ul>

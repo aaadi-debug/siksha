@@ -7,6 +7,7 @@ import Testimonials from "../components/Testimonials";
 import Breadcrumbs2 from "../components/Breadcrumbs2";
 import DynamicWhiteButton from "../components/DynamicWhiteButton";
 import { PhoneCall, Mail, MapPin } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import DynamicThemeButton from "../components/DynamicThemeButton";
 import Services from "../components/Services";
 import TestimonialSlider from "../components/TestimonialSlider";
@@ -168,24 +169,48 @@ const Page = () => {
                     className="w-[90%] rounded-md"
                   />
                 </div>
-                <div className="grid lg:grid-cols-3 gap-4 -mt-5 text-white">
+                <div className="grid lg:grid-cols-2 gap-4 -mt-5 text-white">
                   <div className="bg-second p-4 rounded-lg flex flex-col justify-center items-center shadow-lg text-center">
                     <PhoneCall size={24} />
-                    <h4 className="font-semibold mt-2 mb-3">For any Query?</h4>
-                    <p>Free +91 8298262156</p>
-                    <p>Free +91 9205230652</p>
+                    <h4 className="font-semibold mt-2 mb-3">For Call</h4>
+                    <a
+                      href="tel:+918298262156"
+                      className="hover:underline hover:text-prim transition duration-300"
+                    >
+                      +91 8298262156
+                    </a>
+                  </div>
+                  <div className="bg-second p-4 rounded-lg flex flex-col justify-center items-center shadow-lg text-center">
+                    <FaWhatsapp size={24} />
+                    <h4 className="font-semibold mt-2 mb-3">For WhatsApp</h4>
+                    <a
+                      href="https://wa.me/+919205230652"
+                      target="_blank"
+                      className="hover:underline hover:text-prim transition duration-300"
+                    >
+                      +91 9205230652
+                    </a>
                   </div>
                   <div className="bg-second p-4 rounded-lg flex flex-col justify-center items-center shadow-lg text-center">
                     <Mail size={24} />
                     <h4 className="font-semibold mt-2 mb-3">Write email Us</h4>
-                    <p>contact@sikshahelpline.com</p>
-                    <p>contact@sikshahelpline.com</p>
+                    <a
+                      href="mailto:contact@sikshahelpline.com"
+                      className="hover:underline hover:text-prim transition duration-300"
+                    >
+                      contact@sikshahelpline.com
+                    </a>
                   </div>
                   <div className="bg-second p-4 rounded-lg flex flex-col justify-center items-center shadow-lg text-center">
                     <MapPin size={24} />
-                    <h4 className="font-semibold mt-2 mb-3">Visit anytime?</h4>
-                    <p>Unit-02 Greencity Apartment Chandmari,</p>
-                    <p>East Champaran, Bihar, 845401</p>
+                    <h4 className="font-semibold mt-2 mb-3">Visit anytime</h4>
+                    <a
+                      href="#map"
+                      className="text-sm hover:underline hover:text-prim transition duration-300"
+                    >
+                      Siksha HELPLINE Unit-02 Greencity Apartment Chandmari Near
+                      MS College Motihari, East Champaran, Bihar, 845401
+                    </a>
                   </div>
                 </div>
               </div>

@@ -1,99 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import axios from "axios";
-import { FaLocationDot } from "react-icons/fa6";
-import { IoCall } from "react-icons/io5";
-import { IoIosMail } from "react-icons/io";
-import { RiWhatsappFill } from "react-icons/ri";
 import Breadcrumbs2 from "../components/Breadcrumbs2";
+import ContactForm from "../components/ContactForm";
 
 const Contact = () => {
-  // / State to hold form data
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-  });
-
-  // State to hold form submission status
-  const [formStatus, setFormStatus] = useState("");
-
-  // Function to handle input changes
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  // Function to validate form data
-  const validateForm = () => {
-    const { name, email } = formData;
-
-    if (name.length < 3 || name.length > 50) {
-      return "Name must be between 3 and 50 characters.";
-    }
-
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
-      return "Please enter a valid email address ending in .com.";
-    }
-
-    return null;
-  };
-
-  // Function to handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    // Validate the form
-    const error = validateForm();
-    if (error) {
-      setFormStatus(error);
-      return;
-    }
-
-    try {
-      const response = await axios.post("/api/contact", formData);
-      if (response.data.success) {
-        setFormStatus(response.data.message);
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          message: "",
-        });
-      } else {
-        setFormStatus(response.data.error);
-      }
-    } catch (err) {
-      setFormStatus("An error occurred while submitting the form.");
-    } finally {
-    }
-
-    // Log the form data to the console
-    // console.log('Form Data:', formData);
-
-    // Set form status (for demo purposes)
-    setFormStatus("Form submitted successfully!");
-
-    // Clear the form
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
-    });
-
-    // Reset the form status after a while
-    setTimeout(() => {
-      setFormStatus("");
-    }, 3000);
-
-    // In a real application, you would send the form data to your backend here
-    // Example: await axios.post('/api/form', formData);
-  };
   return (
     <>
       <div className="pt-20 max-sm:pt-16">
@@ -109,11 +19,26 @@ const Contact = () => {
             activeColor="text-white/70"
           />
           {/* <!-- Content inside your hero section --> */}
-          <h2 className="text-4xl font-bold pt-10 pb-16 text-center">Contact Us</h2>
+          <h2 className="text-4xl font-bold pt-10 pb-16 text-center">
+            Contact Us
+          </h2>
         </div>
       </div>
 
-      <div className="contact_us">
+      <ContactForm />
+      <div className="map_integration" id="map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3565.745170448307!2d84.89910807543062!3d26.656640376800702!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399334fe4f532959%3A0x458a73d1414465df!2sGreen%20City%20Apartment!5e0!3m2!1sen!2sin!4v1720241751952!5m2!1sen!2sin"
+          width="600"wh
+          height="450"
+          // style="border:0;"
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+
+      {/* <div className="contact_us">
         <div className="contact_us_wrapper">
           <div className="container py-5 lg:px-32">
             <div className="row contact_us_main">
@@ -241,7 +166,7 @@ const Contact = () => {
             ></iframe>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

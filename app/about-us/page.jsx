@@ -25,15 +25,15 @@ const About = () => {
     <>
       <div className="pt-20 max-sm:pt-16">
         <div
-          className="border-red-500 bg-cover bg-center bg-no-repeat  text-white lg:px-10 px-6 py-10"
+          className="border-red-500 bg-cover bg-center bg-no-repeat  lg:px-10 px-6 py-10"
           style={{
-            backgroundImage: `url('/assets/images/new/about-bread.jpg')`,
+            backgroundImage: `url('https://demos.codexcoder.com/labartisan/html/edukon/assets/images/pageheader/bg/01.jpg')`,
           }}
         >
           <Breadcrumbs2
             breadcrumbs={[{ title: "About us", link: "" }]}
-            linkColor="text-white"
-            activeColor="text-white/70"
+            linkColor="text-tertiary"
+            activeColor="text-gray-500"
           />
           {/* <!-- Content inside your hero section --> */}
           <h2 className="text-4xl font-bold pt-10 pb-16 text-center">
@@ -41,6 +41,54 @@ const About = () => {
           </h2>
         </div>
       </div>
+
+      <div className="2xl:px-64 xl:px-48 lg:px-20 px-10 py-20 bg-prim-light">
+        <div className="grid gap-4 2xl:grid-cols-2 xl:grid-cols-2 grid-cols-1">
+          <div className="relative 2xl:h-[600px] xl:h-[600px] lg:h-[600px]">
+            <div className="relative 2xl:w-[70%] xl:w-[70%] lg:w-[50%] shadow">
+              <img
+                loading="lazy"
+                src="/assets/images/about/about-person-1.jpg"
+                alt="About Us Student 1"
+                className="w-full h-full border-8  border-white"
+              />
+              <div className="absolute bottom-0 left-0 border-8  border-white bg-prim text-white w-40 flex flex-col justify-center items-center text-center p-3">
+                <div className="text-5xl font-bold">30+</div>
+                <p className="text-lg font-medium">Years Of Experiences</p>
+              </div>
+            </div>
+            <img
+              loading="lazy"
+              src="/assets/images/about/about-person-2.jpg"
+              alt="About Us Student 1"
+              className="absolute bottom-0 2xl:right-0 xl:right-0 lg:right-56 right-0 border-8  border-white shadow max-sm:hidden"
+            />
+          </div>
+          <div className="border">
+            <div className="text-prim font-medium text-2xl uppercase">
+              About Siksha Helpline
+            </div>
+            <div className="text-tertiary text-4xl font-bold pt-2">
+            Good Qualification Services And Better Skills
+            </div>
+            <p className="pt-3">
+              Founded in 2019, Siksha Helpline is one of the most reputable
+              educational consulting companies in India. Our goal is to provide
+              clear, individualized guidance on the path to higher education.
+              The Siksha Helpline offers professional advice and tools to assist
+              you in understanding the complexity of the educational system,
+              whether you're looking for aid with exam preparation, career
+              counseling, school admissions, or academic planning. Our qualified
+              experts give you individualized support, address your inquiries,
+              and offer insightful advice to help you reach your learning
+              objectives and make wise decisions. For everything related to
+              education, the Siksha Helpline is your go-to source because of its
+              emphasis on empowerment, clarity, and assistance.
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div className="about_us">
         <div className="about_us_wrapper bg_reddish">
           <div className="mission_vision py-5">

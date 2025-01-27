@@ -1,6 +1,5 @@
 "use client";
 import { FaWhatsapp } from "react-icons/fa";
-import Link from "next/link";
 
 const WhatsAppButton = () => {
   return (
@@ -10,7 +9,7 @@ const WhatsAppButton = () => {
           className="p-2 bg-green-500 text-white rounded-full shadow-2xl hover:bg-green-400 transition duration-300"
           aria-label="WhatsApp Button"
         >
-          <Link href="https://wa.me/+919205230652" target="_blank"><FaWhatsapp size={24} /></Link>
+          <a href="https://wa.me/+919205230652" target="_blank"><FaWhatsapp size={24} /></a>
         </div>
       </div>
     </>

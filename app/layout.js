@@ -10,7 +10,7 @@ import WhatsAppButton from "./components/WhatsAppButton";
 import BackToTop from "./components/BackToTop";
 import SocialMedia from "./components/SocialMedia";
 import Navbar2 from "./components/Navbar2";
-import Footer from "./components/Footer";
+import Footer2 from "./components/Footer2";
 
 const MemoizedNavbar = memo(Navbar2);
 
@@ -82,7 +82,7 @@ export default function RootLayout({ children }) {
         <SocialMedia />
         <WhatsAppButton />
         <BackToTop />
-        <Footer />
+        <Footer2 />
       </body>
     </html>
   );

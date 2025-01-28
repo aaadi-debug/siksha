@@ -162,7 +162,6 @@ body {
 
 /* ------------------------ ---------------- ---------------------- */
 
-
 /* Add this in your global CSS */
 .loader {
   border: 4px solid #f3f3f3;
@@ -248,7 +247,7 @@ body {
 .dangerousHTML h1 {
   font-family: sans-serif;
   font-size: 48px;
-  font-weight: 700;  /* Changed from 70 to 700 for bold */
+  font-weight: 700; /* Changed from 70 to 700 for bold */
   line-height: 1.6;
 }
 
@@ -286,7 +285,6 @@ body {
   font-weight: 500; /* Medium font weight */
   line-height: 1.6;
 }
-
 
 .dangerousHTML ul {
   margin-left: 30px;
@@ -4636,6 +4634,62 @@ footer {
 /* ----------------------------------------
 ---------- about us --------------------
 ---------------------------------------- */
+.video-button {
+  position: relative; /* Ensure the pseudo-elements are positioned relative to this */
+  display: inline-block;
+  width: 100px; /* Adjust size to match your design */
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-button::before,
+.video-button::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 50%; /* Ensure it’s circular */
+  background-color: rgba(255, 255, 255, 0.5); /* Ripple color */
+  opacity: 0.15; /* Initial opacity */
+  pointer-events: none; /* Prevent interaction */
+}
+
+.video-button::before {
+  z-index: 1;
+  animation: inner-ripple 2s linear infinite;
+}
+
+.video-button::after {
+  z-index: 1;
+  animation: outer-ripple 2s linear infinite;
+}
+
+@keyframes inner-ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes outer-ripple {
+  0% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
 
 .bg_reddish {
   background-color: var(--reddish-white);

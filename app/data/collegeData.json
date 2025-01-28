@@ -16,6 +16,10 @@
       "NAACGrade": "A+",
       "approvedBy": ["NCTE", "DCI", "COA", "INC", "MCI"],
       "collegeAbout": "Sharda University is a reputated engineering college.",
+      "collegeRating": {
+        "rate": "3.5",
+        "reviews": "703"
+      },
       "latestUpdates": [
         {
           "date": "26 Dec, 2024",

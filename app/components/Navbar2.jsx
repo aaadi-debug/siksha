@@ -14,11 +14,13 @@ import {
   ChevronUp,
   Search,
   ShoppingBasket,
+  Mail
 } from "lucide-react";
 import { FaUserTie } from "react-icons/fa6";
 import { IoMdNotifications } from "react-icons/io";
 import DynamicThemeButton from "./DynamicThemeButton";
 import DynamicWhiteButton from "./DynamicWhiteButton";
+import studentsDataJson from "../data/studentsData.json";
 // import SearchBar from "./SearchBar";
 // import { testCategories } from "@/data/testCategories";
 
@@ -60,6 +62,7 @@ export default function Nav() {
   const pathname = usePathname();
 
   const [isloggedIn, SetIsloggedIn] = useState(true);
+  const student = studentsDataJson[0];
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSubMenu, setActiveSubMenu] = useState(null); // For mobile accordion
@@ -232,6 +235,16 @@ export default function Nav() {
     window.location.href = `/notifications/${notificationName}`;
   };
 
+  const getStudentNameInitials = (name) => {
+    if (!name) return "";
+    const nameParts = name.trim().split(" ");
+    const initials =
+      nameParts.length >= 2
+        ? `${nameParts[0][0]}${nameParts[1][0]}` // Take the first letters of the first two words
+        : nameParts[0][0]; // If only one word, take its first letter
+    return initials.toUpperCase();
+  };
+
   return (
     <div
       className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${
@@ -344,7 +357,7 @@ export default function Nav() {
                 <>
                   {isloggedIn ? (
                     <DynamicThemeButton onClick={toggleUserSidebar}>
-                      Hi, Aditya
+                      Hi, {student.studentName.split(" ")[0]}
                     </DynamicThemeButton>
                   ) : (
                     <DynamicThemeButton href="/login">
@@ -356,7 +369,7 @@ export default function Nav() {
                 <>
                   {isloggedIn ? (
                     <DynamicWhiteButton onClick={toggleUserSidebar}>
-                      Hi, Aditya
+                      Hi, {student.studentName.split(" ")[0]}
                     </DynamicWhiteButton>
                   ) : (
                     <DynamicWhiteButton href="/login">
@@ -369,7 +382,7 @@ export default function Nav() {
               <>
                 {isloggedIn ? (
                   <DynamicThemeButton onClick={toggleUserSidebar}>
-                    Hi, Aditya
+                    Hi, {student.studentName.split(" ")[0]}
                   </DynamicThemeButton>
                 ) : (
                   <DynamicThemeButton href="/login">
@@ -666,23 +679,31 @@ export default function Nav() {
         <>
           <div
             ref={sidebarRef}
-            className={`fixed inset-y-0 right-0 z-50 w-96 max-sm:w-72 p-4 bg-white shadow-l transition-transform transform ${
+            className={`fixed inset-y-0 right-0 z-50 w-96 max-sm:w-72 bg-white shadow-l transition-transform transform ${
               isUserSidebarOpen ? "translate-x-0" : "translate-x-full"
             } duration-700 ease-in-out`}
           >
-            <div className="flex items-center justify-between pt-1 pb-2 border-textClr border-b">
-              <h2 className="lg:text-2xl text-blackClr font-bold">
-                Hi, Aditya
-              </h2>
-              <button
+            <div className="flex items-center justify-between border-textClr w-full p-4 bg-prim-light">
+              <div className="flex gap-2">
+                <div className="w-12 h-12 flex items-center justify-center border-2 border-prim bg-prim-light text-prim font-semibold rounded-full">
+                  {getStudentNameInitials(student.studentName)}
+                </div>
+                <div className="lg:text-lg text-blackClr font-semibold">
+                  Hi, {student.studentName}
+                  <p className="text-textClr text-sm flex gap-1 items-center font-medium"><Mail size={16} /> {student.studentEmail} </p>
+                  {/* Hi, {student.studentName.split(" ")[0]} */}
+                </div>
+              </div>
+
+              {/* <button
                 onClick={closeUserSidebar}
                 className="text-gray-600 hover:text-gray-900"
               >
                 <X
-                  className="h-10 w-10 rounded-full p-2 transition duration-500 hover:bg-primary/80 hover:text-white"
+                  className="h-10 w-10 rounded-full p-2 transition duration-500 hover:bg-prim hover:text-white"
                   aria-hidden="true"
                 />
-              </button>
+              </button> */}
             </div>
             <div className="py-2 pb-16"></div>
           </div>

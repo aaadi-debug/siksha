@@ -144,7 +144,7 @@ export default function Content({ blogInfo }) {
           </div>
         </div>
       </div>
-      <Footer />
+      
     </>
   );
 }

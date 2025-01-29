@@ -148,7 +148,7 @@ const Page = ({ params }) => {
   return (
     <>
       <div>
-        <Navbar />
+
         <div className="contact_us_wrapper">
           <div
             style={{
@@ -168,82 +168,82 @@ const Page = ({ params }) => {
           <div className="container py-5 lg:px-28">
             <div className="overflow-x-auto">
               {/* {notificationSData.map((data) => ( */}
-                <div key={notificationSData?._id} className="mb-6">
-                  {/* {data.summary && ( */}
-                    <p className="mb-4 text-gray-600">{notificationSData?.summary}</p>
-                  {/* )} */}
+              <div key={notificationSData?._id} className="mb-6">
+                {/* {data.summary && ( */}
+                <p className="mb-4 text-gray-600">{notificationSData?.summary}</p>
+                {/* )} */}
 
-                  {/* Dynamic table iterations */}
-                  {notificationSData?.table?.map((table) => (
-                    <>
-                      <div className="table_wrapper bg-white rounded-lg mb-5">
-                        <div
-                          className={`text-2xl font-semibold text-black rounded ${table.tableHeading.length == 0 ? "hidden" : " p-2"
-                            } `}
-                        >
-                          {table.tableHeading}
-                        </div>
+                {/* Dynamic table iterations */}
+                {notificationSData?.table?.map((table) => (
+                  <>
+                    <div className="table_wrapper bg-white rounded-lg mb-5">
+                      <div
+                        className={`text-2xl font-semibold text-black rounded ${table.tableHeading.length == 0 ? "hidden" : " p-2"
+                          } `}
+                      >
+                        {table.tableHeading}
+                      </div>
 
-                        <div className="overflow-x-auto">
-                          <div className="max-sm:w-[700px]">
-                            <table key={table.id}>
-                              <thead>
-                                <tr>
-                                  {table.tableCol.map((col, colIndex) => (
-                                    <th
-                                      key={colIndex}
-                                      className={`${table.tableCol.length === 1
-                                          ? "text-center"
-                                          : "text-left"
-                                        }`}
-                                    >
-                                      {col.col || "N/A"}
-                                    </th>
-                                  ))}
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {/* Creating dynamic rows */}
-                                {table.tableRow.map((row, rowIndex) => (
-                                  <tr key={row.id}>
-                                    {/* Checking: if row is an array or a string */}
-                                    {Array.isArray(row.row) ? (
-                                      row.row.map((colData) => (
-                                        <td key={colData.id}>
-                                          {colData.colData || "N/A"}
-                                        </td>
-                                      ))
-                                    ) : (
-                                      <td
-                                        colSpan={table.tableCol.length}
-                                        className="text-left"
-                                      >
-                                        {row.row || "N/A"}
-                                      </td>
-                                    )}
-                                  </tr>
+                      <div className="overflow-x-auto">
+                        <div className="max-sm:w-[700px]">
+                          <table key={table.id}>
+                            <thead>
+                              <tr>
+                                {table.tableCol.map((col, colIndex) => (
+                                  <th
+                                    key={colIndex}
+                                    className={`${table.tableCol.length === 1
+                                      ? "text-center"
+                                      : "text-left"
+                                      }`}
+                                  >
+                                    {col.col || "N/A"}
+                                  </th>
                                 ))}
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-
-                        <div
-                          className={`text-2xl font-semibold text-black rounded border-t ${table.tableFooter.length == 0 ? "hidden" : " p-2"
-                            } `}
-                        >
-                          {table.tableFooter}
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {/* Creating dynamic rows */}
+                              {table.tableRow.map((row, rowIndex) => (
+                                <tr key={row.id}>
+                                  {/* Checking: if row is an array or a string */}
+                                  {Array.isArray(row.row) ? (
+                                    row.row.map((colData) => (
+                                      <td key={colData.id}>
+                                        {colData.colData || "N/A"}
+                                      </td>
+                                    ))
+                                  ) : (
+                                    <td
+                                      colSpan={table.tableCol.length}
+                                      className="text-left"
+                                    >
+                                      {row.row || "N/A"}
+                                    </td>
+                                  )}
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
                         </div>
                       </div>
-                    </>
-                  ))}
-                </div>
+
+                      <div
+                        className={`text-2xl font-semibold text-black rounded border-t ${table.tableFooter.length == 0 ? "hidden" : " p-2"
+                          } `}
+                      >
+                        {table.tableFooter}
+                      </div>
+                    </div>
+                  </>
+                ))}
+              </div>
               {/* ))} */}
             </div>
           </div>
         </div>
       </div>
-      <Footer />
+
     </>
   );
 };

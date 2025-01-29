@@ -53,7 +53,11 @@ export default function Blog() {
       <div className="container py-5 lg:px-28 bg_reddish">
         <div className="blogs_card_wrapper flex flex-wrap gap-4">
           {blogs.length > 0 ? (
-            blogs.map((blog) => (
+            blogs.map((blog, index) => (
+              <Link
+              key={index}
+              href={"/blogs/view/" + blog.url}
+              >
               <div
                 key={blog.id}
                 className="blogs_card rounded shadow-md border border-slate-500 p-3 h-[350px] w-[280px] bg-white m-2 max-sm:w-full"
@@ -84,32 +88,13 @@ export default function Blog() {
                   </span>
                 </Link>
               </div>
+              </Link>
             ))
           ) : (
             <div className="text-center text-gray-500">No blogs found</div>
           )}
         </div>
-
-        {/* <div className="pagination mt-4 flex justify-center space-x-2">
-                    <button
-                        onClick={() => handlePageChange(currentPage - 1)}
-                        disabled={currentPage === 1}
-                        className="px-4 py-2 bg-blue-500 text-white rounded"
-                    >
-                        Previous
-                    </button>
-                 
-                    <button
-                        onClick={() => handlePageChange(currentPage + 1)}
-                        disabled={currentPage === pageCount}
-                        className="px-4 py-2 bg-blue-500 text-white rounded"
-                    >
-                        Next
-                    </button>
-                </div> */}
       </div>
-
-      <Footer />
     </>
   );
 }

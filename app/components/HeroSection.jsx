@@ -170,7 +170,11 @@ const HeroSection = () => {
 
       <div className="lg:hidden block">
         <div className="overflow-hidden relative ">
-          <img src="/assets/videos/hero_image.webp" alt="College Are Image" className="h-[60vh] object-cover" />
+          <img
+            src="/assets/videos/hero_image.webp"
+            alt="College Are Image"
+            className="h-[60vh] object-cover"
+          />
 
           <div className="absolute top-[40%] left-[10%]">
             <div className="lg:w-[40vw] md:w-[70vw] max-sm:w-[80vw]">

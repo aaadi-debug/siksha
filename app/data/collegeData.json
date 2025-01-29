@@ -15,25 +15,12 @@
       "EstdYear": "2009",
       "NAACGrade": "A+",
       "approvedBy": ["NCTE", "DCI", "COA", "INC", "MCI"],
-      "collegeAbout": "Sharda University is a reputated engineering college.",
-      "latestUpdates": [
-        {
-          "date": "26 Dec, 2024",
-          "update": [
-            "Amity University has announced the result of admissions for the 2023-24 session. The admissions process has been completed and the results are expected to be out soon.",
-            "Amity University has announced the result of admissions for the 2023-24 session. The admissions process has been completed and the results are expected to be out soon"
-          ],
-          "link": ""
-        },
-        {
-          "date": "23 Dec, 2024",
-          "update": [
-            "Amity University has announced the result of admissions for the 2023-24 session. The admissions process has been completed and the results are expected to be out soon.",
-            "Amity University has announced the result of admissions for the 2023-24 session. The admissions process has been completed and the results are expected to be out soon"
-          ],
-          "link": ""
-        }
-      ],
+      "collegeAbout": "<p>Sharda University, established in 2009, is a renowned private university located in Greater Noida, Uttar Pradesh. The university is accredited with a Grade A+ by NAAC and recognized by the UGC. Sharda University is ranked among the top 4% of universities in Asia for the year 2024 as per QS Rankings. According to NIRF 2024, Sharda University has been ranked 86th (Overall) and 69th (Pharmacy). It has academic tie-ups with 250+ Universities worldwide from countries such as the USA, UK, Russia, Slovenia, Italy, Canada, and many more.</p> <p>Sharda University offers 130+ Programs at UG, PG and Doctoral levels under its 14 Schools in various disciplines. B.Tech, MBA and M.Tech are the flagship courses offered at Sharda University. The university conducts its entrance, Sharda University Admission Test (SUAT), for admission to all major courses. The university also accepts national tests such as JEE, CLAT, CAT, MAT, XAT, NATA, and NEET.</p> <p>Sharda University has 17,000+ students enrolled in different programs with 900+ highly qualified faculty. Sharda University also offers up to 100% scholarships based on merit in the Sharda University Scholastic Aptitude Test (SUSAT). The university also offers scholarship facilities for international students. Sharda University has an impressive placement record with 100% placements for MBA, 91% placements for the B.Tech, and 92% placement offers for Media, Film and Production courses during its 2024 placement drive. More than 600 companies visited the campus during the recruitment drive and the highest package stood at INR 40 LPA at Sharda University Placements 2024. Amazon, Cognizant, NTT Data, Tech Mahindra, Audi, Atos, Cafe Coffee Day are among the top recruiters at Sharda University. </p>",
+      "collegeRating": {
+        "rate": "3.5",
+        "reviews": "703"
+      },
+      "latestUpdates": "<div><b>24 Jan, 2025</b></div><ul><li>Sharda University Admission 2025-2026 is open. Interested candidates can visit the official website @sharda.ac.in to apply. <a href='https://siksha-helpline.com'>Click here</a> to know more. </li> <li>Sharda University has released the list of selected candidates in the PhD Entrance Written Examination of Jan, 2025 batch. Check Merit List Here. Further, the Online Interviews for qualified candidates are scheduled from Feb 4 to Feb 7, 2025 and the Final Result for PhD Admission will be out on Feb 18, 2025. For more details on PhD Admission, Click Here.</li></ul> <div><b>24 Jan, 2025</b></div><ul><li>Sharda University Admission 2025-2026 is open. Interested candidates can visit the official website @sharda.ac.in to apply. <a href='https://siksha-helpline.com'>Click here</a> to know more. </li> <li>Sharda University has released the list of selected candidates in the PhD Entrance Written Examination of Jan, 2025 batch. Check Merit List Here. Further, the Online Interviews for qualified candidates are scheduled from Feb 4 to Feb 7, 2025 and the Final Result for PhD Admission will be out on Feb 18, 2025. For more details on PhD Admission, Click Here.</li></ul>",
       "departments": [
         {
           "id": 1,
@@ -1014,7 +1001,11 @@
       "EstdYear": "1986",
       "NAACGrade": "A+",
       "approvedBy": ["NCTE", "AICTE", "COA", "BCI", "UGC"],
-      "collegeAbout": "Amity University is a reputated college for various specialization courses.",
+      "collegeAbout": "<p>Amity University Noida offers Undergraduate and Postgraduate courses in fields like Management, Engineering, Design, Architecture, Fine Arts, Journalism, Sciences, Commerce, etc. The university also offers Ph.D., Evening, Lateral Entry, Polytechnic, Online & Distance Learning courses. To apply for various courses at Amity Noida, candidates must satisfy the minimum eligibility criteria prescribed by the institute.  Amity University also offers 3 continent programs under which students can learn from the best practical applications across three different economies. Amity University Noida is ranked “31” for Engineering and “28” for Management courses by NIRF Rankings 2023. </p> <p>One of the flagship course of Amity Noida is MBA and the candidate must be ready to pay a fee of INR 15.56 Lakhs. However, candidates who wish to pursue MCA, need to pay a fee of INR 5.20 Lakhs</p>",
+      "collegeRating": {
+        "rate": "2.8",
+        "reviews": "563"
+      },
       "departments": [
         {
           "id": 1,
@@ -1331,6 +1322,103 @@
           ]
         }
       ],
+      "admissions": {
+        "importantEvents": {
+          "headers": ["Events", "Dates"],
+          "rows": [
+            [
+              { "content": "Last Date To Apply" },
+              { "content": "15 Mar, 2025", "rowspan": 1, "colspan": 2 }
+            ]
+          ]
+        },
+        "admissionContent": {
+          "description": "Here description will be from text-editor",
+          "directLink": "Affilate link",
+          "highlights": [
+            {
+              "year": "2024",
+              "highlightsTable": [
+                {
+                  "particulars": "Name of University",
+                  "admHighlights": "Sharda University"
+                },
+                {
+                  "particulars": "University Type",
+                  "admHighlights": "Private"
+                },
+                {
+                  "particulars": "Courses Offered",
+                  "admHighlights": "UG, PG, Diploma, Certificate, Doctoral, Integrated Programs"
+                },
+                {
+                  "particulars": "Popular Courses",
+                  "admHighlights": "MBA, B. Tech., B.Com, B.Sc, BBA, M.Tech, and M.Com"
+                },
+                {
+                  "particulars": "Selection Criteria",
+                  "admHighlights": "Entrance-Based"
+                }
+              ]
+            },
+            {
+              "year": "2023",
+              "highlightsTable": [
+                {
+                  "particulars": "",
+                  "admHighlights": ""
+                }
+              ]
+            }
+          ],
+          "admissionSections": [
+            {
+              "heading": "Sharda University B.Tech Admission 2024",
+              "description": "Here description will be from text-editor",
+              "admissionSectionsTable": {
+                "headers": ["Column 1", "Column 2", "Column 3"],
+                "rows": [
+                  [
+                    { "content": "Row 1, Col 1", "rowspan": 2, "colspan": 1 },
+                    { "content": "Row 1, Col 2", "rowspan": 1, "colspan": 2 }
+                  ],
+                  [{ "content": "Row 2, Col 3", "rowspan": 1, "colspan": 1 }],
+                  [
+                    { "content": "Row 3, Col 1", "rowspan": 1, "colspan": 1 },
+                    { "content": "Row 3, Col 2", "rowspan": 1, "colspan": 1 },
+                    { "content": "Row 3, Col 3", "rowspan": 1, "colspan": 1 }
+                  ]
+                ]
+              }
+            },
+            {
+              "heading": "Sharda University MBA Admission 2024",
+              "description": "Here description will be from text-editor",
+              "admissionSectionsTable": {
+                "headers": ["Column 1", "Column 2", "Column 3"],
+                "rows": [
+                  [
+                    { "content": "Row 1, Col 1", "rowspan": 2, "colspan": 1 },
+                    { "content": "Row 1, Col 2", "rowspan": 1, "colspan": 2 }
+                  ],
+                  [{ "content": "Row 2, Col 3", "rowspan": 1, "colspan": 1 }],
+                  [
+                    { "content": "Row 3, Col 1", "rowspan": 1, "colspan": 1 },
+                    { "content": "Row 3, Col 2", "rowspan": 1, "colspan": 1 },
+                    { "content": "Row 3, Col 3", "rowspan": 1, "colspan": 1 }
+                  ]
+                ]
+              }
+            }
+          ],
+          "admissionFaqs": [
+            {
+              "question": "What is the duration of the course?",
+              "answer": "The course duration is 3 years."
+            }
+          ]
+        }
+      },
       "placements": [
         {
           "year": "2023",
@@ -1350,7 +1438,7 @@
     },
     {
       "collegeId": 3,
-      "collegeName": "IIT Kharagpur - Indian Institute of Technology - [IITKGP]",
+      "collegeName": "IIT Kharagpur",
       "collegeLogo": "https://image-static.collegedunia.com/public/college_data/images/logos/1489041138e2.jpg?h=71.17&w=71.17&mode=stretch",
       "collegeAddress": {
         "city": "Kharagpur",
@@ -1361,7 +1449,11 @@
       "EstdYear": "1951",
       "NAACGrade": "A+",
       "approvedBy": ["AICTE", "UGC", "NBA"],
-      "collegeAbout": "IIT Kharagpur - Indian Institute of Technology - [IITKGP] is a reputated engineering college.",
+      "collegeAbout": "",
+      "collegeRating": {
+        "rate": "4.2",
+        "reviews": "102"
+      },
       "departments": [
         {
           "id": 1,

@@ -20,37 +20,7 @@ export default async function handler(req, res) {
           res.status(400).json({ success: false });
         }
         break;
-      case 'POST':
-        try {
-          const Notifications = await Notification.create(req.body);
-          res.status(201).json({ success: true, data: Notifications });
-        } catch (error) {
-          console.log(error);
-          res.status(400).json({ success: false });
-        }
-        break;
-      case 'PUT':
-        try {
-          // console.log(req.body)
-          const {NotificationTitle} = req.body;
-          // console.log("title ",NotificationTitle)
-          const title=NotificationTitle
-          const Notifications = await Notification.updateOne({ title },{ $set: req.body });
-          res.status(201).json({ success: true, data: Notifications,message: "Data Updated successfully" });
-        } catch (error) {
-          console.log(error);
-          res.status(400).json({ success: false,message: "Something went wrong"});
-          
-        }
-        break;
-        
-      case 'DELETE':
-        if (req.query?.title) {
-          await Notification.deleteOne({title:req.query?.title});
-          res.json(true);
-        }
-        break;
-      default:
+        default:
         res.status(400).json({ success: false });
         break;
     }

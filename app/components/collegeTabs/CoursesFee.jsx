@@ -154,11 +154,9 @@ const CoursesFee = ({ college }) => {
                   </div>
                   <div className="mt-3"></div>
                   <div className="mt-3 flex items-end justify-end border">
-                    <div>
                     <DynamicThemeButton onClick={() => toggleModal(true)}>
                       Apply Now
                     </DynamicThemeButton>
-                    </div>
                   </div>
                 </div>
               </div>

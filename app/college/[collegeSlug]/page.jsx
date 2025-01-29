@@ -356,7 +356,7 @@ const page = () => {
             </aside>
 
             {/* Main Content */}
-            <main className="w-4/6 p-3 bg-white rounded-xl  overflow-y-auto">
+            <main className="lg:w-4/6 w-full p-3 bg-white rounded-xl  overflow-y-auto">
               {/* Profile Completion Reminder Box */}
               {renderContent()}
             </main>

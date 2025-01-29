@@ -16,7 +16,7 @@ const DynamicTable = ({ headers, rows }) => {
         {/* Table Body */}
         <tbody>
           {rows.map((row, rowIndex) => (
-            <tr key={rowIndex}>
+            <tr key={rowIndex} className="bg-white">
               {row.map((cell, cellIndex) => (
                 <td
                   key={cellIndex}

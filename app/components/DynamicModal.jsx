@@ -30,7 +30,7 @@ const DynamicModal = ({ isOpen, toggleModal, children, modalHeading }) => {
           ref={modalRef}
           className="2xl:w-[60%] 2xl:h-[70%] xl:w-[60%] xl:h-[70%] lg:w-[70%] lg:h-[70%] md:w-[80%] md:h-[80%] max-sm:w-[90%] max-sm:h-[70%] bg-white rounded-lg shadow-lg"
         >
-          <div className="p-6 text-2xl font-semibold flex justify-between bg-prim-light rounded-t-lg">
+          <div className="p-6 text-2xl font-semibold flex justify-between items-start bg-prim-light rounded-t-lg">
             {modalHeading}
             <button
               onClick={() => toggleModal(false)}

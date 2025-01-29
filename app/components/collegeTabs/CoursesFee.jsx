@@ -25,23 +25,31 @@ function formatNumberWithCommas(number) {
 
 const CoursesFee = ({ college }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isFeeModalOpen, setIsFeeModalOpen] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleModal = (open) => {
     setIsModalOpen(open);
   };
 
+  const toggleFeeModal = (open) => {
+    setIsFeeModalOpen(open);
+  };
+
   const departments = college?.departments || [];
 
   // Extract all courses without filtering by "Full Time"
   const allCourses = [];
-  const allSpecializations = [];
 
   departments.forEach((dept) => {
     dept.courses.forEach((course) => {
+      // Safeguard: Ensure specialization exists and is an array
+      const specializations = Array.isArray(course.specialization)
+        ? course.specialization
+        : []; // If it's not an array, use an empty array
+
       // Calculate min and max fee for all courses
-      const allFees = course.specialization.flatMap(
+      const allFees = specializations.flatMap(
         (spec) =>
           Array.isArray(spec.fee?.general)
             ? spec.fee.general.map((fee) => parseInt(fee.tuitionFee || "0", 10))
@@ -59,8 +67,8 @@ const CoursesFee = ({ college }) => {
               href="#"
               className="text-sm text-prim hover:underline hover:text-prim flex items-center "
             >
-              {course?.specialization?.length}{" "}
-              {course?.specialization?.length > 1 ? "Courses" : "Course"}{" "}
+              {specializations.length}{" "}
+              {specializations.length > 1 ? "Courses" : "Course"}{" "}
               <ChevronRight size={16} />
             </a>
           </>
@@ -77,48 +85,15 @@ const CoursesFee = ({ college }) => {
         courseApplicationDate: `${course?.courseApplicationDate}`,
 
         courseName: course?.courseName,
-        courseSpecilzationCount: course?.specialization?.length,
-        courseTime: course?.specialization[0]?.courseDuration || 0,
-        courseType: course?.specialization[0]?.courseType,
+        courseSpecilzationCount: specializations.length,
+        courseTime: specializations[0]?.courseDuration || 0,
+        courseType: specializations[0]?.courseType,
+        courseSpecialization: specializations,
       });
     });
   });
-
-  departments.forEach((dept) => {
-    dept.courses.forEach((course) => {
-      course.specialization.map((spec) => {
-        allSpecializations.push({
-          specializationName: `${spec?.name}`,
-          firstYearFee:
-            spec.fee.general.length > 0
-              ? spec.fee.general[0].tuitionFee
-              : "N/A",
-        });
-      });
-    });
-  });
-
-  const allCoursesWithSpecializations = [];
-
-  departments.forEach((dept) => {
-    dept.courses.forEach((course) => {
-      const courseSpecializations = course.specialization.map((spec) => ({
-        specializationName: spec?.name,
-        firstYearFee:
-          spec.fee.general.length > 0 ? spec.fee.general[0].tuitionFee : "N/A",
-      }));
-
-      allCoursesWithSpecializations.push({
-        courseName: course?.courseName, // Assuming `course` has a `name` field
-        specializations: courseSpecializations,
-      });
-    });
-  });
-
-  console.log("Aitya 3", allCoursesWithSpecializations);
 
   console.log("Aditya", allCourses);
-  console.log("Aditya2", allSpecializations);
 
   return (
     <>
@@ -180,9 +155,9 @@ const CoursesFee = ({ college }) => {
                   <div className="text-xl font-semibold text-tertiary">
                     {course?.courseName}
                   </div>
-                  <p className="text-lg font-bold">{course?.feeRange}</p>
+                  <div className="text-lg font-bold">{course?.feeRange}</div>
                 </div>
-                <div className="flex  text-gray-700 text-sm mt-2">
+                <div className="flex text-gray-700 text-sm mt-2">
                   <div className="pr-2">
                     {course?.courseSpecilzationCount}{" "}
                     {course?.courseSpecilzationCount > 1 ? "Courses" : "Course"}
@@ -193,7 +168,7 @@ const CoursesFee = ({ college }) => {
                   </div>
                   <div className="px-2">{course?.courseType}</div>
                 </div>
-                <div className="grid grid-cols-2 max-sm:grid-cols-1  mt-2">
+                <div className="grid grid-cols-2 max-sm:grid-cols-1 mt-2">
                   <div className="grid lg:grid-cols-2 md:grid-cols-2 max-sm:grid-cols-1">
                     <div className="mt-3">
                       <div className="text-sm">Eligibility: </div>
@@ -243,20 +218,69 @@ const CoursesFee = ({ college }) => {
                   {/* Expandable Section */}
                   {openIndex === index && (
                     <div className="mt-2 rounded-lg">
-                      <DynamicTable
-                        headers={[
-                          "Courses",
-                          "Fees (INR)",
-                          "Application Date",
-                          "Cut-Off (Rank)",
-                        ]}
-                        rows={allCoursesWithSpecializations.map((data) => [
-                          { content: data.specializations.map((specialization) => (<>{specialization.name}</>))},
-                          // { content: course.feeRange },
-                          // { content: course.courseEligibility },
-                          // { content: course.courseApplicationDate },
-                        ])}
-                      />
+                      {/* Extract specializations for the current course */}
+                      {course.courseSpecialization &&
+                      Array.isArray(course.courseSpecialization) ? (
+                        <DynamicTable
+                          headers={[
+                            "Courses",
+                            "Fees (INR)",
+                            "Application Date",
+                            "Cut-Off (Rank)",
+                          ]}
+                          rows={course.courseSpecialization.map(
+                            (specialization) => [
+                              {
+                                content: (
+                                  <div className="font-medium text-lg">
+                                    {specialization.name}
+                                  </div>
+                                ),
+                              },
+                              {
+                                content: (
+                                  <div className="">
+                                    <div className="text-green-600 font-medium">
+                                      ₹
+                                      {formatNumberWithCommas(
+                                        specialization.fee?.general?.[0]
+                                          ?.tuitionFee
+                                      ) || "N/A"}
+                                    </div>
+                                    <span>1st Year Fees</span>
+                                    <button
+                                      className="text-sm text-prim flex items-center gap-1"
+                                      onClick={() => toggleFeeModal(true)}
+                                    >
+                                      Check Details <ChevronRight size={16} />
+                                    </button>
+                                  </div>
+                                ),
+                              }, // First Year Fee
+                              { content: course.courseEligibility }, // Example: Course Eligibility
+                              { content: course.courseApplicationDate }, // Example: Application Date
+                            ]
+                          )}
+                        />
+                      ) : (
+                        <p>No specializations available for this course.</p>
+                      )}
+
+                      {course.courseSpecialization &&
+                      Array.isArray(course.courseSpecialization) ? (
+                        course.courseSpecialization.map((specialization) => (
+                          <DynamicModal
+                            key={specialization.id} // Add a unique key for each modal
+                            isOpen={isFeeModalOpen}
+                            toggleModal={toggleFeeModal}
+                            modalHeading={`${course.courseName} - ${specialization.name} Fees`}
+                          >
+                            Course Fee
+                          </DynamicModal>
+                        ))
+                      ) : (
+                        <>No specializations available</>
+                      )}
 
                       {/* Show Less Button */}
                       <button

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState, lazy, Suspense } from "react";
-import { useRouter, useParams } from "next/navigation"; // Import useRouter from next/router
+import { useRouter, useParams, useSearchParams } from "next/navigation"; // Import useRouter from next/router
 import { TbLayoutDashboard } from "react-icons/tb";
 
 import studentsDataJson from "../../data/studentsData.json";
@@ -28,6 +28,8 @@ import Admissions from "@/app/components/collegeTabs/Admissions";
 
 const page = () => {
   const router = useRouter(); // Initialize the router
+  const searchParams = useSearchParams();
+
   const { collegeSlug } = useParams();
 
   // Function to fetch the college data based on URL parameter
@@ -44,6 +46,8 @@ const page = () => {
   // Parse the slug (id-name-city)
   const [collegeId, ...rest] = collegeSlug.split("-");
 
+  // Get the "tab" parameter from the URL
+  const initialTab = searchParams.get("tab") || "info";
   const [activeTab, setActiveTab] = useState("info");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Sidebar visibility state
 
@@ -54,6 +58,11 @@ const page = () => {
       <h1 className="text-2xl text-center mt-10 py-20">College Not Found</h1>
     );
   }
+
+  useEffect(() => {
+    // Update activeTab if URL parameter changes (e.g., user manually edits the URL)
+    setActiveTab(searchParams.get("tab") || "info");
+  }, [searchParams]);
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -91,19 +100,19 @@ const page = () => {
       case "info":
         return (
           <Suspense fallback={<Preloader />}>
-            <Info />
+            <Info college={college} />
           </Suspense>
         );
       case "courses-and-fees":
         return (
           <Suspense fallback={<Preloader />}>
-            <CoursesFee />
+            <CoursesFee college={college} />
           </Suspense>
         );
       case "admissions":
         return (
           <Suspense fallback={<Preloader />}>
-            <Admissions />
+            <Admissions college={college} />
           </Suspense>
         );
       default:
@@ -334,7 +343,7 @@ const page = () => {
                         className={`flex gap-2 text-sm items-center w-full text-left px-2 py-2 rounded transition duration-300 hover:bg-white mb-1 ${
                           activeTab === item.value
                             ? "text-prim bg-white border-2 border-prim"
-                            : "text-tertiary hover:text-secondary"
+                            : "text-tertiary hover:text-secondary border-2 border-gray-100"
                         }`}
                       >
                         {item.icon}
@@ -347,7 +356,7 @@ const page = () => {
             </aside>
 
             {/* Main Content */}
-            <main className="w-4/6 p-4 bg-white rounded-xl  overflow-y-auto">
+            <main className="w-4/6 p-3 bg-white rounded-xl  overflow-y-auto">
               {/* Profile Completion Reminder Box */}
               {renderContent()}
             </main>

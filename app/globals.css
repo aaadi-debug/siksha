@@ -237,11 +237,11 @@ body {
 }
 
 .dangerousHTML a {
-  color: var(--primary-clr);
+  color: var(--star-clr);
   transition: 0.3 s all ease-in-out;
 }
 .dangerousHTML a:hover {
-  color: var(--star-clr);
+  color: var(--primary-clr);
 }
 
 .dangerousHTML h1 {

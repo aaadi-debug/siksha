@@ -1009,7 +1009,26 @@
       "reviews": [
         {
           "studentName": "Satyam Mishra",
-          "studentImages": "",
+          "studentImageUrl": "https://srv.carbonads.net/static/30242/4b723271609d12c16fec10ddea2ce78e9bba0517",
+          "studentEmail": "satyam@gmail.com",
+          "studentPhone": "+91999999999",
+          "studentGender": "Male",
+          "studentRating": "4.7",
+          "isHelpful": true,
+          "courseName": "MBBS",
+          "universityName": "Jan 14, 2025",
+          "studentYearOfAdmission": "satyam@gmail.com",
+          "date": "Jan 14, 2025",
+          "likePoints": [
+            "like 1", "like 2"
+          ],
+          "dislikePoints": [
+            "dis-like 1", "dis-like 2"
+          ]
+        },
+        {
+          "studentName": "Satyam Mishra",
+          "studentImageUrl": "",
           "studentEmail": "satyam@gmail.com",
           "studentPhone": "+91999999999",
           "studentGender": "Male",

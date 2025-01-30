@@ -22,9 +22,18 @@ const Reviews = ({ college }) => {
         reviews.map((review, index) => (
           <div key={index} className="border p-4 rounded-lg mb-4">
             <div className="flex gap-2 items-start">
-              <div className="border-2 border-prim p-2 rounded-full  w-12 h-12 flex justify-center items-center text-center">
-                {getStudentNameInitials(review.studentName)}
-              </div>
+              {review.studentImageUrl ? (
+                <img
+                  src={review.studentImageUrl}
+                  alt="Student Image"
+                  className="rounded-full w-12 h-12"
+                />
+              ) : (
+                <div className="border-2 border-prim p-2 rounded-full  w-12 h-12 flex justify-center items-center text-center">
+                  {getStudentNameInitials(review.studentName)}
+                </div>
+              )}
+
               <div>
                 <div className="flex justify-between items-center gap-2">
                   <h3 className="text-lg font-semibold">
@@ -47,13 +56,13 @@ const Reviews = ({ college }) => {
             </p>
             <div className="grid gap-4 grid-cols-2">
               <ul className="list-disc pl-5 mt-2  text-green-600">
-                <strong>Likes:</strong>
+                <strong className="text-tertiary">Likes:</strong>
                 {review.likePoints.map((point, i) => (
                   <li key={i}>{point}</li>
                 ))}
               </ul>
-              <ul className="list-disc pl-5 mt-2  text-red-600">
-                <strong>Dislikes:</strong>
+              <ul className="list-disc mt-2  text-red-600">
+                <strong className="text-tertiary">Dislikes:</strong>
                 {review.dislikePoints.map((point, i) => (
                   <li key={i}>{point}</li>
                 ))}

@@ -8,10 +8,7 @@ const FAQs = ({ faqs }) => {
   const rightColumn = faqs.slice(midIndex);
 
   return (
-    <div className="lg:px-20 px-10 max-sm:px-6">
-      <div className="text-4xl max-sm:text-3xl text-tertiary font-semibold text-center mb-4">
-        Frequently Asked Questions
-      </div>
+    <div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
         {/* Left Column */}
         <div className="space-y-4">

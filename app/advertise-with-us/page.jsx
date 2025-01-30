@@ -311,11 +311,26 @@ const page = () => {
           id="sidebar-banners"
         >
           <div className="max-sm:order-2">
-            <img src="/assets/bg_elem/banner-1.jpg" alt="Sidebar Banner"  data-aos="fade-right" data-aos-duration="1500" />
+            <img
+              src="/assets/bg_elem/banner-1.jpg"
+              alt="Sidebar Banner"
+              data-aos="fade-right"
+              data-aos-duration="1500"
+            />
           </div>
           <div className="bg-second p-20 flex flex-col text-center justify-center items-center max-sm:p-6">
-            <div className="text-7xl font-bold text-white max-sm:text-4xl"  data-aos="fade-up" data-aos-duration="800">Sidebar Banners</div>
-            <p className="text-2xl text-white mt-3 max-sm:text-lg"  data-aos="fade-up" data-aos-duration="1000">
+            <div
+              className="text-7xl font-bold text-white max-sm:text-4xl"
+              data-aos="fade-up"
+              data-aos-duration="800"
+            >
+              Sidebar Banners
+            </div>
+            <p
+              className="text-2xl text-white mt-3 max-sm:text-lg"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+            >
               Compact, high-visibility placements.{" "}
             </p>
           </div>
@@ -325,15 +340,28 @@ const page = () => {
           id="footer-banners"
         >
           <div className="bg-second p-20 flex flex-col text-center justify-center items-center  max-sm:p-6 ">
-            <div className="text-7xl font-bold text-white max-sm:text-4xl" data-aos="fade-up" data-aos-duration="800">
+            <div
+              className="text-7xl font-bold text-white max-sm:text-4xl"
+              data-aos="fade-up"
+              data-aos-duration="800"
+            >
               Footer Banners
             </div>
-            <p className="text-2xl text-white mt-3 max-sm:text-lg" data-aos="fade-up" data-aos-duration="1000">
+            <p
+              className="text-2xl text-white mt-3 max-sm:text-lg"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+            >
               Wide-format banners for maximum exposure.
             </p>
           </div>
           <div className="">
-            <img src="/assets/bg_elem/banner-2.jpg" alt="Sidebar Banner"  data-aos="fade-left" data-aos-duration="1500" />
+            <img
+              src="/assets/bg_elem/banner-2.jpg"
+              alt="Sidebar Banner"
+              data-aos="fade-left"
+              data-aos-duration="1500"
+            />
           </div>
         </div>
         <div
@@ -341,11 +369,26 @@ const page = () => {
           id="text-links"
         >
           <div className="max-sm:order-2 overflow-hidden">
-            <img src="/assets/bg_elem/banner-3.jpg" alt="Sidebar Banner"  data-aos="fade-right" data-aos-duration="1500" />
+            <img
+              src="/assets/bg_elem/banner-3.jpg"
+              alt="Sidebar Banner"
+              data-aos="fade-right"
+              data-aos-duration="1500"
+            />
           </div>
           <div className="bg-second p-20 flex flex-col text-center justify-center items-center  max-sm:p-6 ">
-            <div className="text-7xl font-bold text-white max-sm:text-4xl" data-aos="fade-up" data-aos-duration="800">Text Links</div>
-            <p className="text-2xl text-white mt-3 max-sm:text-lg" data-aos="fade-up" data-aos-duration="1000">
+            <div
+              className="text-7xl font-bold text-white max-sm:text-4xl"
+              data-aos="fade-up"
+              data-aos-duration="800"
+            >
+              Text Links
+            </div>
+            <p
+              className="text-2xl text-white mt-3 max-sm:text-lg"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+            >
               Discreet yet effective options for brand visibility.
             </p>
           </div>
@@ -355,15 +398,28 @@ const page = () => {
           id="mailer-services"
         >
           <div className="bg-second p-20 flex flex-col text-center justify-center items-center  max-sm:p-6 ">
-            <div className="text-7xl font-bold text-white max-sm:text-4xl" data-aos="fade-up" data-aos-duration="800">
+            <div
+              className="text-7xl font-bold text-white max-sm:text-4xl"
+              data-aos="fade-up"
+              data-aos-duration="800"
+            >
               Mailer Services
             </div>
-            <p className="text-2xl text-white mt-3 max-sm:text-lg" data-aos="fade-up" data-aos-duration="1000">
+            <p
+              className="text-2xl text-white mt-3 max-sm:text-lg"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+            >
               Reach targeted audiences through our opt-in email database.
             </p>
           </div>
           <div className=" overflow-hidden">
-            <img src="/assets/bg_elem/banner-4.jpg" alt="Sidebar Banner"  data-aos="fade-left" data-aos-duration="1500" />
+            <img
+              src="/assets/bg_elem/banner-4.jpg"
+              alt="Sidebar Banner"
+              data-aos="fade-left"
+              data-aos-duration="1500"
+            />
           </div>
         </div>
       </section>
@@ -470,7 +526,12 @@ const page = () => {
       {/* why siksha helpline ends */}
 
       {/* FAQ starts */}
-      <FAQs faqs={faqs} />
+      <div className="lg:px-20 px-10 max-sm:px-6">
+        <div className="text-4xl max-sm:text-3xl text-tertiary font-semibold text-center mb-4">
+          Frequently Asked Questions
+        </div>
+        <FAQs faqs={faqs} />
+      </div>
       {/* FAQ ends */}
 
       {/* Still have question starts */}

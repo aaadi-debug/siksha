@@ -16,7 +16,20 @@ import {
   Calendar,
   GraduationCap,
   ShieldCheck,
+  Layers,
+  BookCopy,
+  StickyNote,
+  Star,
+  Component,
+  Tags,
+  BriefcaseBusiness,
+  Images,
+  BadgeIndianRupee,
+  Newspaper,
+  House
 } from "lucide-react";
+import { TbMilitaryRank } from "react-icons/tb";
+import { FaChalkboardTeacher } from "react-icons/fa";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 
 import Breadcrumbs2 from "@/app/components/Breadcrumbs2";
@@ -25,6 +38,17 @@ import Preloader from "@/app/components/Preloader";
 import Info from "@/app/components/collegeTabs/Info";
 import CoursesFee from "@/app/components/collegeTabs/CoursesFee";
 import Admissions from "@/app/components/collegeTabs/Admissions";
+import Hostels from "@/app/components/collegeTabs/Hostels";
+import Faculty from "@/app/components/collegeTabs/Faculty";
+import Scholarships from "@/app/components/collegeTabs/Scholarships";
+import Gallery from "@/app/components/collegeTabs/Gallery";
+import Rankings from "@/app/components/collegeTabs/Rankings";
+import Placements from "@/app/components/collegeTabs/Placements";
+import CutOffs from "@/app/components/collegeTabs/CutOffs";
+import Departments from "@/app/components/collegeTabs/Departments";
+import Reviews from "@/app/components/collegeTabs/Reviews";
+import Results from "@/app/components/collegeTabs/Results";
+import NewsArticles from "@/app/components/collegeTabs/NewsArticles";
 
 const page = () => {
   const router = useRouter(); // Initialize the router
@@ -113,6 +137,72 @@ const page = () => {
         return (
           <Suspense fallback={<Preloader />}>
             <Admissions college={college} />
+          </Suspense>
+        );
+      case "results":
+        return (
+          <Suspense fallback={<Preloader />}>
+            <Results college={college} />
+          </Suspense>
+        );
+      case "reviews":
+        return (
+          <Suspense fallback={<Preloader />}>
+            <Reviews college={college} />
+          </Suspense>
+        );
+      case "departments":
+        return (
+          <Suspense fallback={<Preloader />}>
+            <Departments college={college} />
+          </Suspense>
+        );
+      case "cutoffs":
+        return (
+          <Suspense fallback={<Preloader />}>
+            <CutOffs college={college} />
+          </Suspense>
+        );
+      case "placements":
+        return (
+          <Suspense fallback={<Preloader />}>
+            <Placements college={college} />
+          </Suspense>
+        );
+      case "rankings":
+        return (
+          <Suspense fallback={<Preloader />}>
+            <Rankings college={college} />
+          </Suspense>
+        );
+      case "gallery":
+        return (
+          <Suspense fallback={<Preloader />}>
+            <Gallery college={college} />
+          </Suspense>
+        );
+      case "scholarships":
+        return (
+          <Suspense fallback={<Preloader />}>
+            <Scholarships college={college} />
+          </Suspense>
+        );
+      case "faculty":
+        return (
+          <Suspense fallback={<Preloader />}>
+            <Faculty college={college} />
+          </Suspense>
+        );
+      case "news-and-articles":
+        return (
+          <Suspense fallback={<Preloader />}>
+            <NewsArticles college={college} />
+          </Suspense>
+        );
+      case "hostels":
+        return (
+          <Suspense fallback={<Preloader />}>
+            <Hostels college={college} />
           </Suspense>
         );
       default:
@@ -313,54 +403,110 @@ const page = () => {
             />
           </div>
         </div>
+      </div>
 
-        <div className="lg:px-10 px-6 py-2 mt-4">
-          <div className="flex gap-2 flex-col md:flex-row rounded-xl bg-gray-100 p-3">
-            {/* Sidebar */}
-            <aside className="hidden lg:block w-1/6  overflow-y-auto rounded">
-              <nav>
-                <ul>
-                  {[
-                    {
-                      label: "College Info",
-                      icon: <TbLayoutDashboard size={20} />,
-                      value: "info",
-                    },
-                    {
-                      label: "Courses & Fees",
-                      icon: <TbLayoutDashboard size={20} />,
-                      value: "courses-and-fees",
-                    },
-                    {
-                      label: "Admissions",
-                      icon: <TbLayoutDashboard size={20} />,
-                      value: "admissions",
-                    },
-                  ].map((item) => (
-                    <li key={item.value}>
-                      <button
-                        onClick={() => handleTabClick(item.value)}
-                        className={`flex gap-2 text-sm items-center w-full text-left px-2 py-2 rounded transition duration-300 hover:bg-white mb-1 ${
-                          activeTab === item.value
-                            ? "text-prim bg-white border-2 border-prim"
-                            : "text-tertiary hover:text-secondary border-2 border-gray-100"
-                        }`}
-                      >
-                        {item.icon}
-                        {item.label}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            </aside>
+      {/* tabs section */}
+      <div className="lg:px-10 px-6 py-2 mt-4">
+        <div className="flex gap-2 flex-col md:flex-row rounded-xl bg-gray-100 p-3">
+          {/* Sidebar */}
+          <aside className="hidden lg:block w-1/6  overflow-y-auto rounded">
+            <nav>
+              <ul>
+                {[
+                  {
+                    label: "College Info",
+                    icon: <Layers size={16} />,
+                    value: "info",
+                  },
+                  {
+                    label: "Courses & Fees",
+                    icon: <BookCopy size={16} />,
+                    value: "courses-and-fees",
+                  },
+                  {
+                    label: "Admissions",
+                    icon: <School size={16} />,
+                    value: "admissions",
+                  },
+                  {
+                    label: "Results",
+                    icon: <StickyNote size={16} />,
+                    value: "results",
+                  },
+                  {
+                    label: "Reviews",
+                    icon: <Star size={16} />,
+                    value: "reviews",
+                  },
+                  {
+                    label: "Departments",
+                    icon: <Component size={16} />,
+                    value: "departments",
+                  },
+                  {
+                    label: "Cut-Offs",
+                    icon: <Tags size={16} />,
+                    value: "cutoffs",
+                  },
+                  {
+                    label: "Placements",
+                    icon: <BriefcaseBusiness size={16} />,
+                    value: "placements",
+                  },
+                  {
+                    label: "Rankings",
+                    icon: <TbMilitaryRank size={18} />,
+                    value: "rankings",
+                  },
+                  {
+                    label: "Gallery",
+                    icon: <Images size={16} />,
+                    value: "gallery",
+                  },
+                  {
+                    label: "Scholarships",
+                    icon: <BadgeIndianRupee size={16} />,
+                    value: "scholarships",
+                  },
+                  {
+                    label: "Faculty",
+                    icon: <FaChalkboardTeacher size={16} />,
+                    value: "faculty",
+                  },
+                  {
+                    label: "New & Articles",
+                    icon: <Newspaper size={16} />,
+                    value: "news-and-articles",
+                  },
+                  {
+                    label: "Hostels",
+                    icon: <House size={16} />,
+                    value: "hostels",
+                  },
+                ].map((item) => (
+                  <li key={item.value}>
+                    <button
+                      onClick={() => handleTabClick(item.value)}
+                      className={`flex gap-2 text-sm items-center w-full text-left px-2 py-2 rounded transition duration-300 hover:bg-white mb-1 ${
+                        activeTab === item.value
+                          ? "text-prim bg-white border-2 border-prim"
+                          : "text-tertiary hover:text-secondary border-2 border-gray-100"
+                      }`}
+                    >
+                      {item.icon}
+                      {item.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </aside>
 
-            {/* Main Content */}
-            <main className="lg:w-4/6 w-full p-3 bg-white rounded-xl  overflow-y-auto">
-              {/* Profile Completion Reminder Box */}
-              {renderContent()}
-            </main>
-          </div>
+          {/* Main Content */}
+          <main className="lg:w-4/6 w-full p-3 bg-white rounded-xl  overflow-y-auto">
+            {/* Profile Completion Reminder Box */}
+            {renderContent()}
+          </main>
         </div>
       </div>
     </>

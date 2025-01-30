@@ -534,58 +534,81 @@
           ]
         }
       ],
-      "placements": [
-        {
-          "year": "2024",
-          "lowest": "",
-          "average": "",
-          "highest": "40 LPA",
-          "placementContent": {
-            "description": "Here description will be from text-editor",
-            "highlights": {
+      "placements": {
+        "lowest": "",
+        "average": "",
+        "highest": "40 LPA",
+        "placementContent": {
+          "description": "<p>Here description will be from text-editor</p>",
+          "highlights": [
+            {
+              "year": "2024",
               "highlightsTable": [
                 {
-                  "particulars": "Top Recruiters",
-                  "admHighlights": "Cognizant, Amazon, Jonhson Controls, Mahindra Rise, Videocon, MTS, Tech Mahindra"
+                  "particulars": "Name of University",
+                  "admHighlights": "Sharda University"
+                },
+                {
+                  "particulars": "University Type",
+                  "admHighlights": "Private"
+                },
+                {
+                  "particulars": "Courses Offered",
+                  "admHighlights": "UG, PG, Diploma, Certificate, Doctoral, Integrated Programs"
+                },
+                {
+                  "particulars": "Popular Courses",
+                  "admHighlights": "MBA, B. Tech., B.Com, B.Sc, BBA, M.Tech, and M.Com"
+                },
+                {
+                  "particulars": "Selection Criteria",
+                  "admHighlights": "Entrance-Based"
                 }
               ]
             },
-            "placementSections": [
-              {
-                "heading": "Sharda University Placements 2023 Report",
-                "description": "Here description will be from text-editor",
-                "placementSectionsTable": {
-                  "headers": ["Column 1", "Column 2", "Column 3"],
-                  "rows": [
-                    [
-                      { "content": "Row 1, Col 1", "rowspan": 2, "colspan": 1 },
-                      { "content": "Row 1, Col 2", "rowspan": 1, "colspan": 2 }
-                    ],
-                    [{ "content": "Row 2, Col 3", "rowspan": 1, "colspan": 1 }],
-                    [
-                      { "content": "Row 3, Col 1", "rowspan": 1, "colspan": 1 },
-                      { "content": "Row 3, Col 2", "rowspan": 1, "colspan": 1 },
-                      { "content": "Row 3, Col 3", "rowspan": 1, "colspan": 1 }
-                    ]
-                  ]
+            {
+              "year": "2023",
+              "highlightsTable": [
+                {
+                  "particulars": "Name of University",
+                  "admHighlights": "Sharda University"
+                },
+                {
+                  "particulars": "University Type",
+                  "admHighlights": "Private"
                 }
+              ]
+            }
+          ],
+          "placementSections": [
+            {
+              "heading": "Sharda University Placements 2023 Report",
+              "description": "Here description will be from text-editor",
+              "placementSectionsTable": {
+                "headers": ["Column 1", "Column 2", "Column 3"],
+                "rows": [
+                  [
+                    { "content": "Row 1, Col 1", "rowspan": 2, "colspan": 1 },
+                    { "content": "Row 1, Col 2", "rowspan": 1, "colspan": 2 }
+                  ],
+                  [{ "content": "Row 2, Col 3", "rowspan": 1, "colspan": 1 }],
+                  [
+                    { "content": "Row 3, Col 1", "rowspan": 1, "colspan": 1 },
+                    { "content": "Row 3, Col 2", "rowspan": 1, "colspan": 1 },
+                    { "content": "Row 3, Col 3", "rowspan": 1, "colspan": 1 }
+                  ]
+                ]
               }
-            ],
-            "placementFaqs": [
-              {
-                "question": "What is the duration of the course?",
-                "answer": "The course duration is 3 years."
-              }
-            ]
-          }
-        },
-        {
-          "year": "2023",
-          "lowest": "",
-          "average": "5.65 LPA",
-          "highest": "40 LPA"
+            }
+          ],
+          "placementFaqs": [
+            {
+              "question": "What is the duration of the course?",
+              "answer": "The course duration is 3 years."
+            }
+          ]
         }
-      ],
+      },
       "admissions": {
         "importantEvents": {
           "headers": ["Column 1", "Column 2", "Column 3"],
@@ -603,7 +626,7 @@
           ]
         },
         "admissionContent": {
-          "description": "Here description will be from text-editor",
+          "description": "<p>Here description will be from text-editor.</p> <p> Shrada University Admission 2024 is ongoing. The university offers admission to 130+ UG, PG, Doctoral, Diploma, Integrated, and Short-term Degrees/ Certificates courses under its 14 Schools of Study across all major streams including Engineering, Management, Architecture, Law, Pharmacy, Medical, Allied Health Sciences, etc.  </p>",
           "directLink": "Affilate link",
           "highlights": [
             {
@@ -635,8 +658,12 @@
               "year": "2023",
               "highlightsTable": [
                 {
-                  "particulars": "",
-                  "admHighlights": ""
+                  "particulars": "Name of University",
+                  "admHighlights": "Sharda University"
+                },
+                {
+                  "particulars": "University Type",
+                  "admHighlights": "Private"
                 }
               ]
             }
@@ -644,7 +671,7 @@
           "admissionSections": [
             {
               "heading": "Sharda University B.Tech Admission 2024",
-              "description": "Here description will be from text-editor",
+              "description": "<p>Here description will be from text-editor.</p> <p> Shrada University Admission 2024 is ongoing. The university offers admission to 130+ UG, PG, Doctoral, Diploma, Integrated, and Short-term Degrees/ Certificates courses under its 14 Schools of Study across all major streams including Engineering, Management, Architecture, Law, Pharmacy, Medical, Allied Health Sciences, etc.  </p>",
               "admissionSectionsTable": {
                 "headers": ["Column 1", "Column 2", "Column 3"],
                 "rows": [
@@ -663,7 +690,7 @@
             },
             {
               "heading": "Sharda University MBA Admission 2024",
-              "description": "Here description will be from text-editor",
+              "description": "<p>Here description will be from text-editor.</p> <p> Shrada University Admission 2024 is ongoing. The university offers admission to 130+ UG, PG, Doctoral, Diploma, Integrated, and Short-term Degrees/ Certificates courses under its 14 Schools of Study across all major streams including Engineering, Management, Architecture, Law, Pharmacy, Medical, Allied Health Sciences, etc.  </p>",
               "admissionSectionsTable": {
                 "headers": ["Column 1", "Column 2", "Column 3"],
                 "rows": [
@@ -682,6 +709,14 @@
             }
           ],
           "admissionFaqs": [
+            {
+              "question": "What is the duration of the course?",
+              "answer": "The course duration is 3 years."
+            },
+            {
+              "question": "What is the duration of the course?",
+              "answer": "The course duration is 3 years."
+            },
             {
               "question": "What is the duration of the course?",
               "answer": "The course duration is 3 years."
@@ -735,13 +770,11 @@
       "gallery": [
         {
           "category": "Alumni Meet",
-          "images": ["", ""],
-          "videos": ["", ""]
-        },
-        {
-          "category": "Convocation",
-          "images": ["", ""],
-          "videos": ["", ""]
+          "images": [
+            "https://images.collegedunia.com/public/college_data/images/campusimage/1496487220allumnii.JPG",
+            "https://images.collegedunia.com/public/college_data/images/campusimage/1496487220alsjb.JPG"
+          ],
+          "videos": ["https://youtu.be/GGf1JjSAKP4", "https://www.youtube.com/watch?v=mMWGPWxegaI", "/assets/videos/college1-crop.mp4"]
         }
       ],
       "newsArticles": [
@@ -750,32 +783,22 @@
           "category": "College",
           "date": "2024-12-26",
           "title": "Amity University Alumni Meet",
-          "imageUrl": "",
-          "author": "",
-          "description": "Amity University celebrated its 50th Anniversary with an alumni meet.",
-          "metaTitle": "",
-          "metaDesc": "",
-          "metaAuthor": "",
-          "metaKeywords": ""
+          "imageUrl": "https://image-static.collegedunia.com/public/image/27-08:39-NIT%20Srinagar%20Logo.jpeg?h=76&w=76&mode=stretch",
+          "description": "Amity University celebrated its 50th Anniversary with an alumni meet."
         },
         {
           "id": "2",
           "category": "Exam",
           "date": "2024-12-26",
-          "title": "Top MBA Colleges other than IIMs accepting CAT 2024 Scores",
-          "imageUrl": "",
-          "author": "",
-          "description": "Explore top MBA colleges accepting CAT 2024 scores apart from IIMs.",
-          "metaTitle": "",
-          "metaDesc": "",
-          "metaAuthor": "",
-          "metaKeywords": ""
+          "title": "Top MBA Colleges other than IIMs accepting CAT 2024 Scores Scores ScoresScores",
+          "imageUrl": "https://image-static.collegedunia.com/public/image/29-10:28-NIT%20Nagaland%20Logo.jpeg?h=76&w=76&mode=stretch",
+          "description": "Explore top MBA colleges accepting CAT 2024 scores apart from IIMs."
         }
       ],
       "hostels": {
         "male": [
           {
-            "heading": "",
+            "heading": "Sharda University Hostel For Male",
             "hostelFeeTable": {
               "headers": ["Column 1", "Column 2", "Column 3"],
               "rows": [
@@ -793,7 +816,7 @@
             }
           },
           {
-            "heading": "",
+            "heading": "Sharda University Hostel For Male",
             "hostelFeeTable": {
               "headers": ["Column 1", "Column 2", "Column 3"],
               "rows": [
@@ -851,11 +874,11 @@
         ]
       },
       "scholarships": {
-        "description": "Here description will be from text-editor",
+        "description": "<p>Here description will be from text-editor</p>",
         "coursesAndFeeLink": "",
         "scholarshipSections": [
           {
-            "heading": "",
+            "heading": "Sharda University Scholastic Aptitude Test (SUSAT)",
             "description": "Here description will be from text-editor",
             "scholarshipSectionsTable": {
               "headers": ["Column 1", "Column 2", "Column 3"],
@@ -874,7 +897,7 @@
             }
           },
           {
-            "heading": "",
+            "heading": "Sharda University Merit-Based Scholarships",
             "description": "Here description will be from text-editor",
             "scholarshipSectionsTable": {
               "headers": ["Column 1", "Column 2", "Column 3"],
@@ -903,18 +926,19 @@
       "faculty": [
         {
           "id": 1,
-          "name": "Mr.Arun Kumar",
+          "name": "Arun Kumar",
           "designation": "Assistant Professor",
           "department": "Department of Pharmacy"
         },
         {
           "id": 2,
-          "name": "Dr. Vaishali Arora",
+          "name": "Vaishali Arora",
           "designation": "Assistant Professor",
           "department": "Department of Law"
         }
       ],
       "rankings": {
+        "description": "<p>Here description will be from text-editor.</p> <p> Shrada University Admission 2024 is ongoing. The university offers admission to 130+ UG, PG, Doctoral, Diploma, Integrated, and Short-term Degrees/ Certificates courses under its 14 Schools of Study across all major streams including Engineering, Management, Architecture, Law, Pharmacy, Medical, Allied Health Sciences, etc.  </p>",
         "highlights": [
           {
             "area": "National",
@@ -937,7 +961,7 @@
         ],
         "rankingSections": [
           {
-            "heading": "",
+            "heading": "Sharda University EduRank 2023",
             "description": "Here description will be from text-editor",
             "rankingSectionsTable": {
               "headers": ["Column 1", "Column 2", "Column 3"],
@@ -956,7 +980,7 @@
             }
           },
           {
-            "heading": "",
+            "heading": "Sharda University Rankings: NIRF 2022",
             "description": "Here description will be from text-editor",
             "rankingSectionsTable": {
               "headers": ["Column 1", "Column 2", "Column 3"],
@@ -982,12 +1006,45 @@
           }
         ]
       },
+      "reviews": [
+        {
+          "studentName": "Satyam Mishra",
+          "studentEmail": "satyam@gmail.com",
+          "studentPhone": "+91999999999",
+          "studentGender": "Male",
+          "studentRating": "4.7",
+          "isHelpful": true,
+          "courseName": "MBBS",
+          "universityName": "Jan 14, 2025",
+          "studentYearOfAdmission": "satyam@gmail.com",
+          "date": "Jan 14, 2025",
+          "likePoints": [
+            "like 1", "like 2"
+          ],
+          "dislikePoints": [
+            "dis-like 1", "dis-like 2"
+          ]
+        }
+      ],
       "results": {
-        "description": "Here, description will be from text editor"
+        "description": "<p>Here, description will be from text editor</p>",
+        "resultFaqs": [
+          {
+            "question": "What is the duration of the course?",
+            "answer": "The course duration is 3 years."
+          },
+          {
+            "question": "What is the duration of the course?",
+            "answer": "The course duration is 3 years."
+          },
+          {
+            "question": "What is the duration of the course?",
+            "answer": "The course duration is 3 years."
+          }
+        ]
       }
     },
 
-    
     {
       "collegeId": 2,
       "collegeName": "Amity University",

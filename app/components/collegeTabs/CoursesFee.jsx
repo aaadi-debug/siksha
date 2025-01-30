@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ChevronRight } from "lucide-react";
 import DynamicTable from "../DynamicTable";
 import DynamicModal from "../DynamicModal";
@@ -27,6 +27,22 @@ const CoursesFee = ({ college }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFeeModalOpen, setIsFeeModalOpen] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
+
+  const hash = window.location.hash;
+  console.log(hash)
+
+  // Scroll to the element with the matching ID after the component mounts
+  useEffect(() => {
+    if (hash) {
+      // Wait for the DOM to update (e.g., after tabs or content are rendered)
+      setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100); // Adjust the delay if needed
+    }
+  }, [hash]);
 
   const toggleModal = (open) => {
     setIsModalOpen(open);
@@ -93,12 +109,12 @@ const CoursesFee = ({ college }) => {
     });
   });
 
-  console.log("Aditya", allCourses);
+  console.log("Aditya Courses", allCourses);
 
   return (
     <>
       <div className="mb-4">
-        <div className="text-lg font-semibold text-tertiary mb-4">
+        <div className="text-2xl font-semibold text-tertiary mb-4">
           {college?.collegeName} Courses & Fees
         </div>
 
@@ -149,7 +165,7 @@ const CoursesFee = ({ college }) => {
 
         <div className="rounded-lg">
           {allCourses?.map((course, index) => (
-            <div key={index} className="border rounded-lg mb-3">
+            <div key={index} id={`course-${course?.courseName}`} className="border rounded-lg mb-3">
               <div className="p-3">
                 <div className="flex gap-2 justify-between max-sm:flex-col">
                   <div className="text-xl font-semibold text-tertiary">
@@ -250,7 +266,6 @@ const CoursesFee = ({ college }) => {
                                     <span>1st Year Fees</span>
                                     <button
                                       className="text-sm text-prim flex items-center gap-1"
-                                      onClick={() => toggleFeeModal(true)}
                                     >
                                       Check Details <ChevronRight size={16} />
                                     </button>
@@ -264,22 +279,6 @@ const CoursesFee = ({ college }) => {
                         />
                       ) : (
                         <p>No specializations available for this course.</p>
-                      )}
-
-                      {course.courseSpecialization &&
-                      Array.isArray(course.courseSpecialization) ? (
-                        course.courseSpecialization.map((specialization) => (
-                          <DynamicModal
-                            key={specialization.id} // Add a unique key for each modal
-                            isOpen={isFeeModalOpen}
-                            toggleModal={toggleFeeModal}
-                            modalHeading={`${course.courseName} - ${specialization.name} Fees`}
-                          >
-                            Course Fee
-                          </DynamicModal>
-                        ))
-                      ) : (
-                        <>No specializations available</>
                       )}
 
                       {/* Show Less Button */}

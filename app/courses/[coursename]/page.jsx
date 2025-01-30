@@ -1648,28 +1648,28 @@ const FilterableCoursePage = () => {
                       </td>
                       <td className="border px-4 py-2 align-top">
                         <div>
-                          {!college.placements[0].lowest &&
-                          !college.placements[0].average &&
-                          !college.placements[0].highest ? (
+                          {!college.placements.lowest &&
+                          !college.placements.average &&
+                          !college.placements.highest ? (
                             <p className="text-red-500 font-light">
                               - No Placement Stats -
                             </p>
                           ) : (
                             <>
-                              {college.placements[0].lowest && (
+                              {college.placements.lowest && (
                                 <div className="mb-2">
                                   <p className="text-green-600">
-                                    ₹ {college.placements[0].lowest}
+                                    ₹ {college.placements.lowest}
                                   </p>
                                   <p className="text-xs text-textClr">
                                     (Lowest Package)
                                   </p>
                                 </div>
                               )}
-                              {college.placements[0].average && (
+                              {college.placements.average && (
                                 <div className="mb-2">
                                   <p className="text-green-600">
-                                    ₹ {college.placements[0].average}
+                                    ₹ {college.placements.average}
                                   </p>
                                   <p className="text-xs text-textClr">
                                     (Average Package)
@@ -1678,7 +1678,7 @@ const FilterableCoursePage = () => {
                               )}
                               <div>
                                 <p className="text-green-600">
-                                  ₹ {college.placements[0].highest}
+                                  ₹ {college.placements.highest}
                                 </p>
                                 <p className="text-xs text-textClr">
                                   (Highest Package)

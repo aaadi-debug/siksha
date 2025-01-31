@@ -51,8 +51,8 @@ const menuItems = [
     subMenu: [
       { name: "Landing Page", href: "/landing-page" },
       { name: "Advertise With Us", href: "/advertise-with-us" },
-      { name: "Title 3", href: "" },
-      { name: "Title 4", href: "" },
+      { name: "All Colleges", href: "/college" },
+      { name: "Dashboard", href: "/dashboard" },
     ],
   },
 ];

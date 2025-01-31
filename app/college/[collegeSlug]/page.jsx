@@ -26,7 +26,8 @@ import {
   Images,
   BadgeIndianRupee,
   Newspaper,
-  House
+  House,
+  SlidersHorizontal,
 } from "lucide-react";
 import { TbMilitaryRank } from "react-icons/tb";
 import { FaChalkboardTeacher } from "react-icons/fa";
@@ -83,6 +84,18 @@ const page = () => {
     );
   }
 
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      setIsSticky(offset > 400); // Adjust threshold as needed
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   useEffect(() => {
     // Update activeTab if URL parameter changes (e.g., user manually edits the URL)
     setActiveTab(searchParams.get("tab") || "info");
@@ -103,10 +116,6 @@ const page = () => {
     document.body.style.overflow = isSidebarOpen ? "auto" : "hidden";
   };
 
-  const toggleReadMore = () => {
-    setIsExpanded(!isExpanded);
-  };
-
   const calculateStars = (rating) => {
     const fullStars = Math.floor(rating); // Number of full stars
     const halfStars = rating % 1 >= 0.5 ? 1 : 0; // One half star if decimal >= 0.5
@@ -114,6 +123,17 @@ const page = () => {
 
     return { fullStars, halfStars, emptyStars };
   };
+
+  const totalReviews = college?.reviews?.length;
+  const validRatings = college?.reviews
+    .map((review) => parseFloat(review?.studentRating))
+    .filter((rating) => !isNaN(rating)); // Remove invalid ratings
+
+  const averageRating =
+    validRatings.length > 0
+      ? validRatings.reduce((sum, rating) => sum + rating, 0) /
+        validRatings.length
+      : 0;
 
   const { fullStars, halfStars, emptyStars } = calculateStars(
     college.collegeRating.rate
@@ -210,13 +230,11 @@ const page = () => {
     }
   };
 
-  const [isExpanded, setIsExpanded] = useState(false);
-
   return (
     <>
       <div className="pt-20 max-sm:pt-16 overflow-hidden">
         <div
-          className="border-red-500 bg-cover bg-center bg-no-repeat  lg:px-10 px-6 py-10"
+          className="border-red-500 bg-cover bg-center bg-no-repeat  lg:px-10 px-6 py-10 max-sm:px-2"
           //   style={{
           //     backgroundImage: `url('https://demos.codexcoder.com/labartisan/html/edukon/assets/images/pageheader/bg/01.jpg')`,
           //   }}
@@ -231,7 +249,7 @@ const page = () => {
           />
         </div>
 
-        <div className="lg:px-10 px-6 ">
+        <div className="lg:px-10 px-6  max-sm:px-2">
           <div className="bg-gray-100 p-6 rounded-lg relative">
             <div className="flex gap-4">
               <img
@@ -247,7 +265,7 @@ const page = () => {
                 {/* rating */}
                 <div className="flex items-center  gap-2 mb-3 mt-2">
                   <span className="text-tertiary font-bold text-lg">
-                    {college?.collegeRating?.rate}
+                    {averageRating.toFixed(1)}
                   </span>
                   {/* Display rating stars */}
                   {/* Render full stars */}
@@ -268,10 +286,12 @@ const page = () => {
                         <FaRegStar key={`empty-${index}`} />
                       ))}
                   </div>
-
-                  <span className="text-sm underline text-textClr">
-                    ({college?.collegeRating?.reviews} Reviews)
-                  </span>
+                  {college?.reviews?.length > 0 && (
+                    <span className="text-sm underline text-textClr">
+                      ({totalReviews} {totalReviews > 1 ? "Reviews" : "Review"}{" "}
+                      )
+                    </span>
+                  )}
                 </div>
 
                 <div>
@@ -327,7 +347,7 @@ const page = () => {
               {/* rating */}
               <div className="flex items-center  gap-2 mb-3 mt-2">
                 <span className="text-tertiary font-bold text-lg">
-                  {college?.collegeRating?.rate}
+                  {averageRating.toFixed(1)}
                 </span>
                 {/* Display rating stars */}
                 {/* Render full stars */}
@@ -348,10 +368,11 @@ const page = () => {
                       <FaRegStar key={`empty-${index}`} />
                     ))}
                 </div>
-
-                <span className="text-sm underline text-textClr">
-                  ({college?.collegeRating?.reviews} Reviews)
-                </span>
+                {college?.reviews?.length > 0 && (
+                  <span className="text-sm underline text-textClr">
+                    ({totalReviews} {totalReviews > 1 ? "Reviews" : "Review"} )
+                  </span>
+                )}
               </div>
 
               <div>
@@ -406,10 +427,144 @@ const page = () => {
       </div>
 
       {/* tabs section */}
-      <div className="lg:px-10 px-6 py-2 mt-4">
-        <div className="flex gap-2 flex-col md:flex-row rounded-xl bg-gray-100 p-3">
-          {/* Sidebar */}
-          <aside className="hidden lg:block w-1/6  overflow-y-auto rounded">
+      <div className="lg:px-10 px-6 py-2 mt-4 max-sm:px-2  overflow-visible">
+        <div className="lg:hidden mb-5 sticky top-24">
+          <button
+            className={`border-2 border-prim bg-white text-prim px-4 py-2 z-50 
+          transition-all duration-700 ease-in-out 
+          ${isSticky ? "w-full" : "w-auto rounded"}`}
+            onClick={() => setIsSidebarOpen(true)}
+          >
+            <span className="flex gap-2 items-center">
+              <SlidersHorizontal size={16} />
+              College Details
+            </span>
+          </button>
+        </div>
+
+        <div className="flex gap-2 flex-col md:flex-row rounded-xl bg-gray-100 lg:p-3 max-sm:p-0  overflow-visible">
+          {/* Sidebar Modal - Mobile & Tab View */}
+          {isSidebarOpen && (
+            <>
+              <div
+                className="fixed top-0 inset-0 bg-black bg-opacity-50 flex z-50"
+                onClick={toggleSidebar}
+              >
+                <div className="bg-white w-3/4 max-w-xs h-full shadow-lg transform translate-x-0 transition-transform duration-300 ">
+                  <div className=" flex items-center gap-2 justify-between  px-4 pt-4">
+                    <div className="text-lg text-prim font-semibold">
+                      College Details
+                    </div>
+                    <button
+                      className="text-secondary"
+                      onClick={() => setIsSidebarOpen(false)}
+                    >
+                      <X
+                        className="h-8 w-8 rounded-full p-2 transition duration-500 bg-gray-100 hover:text-white"
+                        aria-hidden="true"
+                      />
+                    </button>
+                  </div>
+
+                  <aside className="w-full rounded-l-xl p-4 overflow-y-auto h-screen">
+                    <nav>
+                      <ul>
+                        {[
+                          {
+                            label: "College Info",
+                            icon: <Layers size={16} />,
+                            value: "info",
+                          },
+                          {
+                            label: "Courses & Fees",
+                            icon: <BookCopy size={16} />,
+                            value: "courses-and-fees",
+                          },
+                          {
+                            label: "Admissions",
+                            icon: <School size={16} />,
+                            value: "admissions",
+                          },
+                          {
+                            label: "Results",
+                            icon: <StickyNote size={16} />,
+                            value: "results",
+                          },
+                          {
+                            label: "Reviews",
+                            icon: <Star size={16} />,
+                            value: "reviews",
+                          },
+                          {
+                            label: "Departments",
+                            icon: <Component size={16} />,
+                            value: "departments",
+                          },
+                          {
+                            label: "Cut-Offs",
+                            icon: <Tags size={16} />,
+                            value: "cutoffs",
+                          },
+                          {
+                            label: "Placements",
+                            icon: <BriefcaseBusiness size={16} />,
+                            value: "placements",
+                          },
+                          {
+                            label: "Rankings",
+                            icon: <TbMilitaryRank size={18} />,
+                            value: "rankings",
+                          },
+                          {
+                            label: "Gallery",
+                            icon: <Images size={16} />,
+                            value: "gallery",
+                          },
+                          {
+                            label: "Scholarships",
+                            icon: <BadgeIndianRupee size={16} />,
+                            value: "scholarships",
+                          },
+                          {
+                            label: "Faculty",
+                            icon: <FaChalkboardTeacher size={16} />,
+                            value: "faculty",
+                          },
+                          {
+                            label: "New & Articles",
+                            icon: <Newspaper size={16} />,
+                            value: "news-and-articles",
+                          },
+                          {
+                            label: "Hostels",
+                            icon: <House size={16} />,
+                            value: "hostels",
+                          },
+                        ].map((item) => (
+                          <li key={item.value}>
+                            <button
+                              onClick={() => handleTabClick(item.value)}
+                              className={`flex gap-2 text-sm items-center w-full text-left px-2 py-2 rounded transition duration-300 hover:bg-white mb-1 ${
+                                activeTab === item.value
+                                  ? "text-prim bg-white border-2 border-prim"
+                                  : "text-tertiary hover:text-secondary border-2 border-gray-100"
+                              }`}
+                            >
+                              {item.icon}
+                              {item.label}
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    </nav>
+                  </aside>
+                </div>
+              </div>
+            </>
+          )}
+
+          {/* Sidebar - Dekstop */}
+          <aside className="hidden lg:block w-1/6 h-screen overflow-y-auto rounded sticky top-24">
             <nav>
               <ul>
                 {[
@@ -503,7 +658,7 @@ const page = () => {
           </aside>
 
           {/* Main Content */}
-          <main className="lg:w-4/6 w-full p-3 bg-white rounded-xl  overflow-y-auto">
+          <main className="lg:w-4/6 w-full lg:p-3 max-sm:p-0 bg-white rounded-xl  overflow-y-auto">
             {/* Profile Completion Reminder Box */}
             {renderContent()}
           </main>

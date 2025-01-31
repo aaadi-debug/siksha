@@ -1014,10 +1014,9 @@
           "studentPhone": "+91999999999",
           "studentGender": "Male",
           "studentRating": "4.7",
-          "isHelpful": true,
+          "isHelpful": false,
           "courseName": "MBBS",
-          "universityName": "Jan 14, 2025",
-          "studentYearOfAdmission": "satyam@gmail.com",
+          "studentYearOfAdmission": "2019",
           "date": "Jan 14, 2025",
           "likePoints": [
             "like 1", "like 2"
@@ -1032,7 +1031,7 @@
           "studentEmail": "satyam@gmail.com",
           "studentPhone": "+91999999999",
           "studentGender": "Male",
-          "studentRating": "4.7",
+          "studentRating": "3.6",
           "isHelpful": true,
           "courseName": "MBBS",
           "universityName": "Jan 14, 2025",
@@ -1064,7 +1063,6 @@
         ]
       }
     },
-
     {
       "collegeId": 2,
       "collegeName": "Amity University",
@@ -1496,6 +1494,45 @@
           ]
         }
       },
+      "reviews": [
+        {
+          "studentName": "Satyam Mishra",
+          "studentImageUrl": "https://srv.carbonads.net/static/30242/4b723271609d12c16fec10ddea2ce78e9bba0517",
+          "studentEmail": "satyam@gmail.com",
+          "studentPhone": "+91999999999",
+          "studentGender": "Male",
+          "studentRating": "4.7",
+          "isHelpful": false,
+          "courseName": "MBBS",
+          "studentYearOfAdmission": "2019",
+          "date": "Jan 14, 2025",
+          "likePoints": [
+            "like 1", "like 2"
+          ],
+          "dislikePoints": [
+            "dis-like 1", "dis-like 2"
+          ]
+        },
+        {
+          "studentName": "Satyam Mishra",
+          "studentImageUrl": "",
+          "studentEmail": "satyam@gmail.com",
+          "studentPhone": "+91999999999",
+          "studentGender": "Male",
+          "studentRating": "3.6",
+          "isHelpful": true,
+          "courseName": "MBBS",
+          "universityName": "Jan 14, 2025",
+          "studentYearOfAdmission": "satyam@gmail.com",
+          "date": "Jan 14, 2025",
+          "likePoints": [
+            "like 1", "like 2"
+          ],
+          "dislikePoints": [
+            "dis-like 1", "dis-like 2"
+          ]
+        }
+      ],
       "placements": [
         {
           "year": "2023",
@@ -1730,6 +1767,45 @@
             "Microsoft",
             "Rubrik",
             "Square Point"
+          ]
+        }
+      ],
+      "reviews": [
+        {
+          "studentName": "Satyam Mishra",
+          "studentImageUrl": "https://srv.carbonads.net/static/30242/4b723271609d12c16fec10ddea2ce78e9bba0517",
+          "studentEmail": "satyam@gmail.com",
+          "studentPhone": "+91999999999",
+          "studentGender": "Male",
+          "studentRating": "4.7",
+          "isHelpful": false,
+          "courseName": "MBBS",
+          "studentYearOfAdmission": "2019",
+          "date": "Jan 14, 2025",
+          "likePoints": [
+            "like 1", "like 2"
+          ],
+          "dislikePoints": [
+            "dis-like 1", "dis-like 2"
+          ]
+        },
+        {
+          "studentName": "Satyam Mishra",
+          "studentImageUrl": "",
+          "studentEmail": "satyam@gmail.com",
+          "studentPhone": "+91999999999",
+          "studentGender": "Male",
+          "studentRating": "3.6",
+          "isHelpful": true,
+          "courseName": "MBBS",
+          "universityName": "Jan 14, 2025",
+          "studentYearOfAdmission": "satyam@gmail.com",
+          "date": "Jan 14, 2025",
+          "likePoints": [
+            "like 1", "like 2"
+          ],
+          "dislikePoints": [
+            "dis-like 1", "dis-like 2"
           ]
         }
       ]

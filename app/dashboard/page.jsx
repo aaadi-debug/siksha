@@ -18,6 +18,7 @@ import Dashboard from "../components/studentDashboard/Dashboard";
 import Preloader from "../components/Preloader";
 
 import studentsDataJson from "../data/studentsData.json";
+import collegeDataJson from "../data/collegeData.json";
 
 import {
   X,
@@ -28,7 +29,14 @@ import {
   FileCheck2,
   Pencil,
   ChevronRight,
+  CircleUserRound,
+  School,
+  MessageSquareCode,
+  Settings,
 } from "lucide-react";
+import Account from "../components/studentDashboard/Account";
+import Reviews from "../components/studentDashboard/Reviews";
+import AppliedColleges from "../components/studentDashboard/AppliedColleges";
 
 const page = () => {
   const router = useRouter(); // Initialize the router
@@ -40,6 +48,7 @@ const page = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Sidebar visibility state
 
   const student = studentsDataJson[0];
+  const colleges = collegeDataJson.data;
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -65,7 +74,25 @@ const page = () => {
       case "dashboard":
         return (
           <Suspense fallback={<Preloader />}>
-            <Dashboard />
+            <Dashboard student={student} colleges={colleges} />
+          </Suspense>
+        );
+      case "applied-colleges":
+        return (
+          <Suspense fallback={<Preloader />}>
+            <AppliedColleges student={student} />
+          </Suspense>
+        );
+      case "my-reviews":
+        return (
+          <Suspense fallback={<Preloader />}>
+            <Reviews student={student} />
+          </Suspense>
+        );
+      case "account-settings":
+        return (
+          <Suspense fallback={<Preloader />}>
+            <Account student={student} />
           </Suspense>
         );
       default:
@@ -122,41 +149,36 @@ const page = () => {
               </div>
 
               <nav>
-                <ul>
+                <ul className="p-2">
                   {[
                     {
                       label: "Your Profile",
-                      icon: <TbLayoutDashboard size={20} />,
+                      icon: <CircleUserRound size={20} />,
                       value: "dashboard",
                     },
                     {
                       label: "Applied Colleges",
-                      icon: <TbLayoutDashboard size={20} />,
-                      value: "dashboard",
+                      icon: <School size={20} />,
+                      value: "applied-colleges",
                     },
                     {
-                      label: "Your Reviews",
-                      icon: <TbLayoutDashboard size={20} />,
-                      value: "dashboard",
-                    },
-                    {
-                      label: "Your Applications",
-                      icon: <TbLayoutDashboard size={20} />,
-                      value: "dashboard",
+                      label: "My Reviews",
+                      icon: <MessageSquareCode size={20} />,
+                      value: "my-reviews",
                     },
                     {
                       label: "Account Settings",
-                      icon: <TbLayoutDashboard size={20} />,
-                      value: "dashboard",
+                      icon: <Settings size={20} />,
+                      value: "account-settings",
                     },
                   ].map((item) => (
                     <li key={item.value}>
                       <button
                         onClick={() => handleTabClick(item.value)}
-                        className={`flex gap-4 items-center text-lg w-full text-left px-2 py-2 rounded-xl transition duration-700 ${
+                        className={`flex gap-2 text-sm items-center w-full text-left px-2 py-2 rounded transition duration-300 hover:bg-white mb-1 ${
                           activeTab === item.value
-                            ? "text-secondary text-sm bg-secondary-lightest rounded-xl"
-                            : "text-primary hover:text-secondary"
+                            ? "text-prim bg-white border-2 border-prim"
+                            : "text-tertiary hover:text-secondary border-2 border-white"
                         }`}
                       >
                         {item.icon}
@@ -167,7 +189,7 @@ const page = () => {
                 </ul>
               </nav>
 
-              <div className=" p-2">
+              <div className="px-3 py-4 border-t">
                 <button className="flex gap-4 items-center">
                   <LogOut size={20} /> Logout
                 </button>
@@ -175,7 +197,7 @@ const page = () => {
             </aside>
 
             {/* Main Content */}
-            <main className="w-full md:w-3/4 p-4 bg-white rounded-xl shadow-xl overflow-y-auto border-2 border-prim">
+            <main className="w-full md:w-3/4 lg:p-4 max-sm:p-2 bg-white rounded-xl shadow-xl overflow-y-auto border-2 border-prim">
               {/* Profile Completion Reminder Box */}
 
               {renderContent()}

@@ -11,6 +11,7 @@ import BackToTop from "./components/BackToTop";
 import SocialMedia from "./components/SocialMedia";
 import Navbar2 from "./components/Navbar2";
 import Footer2 from "./components/Footer2";
+import CookieConsent from "./components/CookieConsent";
 
 const MemoizedNavbar = memo(Navbar2);
 
@@ -79,6 +80,7 @@ export default function RootLayout({ children }) {
         {isLoading && <Preloader />}
         {children}
 
+        <CookieConsent />
         <SocialMedia />
         <WhatsAppButton />
         <BackToTop />

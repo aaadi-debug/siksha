@@ -89,6 +89,14 @@ const FilterableCoursePage = () => {
   const collegeData = collegeDataJson;
   const router = useRouter();
 
+  // State to control the number of displayed colleges
+  const [visibleCount, setVisibleCount] = useState(30);
+
+  // Function to load more colleges
+  const loadMoreColleges = () => {
+    setVisibleCount((prevCount) => prevCount + 30);
+  };
+
   // Default filters based on URL
   const defaultDepartment = collegeData.data
     .flatMap((college) => college.departments)
@@ -1545,165 +1553,176 @@ const FilterableCoursePage = () => {
                   </tr>
                 </thead>
                 <tbody className="bg-white">
-                  {filteredColleges?.map((college, index) => (
-                    <tr key={college.collegeId} className="border-b">
-                      <td className="border px-4 py-2 align-top">
-                        {index + 1}
-                      </td>
-                      <td className="border px-4 py-2 align-top">
-                        <div className="flex gap-2">
-                          <a
-                            href={`/collegepage/${college.collegeName}`}
-                            className="lg:w-auto w-1/3"
-                          >
-                            <img
-                              src={college.collegeLogo}
-                              alt=""
-                              className="rounded-lg w-12 h-12"
-                            />
-                          </a>
-                          <div>
+                  {filteredColleges
+                    ?.slice(0, visibleCount)
+                    .map((college, index) => (
+                      <tr key={college.collegeId} className="border-b">
+                        <td className="border px-4 py-2 align-top">
+                          {index + 1}
+                        </td>
+                        <td className="border px-4 py-2 align-top">
+                          <div className="flex gap-2">
                             <a
                               href={`/collegepage/${college.collegeName}`}
-                              className="text-tertiary hover:underline text-lg font-semibold"
+                              className="lg:w-auto w-1/3"
                             >
-                              {college.collegeName}
+                              <img
+                                src={college.collegeLogo}
+                                alt=""
+                                className="rounded-lg w-12 h-12"
+                              />
                             </a>
-                            <p className="text-textClr text-sm">
-                              {college.collegeAddress.city},{" "}
-                              {college.collegeAddress.state}
-                            </p>
-                            <p className="text-textClr text-sm">
-                              Approved by:{" "}
-                              {college.approvedBy.map((approval, index) => (
-                                <span key={index}>
-                                  {approval}
-                                  {index < college.approvedBy.length - 1 &&
-                                    ", "}
-                                </span>
-                              ))}
+                            <div>
+                              <a
+                                href={`/collegepage/${college.collegeName}`}
+                                className="text-tertiary hover:underline text-lg font-semibold"
+                              >
+                                {college.collegeName}
+                              </a>
+                              <p className="text-textClr text-sm">
+                                {college.collegeAddress.city},{" "}
+                                {college.collegeAddress.state}
+                              </p>
+                              <p className="text-textClr text-sm">
+                                Approved by:{" "}
+                                {college.approvedBy.map((approval, index) => (
+                                  <span key={index}>
+                                    {approval}
+                                    {index < college.approvedBy.length - 1 &&
+                                      ", "}
+                                  </span>
+                                ))}
+                              </p>
+                            </div>
+                          </div>
+                          <div className="mt-3 bg-gray-50 p-2 rounded-lg flex justify-between gap-2">
+                            <button
+                              onClick={() => alert("Button clicked!")}
+                              className="text-xs text-prim flex items-center font-medium gap-1"
+                            >
+                              <ArrowRight size={16} />
+                              Apply Now
+                            </button>
+                            <button
+                              onClick={() => alert("Button clicked!")}
+                              className="text-xs text-green-600 flex items-center font-medium gap-1"
+                            >
+                              <Download size={16} />
+                              Apply Now
+                            </button>
+                            <button
+                              onClick={() => alert("Button clicked!")}
+                              className="text-xs text-prim flex items-center font-medium gap-1"
+                            >
+                              <Scale size={16} />
+                              Compare
+                            </button>
+                          </div>
+                        </td>
+                        <td className="border px-4 py-2 align-top">
+                          <div>
+                            <div className="text-green-600 font-semibold">
+                              {(() => {
+                                const { minFee, maxFee } =
+                                  calculateMinMaxFees(college);
+                                return `₹ ${formatNumberWithCommas(
+                                  minFee
+                                )} - ₹ ${formatNumberWithCommas(maxFee)}`;
+                              })()}{" "}
+                              <span className="text-textClr font-normal text-xs">
+                                (all-courses)
+                              </span>
+                            </div>
+                            <p className="text-sm text-textClr mt-2">
+                              - First Year Fees
                             </p>
                           </div>
-                        </div>
-                        <div className="mt-3 bg-gray-50 p-2 rounded-lg flex justify-between gap-2">
-                          <button
-                            onClick={() => alert("Button clicked!")}
-                            className="text-xs text-prim flex items-center font-medium gap-1"
-                          >
-                            <ArrowRight size={16} />
-                            Apply Now
-                          </button>
-                          <button
-                            onClick={() => alert("Button clicked!")}
-                            className="text-xs text-green-600 flex items-center font-medium gap-1"
-                          >
-                            <Download size={16} />
-                            Apply Now
-                          </button>
-                          <button
-                            onClick={() => alert("Button clicked!")}
-                            className="text-xs text-prim flex items-center font-medium gap-1"
-                          >
-                            <Scale size={16} />
-                            Compare
-                          </button>
-                        </div>
-                      </td>
-                      <td className="border px-4 py-2 align-top">
-                        <div>
-                          <div className="text-green-600 font-semibold">
-                            {(() => {
-                              const { minFee, maxFee } =
-                                calculateMinMaxFees(college);
-                              return `₹ ${formatNumberWithCommas(
-                                minFee
-                              )} - ₹ ${formatNumberWithCommas(maxFee)}`;
-                            })()}{" "}
-                            <span className="text-textClr font-normal text-xs">
-                              (all-courses)
-                            </span>
-                          </div>
-                          <p className="text-sm text-textClr mt-2">
-                            - First Year Fees
-                          </p>
-                        </div>
-                      </td>
+                        </td>
 
-                      <td className="border px-4 py-2 align-top">
-                        <p className="capitalize">
-                          {college.collegeType} College
-                        </p>
-                      </td>
-                      <td className="border px-4 py-2 align-top">
-                        <a
-                          href={`/collegepage/${college.collegeName}`}
-                          className="text-tertiary hover:underline"
-                        >
-                          (
-                          <span className="text-orange-500">
-                            {calculateSpecializations(college)}
-                          </span>
-                          ) Specializations
-                        </a>
-                      </td>
-                      <td className="border px-4 py-2 align-top">
-                        <div>
-                          {!college.placements.lowest &&
-                          !college.placements.average &&
-                          !college.placements.highest ? (
-                            <p className="text-red-500 font-light">
-                              - No Placement Stats -
-                            </p>
+                        <td className="border px-4 py-2 align-top">
+                          <p className="capitalize">
+                            {college.collegeType} College
+                          </p>
+                        </td>
+                        <td className="border px-4 py-2 align-top">
+                          <a
+                            href={`/collegepage/${college.collegeName}`}
+                            className="text-tertiary hover:underline"
+                          >
+                            (
+                            <span className="text-orange-500">
+                              {calculateSpecializations(college)}
+                            </span>
+                            ) Specializations
+                          </a>
+                        </td>
+                        <td className="border px-4 py-2 align-top">
+                          <div>
+                            {!college.placements.lowest &&
+                            !college.placements.average &&
+                            !college.placements.highest ? (
+                              <p className="text-red-500 font-light">
+                                - No Placement Stats -
+                              </p>
+                            ) : (
+                              <>
+                                {college.placements.lowest && (
+                                  <div className="mb-2">
+                                    <p className="text-green-600">
+                                      ₹ {college.placements.lowest}
+                                    </p>
+                                    <p className="text-xs text-textClr">
+                                      (Lowest Package)
+                                    </p>
+                                  </div>
+                                )}
+                                {college.placements.average && (
+                                  <div className="mb-2">
+                                    <p className="text-green-600">
+                                      ₹ {college.placements.average}
+                                    </p>
+                                    <p className="text-xs text-textClr">
+                                      (Average Package)
+                                    </p>
+                                  </div>
+                                )}
+                                <div>
+                                  <p className="text-green-600">
+                                    ₹ {college.placements.highest}
+                                  </p>
+                                  <p className="text-xs text-textClr">
+                                    (Highest Package)
+                                  </p>
+                                </div>
+                              </>
+                            )}
+                          </div>
+                        </td>
+                        <td className="border px-4 py-2 align-top">
+                          {!college.NAACGrade ? (
+                            <p className="text-red-500 font-light">- N/A -</p>
                           ) : (
-                            <>
-                              {college.placements.lowest && (
-                                <div className="mb-2">
-                                  <p className="text-green-600">
-                                    ₹ {college.placements.lowest}
-                                  </p>
-                                  <p className="text-xs text-textClr">
-                                    (Lowest Package)
-                                  </p>
-                                </div>
-                              )}
-                              {college.placements.average && (
-                                <div className="mb-2">
-                                  <p className="text-green-600">
-                                    ₹ {college.placements.average}
-                                  </p>
-                                  <p className="text-xs text-textClr">
-                                    (Average Package)
-                                  </p>
-                                </div>
-                              )}
-                              <div>
-                                <p className="text-green-600">
-                                  ₹ {college.placements.highest}
-                                </p>
-                                <p className="text-xs text-textClr">
-                                  (Highest Package)
-                                </p>
-                              </div>
-                            </>
+                            <>NAAC: {college.NAACGrade}</>
                           )}
-                        </div>
-                      </td>
-                      <td className="border px-4 py-2 align-top">
-                        {!college.NAACGrade ? (
-                          <p className="text-red-500 font-light">- N/A -</p>
-                        ) : (
-                          <>NAAC: {college.NAACGrade}</>
-                        )}
-                      </td>
-                      {/* Add more columns for additional data */}
-                    </tr>
-                  ))}
+                        </td>
+                        {/* Add more columns for additional data */}
+                      </tr>
+                    ))}
                 </tbody>
               </table>
             </div>
           ) : (
             <div className="text-red-500 text-center py-10">
               No college available.
+            </div>
+          )}
+
+          {/* Load More Button */}
+          {visibleCount < filteredColleges?.length && (
+            <div className="text-center mt-6">
+              <DynamicThemeButton onClick={loadMoreColleges}>
+                Load More Colleges
+              </DynamicThemeButton>
             </div>
           )}
         </div>

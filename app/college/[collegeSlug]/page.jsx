@@ -135,9 +135,7 @@ const page = () => {
         validRatings.length
       : 0;
 
-  const { fullStars, halfStars, emptyStars } = calculateStars(
-    college.collegeRating.rate
-  );
+  const { fullStars, halfStars, emptyStars } = calculateStars(averageRating);
 
   const renderContent = () => {
     switch (activeTab) {

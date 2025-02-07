@@ -34,10 +34,8 @@ const Reviews = ({ college }) => {
         validRatings.length
       : 0;
 
-  const { fullStars, halfStars, emptyStars } = calculateStars(
-    college.collegeRating.rate
-  );
-
+  const { fullStars, halfStars, emptyStars } = calculateStars(averageRating);
+  
   return (
     <div className="mb-4">
       <div className="text-2xl font-semibold text-tertiary mb-4 border-b pb-2">

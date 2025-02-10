@@ -3,6 +3,14 @@
         "_id": 1,
         "studentName": "Aditya Raj Gupta",
         "studentEmail": "webdegredg@gmail.com",
-        "studentImage": ""
+        "studentPhone": "9999999999",
+        "studentImage": "",
+        "studentAddress": {
+            "addressLine": "509, RG Trade Tower, 5th Floor",
+            "city": "Pitampura",
+            "state": "New Delhi",
+            "pinCode": "110038",
+            "country": "India"
+        }
     }
 ]

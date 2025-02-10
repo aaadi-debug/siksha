@@ -14,7 +14,8 @@ import {
   ChevronUp,
   Search,
   ShoppingBasket,
-  Mail
+  Mail,
+  FilePenLine,
 } from "lucide-react";
 import { FaUserTie } from "react-icons/fa6";
 import { IoMdNotifications } from "react-icons/io";
@@ -331,24 +332,27 @@ export default function Nav() {
         </div>
         <div className="hidden lg:block">
           <div className="flex gap-4 items-center responsive_css_buttonDiv">
+            <a
+              href="/write-a-review"
+              aria-label="Search Button"
+              className="text-second border-2 border-second p-2 rounded-full hover:bg-second hover:text-white transition duration-500"
+            >
+              <FilePenLine size={18} />
+            </a>
             <button
               onClick={toggleSearch}
               aria-label="Search Button"
-              className="text-white p-2 transition-all duration-500 bg-second rounded-full flex justify-center align-middle hover:text-secondary py-2 hover:bg-whiteClr hover:rounded-full hover:shadow-gray-900 hover:shadow-whiteClr"
+              className="text-second border-2 border-second p-2 rounded-full hover:bg-second hover:text-white transition duration-500"
             >
               <Search size={18} />
             </button>
-            {/* Cart */}
             <div className="group">
               <button
                 onClick={toggleNotificationSidebar}
                 aria-label="Notification Button"
-                className="relative rounded-3xl flex justify-center items-center border-2 border-second  bg-white text-second p-2 text-xs uppercase font-semibold transition ease-in-out duration-500 hover:border-2 hover:border-second hover:bg-white hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                className="text-second border-2 border-second p-2 rounded-full hover:bg-second hover:text-white transition duration-500"
               >
                 <IoMdNotifications size={16} />
-                {/* <span className="absolute bg-red-500 text-white rounded-full p-1 px-2 -top-3 -right-2 text-xs">
-                  {cart?.length}
-                </span> */}
               </button>
             </div>
 
@@ -690,7 +694,9 @@ export default function Nav() {
                 </div>
                 <div className="lg:text-lg text-blackClr font-semibold">
                   Hi, {student.studentName}
-                  <p className="text-textClr text-sm flex gap-1 items-center font-medium"><Mail size={16} /> {student.studentEmail} </p>
+                  <p className="text-textClr text-sm flex gap-1 items-center font-medium">
+                    <Mail size={16} /> {student.studentEmail}{" "}
+                  </p>
                   {/* Hi, {student.studentName.split(" ")[0]} */}
                 </div>
               </div>

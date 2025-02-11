@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import DynamicThemeButton from "./DynamicThemeButton";
 
 const WriteAReview = ({ student, colleges }) => {
@@ -8,6 +8,10 @@ const WriteAReview = ({ student, colleges }) => {
   const [selectedCollege, setSelectedCollege] = useState(null); // To store selected college
   const [departments, setDepartments] = useState([]);
   const [step, setStep] = useState(1);
+  const [charCount, setCharCount] = useState(0);
+  const [isPastingError, setIsPastingError] = useState(false); // Tracking if paste error occurred
+  const [likePoints, setLikePoints] = useState([""]);
+  const [dislikePoints, setDislikePoints] = useState([""]);
 
   // Define state for the selected option
   const [selectedOption1, setSelectedOption1] = useState(null);
@@ -32,52 +36,15 @@ const WriteAReview = ({ student, colleges }) => {
   const dropdownRef4 = useRef(null);
   const dropdownRef5 = useRef(null);
 
-  const handleNext = () => {
-    if (step < 7) setStep(step + 1);
-  };
-
-  const handlePrevious = () => {
-    if (step > 1) setStep(step - 1);
-  };
-
-  // Handle selecting an option for dropdown 1
-  const handleSelectOption1 = (option) => {
-    setSelectedOption1(option);
-    setValue("collegeType", option, { shouldValidate: true }); // Update form value & trigger validation
-    setDropdownOpen1(false);
-  };
-
-  // Handle selecting an option for dropdown 2
-  const handleSelectOption2 = (option) => {
-    setSelectedOption2(option);
-    setValue("studentType", option, { shouldValidate: true }); // Update form value & trigger validation
-    setDropdownOpen2(false);
-  };
-
-  // Handle selecting an option for dropdown 3
-  const handleSelectOption3 = (college) => {
-    setSelectedCollege(college); // Set selected college
-    setSelectedOption3(college.collegeName); // Store the college name
-    setDropdownOpen3(false); // Close the first dropdown after selecting
-    setDropdownOpen4(true); // Open the second dropdown for departments
-  };
-
-  const handleSelectOption4 = (department) => {
-    setSelectedOption4(department.departmentName); // Store selected department name
-    setDropdownOpen4(false); // Close the second dropdown after selecting
-  };
-
-  // Handle selecting an option for dropdown 5
-  const handleSelectOption5 = (option) => {
-    setSelectedOption5(option);
-    setValue("studentType", option, { shouldValidate: true }); // Update form value & trigger validation
-    setDropdownOpen5(false);
-  };
-
   const {
     register,
     handleSubmit,
     setValue,
+    setError,
+    clearErrors,
+    trigger,
+    getValues,
+    control,
     watch,
     formState: { errors },
     reset,
@@ -91,11 +58,187 @@ const WriteAReview = ({ student, colleges }) => {
       setIsSubmitted(true); // Show success image
       setTimeout(() => {
         setIsSubmitted(false); // Reset the form after 2 seconds
-        reset(); // Reset the form fields
+        // window.location.reload(); // Reset the form fields
       }, 3000);
     }, 2000); // Simulate server request for 2 seconds
   };
 
+  // Handle selecting an option for dropdown 3
+  const handleSelectOption3 = (college) => {
+    setSelectedCollege(college); // Set selected college
+    setSelectedOption3(college.collegeName); // Store the college name
+    setDropdownOpen3(false); // Close the first dropdown after selecting
+    setDropdownOpen4(true); // Open the second dropdown for departments
+
+    // Clear the error for collegeName
+    clearErrors("collegeName");
+
+    // Update React Hook Form value manually to sync with state
+    setValue("collegeName", college.collegeName);
+  };
+
+  const handleSelectOption4 = (department) => {
+    setSelectedOption4(department.departmentName); // Store selected department name
+    setDropdownOpen4(false); // Close the second dropdown after selecting
+
+    // Clear the error for courseOpted
+    clearErrors("courseOpted");
+
+    // Update React Hook Form value manually to sync with state
+    setValue("courseOpted", department.departmentName);
+  };
+
+  // Handle selecting an option for dropdown 5
+  const handleSelectOption5 = (option) => {
+    setSelectedOption5(option);
+    setDropdownOpen5(false);
+    clearErrors("gender");
+
+    // Update React Hook Form value manually to sync with state
+    setValue("gender", option);
+  };
+
+  // Generic validation function for textareas
+  const validateTextarea = (
+    value,
+    fieldName,
+    setCharCount,
+    setError,
+    clearErrors,
+    isPastingError,
+    setIsPastingError
+  ) => {
+    if (isPastingError) {
+      setIsPastingError(false); // Remove paste error when user starts typing
+      clearErrors(fieldName);
+    }
+
+    let errorMessage = [];
+
+    //   // if (value.length < 200) {
+    //   //   return "Minimum 200 characters required.";
+    //   // }
+
+    if (value.length > 2000) {
+      return "Character limit exceeded! Maximum 2000 characters allowed.";
+    }
+
+    if (/(\w)\1{5,}/.test(value)) {
+      return "Avoid excessive repetition of the same character.";
+    }
+
+    // No Words Longer than 20 Characters
+    const words = value.split(/\s+/);
+    if (words.some((word) => word.length > 20)) {
+      return "Words longer than 20 characters are not allowed.";
+    }
+
+    if (errorMessage.length > 0) {
+      setError("reason", { type: "manual", message: errorMessage.join("\n") });
+    }
+
+    clearErrors(fieldName); // Clear previous errors if validation passes
+    setCharCount(value.length); // Update character count
+    return true; // Validation passed
+  };
+
+  // Example usage for two textareas
+  const handleTextareaChange = (e, fieldName) => {
+    const value = e.target.value; // Extract the value
+
+    setCharCount((prev) => ({ ...prev, [fieldName]: value.length }));
+
+    validateTextarea(
+      value,
+      fieldName,
+      setCharCount,
+      setError,
+      clearErrors,
+      isPastingError,
+      setIsPastingError
+    );
+  };
+
+  const handlePaste = (e, fieldName) => {
+    e.preventDefault();
+    setIsPastingError(true);
+
+    // Dynamically set the error for the current field
+    setError(fieldName, {
+      type: "manual",
+      message: "Pasting is not allowed. Please type manually.",
+    });
+  };
+
+  const handleNext = async () => {
+    // Trigger validation for the "reason" field
+    // const isValid = await trigger("reason");
+    const isValid = await trigger(`reason${step}`); // Dynamically trigger validation
+
+    // console.log("Is valid:", isValid); // Debugging log
+    // console.log("Errors:", errors.reason); // Debugging log
+
+    // Check if the field is valid
+    if (!isValid) {
+      // If there are errors, do not proceed to the next step
+      return;
+    }
+
+    // If no errors, move to the next step
+    setStep((prev) => prev + 1);
+  };
+
+  const handleNextStep1 = async () => {
+    // Reset the errors manually before triggering the next step
+    clearErrors();
+
+    // Ensure the form values are properly updated before triggering validation
+    setValue("collegeName", selectedOption3);
+    setValue("courseOpted", selectedOption4);
+    setValue("gender", selectedOption5);
+
+    // Trigger validation for all fields
+    const isValid = await trigger(); // This will trigger validation for all fields
+
+    console.log("Is valid:", isValid); // Check if all fields are valid
+    console.log("Errors:", errors); // Debugging log
+
+    // If validation fails, do not proceed
+    if (!isValid) {
+      return;
+    }
+
+    // If validation passes, proceed to the next step
+    setStep((prev) => prev + 1);
+  };
+
+  const handlePrevious = () => {
+    if (step > 1) setStep(step - 1);
+  };
+
+  const handleAddLike = () => {
+    const likes = getValues("likePoints") || [];
+    setValue("likePoints", [...likes, ""]);
+  };
+
+  const handleAddDislike = () => {
+    const dislikes = getValues("dislikePoints") || [];
+    setValue("dislikePoints", [...dislikes, ""]);
+  };
+
+  const handleRemoveLike = (index) => {
+    const updatedLikes = getValues("likePoints").filter((_, i) => i !== index);
+    setValue("likePoints", updatedLikes);
+  };
+
+  const handleRemoveDislike = (index) => {
+    const updatedDislikes = getValues("dislikePoints").filter(
+      (_, i) => i !== index
+    );
+    setValue("dislikePoints", updatedDislikes);
+  };
+
+  //to select department from college data
   useEffect(() => {
     // Extract unique department names
     const allDepartments = colleges.flatMap((college) =>
@@ -184,6 +327,7 @@ const WriteAReview = ({ student, colleges }) => {
         </div>
       ) : (
         <form onSubmit={handleSubmit(onSubmit)} className="border p-10">
+          {/* step 1 */}
           {step === 1 && (
             <>
               {/* City and Course */}
@@ -191,7 +335,7 @@ const WriteAReview = ({ student, colleges }) => {
                 {/* First dropdown (College) */}
                 <div className="relative" ref={dropdownRef3}>
                   <label
-                    htmlFor="collegeType"
+                    htmlFor="collegeName"
                     className="block text-sm font-medium text-gray-500"
                   >
                     College/University Name
@@ -250,16 +394,16 @@ const WriteAReview = ({ student, colleges }) => {
                   {/* Hidden input to integrate with React Hook Form */}
                   <input
                     type="hidden"
-                    {...register("course", {
+                    {...register("collegeName", {
                       required: "This field is required",
                     })}
                     value={selectedOption3?.collegeName || ""}
                   />
 
                   {/* Validation message */}
-                  {errors.course && (
+                  {errors.collegeName && (
                     <p className="text-red-500 text-sm">
-                      {errors.course.message}
+                      {errors.collegeName.message}
                     </p>
                   )}
                 </div>
@@ -267,7 +411,7 @@ const WriteAReview = ({ student, colleges }) => {
                 {/* Second dropdown (Department) */}
                 <div className="relative" ref={dropdownRef4}>
                   <label
-                    htmlFor="collegeType"
+                    htmlFor="courseOpted"
                     className="block text-sm font-medium text-gray-500"
                   >
                     Course Interested
@@ -329,16 +473,16 @@ const WriteAReview = ({ student, colleges }) => {
                   {/* Hidden input to integrate with React Hook Form */}
                   <input
                     type="hidden"
-                    {...register("course", {
+                    {...register("courseOpted", {
                       required: "This field is required",
                     })}
                     value={selectedOption4 || ""}
                   />
 
                   {/* Validation message */}
-                  {errors.course && (
+                  {errors.courseOpted && (
                     <p className="text-red-500 text-sm">
-                      {errors.course.message}
+                      {errors.courseOpted.message}
                     </p>
                   )}
                 </div>
@@ -384,7 +528,7 @@ const WriteAReview = ({ student, colleges }) => {
               </div>
 
               {/* Phone and Gender  */}
-              <div className="grid grid-cols-2  max-sm:grid-cols-1 gap-8 mt-4">
+              <div className="grid grid-cols-2  max-sm:grid-cols-1 gap-8 mt-4 mb-10">
                 <div>
                   <label
                     htmlFor="phone"
@@ -413,7 +557,7 @@ const WriteAReview = ({ student, colleges }) => {
 
                 <div className="relative" ref={dropdownRef5}>
                   <label
-                    htmlFor="collegeType"
+                    htmlFor="gender"
                     className="block text-sm font-medium text-gray-500"
                   >
                     Gender
@@ -485,7 +629,7 @@ const WriteAReview = ({ student, colleges }) => {
                     {...register("gender", {
                       required: "This field is required",
                     })}
-                    value={selectedOption2 || ""}
+                    value={selectedOption5 || ""}
                   />
 
                   {/* Validation message */}
@@ -496,51 +640,488 @@ const WriteAReview = ({ student, colleges }) => {
                   )}
                 </div>
               </div>
+
+              <DynamicThemeButton onClick={handleNextStep1}>
+                Save & Next
+              </DynamicThemeButton>
             </>
           )}
-          {/* <div className="mt-5">
-                <DynamicThemeButton type="submit">
-                  Save & Next
-                </DynamicThemeButton>
-              </div> */}
 
+          {/* step 2 */}
           {step > 1 && step <= 2 && (
-            <div className="text-center p-5 border border-gray-300">
-              <h2 className="text-lg font-semibold">Step {step} Content</h2>
-              <p className="text-gray-500">Aditya 2.</p>
+            <div>
+              <label className="block text-2xl font-semibold text-tertiary">
+                Que. Tell us the detailed fee structure (yearly) and scholarship
+                details (if any). Mention the fees for the complete course along
+                with the fact that it is increasing or not.
+              </label>
+              <div>
+                <div className="text-tertiary text-md font-semibold mt-6">
+                  Please consider including:{" "}
+                </div>
+                <ul className="list-disc pl-6 text-textClr">
+                  <li>The year-wise fees you paid (or will be paying)</li>
+                  <li>
+                    Mention the Tuition fees, caution fees, registration fees,
+                    admission fees, development fees, lab fee and the other
+                    compulsory charges during the course completion as per the
+                    category (like Management, SC, ST).
+                  </li>
+                  <li>
+                    Also, share the fees of your batchmates for categories other
+                    than yours.
+                  </li>
+                  <li>
+                    Names and amounts of scholarships or financial aid that are
+                    available for students. Like merit cum need.
+                  </li>
+                </ul>
+              </div>
+              <textarea
+                {...register(`reason${step}`, {
+                  required: "This field is required",
+                  validate: (value) =>
+                    validateTextarea(
+                      value,
+                      `reason${step}`,
+                      setCharCount,
+                      setError,
+                      clearErrors,
+                      isPastingError,
+                      setIsPastingError
+                    ),
+                })}
+                className="border p-2 w-full rounded mt-4 outline-none focus:ring-2 focus:ring-prim text-textClr"
+                rows="10"
+                maxLength={2000}
+                onChange={(e) => {
+                  handleTextareaChange(e, `reason${step}`);
+                }}
+                onPaste={(e) => handlePaste(e, `reason${step}`)} // Pass fieldName dynamically
+              />
+              {/* Character Count */}
+              <div className="text-right text-sm text-gray-500 mt-1">
+                Characters: {charCount[`reason${step}`] || 0}/2000
+              </div>
+
+              {/* Validation Errors */}
+              <ul className="text-red-500 text-sm mt-2">
+                {typeof errors[`reason${step}`]?.message === "string"
+                  ? errors[`reason${step}`].message
+                      .split("\n")
+                      .map((err, index) => <li key={index}>• {err}</li>)
+                  : null}
+              </ul>
             </div>
           )}
+
+          {/* step 3 */}
           {step > 2 && step <= 3 && (
-            <div className="text-center p-5 border border-gray-300">
-              <h2 className="text-lg font-semibold">Step {step} Content</h2>
-              <p className="text-gray-500">Aditya 3.</p>
-            </div>
+            <>
+              {/* Likes */}
+              <div>
+                <label className="block text-2xl font-semibold text-tertiary">
+                  Likes
+                </label>
+                <Controller
+                  name="likePoints"
+                  control={control}
+                  defaultValue={[""]}
+                  render={({ field }) => (
+                    <>
+                      {field.value.map((like, index) => (
+                        <div
+                          key={index}
+                          className="flex items-center gap-4 mt-4"
+                        >
+                          <input
+                            {...register(`likePoints[${index}]`, {
+                              required: "This field is required",
+                              minLength: {
+                                value: 40,
+                                message: "Minimum 40 characters required",
+                              },
+                              maxLength: {
+                                value: 250,
+                                message: "Maximum 250 characters allowed",
+                              },
+                            })}
+                            type="text"
+                            value={like}
+                            onChange={(e) => {
+                              const updatedLikes = [...field.value];
+                              updatedLikes[index] = e.target.value;
+                              setValue("likePoints", updatedLikes);
+                            }}
+                            className="border p-2 w-full rounded outline-none focus:ring-2 focus:ring-prim text-textClr"
+                          />
+                          {field.value.length > 1 && (
+                            <button
+                              type="button"
+                              onClick={() => handleRemoveLike(index)}
+                              className="text-red-500"
+                            >
+                              Remove
+                            </button>
+                          )}
+                        </div>
+                      ))}
+                      <button
+                        type="button"
+                        onClick={handleAddLike}
+                        className="text-prim mt-2"
+                      >
+                        Add More Like
+                      </button>
+                    </>
+                  )}
+                />
+                <ul className="text-red-500 text-sm mt-2">
+                  {errors?.likePoints?.map((error, index) => (
+                    <li key={index}>• {error?.message}</li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Dislikes */}
+              <div className="mt-6">
+                <label className="block text-2xl font-semibold text-tertiary">
+                  Dislikes
+                </label>
+                <Controller
+                  name="dislikePoints"
+                  control={control}
+                  defaultValue={[""]}
+                  render={({ field }) => (
+                    <>
+                      {field.value.map((dislike, index) => (
+                        <div
+                          key={index}
+                          className="flex items-center gap-4 mt-4"
+                        >
+                          <input
+                            {...register(`dislikePoints[${index}]`, {
+                              required: "This field is required",
+                              minLength: {
+                                value: 40,
+                                message: "Minimum 40 characters required",
+                              },
+                              maxLength: {
+                                value: 250,
+                                message: "Maximum 250 characters allowed",
+                              },
+                            })}
+                            type="text"
+                            value={dislike}
+                            onChange={(e) => {
+                              const updatedDislikes = [...field.value];
+                              updatedDislikes[index] = e.target.value;
+                              setValue("dislikePoints", updatedDislikes);
+                            }}
+                            className="border p-2 w-full rounded outline-none focus:ring-2 focus:ring-prim text-textClr"
+                          />
+                          {field.value.length > 1 && (
+                            <button
+                              type="button"
+                              onClick={() => handleRemoveDislike(index)}
+                              className="text-red-500"
+                            >
+                              Remove
+                            </button>
+                          )}
+                        </div>
+                      ))}
+                      <button
+                        type="button"
+                        onClick={handleAddDislike}
+                        className="text-prim mt-2"
+                      >
+                        Add More Dislike
+                      </button>
+                    </>
+                  )}
+                />
+                <ul className="text-red-500 text-sm mt-2">
+                  {errors?.dislikePoints?.map((error, index) => (
+                    <li key={index}>• {error?.message}</li>
+                  ))}
+                </ul>
+              </div>
+            </>
           )}
+
+          {/* step 4 */}
           {step > 3 && step <= 4 && (
-            <div className="text-center p-5 border border-gray-300">
-              <h2 className="text-lg font-semibold">Step {step} Content</h2>
-              <p className="text-gray-500">Aditya 4.</p>
+            <div>
+              <label className="block text-2xl font-semibold text-tertiary">
+                Que. Please provide insights around the faculty members of your
+                college. Also mention about the course structure, exam systems
+                and marketing schemes.
+              </label>
+              <div>
+                <div className="text-tertiary text-md font-semibold mt-6">
+                  Please consider including:{" "}
+                </div>
+                <ul className="list-disc pl-6 text-textClr">
+                  <li>
+                    The faculty-to-student ratio. How is the faculty to student
+                    relationship and how approachable are the faculties?
+                  </li>
+                  <li>
+                    The name of the faculties you liked and why did you like
+                    them? who are the best faculties?
+                  </li>
+                  <li>
+                    The names of the facilities you didn't like and reason for
+                    not liking them?
+                  </li>
+                  <li>
+                    How many exams are there and how easy or difficult are they?
+                    How many students fail to clear the exmas? How relevant is
+                    the course curriculum?
+                  </li>
+                </ul>
+              </div>
+              <textarea
+                {...register(`reason${step}`, {
+                  required: "This field is required",
+                  validate: (value) =>
+                    validateTextarea(
+                      value,
+                      `reason${step}`,
+                      setCharCount,
+                      setError,
+                      clearErrors,
+                      isPastingError,
+                      setIsPastingError
+                    ),
+                })}
+                className="border p-2 w-full rounded mt-4 outline-none focus:ring-2 focus:ring-prim text-textClr"
+                rows="10"
+                maxLength={2000}
+                onChange={(e) => {
+                  handleTextareaChange(e, `reason${step}`);
+                }}
+                onPaste={(e) => handlePaste(e, `reason${step}`)} // Pass fieldName dynamically
+              />
+              {/* Character Count */}
+              <div className="text-right text-sm text-gray-500 mt-1">
+                Characters: {charCount[`reason${step}`] || 0}/2000
+              </div>
+
+              {/* Validation Errors */}
+              <ul className="text-red-500 text-sm mt-2">
+                {typeof errors[`reason${step}`]?.message === "string"
+                  ? errors[`reason${step}`].message
+                      .split("\n")
+                      .map((err, index) => <li key={index}>• {err}</li>)
+                  : null}
+              </ul>
             </div>
           )}
+
+          {/* step 5 */}
           {step > 4 && step <= 5 && (
-            <div className="text-center p-5 border border-gray-300">
-              <h2 className="text-lg font-semibold">Step {step} Content</h2>
-              <p className="text-gray-500">Aditya 5.</p>
+            <div>
+              <label className="block text-2xl font-semibold text-tertiary">
+                Que. How would you rate the course curriculum in terms of
+                relevance and comprehensiveness?
+              </label>
+              <div>
+                <div className="text-tertiary text-md font-semibold mt-6">
+                  Please consider including:{" "}
+                </div>
+                <ul className="list-disc pl-6 text-textClr">
+                  <li>
+                    specific aspects of the curriculum that influenced your
+                    decision to choose this course.
+                  </li>
+                  <li>
+                    How well the curriculum prepares you for real- world
+                    applications or furthur academic pursuits.
+                  </li>
+                  <li>
+                    Suggest the area for improvements in the Course Curriculum
+                    and Teaching methods
+                  </li>
+                  <li>
+                    The frequency and timing of exams alnog with your
+                    prespective on their difficulty level.
+                  </li>
+                </ul>
+              </div>
+              <textarea
+                {...register(`reason${step}`, {
+                  required: "This field is required",
+                  validate: (value) =>
+                    validateTextarea(
+                      value,
+                      `reason${step}`,
+                      setCharCount,
+                      setError,
+                      clearErrors,
+                      isPastingError,
+                      setIsPastingError
+                    ),
+                })}
+                className="border p-2 w-full rounded mt-4 outline-none focus:ring-2 focus:ring-prim text-textClr"
+                rows="10"
+                maxLength={2000}
+                onChange={(e) => {
+                  handleTextareaChange(e, `reason${step}`);
+                }}
+                onPaste={(e) => handlePaste(e, `reason${step}`)} // Pass fieldName dynamically
+              />
+              {/* Character Count */}
+              <div className="text-right text-sm text-gray-500 mt-1">
+                Characters: {charCount[`reason${step}`] || 0}/2000
+              </div>
+
+              {/* Validation Errors */}
+              <ul className="text-red-500 text-sm mt-2">
+                {typeof errors[`reason${step}`]?.message === "string"
+                  ? errors[`reason${step}`].message
+                      .split("\n")
+                      .map((err, index) => <li key={index}>• {err}</li>)
+                  : null}
+              </ul>
             </div>
           )}
+
+          {/* step 6 */}
           {step > 5 && step <= 6 && (
-            <div className="text-center p-5 border border-gray-300">
-              <h2 className="text-lg font-semibold">Step {step} Content</h2>
-              <p className="text-gray-500">Aditya 6.</p>
+            <div>
+              <label className="block text-2xl font-semibold text-tertiary">
+                Que. Can your describe your overall experience with campus life,
+                focusing on social apsects, club involvement, and the
+                infranstructure provided?
+              </label>
+              <div>
+                <div className="text-tertiary text-md font-semibold mt-6">
+                  Please consider including:{" "}
+                </div>
+                <ul className="list-disc pl-6 text-textClr">
+                  <li>
+                    The names of the annual technical festivals, along with the
+                    months they are typically held.
+                  </li>
+                  <li>
+                    The range and accessibility of books and journals available
+                    in the library.
+                  </li>
+                  <li>
+                    The facilities and technological provision within the
+                    classrooms.
+                  </li>
+                  <li>
+                    An overview of sports and extracurricular activites offered
+                    on campus.
+                  </li>
+                  <li>
+                    Any student-run social groups, clubs, or student portals,
+                    including their impact on student life.
+                  </li>
+                </ul>
+              </div>
+              <textarea
+                {...register(`reason${step}`, {
+                  required: "This field is required",
+                  validate: (value) =>
+                    validateTextarea(
+                      value,
+                      `reason${step}`,
+                      setCharCount,
+                      setError,
+                      clearErrors,
+                      isPastingError,
+                      setIsPastingError
+                    ),
+                })}
+                className="border p-2 w-full rounded mt-4 outline-none focus:ring-2 focus:ring-prim text-textClr"
+                rows="10"
+                maxLength={2000}
+                onChange={(e) => {
+                  handleTextareaChange(e, `reason${step}`);
+                }}
+                onPaste={(e) => handlePaste(e, `reason${step}`)} // Pass fieldName dynamically
+              />
+              {/* Character Count */}
+              <div className="text-right text-sm text-gray-500 mt-1">
+                Characters: {charCount[`reason${step}`] || 0}/2000
+              </div>
+
+              {/* Validation Errors */}
+              <ul className="text-red-500 text-sm mt-2">
+                {typeof errors[`reason${step}`]?.message === "string"
+                  ? errors[`reason${step}`].message
+                      .split("\n")
+                      .map((err, index) => <li key={index}>• {err}</li>)
+                  : null}
+              </ul>
             </div>
           )}
-          {/* Step 2-7 Placeholder Content */}
+
+          {/* Step 7 */}
           {step > 6 && step <= 7 && (
-            <div className="text-center p-5 border border-gray-300">
-              <h2 className="text-lg font-semibold">Step {step} Content</h2>
-              <p className="text-gray-500">
-                Form fields for Step {step} go here.
-              </p>
+            <div>
+              <label className="block text-2xl font-semibold text-tertiary">
+                Que. What's the nightlife like in or around your college campus?
+              </label>
+              <div>
+                <div className="text-tertiary text-md font-semibold mt-6">
+                  Share your favourite hangout spots, late-night activities, and
+                  how students unwind after a day of classes. How do these
+                  experiences shape your overall college life? Please consider
+                  including:
+                </div>
+                <ul className="list-disc pl-6 text-textClr">
+                  <li>
+                    Mention gym, cafeterias, library, and public area closing
+                    off.
+                  </li>
+                  <li>Mention hostel and campus in timings.</li>
+                  <li>
+                    List famous hangout places inside and outside the
+                    college/university. Also mention is the locality safe to
+                    roam around at night.
+                  </li>
+                </ul>
+              </div>
+              <textarea
+                {...register(`reason${step}`, {
+                  required: "This field is required",
+                  validate: (value) =>
+                    validateTextarea(
+                      value,
+                      `reason${step}`,
+                      setCharCount,
+                      setError,
+                      clearErrors,
+                      isPastingError,
+                      setIsPastingError
+                    ),
+                })}
+                className="border p-2 w-full rounded mt-4 outline-none focus:ring-2 focus:ring-prim text-textClr"
+                rows="10"
+                maxLength={2000}
+                onChange={(e) => {
+                  handleTextareaChange(e, `reason${step}`);
+                }}
+                onPaste={(e) => handlePaste(e, `reason${step}`)} // Pass fieldName dynamically
+              />
+              {/* Character Count */}
+              <div className="text-right text-sm text-gray-500 mt-1">
+                Characters: {charCount[`reason${step}`] || 0}/2000
+              </div>
+
+              {/* Validation Errors */}
+              <ul className="text-red-500 text-sm mt-2">
+                {typeof errors[`reason${step}`]?.message === "string"
+                  ? errors[`reason${step}`].message
+                      .split("\n")
+                      .map((err, index) => <li key={index}>• {err}</li>)
+                  : null}
+              </ul>
             </div>
           )}
 
@@ -551,12 +1132,27 @@ const WriteAReview = ({ student, colleges }) => {
                 Previous
               </DynamicThemeButton>
             )}
-            {step < 7 && (
+            {step > 1 && step < 7 && (
               <DynamicThemeButton onClick={handleNext}>
                 Save & Next
               </DynamicThemeButton>
             )}
-            {step === 7 && <DynamicThemeButton>Submit</DynamicThemeButton>}
+            {step === 7 && (
+              <>
+                {/* <DynamicThemeButton type="submit">Submit</DynamicThemeButton> */}
+                <div className="flex gap-2 items-center">
+                  <DynamicThemeButton type="submit" disabled={isSubmitting}>
+                    {isSubmitting ? "Submitting..." : "Submit"}
+                  </DynamicThemeButton>
+                  {isSubmitting && (
+                    <img
+                      src="/assets/siksha-preloader/4.gif"
+                      className="w-16"
+                    />
+                  )}
+                </div>
+              </>
+            )}
           </div>
         </form>
       )}

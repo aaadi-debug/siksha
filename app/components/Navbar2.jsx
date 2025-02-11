@@ -335,14 +335,28 @@ export default function Nav() {
             <a
               href="/write-a-review"
               aria-label="Search Button"
-              className="text-second border-2 border-second p-2 rounded-full hover:bg-second hover:text-white transition duration-500"
+              className={` ${
+                isHomePage
+                  ? isScrolled
+                    ? "text-second border-2 border-second p-2 rounded-full hover:bg-second hover:text-white"
+                    : "text-second border-2 bg-white border-second p-2 rounded-full hover:bg-second"
+                  : "text-second border-2 border-second p-2 rounded-full hover:bg-second hover:text-white"
+              }
+               transition duration-500`}
             >
               <FilePenLine size={18} />
             </a>
             <button
               onClick={toggleSearch}
               aria-label="Search Button"
-              className="text-second border-2 border-second p-2 rounded-full hover:bg-second hover:text-white transition duration-500"
+              className={` ${
+                isHomePage
+                  ? isScrolled
+                    ? "text-second border-2 border-second p-2 rounded-full hover:bg-second hover:text-white"
+                    : "text-second border-2 bg-white border-second p-2 rounded-full hover:bg-second"
+                  : "text-second border-2 border-second p-2 rounded-full hover:bg-second hover:text-white"
+              }
+               transition duration-500`}
             >
               <Search size={18} />
             </button>
@@ -350,7 +364,14 @@ export default function Nav() {
               <button
                 onClick={toggleNotificationSidebar}
                 aria-label="Notification Button"
-                className="text-second border-2 border-second p-2 rounded-full hover:bg-second hover:text-white transition duration-500"
+                className={` ${
+                isHomePage
+                  ? isScrolled
+                    ? "text-second border-2 border-second p-2 rounded-full hover:bg-second hover:text-white"
+                    : "text-second border-2 bg-white border-second p-2 rounded-full hover:bg-second"
+                  : "text-second border-2 border-second p-2 rounded-full hover:bg-second hover:text-white"
+              }
+               transition duration-500`}
               >
                 <IoMdNotifications size={16} />
               </button>

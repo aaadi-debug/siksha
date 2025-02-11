@@ -377,7 +377,7 @@ const WriteAReview = ({ student, colleges }) => {
 
                   {dropdownOpen3 && (
                     <div className="absolute left-0 w-full bg-white border border-gray-300 rounded-md shadow-md mt-1 z-10">
-                      <ul className="divide-y divide-gray-100">
+                      <ul className="divide-y divide-gray-100 max-h-[200px] overflow-y-auto">
                         {colleges.map((college, index) => (
                           <li
                             key={index}
@@ -453,7 +453,7 @@ const WriteAReview = ({ student, colleges }) => {
 
                   {dropdownOpen4 && selectedCollege && (
                     <div className="absolute left-0 w-full bg-white border border-gray-300 rounded-md shadow-md mt-1 z-10">
-                      <ul className="divide-y divide-gray-100">
+                      <ul className="divide-y divide-gray-100 max-h-[200px] overflow-y-auto">
                         {selectedCollege.departments.map(
                           (department, index) => (
                             <li
@@ -598,7 +598,7 @@ const WriteAReview = ({ student, colleges }) => {
 
                   {dropdownOpen5 && (
                     <div className="absolute left-0 w-full bg-white border border-gray-300 rounded-md shadow-md mt-1 z-10">
-                      <ul className="divide-y divide-gray-100">
+                      <ul className="divide-y divide-gray-100 max-h-[200px] overflow-y-auto">
                         {/* Options for Year of Admission */}
                         <li
                           className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
@@ -635,6 +635,128 @@ const WriteAReview = ({ student, colleges }) => {
                           onClick={() => handleSelectOption5("2020")}
                         >
                           2020
+                        </li>
+                        <li
+                          className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
+                          onClick={() => handleSelectOption5("2019")}
+                        >
+                          2019
+                        </li>
+                        <li
+                          className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
+                          onClick={() => handleSelectOption5("2018")}
+                        >
+                          2018
+                        </li>
+                        <li
+                          className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
+                          onClick={() => handleSelectOption5("2017")}
+                        >
+                          2017
+                        </li>
+                        <li
+                          className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
+                          onClick={() => handleSelectOption5("2016")}
+                        >
+                          2016
+                        </li>
+                        <li
+                          className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
+                          onClick={() => handleSelectOption5("2015")}
+                        >
+                          2015
+                        </li>
+                        <li
+                          className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
+                          onClick={() => handleSelectOption5("2014")}
+                        >
+                          2014
+                        </li>
+                        <li
+                          className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
+                          onClick={() => handleSelectOption5("2013")}
+                        >
+                          2013
+                        </li>
+                        <li
+                          className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
+                          onClick={() => handleSelectOption5("2012")}
+                        >
+                          2012
+                        </li>
+                        <li
+                          className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
+                          onClick={() => handleSelectOption5("2011")}
+                        >
+                          2011
+                        </li>
+                        <li
+                          className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
+                          onClick={() => handleSelectOption5("2010")}
+                        >
+                          2010
+                        </li>
+                        <li
+                          className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
+                          onClick={() => handleSelectOption5("2009")}
+                        >
+                          2009
+                        </li>
+                        <li
+                          className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
+                          onClick={() => handleSelectOption5("2008")}
+                        >
+                          2008
+                        </li>
+                        <li
+                          className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
+                          onClick={() => handleSelectOption5("2007")}
+                        >
+                          2007
+                        </li>
+                        <li
+                          className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
+                          onClick={() => handleSelectOption5("2006")}
+                        >
+                          2006
+                        </li>
+                        <li
+                          className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
+                          onClick={() => handleSelectOption5("2005")}
+                        >
+                          2005
+                        </li>
+                        <li
+                          className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
+                          onClick={() => handleSelectOption5("2004")}
+                        >
+                          2004
+                        </li>
+
+
+                        <li
+                          className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
+                          onClick={() => handleSelectOption5("2003")}
+                        >
+                          2003
+                        </li>
+                        <li
+                          className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
+                          onClick={() => handleSelectOption5("2002")}
+                        >
+                          2002
+                        </li>
+                        <li
+                          className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
+                          onClick={() => handleSelectOption5("2001")}
+                        >
+                          2001
+                        </li>
+                        <li
+                          className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
+                          onClick={() => handleSelectOption5("2000")}
+                        >
+                          2000
                         </li>
                       </ul>
                     </div>

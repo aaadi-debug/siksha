@@ -1004,44 +1004,7 @@
       },
       "reviews": [
         {
-          "studentId": 1,
-          "studentName": "Satyam Mishra",
-          "studentImageUrl": "https://srv.carbonads.net/static/30242/4b723271609d12c16fec10ddea2ce78e9bba0517",
-          "studentEmail": "satyam@gmail.com",
-          "studentPhone": "+91999999999",
-          "studentGender": "Male",
-          "studentRating": "4.7",
-          "isHelpful": false,
-          "courseName": "MBBS",
-          "studentYearOfAdmission": "2019",
-          "date": "Jan 14, 2025",
-          "likePoints": [
-            "like 1", "like 2"
-          ],
-          "dislikePoints": [
-            "dis-like 1", "dis-like 2"
-          ]
-        },
-        {
-          "studentName": "Satyam Mishra",
-          "studentImageUrl": "",
-          "studentEmail": "satyam@gmail.com",
-          "studentPhone": "+91999999999",
-          "studentGender": "Male",
-          "studentRating": "3.6",
-          "isHelpful": true,
-          "courseName": "MBBS",
-          "universityName": "Jan 14, 2025",
-          "studentYearOfAdmission": "satyam@gmail.com",
-          "date": "Jan 14, 2025",
-          "likePoints": [
-            "like 1", "like 2"
-          ],
-          "dislikePoints": [
-            "dis-like 1", "dis-like 2"
-          ]
-        },
-        {
+          "_id": 1,
           "studentName": "Aditya Raj Gupta",
           "studentImage": "",
           "studentEmail": "webdegredg@gmail.com",
@@ -1060,11 +1023,37 @@
           "dislikePoints": [
             "dis-like 1", "dis-like 2"
           ],
-          "reason2": "",
-          "reason4": "",
-          "reason5": "",
-          "reason6": "",
-          "reason7": ""
+          "reason2": "Step 2 data",
+          "reason4": "Step 4 data",
+          "reason5": "Step 5 data",
+          "reason6": "Step 6 data",
+          "reason7": "Step 7 data"
+        },
+        {
+          "_id": 2,
+          "studentName": "Aditya Raj Gupta",
+          "studentImage": "",
+          "studentEmail": "webdegredg@gmail.com",
+          "studentPhone": "+91999999999",
+          "studentGender": "Male",
+          
+          "studentRating": "5",
+          "universityName": "Sharda University",
+          "courseName": "Engineering",
+          "yearOfAdmission": "2024",
+          "isHelpful": true,
+          "date": "Feb 11, 2025",
+          "likePoints": [
+            "like 1", "like 2"
+          ],
+          "dislikePoints": [
+            "dis-like 1", "dis-like 2"
+          ],
+          "reason2": "Step 2 data",
+          "reason4": "Step 4 data",
+          "reason5": "Step 5 data",
+          "reason6": "Step 6 data",
+          "reason7": "Step 7 data"
         }
       ],
       "results": {

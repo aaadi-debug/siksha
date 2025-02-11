@@ -1,10 +1,19 @@
-import React from "react";
+"use client"
+import React, { useState } from "react";
 import { ThumbsUp, ThumbsDown } from "lucide-react";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import StarRating from "../StarRating";
 
 const Reviews = ({ college }) => {
   const reviews = college?.reviews || [];
+  const [expandedReviews, setExpandedReviews] = useState({});
+
+  const toggleReadMore = (index) => {
+    setExpandedReviews((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
+  };
 
   const getStudentNameInitials = (name) => {
     if (!name) return "";
@@ -137,6 +146,58 @@ const Reviews = ({ college }) => {
                 </ul>
               </div>
             </div>
+
+            {expandedReviews[index] && (
+              <div className=" border-t-2 border-dashed mt-4 ">
+                {review.reason5 && (
+                  <div>
+                    <div className="font-semibold text-md text-tertiary mt-4">
+                      Course Curriculum
+                    </div>
+                    <div className="mt-2 text-textClr">{review.reason5}</div>
+                  </div>
+                )}
+                {review.reason2 && (
+                  <div>
+                    <div className="font-semibold text-md text-tertiary mt-4">
+                      Fees and Financial Aid
+                    </div>
+                    <div className="mt-2 text-textClr">{review.reason2}</div>
+                  </div>
+                )}
+                {review.reason4 && (
+                  <div>
+                    <div className="font-semibold text-md text-tertiary mt-4">
+                      Course Structure
+                    </div>
+                    <div className="mt-2 text-textClr">{review.reason4}</div>
+                  </div>
+                )}
+
+                {review.reason6 && (
+                  <div>
+                    <div className="font-semibold text-md text-tertiary mt-4">
+                      Campus Life
+                    </div>
+                    <div className="mt-2 text-textClr">{review.reason6}</div>
+                  </div>
+                )}
+                {review.reason7 && (
+                  <div>
+                    <div className="font-semibold text-md text-tertiary mt-4">
+                      Night Life
+                    </div>
+                    <div className="mt-2 text-textClr">{review.reason7}</div>
+                  </div>
+                )}
+              </div>
+            )}
+            <button
+              className="mt-2 text-second underline hover:text-prim transition duration-300"
+              onClick={() => toggleReadMore(index)}
+            >
+              {expandedReviews[index] ? "Read Less" : "Read More"}
+            </button>
           </div>
         ))
       ) : (

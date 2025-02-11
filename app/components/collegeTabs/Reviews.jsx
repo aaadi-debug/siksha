@@ -16,8 +16,8 @@ const Reviews = ({ college }) => {
   };
 
   const calculateStars = (rating) => {
-    const fullStars = Math.floor(rating); // Number of full stars
-    const halfStars = rating % 1 >= 0.5 ? 1 : 0; // One half star if decimal >= 0.5
+    const fullStars = Math.floor(rating); // Full stars count
+    const halfStars = rating % 1 >= 0.5 ? 1 : 0; // Half star if decimal part >= 0.5
     const emptyStars = 5 - fullStars - halfStars; // Remaining stars are empty
 
     return { fullStars, halfStars, emptyStars };
@@ -35,7 +35,11 @@ const Reviews = ({ college }) => {
       : 0;
 
   const { fullStars, halfStars, emptyStars } = calculateStars(averageRating);
-  
+
+  console.log('Average Rating:', averageRating); // Check if it outputs 5
+
+  console.log('Full Stars:', fullStars, 'Half Stars:', halfStars, 'Empty Stars:', emptyStars);
+
   return (
     <div className="mb-4">
       <div className="text-2xl font-semibold text-tertiary mb-4 border-b pb-2">
@@ -100,14 +104,15 @@ const Reviews = ({ college }) => {
                   {/* Display rating stars */}
                   {/* Render full stars */}
                   <div className="flex items-center text-prim">
+                    {/* Render full stars */}
                     {Array(fullStars)
                       .fill(0)
                       .map((_, index) => (
                         <FaStar key={`full-${index}`} />
                       ))}
 
-                    {/* Render half star */}
-                    {halfStars > 0 && <FaStarHalfAlt key="half-star" />}
+                    {/* Render half star if applicable */}
+                    {halfStars === 1 && <FaStarHalfAlt key="half-star" />}
 
                     {/* Render empty stars */}
                     {Array(emptyStars)
@@ -129,7 +134,7 @@ const Reviews = ({ college }) => {
             </div>
 
             <div className="text-sm text-gray-600 mt-2">
-              Enrolled in: {review.studentYearOfAdmission}
+              Enrolled in: {review.yearOfAdmission || "N/A"}
             </div>
             <div className="text-sm text-gray-600">
               Reviewed on: {review.date}

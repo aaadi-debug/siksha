@@ -92,10 +92,10 @@ const WriteAReview = ({ student, colleges }) => {
   const handleSelectOption5 = (option) => {
     setSelectedOption5(option);
     setDropdownOpen5(false);
-    clearErrors("gender");
+    clearErrors("yearOfAdmission");
 
     // Update React Hook Form value manually to sync with state
-    setValue("gender", option);
+    setValue("yearOfAdmission", option);
   };
 
   // Generic validation function for textareas
@@ -195,7 +195,7 @@ const WriteAReview = ({ student, colleges }) => {
     // Ensure the form values are properly updated before triggering validation
     setValue("collegeName", selectedOption3);
     setValue("courseOpted", selectedOption4);
-    setValue("gender", selectedOption5);
+    setValue("yearOfAdmission", selectedOption5);
 
     // Trigger validation for all fields
     const isValid = await trigger(); // This will trigger validation for all fields
@@ -527,7 +527,7 @@ const WriteAReview = ({ student, colleges }) => {
                 </div>
               </div>
 
-              {/* Phone and Gender  */}
+              {/* Phone and yearOfAdmission  */}
               <div className="grid grid-cols-2  max-sm:grid-cols-1 gap-8 mt-4 mb-10">
                 <div>
                   <label
@@ -557,10 +557,10 @@ const WriteAReview = ({ student, colleges }) => {
 
                 <div className="relative" ref={dropdownRef5}>
                   <label
-                    htmlFor="gender"
+                    htmlFor="yearOfAdmission"
                     className="block text-sm font-medium text-gray-500"
                   >
-                    Gender
+                    Year of Admission
                   </label>
 
                   <div
@@ -599,25 +599,42 @@ const WriteAReview = ({ student, colleges }) => {
                   {dropdownOpen5 && (
                     <div className="absolute left-0 w-full bg-white border border-gray-300 rounded-md shadow-md mt-1 z-10">
                       <ul className="divide-y divide-gray-100">
+                        {/* Options for Year of Admission */}
                         <li
                           className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
-                          onClick={() => handleSelectOption5("Male")}
+                          onClick={() => handleSelectOption5("2025")}
                         >
-                          Male
+                          2025
                         </li>
                         <li
                           className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
-                          onClick={() => handleSelectOption5("Female")}
+                          onClick={() => handleSelectOption5("2024")}
                         >
-                          Female
+                          2024
                         </li>
                         <li
                           className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
-                          onClick={() =>
-                            handleSelectOption5("I don't want to mention")
-                          }
+                          onClick={() => handleSelectOption5("2023")}
                         >
-                          I don't want to mention
+                          2023
+                        </li>
+                        <li
+                          className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
+                          onClick={() => handleSelectOption5("2022")}
+                        >
+                          2022
+                        </li>
+                        <li
+                          className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
+                          onClick={() => handleSelectOption5("2021")}
+                        >
+                          2021
+                        </li>
+                        <li
+                          className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
+                          onClick={() => handleSelectOption5("2020")}
+                        >
+                          2020
                         </li>
                       </ul>
                     </div>
@@ -626,16 +643,16 @@ const WriteAReview = ({ student, colleges }) => {
                   {/* Hidden input to integrate with React Hook Form */}
                   <input
                     type="hidden"
-                    {...register("gender", {
+                    {...register("yearOfAdmission", {
                       required: "This field is required",
                     })}
                     value={selectedOption5 || ""}
                   />
 
                   {/* Validation message */}
-                  {errors.gender && (
+                  {errors.yearOfAdmission && (
                     <p className="text-red-500 text-sm">
-                      {errors.gender.message}
+                      {errors.yearOfAdmission.message}
                     </p>
                   )}
                 </div>
@@ -1063,66 +1080,104 @@ const WriteAReview = ({ student, colleges }) => {
 
           {/* Step 7 */}
           {step > 6 && step <= 7 && (
-            <div>
-              <label className="block text-2xl font-semibold text-tertiary">
-                Que. What's the nightlife like in or around your college campus?
-              </label>
+            <>
               <div>
-                <div className="text-tertiary text-md font-semibold mt-6">
-                  Share your favourite hangout spots, late-night activities, and
-                  how students unwind after a day of classes. How do these
-                  experiences shape your overall college life? Please consider
-                  including:
+                <label className="block text-2xl font-semibold text-tertiary">
+                  Que. What's the nightlife like in or around your college
+                  campus?
+                </label>
+                <div>
+                  <div className="text-tertiary text-md font-semibold mt-6">
+                    Share your favourite hangout spots, late-night activities,
+                    and how students unwind after a day of classes. How do these
+                    experiences shape your overall college life? Please consider
+                    including:
+                  </div>
+                  <ul className="list-disc pl-6 text-textClr">
+                    <li>
+                      Mention gym, cafeterias, library, and public area closing
+                      off.
+                    </li>
+                    <li>Mention hostel and campus in timings.</li>
+                    <li>
+                      List famous hangout places inside and outside the
+                      college/university. Also mention is the locality safe to
+                      roam around at night.
+                    </li>
+                  </ul>
                 </div>
-                <ul className="list-disc pl-6 text-textClr">
-                  <li>
-                    Mention gym, cafeterias, library, and public area closing
-                    off.
-                  </li>
-                  <li>Mention hostel and campus in timings.</li>
-                  <li>
-                    List famous hangout places inside and outside the
-                    college/university. Also mention is the locality safe to
-                    roam around at night.
-                  </li>
+                <textarea
+                  {...register(`reason${step}`, {
+                    required: "This field is required",
+                    validate: (value) =>
+                      validateTextarea(
+                        value,
+                        `reason${step}`,
+                        setCharCount,
+                        setError,
+                        clearErrors,
+                        isPastingError,
+                        setIsPastingError
+                      ),
+                  })}
+                  className="border p-2 w-full rounded mt-4 outline-none focus:ring-2 focus:ring-prim text-textClr"
+                  rows="10"
+                  maxLength={2000}
+                  onChange={(e) => {
+                    handleTextareaChange(e, `reason${step}`);
+                  }}
+                  onPaste={(e) => handlePaste(e, `reason${step}`)} // Pass fieldName dynamically
+                />
+                {/* Character Count */}
+                <div className="text-right text-sm text-gray-500 mt-1">
+                  Characters: {charCount[`reason${step}`] || 0}/2000
+                </div>
+
+                {/* Validation Errors */}
+                <ul className="text-red-500 text-sm mt-2">
+                  {typeof errors[`reason${step}`]?.message === "string"
+                    ? errors[`reason${step}`].message
+                        .split("\n")
+                        .map((err, index) => <li key={index}>• {err}</li>)
+                    : null}
                 </ul>
               </div>
-              <textarea
-                {...register(`reason${step}`, {
-                  required: "This field is required",
-                  validate: (value) =>
-                    validateTextarea(
-                      value,
-                      `reason${step}`,
-                      setCharCount,
-                      setError,
-                      clearErrors,
-                      isPastingError,
-                      setIsPastingError
-                    ),
-                })}
-                className="border p-2 w-full rounded mt-4 outline-none focus:ring-2 focus:ring-prim text-textClr"
-                rows="10"
-                maxLength={2000}
-                onChange={(e) => {
-                  handleTextareaChange(e, `reason${step}`);
-                }}
-                onPaste={(e) => handlePaste(e, `reason${step}`)} // Pass fieldName dynamically
-              />
-              {/* Character Count */}
-              <div className="text-right text-sm text-gray-500 mt-1">
-                Characters: {charCount[`reason${step}`] || 0}/2000
-              </div>
 
-              {/* Validation Errors */}
-              <ul className="text-red-500 text-sm mt-2">
-                {typeof errors[`reason${step}`]?.message === "string"
-                  ? errors[`reason${step}`].message
-                      .split("\n")
-                      .map((err, index) => <li key={index}>• {err}</li>)
-                  : null}
-              </ul>
-            </div>
+              {/* Overall Review Section */}
+              <div className="mt-6">
+                <label className="block text-xl font-semibold text-tertiary">
+                  Overall Review
+                </label>
+
+                {/* Rating Input (1-5) */}
+                <div className="mt-4 flex items-center gap-2">
+                  <label className="block text-md text-textClr">
+                    Rating (1-5):
+                  </label>
+                  <input
+                    type="number"
+                    min="1"
+                    max="5"
+                    {...register("studentRating", {
+                      required: "Please provide a rating",
+                    })}
+                    className="border p-2 rounded mt-2 outline-none focus:ring-2 focus:ring-prim text-textClr w-20"
+                  />
+                </div>
+
+                {/* Is Helpful Toggle */}
+                <div className="mt-4 flex items-center">
+                  <label className="block text-md text-textClr mr-2">
+                    Is this review helpful?
+                  </label>
+                  <input
+                    type="checkbox"
+                    {...register("isHelpful")}
+                    className="h-5 w-5 text-prim border-2 rounded"
+                  />
+                </div>
+              </div>
+            </>
           )}
 
           {/* Navigation Buttons */}

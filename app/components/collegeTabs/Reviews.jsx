@@ -1,6 +1,7 @@
 import React from "react";
 import { ThumbsUp, ThumbsDown } from "lucide-react";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
+import StarRating from "../StarRating";
 
 const Reviews = ({ college }) => {
   const reviews = college?.reviews || [];
@@ -36,10 +37,6 @@ const Reviews = ({ college }) => {
 
   const { fullStars, halfStars, emptyStars } = calculateStars(averageRating);
 
-  console.log('Average Rating:', averageRating); // Check if it outputs 5
-
-  console.log('Full Stars:', fullStars, 'Half Stars:', halfStars, 'Empty Stars:', emptyStars);
-
   return (
     <div className="mb-4">
       <div className="text-2xl font-semibold text-tertiary mb-4 border-b pb-2">
@@ -56,17 +53,7 @@ const Reviews = ({ college }) => {
               ({averageRating.toFixed(1)})
             </span>
             <div className="flex items-center text-prim">
-              {Array(fullStars)
-                .fill(0)
-                .map((_, index) => (
-                  <FaStar key={`full-${index}`} />
-                ))}
-              {halfStars > 0 && <FaStarHalfAlt key="half-star" />}
-              {Array(emptyStars)
-                .fill(0)
-                .map((_, index) => (
-                  <FaRegStar key={`empty-${index}`} />
-                ))}
+              <StarRating rating={averageRating} />
             </div>
           </div>
         </div>
@@ -104,22 +91,7 @@ const Reviews = ({ college }) => {
                   {/* Display rating stars */}
                   {/* Render full stars */}
                   <div className="flex items-center text-prim">
-                    {/* Render full stars */}
-                    {Array(fullStars)
-                      .fill(0)
-                      .map((_, index) => (
-                        <FaStar key={`full-${index}`} />
-                      ))}
-
-                    {/* Render half star if applicable */}
-                    {halfStars === 1 && <FaStarHalfAlt key="half-star" />}
-
-                    {/* Render empty stars */}
-                    {Array(emptyStars)
-                      .fill(0)
-                      .map((_, index) => (
-                        <FaRegStar key={`empty-${index}`} />
-                      ))}
+                    <StarRating rating={review.studentRating} />
                   </div>
                 </div>
                 {review.isHelpful && (

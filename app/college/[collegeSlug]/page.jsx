@@ -50,6 +50,7 @@ import Departments from "@/app/components/collegeTabs/Departments";
 import Reviews from "@/app/components/collegeTabs/Reviews";
 import Results from "@/app/components/collegeTabs/Results";
 import NewsArticles from "@/app/components/collegeTabs/NewsArticles";
+import StarRating from "@/app/components/StarRating";
 
 const page = () => {
   const router = useRouter(); // Initialize the router
@@ -268,21 +269,7 @@ const page = () => {
                   {/* Display rating stars */}
                   {/* Render full stars */}
                   <div className="flex items-center text-prim">
-                    {Array(fullStars)
-                      .fill(0)
-                      .map((_, index) => (
-                        <FaStar key={`full-${index}`} />
-                      ))}
-
-                    {/* Render half star */}
-                    {halfStars > 0 && <FaStarHalfAlt key="half-star" />}
-
-                    {/* Render empty stars */}
-                    {Array(emptyStars)
-                      .fill(0)
-                      .map((_, index) => (
-                        <FaRegStar key={`empty-${index}`} />
-                      ))}
+                    <StarRating rating={averageRating} />
                   </div>
                   {college?.reviews?.length > 0 && (
                     <span className="text-sm underline text-textClr">

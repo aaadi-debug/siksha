@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState } from "react";
 import Breadcrumbs2 from "../components/Breadcrumbs2";
 import collegeDataJson from "../data/collegeData.json";
@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import DynamicThemeButton from "../components/DynamicThemeButton";
+import StarRating from "../components/StarRating";
 
 // Page to list all colleges
 export default function CollegesPage() {
@@ -53,9 +54,7 @@ export default function CollegesPage() {
   return (
     <>
       <div className="pt-20 max-sm:pt-16 pb-20">
-        <div
-          className="border-red-500 bg-cover bg-center bg-no-repeat  lg:px-10 px-6 py-10"
-        >
+        <div className="border-red-500 bg-cover bg-center bg-no-repeat  lg:px-10 px-6 py-10">
           <Breadcrumbs2
             breadcrumbs={[{ title: "All Colleges", link: "" }]}
             linkColor="text-tertiary"
@@ -78,7 +77,8 @@ export default function CollegesPage() {
                     validRatings.length
                   : 0;
 
-              const { fullStars, halfStars, emptyStars } = calculateStars(averageRating);
+              const { fullStars, halfStars, emptyStars } =
+                calculateStars(averageRating);
 
               return (
                 <a
@@ -92,7 +92,10 @@ export default function CollegesPage() {
                 >
                   <div className="flex gap-2">
                     <img
-                      src={college?.collegeLogo || "/assets/testimonial_noImage.png"}
+                      src={
+                        college?.collegeLogo ||
+                        "/assets/testimonial_noImage.png"
+                      }
                       alt="College Logo"
                       className="w-20 h-20 rounded bg-white p-2"
                     />
@@ -108,23 +111,12 @@ export default function CollegesPage() {
                         </span>
                         {/* Render rating stars */}
                         <div className="flex items-center text-prim">
-                          {Array(fullStars)
-                            .fill(0)
-                            .map((_, index) => (
-                              <FaStar key={`full-${index}`} />
-                            ))}
-
-                          {halfStars > 0 && <FaStarHalfAlt key="half-star" />}
-
-                          {Array(emptyStars)
-                            .fill(0)
-                            .map((_, index) => (
-                              <FaRegStar key={`empty-${index}`} />
-                            ))}
+                          <StarRating rating={averageRating} />
                         </div>
                         {reviews.length > 0 && (
                           <span className="text-sm underline text-textClr">
-                            ({reviews.length} {reviews.length > 1 ? "Reviews" : "Review"})
+                            ({reviews.length}{" "}
+                            {reviews.length > 1 ? "Reviews" : "Review"})
                           </span>
                         )}
                       </div>

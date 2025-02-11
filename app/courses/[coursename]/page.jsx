@@ -97,6 +97,21 @@ const FilterableCoursePage = () => {
     setVisibleCount((prevCount) => prevCount + 30);
   };
 
+  const createSlug = (id, name, city) => {
+    const cleanedName = encodeURIComponent(
+      name
+        .replace(/[\[\]]/g, "") // Remove square brackets
+        .replace(/[-]+/g, "-") // Replace multiple hyphens with a single hyphen
+        .replace(/\s+/g, "-") // Replace spaces with hyphens
+        .toLowerCase()
+    );
+
+    const formattedCity = encodeURIComponent(
+      city.toLowerCase().replace(/\s+/g, "-")
+    );
+    return `${id}-${cleanedName}-${formattedCity}`;
+  };
+
   // Default filters based on URL
   const defaultDepartment = collegeData.data
     .flatMap((college) => college.departments)
@@ -1563,7 +1578,12 @@ const FilterableCoursePage = () => {
                         <td className="border px-4 py-2 align-top">
                           <div className="flex gap-2">
                             <a
-                              href={`/collegepage/${college.collegeName}`}
+                              // href={`/collegepage/${college.collegeName}`}
+                              href={`/college/${createSlug(
+                                college.collegeId,
+                                college.collegeName,
+                                college.collegeAddress.city
+                              )}`}
                               className="lg:w-auto w-1/3"
                             >
                               <img
@@ -1574,7 +1594,11 @@ const FilterableCoursePage = () => {
                             </a>
                             <div>
                               <a
-                                href={`/collegepage/${college.collegeName}`}
+                                href={`/college/${createSlug(
+                                  college.collegeId,
+                                  college.collegeName,
+                                  college.collegeAddress.city
+                                )}`}
                                 className="text-tertiary hover:underline text-lg font-semibold"
                               >
                                 {college.collegeName}
@@ -1646,7 +1670,11 @@ const FilterableCoursePage = () => {
                         </td>
                         <td className="border px-4 py-2 align-top">
                           <a
-                            href={`/collegepage/${college.collegeName}`}
+                            href={`/college/${createSlug(
+                                college.collegeId,
+                                college.collegeName,
+                                college.collegeAddress.city
+                              )}?tab=courses-and-fees`}
                             className="text-tertiary hover:underline"
                           >
                             (

@@ -15,6 +15,17 @@ import LoanData from "../data/loans.json";
 
 const Page = () => {
   // console.log("Loans", LoanData)
+  const [selectedCategory, setSelectedCategory] = useState("All Banks");
+
+  const categories = [
+    "All Banks",
+    ...new Set(LoanData.map((bank) => bank.bankCategory)),
+  ];
+
+  const filteredBanks =
+    selectedCategory === "All Banks"
+      ? LoanData
+      : LoanData.filter((bank) => bank.bankCategory === selectedCategory);
 
   return (
     <>
@@ -170,13 +181,15 @@ const Page = () => {
                 {LoanData.length > 0 ? (
                   LoanData.map((bank, index) => (
                     <SwiperSlide key={index} className="rounded-lg">
-                      <a href={`/education-loan/${bank?.bankurl}`} className="p-4 text-sm rounded-lg hover:bg-white transition duration-300 hover:shadow-md border border-red-500">
+                      <a
+                        href={`/education-loan/${bank?.bankurl}`}
+                        className="block hover:shadow-lg hover:border transition duration-300"
+                      >
                         <div className=" flex justify-center items-center">
                           <img
                             className="h[auto] w-full object-cover rounded-lg "
                             src={
-                              bank.bankLogo ||
-                              "/assets/testimonial_noImage.png"
+                              bank.bankLogo || "/assets/testimonial_noImage.png"
                             }
                             alt=""
                           />
@@ -194,6 +207,38 @@ const Page = () => {
           </div>
 
           {/* Section 3 */}
+          <div className="w-full p-4">
+            <div className="flex space-x-4 border-b pb-2 bg-prim">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  className={`px-4 py-2 rounded-t-lg font-medium text-sm transition-all duration-300 ${
+                    selectedCategory === category
+                      ? "border-b-2 border-blue-500 text-blue-600"
+                      : "text-gray-500 hover:text-blue-500"
+                  }`}
+                  onClick={() => setSelectedCategory(category)}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
+              {filteredBanks.map((bank) => (
+                <div
+                  key={bank.bankId}
+                  className="p-4 border rounded-lg flex items-center space-x-4 shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <img
+                    src={bank.bankLogo}
+                    alt={bank.bankName}
+                    className="w-12 h-12 object-contain"
+                  />
+                  <span className="font-medium">{bank.bankName}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </>

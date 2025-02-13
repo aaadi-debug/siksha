@@ -1,0 +1,331 @@
+[
+  {
+    "bankId": 1,
+    "bankName": "Sbi Bank",
+    "bankurl": "sbi",
+    "bankLogo": "https://image-static.collegedunia.com/public/college_data/images/bank-horizontal/SBI-logo_4.png",
+    "bankCategory": "Government Banks",
+    "maxTime": "15",
+    "loanType": "Student",
+    "eligibility": "<ul><li>Indian National. Student must be a citizen of India or a holder of Indian passport.</li><li>10+2 qualified. One must have cleared 10+2 from a recognized board of institutions</li></ul>",
+    "loanDetailsTable": [
+      {
+        "detail": "Loan Limit",
+        "detailData": ""
+      },
+      {
+        "detail": "Margin",
+        "detailData": ""
+      },
+      {
+        "detail": "Processing Fee",
+        "detailData": ""
+      },
+      {
+        "detail": "Loan Security",
+        "detailData": ""
+      },
+      {
+        "detail": "Loan Repayment",
+        "detailData": ""
+      }
+    ],
+    "expensesCovered": [
+      "Fee payable to college/ school/ hostel",
+      "Examination/ Library/ Laboratory fee"
+    ],
+    "coursesCovered": [
+      "Graduate/ Post Graduate degree/ diploma&nbsp;conducted by recognized colleges/ universities recognized by UGC/ Govt. / AICTE/ AIBMS/ ICMR etc.",
+      "Courses like ICWA, CA, CFA etc."
+    ],
+    "documentsRequired": [
+      "Loan Application as per the bank format",
+      "Self-Attested copies of age proof, address proof, admission proof",
+      "Bank account statement of the applicant.",
+      "Course prospectus mentioning charges/fee pertaining to admission, examinations, hostel etc.",
+      "Proof of having cleared last qualifying examination"
+    ],
+    "interestSubsidySchemes": [
+      {
+        "scheme": "Bank Name Skill Loan Scheme",
+        "schemeData": "The bank offers Skill Loan Scheme for students who aspire to gain knowledge and specialized training in one specific field."
+      },
+      {
+        "scheme": "CSIS (Central Scheme to provide Interest Subsidy)",
+        "schemeData": "Central Government of India offered the scheme for economically weaker section for subsidy on education loan interest."
+      }
+    ],
+    "loanFaqs": [
+      {
+        "question": "What is the duration of the course?",
+        "answer": "The course duration is 3 years."
+      },
+      {
+        "question": "What is the duration of the course?",
+        "answer": "The course duration is 3 years."
+      },
+      {
+        "question": "What is the duration of the course?",
+        "answer": "The course duration is 3 years."
+      }
+    ],
+    "interestRates": [
+      "Maximum loan amount offered is INR 10 and 20 Lacs for India and abroad respectively.",
+      "The loan is extended with no margin on loan amount upto INR 4 Lacs",
+      "The repayment period for a SBI Student Loan Scheme is 15 years"
+    ],
+    "applicableROI": [
+      "Up to INR 4 Lacs: 13.35%",
+      "Between INR 4 to 7.50 Lacs: 13.60%",
+      "Above INR 7.50 Lacs: 11.60%"
+    ],
+    "maxLoanWithCollateral": ["For India: 10 Lacs", "For Abroad: 30 Lacs"],
+    "maxLoanWithoutCollateral": ["For India: 10 Lacs", "For Abroad: 30 Lacs"],
+    "processingFee": ["Up to INR 4 Lacs: Nil", "Above INR 4 Lacs: INR 5000"],
+    "repaymentPeriod": [
+      "up to INR 7.5 lacs: 10 years",
+      "Above INR 7.50 Lacs: 12 years"
+    ],
+    "loanForTopInstuitions": "Yes, SBI Scholar Loan Scheme",
+    "margin": ["For loan above INR 4 Lacs", "In India: 5%"],
+    "ageLimit": "Above 18 years of age",
+    "loanSecurity": [
+      "Upto INR 4 Lacs: Parents considered as co-borrower Between INR 4 to 7.50 Lacs: Parent as well as third party guarantee is required",
+      "Above INR 7.50 Lacs: Tangible security along with parents as co borrower"
+    ],
+    "concessionForSCST": "",
+    "processingTime": "20 days",
+    "prePaymentCharges": "",
+    "panelCharges": "",
+    "insuranceCover": "",
+    "travelExpenses": "",
+    "bankWithTransferAllowance": "",
+    "topUpAvailability": "",
+    "taxBenifits": "",
+    "benifits": ""
+  },
+  {
+    "bankId": 2,
+    "bankName": "Punjab National Bank",
+    "bankurl": "pnb",
+    "bankLogo": "https://image-static.collegedunia.com/public/college_data/images/bank-horizontal/PNB-logo_3.png",
+    "bankCategory": "Government Banks",
+    "maxTime": "15",
+    "loanType": "Saraswat",
+    "eligibility": "<ul><li>Indian National. Student must be a citizen of India or a holder of Indian passport.</li><li>10+2 qualified. One must have cleared 10+2 from a recognized board of institutions</li></ul>",
+    "loanDetailsTable": [
+      {
+        "detail": "Loan Limit",
+        "detailData": ""
+      },
+      {
+        "detail": "Margin",
+        "detailData": ""
+      },
+      {
+        "detail": "Processing Fee",
+        "detailData": ""
+      },
+      {
+        "detail": "Loan Security",
+        "detailData": ""
+      },
+      {
+        "detail": "Loan Repayment",
+        "detailData": ""
+      }
+    ]
+  },
+  {
+    "bankId": 3,
+    "bankName": "Kotak Mahindra Bank",
+    "bankurl": "kotak",
+    "bankLogo": "https://image-static.collegedunia.com/public/college_data/images/bank-horizontal/Kotak-logo_12.png",
+    "bankCategory": "Private Banks",
+    "maxTime": "5-7",
+    "loanType": "Kotak Mahindra Education",
+    "eligibility": "<ul><li>Indian National. Student must be a citizen of India or a holder of Indian passport.</li><li>10+2 qualified. One must have cleared 10+2 from a recognized board of institutions</li></ul>",
+    "loanDetailsTable": [
+      {
+        "detail": "Loan Limit",
+        "detailData": ""
+      },
+      {
+        "detail": "Margin",
+        "detailData": ""
+      },
+      {
+        "detail": "Processing Fee",
+        "detailData": ""
+      },
+      {
+        "detail": "Loan Security",
+        "detailData": ""
+      },
+      {
+        "detail": "Loan Repayment",
+        "detailData": ""
+      }
+    ]
+  },
+  {
+    "bankId": 4,
+    "bankName": "Axis Bank",
+    "bankurl": "axis",
+    "bankLogo": "https://image-static.collegedunia.com/public/college_data/images/bank-horizontal/AXIS-logo_1.png",
+    "bankCategory": "Private Banks",
+    "maxTime": "7",
+    "loanType": "Axis Education",
+    "eligibility": "<ul><li>Indian National. Student must be a citizen of India or a holder of Indian passport.</li><li>10+2 qualified. One must have cleared 10+2 from a recognized board of institutions</li></ul>",
+    "loanDetailsTable": [
+      {
+        "detail": "Loan Limit",
+        "detailData": ""
+      },
+      {
+        "detail": "Margin",
+        "detailData": ""
+      },
+      {
+        "detail": "Processing Fee",
+        "detailData": ""
+      },
+      {
+        "detail": "Loan Security",
+        "detailData": ""
+      },
+      {
+        "detail": "Loan Repayment",
+        "detailData": ""
+      }
+    ]
+  },
+  {
+    "bankId": 5,
+    "bankName": "Saraswat Bank",
+    "bankurl": "saraswat",
+    "bankLogo": "https://image-static.collegedunia.com/public/college_data/images/bank-horizontal/saraswatbank-logo_14.png",
+    "bankCategory": "Cooperative Banks",
+    "maxTime": "12",
+    "loanType": "Saraswat Education",
+    "eligibility": "<ul><li>Indian National. Student must be a citizen of India or a holder of Indian passport.</li><li>10+2 qualified. One must have cleared 10+2 from a recognized board of institutions</li></ul>",
+    "loanDetailsTable": [
+      {
+        "detail": "Loan Limit",
+        "detailData": ""
+      },
+      {
+        "detail": "Margin",
+        "detailData": ""
+      },
+      {
+        "detail": "Processing Fee",
+        "detailData": ""
+      },
+      {
+        "detail": "Loan Security",
+        "detailData": ""
+      },
+      {
+        "detail": "Loan Repayment",
+        "detailData": ""
+      }
+    ]
+  },
+  {
+    "bankId": 6,
+    "bankName": "DNS Bank",
+    "bankurl": "dns",
+    "bankLogo": "https://image-static.collegedunia.com/public/college_data/images/bank-horizontal/saraswatbank-logo_14.png",
+    "bankCategory": "Cooperative Banks",
+    "maxTime": "7",
+    "loanType": "DNS Education",
+    "eligibility": "<ul><li>Indian National. Student must be a citizen of India or a holder of Indian passport.</li><li>10+2 qualified. One must have cleared 10+2 from a recognized board of institutions</li></ul>",
+    "loanDetailsTable": [
+      {
+        "detail": "Loan Limit",
+        "detailData": ""
+      },
+      {
+        "detail": "Margin",
+        "detailData": ""
+      },
+      {
+        "detail": "Processing Fee",
+        "detailData": ""
+      },
+      {
+        "detail": "Loan Security",
+        "detailData": ""
+      },
+      {
+        "detail": "Loan Repayment",
+        "detailData": ""
+      }
+    ]
+  },
+  {
+    "bankId": 7,
+    "bankName": "Prodigy Finance",
+    "bankurl": "prodigy",
+    "bankLogo": "https://image-static.collegedunia.com/public/college_data/images/bank-horizontal/images%20(1).png",
+    "bankCategory": "NBFCs",
+    "maxTime": "7, 10, 15, 20",
+    "loanType": "Prodigy Finance Education",
+    "eligibility": "<ul><li>Indian National. Student must be a citizen of India or a holder of Indian passport.</li><li>10+2 qualified. One must have cleared 10+2 from a recognized board of institutions</li></ul>",
+    "loanDetailsTable": [
+      {
+        "detail": "Loan Limit",
+        "detailData": ""
+      },
+      {
+        "detail": "Margin",
+        "detailData": ""
+      },
+      {
+        "detail": "Processing Fee",
+        "detailData": ""
+      },
+      {
+        "detail": "Loan Security",
+        "detailData": ""
+      },
+      {
+        "detail": "Loan Repayment",
+        "detailData": ""
+      }
+    ]
+  },
+  {
+    "bankId": 8,
+    "bankName": "InCred",
+    "bankurl": "incred",
+    "bankLogo": "https://image-static.collegedunia.com/public/college_data/images/bank-horizontal/images%20(1).png",
+    "bankCategory": "NBFCs",
+    "maxTime": "10, 15",
+    "loanType": "InCred Education",
+    "eligibility": "<ul><li>Indian National. Student must be a citizen of India or a holder of Indian passport.</li><li>10+2 qualified. One must have cleared 10+2 from a recognized board of institutions</li></ul>",
+    "loanDetailsTable": [
+      {
+        "detail": "Loan Limit",
+        "detailData": ""
+      },
+      {
+        "detail": "Margin",
+        "detailData": ""
+      },
+      {
+        "detail": "Processing Fee",
+        "detailData": ""
+      },
+      {
+        "detail": "Loan Security",
+        "detailData": ""
+      },
+      {
+        "detail": "Loan Repayment",
+        "detailData": ""
+      }
+    ]
+  }
+]

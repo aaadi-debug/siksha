@@ -208,11 +208,11 @@ const Page = () => {
 
           {/* Section 3 */}
           <div className="w-full p-4">
-            <div className="flex space-x-4 border-b pb-2 bg-prim">
+            <div className="space-x-4 border-b pb-2 bg-prim grid grid-cols-5">
               {categories.map((category) => (
                 <button
                   key={category}
-                  className={`px-4 py-2 rounded-t-lg font-medium text-sm transition-all duration-300 ${
+                  className={`px-4 py-2 rounded-t-lg font-medium text-2xl transition-all duration-300 ${
                     selectedCategory === category
                       ? "border-b-2 border-blue-500 text-blue-600"
                       : "text-gray-500 hover:text-blue-500"

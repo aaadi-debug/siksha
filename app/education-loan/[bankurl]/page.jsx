@@ -14,6 +14,7 @@ import "swiper/css/navigation";
 
 import DynamicThemeButton from "../../components/DynamicThemeButton";
 import { motion } from "framer-motion";
+import EducationLoanApply from "@/app/components/EducationLoanApply";
 
 const Page = () => {
   // console.log("Loans", LoanData)
@@ -21,6 +22,25 @@ const Page = () => {
 
   const bank = LoanData.find((b) => b.bankurl === bankurl); // Match with bank data
   console.log("Bank Data", bank);
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Function to open the modal
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  // Function to close the modal
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  // Close modal when clicking outside the modal area
+  const handleOutsideClick = (e) => {
+    if (e.target.id === "modal-background") {
+      closeModal();
+    }
+  };
 
   return (
     <>
@@ -63,42 +83,9 @@ const Page = () => {
                   colleges in India or Abroad.
                 </p>
 
-                <div className="flex gap-6  items-center py-2 max-sm:flex-col max-sm:items-start max-sm:space-x-0 max-sm:space-y-4 2xl:w-[70%] xl:w-[80%] lg:w-[100%]">
-                  <a
-                    href=""
-                    className="flex flex-col justify-center items-center text-center w-[50%] max-sm:w-full bg-white rounded shadow-md p-8"
-                  >
-                    <img
-                      src="/assets/icons/emi.png"
-                      alt="Apply Now"
-                      className="w-20"
-                    />
-                    <div className="text-xl font-semibold mt-4 text-tertiary">
-                      Calculate EMI's{" "}
-                    </div>
-                    <p className="text-textClr mt-2">
-                      Wondering how many instalments will you have to pay for
-                      the repayment of your education loan? Check Now!
-                    </p>
-                  </a>
-                  <a
-                    href=""
-                    className="flex flex-col justify-center items-center text-center w-[50%] max-sm:w-full bg-white rounded shadow-md p-8"
-                  >
-                    <img
-                      src="/assets/icons/apply.png"
-                      alt="Apply Now"
-                      className="w-20"
-                    />
-                    <div className="text-xl font-semibold mt-4 text-tertiary">
-                      Calculate EMI's{" "}
-                    </div>
-                    <p className="text-textClr mt-2">
-                      Wondering how many instalments will you have to pay for
-                      the repayment of your education loan? Check Now!
-                    </p>
-                  </a>
-                </div>
+                <DynamicThemeButton onClick={openModal}>
+                  Apply Now
+                </DynamicThemeButton>
               </div>
               <div className="relative lg:block hidden">
                 <img
@@ -127,7 +114,39 @@ const Page = () => {
             </div>
           </div>
         </div>
+
+        <div className="py-20 lg:px-10 px-6 bg-prim-light">
+          <div className="text-4xl font-semibold text-center text-tertiary">
+            SBI Education Loan Rate of Interest
+          </div>
+          <div className="grid gap-4 grid-cols-2 max-sm:grid-cols-1 mt-6">
+            <div className="text-2xl font-semibold text-tertiary bg-white p-4">
+              SBI offers distinctive education loan variants for studies in
+              India and Abroad.
+            </div>
+            <ul>
+              
+            </ul>
+          </div>
+        </div>
       </div>
+
+      {/* Modal Background */}
+      {isOpen && (
+        <div
+          id="modal-background"
+          className="fixed inset-0 bg-gray-600 bg-opacity-50 z-50 flex justify-center items-center"
+          onClick={handleOutsideClick}
+        >
+          {/* Modal Content */}
+          <div
+            className="bg-white p-6 rounded-lg shadow-lg w-[40%] h-[60%] max-sm:w-[80%] max-sm:h-[80%] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <EducationLoanApply bank={LoanData} />
+          </div>
+        </div>
+      )}
     </>
   );
 };

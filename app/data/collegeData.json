@@ -3,6 +3,7 @@
     {
       "collegeId": 1,
       "collegeName": "Sharda University",
+      "collegeImages": ["https://www.searchurcollege.com/exam/admin/search/gallery/college/col_40.jpg"],
       "collegeLogo": "https://upload.wikimedia.org/wikipedia/en/1/16/Sharda_University_logo_no_wordmark.png",
       "collegeAddress": {
         "city": "Greater Noida",
@@ -1077,6 +1078,7 @@
     {
       "collegeId": 2,
       "collegeName": "Amity University",
+      "collegeImages": ["https://mohali.org.in/wp-content/uploads/2023/12/1-1-jpg.webp"],
       "collegeLogo": "https://upload.wikimedia.org/wikipedia/en/f/ff/Amity_University_logo.png",
       "collegeAddress": {
         "city": "Noida",
@@ -1564,6 +1566,7 @@
     {
       "collegeId": 3,
       "collegeName": "IIT Kharagpur",
+      "collegeImages": ["https://analyticsindiamag.com/wp-content/uploads/2019/04/IIT-KGP.png"],
       "collegeLogo": "https://image-static.collegedunia.com/public/college_data/images/logos/1489041138e2.jpg?h=71.17&w=71.17&mode=stretch",
       "collegeAddress": {
         "city": "Kharagpur",

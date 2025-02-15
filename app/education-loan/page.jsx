@@ -12,6 +12,7 @@ import DynamicThemeButton from "../components/DynamicThemeButton";
 import { motion } from "framer-motion";
 import Services from "../components/Services";
 import LoanData from "../data/loans.json";
+import EducationLoanApply from "../components/EducationLoanApply";
 
 const Page = () => {
   // console.log("Loans", LoanData)
@@ -26,6 +27,25 @@ const Page = () => {
     selectedCategory === "All Banks"
       ? LoanData
       : LoanData.filter((bank) => bank.bankCategory === selectedCategory);
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Function to open the modal
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  // Function to close the modal
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  // Close modal when clicking outside the modal area
+  const handleOutsideClick = (e) => {
+    if (e.target.id === "modal-background") {
+      closeModal();
+    }
+  };
 
   return (
     <>
@@ -87,7 +107,7 @@ const Page = () => {
                     </p>
                   </a>
                   <a
-                    href=""
+                    href="#banks"
                     className="flex flex-col justify-center items-center text-center w-[50%] max-sm:w-full bg-white rounded shadow-md p-8"
                   >
                     <img
@@ -96,7 +116,7 @@ const Page = () => {
                       className="w-20"
                     />
                     <div className="text-xl font-semibold mt-4 text-tertiary">
-                      Calculate EMI's{" "}
+                     Apply Now{" "}
                     </div>
                     <p className="text-textClr mt-2">
                       Wondering how many instalments will you have to pay for
@@ -207,15 +227,15 @@ const Page = () => {
           </div>
 
           {/* Section 3 */}
-          <div className="w-full p-4">
-            <div className="space-x-4 border-b pb-2 bg-prim grid grid-cols-5">
+          <div className="w-full p-4" id="banks">
+            <div className="border-b border-2 border-prim grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2">
               {categories.map((category) => (
                 <button
                   key={category}
-                  className={`px-4 py-2 rounded-t-lg font-medium text-2xl transition-all duration-300 ${
+                  className={`px-4 py-4 font-medium lg:text-2xl transition-all duration-300 text-xl max-sm:text-base ${
                     selectedCategory === category
-                      ? "border-b-2 border-blue-500 text-blue-600"
-                      : "text-gray-500 hover:text-blue-500"
+                      ? " bg-prim text-white"
+                      : " border-2 border-prim"
                   }`}
                   onClick={() => setSelectedCategory(category)}
                 >
@@ -223,24 +243,104 @@ const Page = () => {
                 </button>
               ))}
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
-              {filteredBanks.map((bank) => (
-                <div
-                  key={bank.bankId}
-                  className="p-4 border rounded-lg flex items-center space-x-4 shadow-sm hover:shadow-md transition-shadow"
-                >
-                  <img
-                    src={bank.bankLogo}
-                    alt={bank.bankName}
-                    className="w-12 h-12 object-contain"
-                  />
-                  <span className="font-medium">{bank.bankName}</span>
-                </div>
-              ))}
+            <div className=" mt-4">
+              <div className="overflow-x-auto border-gray-300 rounded-lg mt-2">
+                <table className="w-full border-collapse border border-prim-light rounded-lg overflow-hidden">
+                  {/* Table Header */}
+                  <thead className="rounded">
+                    <tr className="bg-prim-light rounded">
+                      <th className="border border-prim-light rounded px-4 py-4 text-center text-lg  w-[15%]">
+                        Bank Name
+                      </th>
+                      <th className="border border-prim-light rounded px-4 py-4 text-center text-lg  w-[25%]">
+                        Interest Rate
+                      </th>
+                      <th className="border border-prim-light rounded px-4 py-4 text-center text-lg  w-[15%]">
+                        Max Time
+                      </th>
+                      <th className="border border-prim-light rounded px-4 py-4 text-center text-lg  w-[15%]">
+                        Loan Type
+                      </th>
+                      <th className="border border-prim-light rounded px-4 py-4 text-center text-lg  w-[15%]">
+                        Scheme
+                      </th>
+                      <th className="border border-prim-light rounded px-4 py-4 text-center text-lg w-[15%]">
+                        Apply Now
+                      </th>
+                    </tr>
+                  </thead>
+
+                  {/* Table Body */}
+                  <tbody>
+                    {filteredBanks.map((bank, index) => (
+                      <>
+                        <tr key={index} className="border">
+                          <td className="py-4 px-4 flex justify-center flex-col text-center">
+                            <img
+                              src={bank.bankLogo}
+                              alt={bank.bankName}
+                              className="w-full"
+                            />
+                            <a
+                              href={`/education-loan/${bank.bankurl}`}
+                              className="text-lg text-prim border-2 border-prim mx-auto px-4 hover:bg-prim hover:text-white transition duration-300"
+                            >
+                              Details
+                            </a>
+                          </td>
+                          <td className="py-4 px-4 border">
+                            {bank?.interestRates?.length > 0 ? (
+                              bank?.interestRates?.map((data, index) => (
+                                <div key={index}>{data}</div>
+                              ))
+                            ) : (
+                              <div>No interest rates available.</div>
+                            )}
+                          </td>
+                          <td className="py-4 px-4 text-center border">
+                            {bank?.maxTime || "M/A"} Years
+                          </td>
+                          <td className="py-4 px-4 text-center border">
+                            {bank.loanType}
+                          </td>
+                          <td className="py-4 px-4 border">
+                            {bank?.interestSubsidySchemes?.map(
+                              (data, index) => (
+                                <div key={index}>{data.scheme}</div>
+                              )
+                            )}
+                          </td>
+                          <td className="py-4 px-4 flex justify-center">
+                            <DynamicThemeButton onClick={openModal}>
+                              Apply Now
+                            </DynamicThemeButton>
+                          </td>
+                        </tr>
+                      </>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      {/* Modal Background */}
+      {isOpen && (
+        <div
+          id="modal-background"
+          className="fixed inset-0 bg-gray-600 bg-opacity-50 z-50 flex justify-center items-center"
+          onClick={handleOutsideClick}
+        >
+          {/* Modal Content */}
+          <div
+            className="bg-white p-6 rounded-lg shadow-lg w-[40%] h-[60%] max-sm:w-[80%] max-sm:h-[80%] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <EducationLoanApply bank={LoanData} />
+          </div>
+        </div>
+      )}
     </>
   );
 };

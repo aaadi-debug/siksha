@@ -1,297 +1,167 @@
 import { React, useEffect } from "react";
 
+// importing swiper
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation, A11y } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+
 // importing aos
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-
-import { Autoplay, Navigation, A11y } from 'swiper/modules';
-import 'swiper/css';
-
-import 'swiper/css/navigation';
-import TopCollectionCard from './TopCollectionCard';
-
-
-
+import collegeDataJSON from "../data/collegeData.json";
 
 const TopCollection = () => {
-    useEffect(() => {
-        AOS.init();
-    }, [])
+  const colleges = collegeDataJSON.data;
 
-    const data1 = [
-        {
-            id: 1,
-            college_name: "University of Allahabad",
-            noofcoolleges: "323",
-            image: '/assets/images/uni/alahabd-uni.png'
-        },
-        {
-            id: 2,
-            college_name: "Birla Institute of Technology and Science (BITS)",
-            noofcoolleges: "323",
-            image: '/assets/images/uni/bits.png'
-        },
-        {
-            id: 3,
-            college_name: "Jawaharlal Nehru University (JNU), Delhi",
-            noofcoolleges: "323",
-            image: '/assets/images/uni/jnu.png'
-        },
-        {
-            id: 4,
-            college_name: "Manipal Academy of Higher Education",
-            noofcoolleges: "323",
-            image: '/assets/images/uni/Untitled design (45).png'
-        },
-        {
-            id: 5,
-            college_name: "Banaras Hindu University (BHU)",
-            noofcoolleges: "323",
-            image: '/assets/images/uni/bhu.png'
-        },
-        {
-            id: 6,
-            college_name: "Vellore Institute of Technology (VIT)",
-            noofcoolleges: "323",
-            image: '/assets/images/uni/vit.png'
-        },
-        {
-            id: 7,
-            college_name: "Tata Institute of Fundamental Research (TIFR)",
-            noofcoolleges: "323",
-            image: '/assets/images/uni/tifr.png'
-        },
-        {
-            id: 8,
-            college_name: "Amity University, Noida",
-            noofcoolleges: "323",
-            image: '/assets/images/uni/amity.png'
-        },
-        {
-            id: 9,
-            college_name: "Jadavpur University, Kolkata",
-            noofcoolleges: "323",
-            image: '/assets/images/uni/jdvpr.png'
-        },
-        {
-            id: 10,
-            college_name: "SRM Institute of Science and Technology, Chennai",
-            noofcoolleges: "323",
-            image: '/assets/images/uni/srm.png'
-        },
-        {
-            id: 11,
-            college_name: "Anna University, Chennai",
-            noofcoolleges: "323",
-            image: '/assets/images/uni/au.png'
-        },
-        {
-            id: 12,
-            college_name: "Symbiosis International University, Pune",
-            noofcoolleges: "323",
-            image: '/assets/images/uni/symbosis.png'
-        },
-        {
-            id: 13,
-            college_name: "University of Mumbai",
-            noofcoolleges: "323",
-            image: '/assets/images/uni/mu.png'
-        },
-        {
-            id: 14,
-            college_name: "OP Jindal Global University, Sonipat",
-            noofcoolleges: "323",
-            image: '/assets/images/uni/op.png'
-        },
-        {
-            id: 15,
-            college_name: "Panjab University, Chandigarh",
-            noofcoolleges: "323",
-            image: '/assets/images/uni/pu.png'
-        },
-    ]
+  // Split data into two parts
+  const first20Colleges = colleges.slice(0, 20);
+  const next20Colleges = colleges.slice(20, 40);
 
-    const data2 = [
-        {
-            id: 16,
-            college_name: "Kalinga Institute of Industrial Technology (KIIT)",
-            noofcoolleges: "323",
-            image: '/assets/images/uni/kiit.png'
-        },
-        {
-            id: 17,
-            college_name: "University of Calcutta",
-            noofcoolleges: "323",
-            image: '/assets/images/uni/cu.png'
-        },
-        {
-            id: 18,
-            college_name: "Ashoka University, Sonipat",
-            noofcoolleges: "323",
-            image: '/assets/images/uni/ask-u.png'
-        },
-        {
-            id: 19,
-            college_name: "Savitribai Phule Pune University",
-            noofcoolleges: "323",
-            image: '/assets/images/uni/pukhhrr-.png'
-        },
-        {
-            id: 20,
-            college_name: "Shiv Nadar University, Greater Noida",
-            noofcoolleges: "323",
-            image: '/assets/images/uni/shiv-nadar.png'
-        },
-        {
-            id: 21,
-            college_name: "University of Hyderabad",
-            noofcoolleges: "323",
-            image: '/assets/images/uni/uhyd.png'
-        },
-        {
-            id: 22,
-            college_name: "Christ University, Bangalore",
-            noofcoolleges: "323",
-            image: '/assets/images/uni/christ-u.png'
-        },
-        {
-            id: 23,
-            college_name: "Aligarh Muslim University",
-            noofcoolleges: "323",
-            image: '/assets/images/uni/muslim-uni.png'
-        },
-        {
-            id: 24,
-            college_name: "Thapar Institute of Engineering and Technology",
-            noofcoolleges: "323",
-            image: '/assets/images/uni/thapr.png'
-        },
-        {
-            id: 25,
-            college_name: "Jamia Millia Islamia, Delhi",
-            noofcoolleges: "323",
-            image: '/assets/images/uni/jamia.png'
-        },
-        {
-            id: 26,
-            college_name: "Lovely Professional University, Jalandhar",
-            noofcoolleges: "323",
-            image: '/assets/images/uni/lpu.png'
-        },
-        {
-            id: 27,
-            college_name: "Institute of Chemical Technology, Mumbai",
-            noofcoolleges: "323",
-            image: '/assets/images/uni/ict.png'
-        },
-        {
-            id: 28,
-            college_name: "NMIMS University, Mumbai",
-            noofcoolleges: "323",
-            image: '/assets/images/uni/nmmiss.png'
-        },
-        {
-            id: 29,
-            college_name: "University of Delhi",
-            noofcoolleges: "323",
-            image: '/assets/images/uni/du.png'
-        },
-        {
-            id: 30,
-            college_name: "SASTRA University, Thanjavur",
-            noofcoolleges: "323",
-            image: '/assets/images/uni/sasta.png'
-        },
-    ]
+  const createSlug = (id, name, city) => {
+    const cleanedName = encodeURIComponent(
+      name
+        .replace(/[\[\]]/g, "") // Remove square brackets
+        .replace(/[-]+/g, "-") // Replace multiple hyphens with a single hyphen
+        .replace(/\s+/g, "-") // Replace spaces with hyphens
+        .toLowerCase()
+    );
 
-    return (
-        <section className="topcollection pb-5">
-            <div className="topcollection_wrapper topcollection_outanimate container lg:px-28">
-                <h2 data-aos="fade-up" className='mb-4 text-3xl text-black font-semibold'>Top Collection</h2>
-                <Swiper
-                    spaceBetween={10}
-                    slidesPerView={1.5}
-                    loop={true}
-                    autoplay={{
-                        delay: 4500,
-                        disableOnInteraction: false,
-                        pauseOnMouseEnter: true
-                    }}
-                    // navigation
-                    pagination={{ clickable: true }}
-                    scrollbar={{ draggable: true }}
-                    breakpoints={{
-                        500: {
-                            slidesPerView: 2.4,
-                        },
-                        780: {
-                            slidesPerView: 3.8,
-                        },
-                        1300: {
-                            slidesPerView: 4.6,
-                        },
-                    }}
-                    // navigation={true}
-                    //  modules={[Autoplay, Pagination, Navigation]}
-                    modules={[Autoplay, Navigation, A11y]}
-                    className="swiper-wrapper mx-auto mb-4"
+    const formattedCity = encodeURIComponent(
+      city.toLowerCase().replace(/\s+/g, "-")
+    );
+    return `${id}-${cleanedName}-${formattedCity}`;
+  };
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
+  return (
+    <section className="pb-5">
+      <div className="container lg:px-28">
+        <h2
+          data-aos="fade-up"
+          className="mb-4 text-3xl text-black font-semibold"
+        >
+          Top Collection
+        </h2>
+
+        {/* First Swiper (First 20 Colleges) */}
+        <Swiper
+          spaceBetween={10}
+          slidesPerView={1.5}
+          loop={true}
+          autoplay={{
+            delay: 4500,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
+          pagination={{ clickable: true }}
+          scrollbar={{ draggable: true }}
+          breakpoints={{
+            320: { slidesPerView: 1.4 },
+            500: { slidesPerView: 2 },
+            768: { slidesPerView: 2.8 },
+            1024: { slidesPerView: 3.4 },
+            1300: { slidesPerView: 4.2 },
+            1500: { slidesPerView: 4.4 },
+          }}
+          modules={[Autoplay, Navigation, A11y]}
+          className="swiper-wrapper mx-auto mb-4"
+        >
+          {first20Colleges.length > 0 ? (
+            first20Colleges.map((college, index) => (
+              <SwiperSlide key={index}>
+                <a
+                  href={`/college/${createSlug(
+                    college.collegeId,
+                    college.collegeName,
+                    college.collegeAddress.city
+                  )}`}
+                  className="block border relative bg-white rounded-lg overflow-hidden h-[300px]"
                 >
-                    {data1.map((value, index) => (
-                        <SwiperSlide key={index}>
-                            <TopCollectionCard
-                                college_name={value.college_name}
-                                noofcoolleges={value.noofcoolleges}
-                                image={value.image}
-                            />
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
+                  <img
+                    src={
+                      college.collegeImages?.[0] ||
+                      "/assets/testimonial_noImage.png"
+                    }
+                    alt={college.collegeName}
+                    className="scale-100 hover:scale-125 transition duration-700 object-cover h-full"
+                  />
+                  <div className="absolute bottom-0 left-0 w-full bg-second/80 py-4 px-3">
+                    <div className="twoLinerTitle2 font-medium text-white hover:text-gray-400 text-lg">
+                      {college.collegeName}
+                    </div>
+                  </div>
+                </a>
+              </SwiperSlide>
+            ))
+          ) : (
+            <div>No College Available.</div>
+          )}
+        </Swiper>
 
-                <Swiper
-                    spaceBetween={10}
-                    slidesPerView={1.5}
-                    loop={true}
-                    autoplay={{
-                        delay: 4500,
-                        disableOnInteraction: false,
-                        pauseOnMouseEnter: true
-                    }}
-                    // navigation
-                    pagination={{ clickable: true }}
-                    scrollbar={{ draggable: true }}
-                    breakpoints={{
-                        500: {
-                            slidesPerView: 2.4,
-                        },
-                        780: {
-                            slidesPerView: 3.8,
-                        },
-                        1300: {
-                            slidesPerView: 4.6,
-                        },
+        {/* Second Swiper (Next 20 Colleges) */}
+        {next20Colleges.length > 0 && (
+          <Swiper
+            spaceBetween={10}
+            slidesPerView={1.5}
+            loop={true}
+            autoplay={{
+              delay: 4500,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            pagination={{ clickable: true }}
+            scrollbar={{ draggable: true }}
+            breakpoints={{
+              320: { slidesPerView: 1.4 },
+              500: { slidesPerView: 2 },
+              768: { slidesPerView: 2.8 },
+              1024: { slidesPerView: 3.4 },
+              1300: { slidesPerView: 4.2 },
+              1500: { slidesPerView: 4.4 },
+            }}
+            modules={[Autoplay, Navigation, A11y]}
+            className="swiper-wrapper mx-auto mb-4"
+          >
+            {next20Colleges.length > 0 ? (
+              next20Colleges.map((college, index) => (
+                <SwiperSlide key={index}>
+                  <a
+                    href={`/college/${createSlug(
+                      college.collegeId,
+                      college.collegeName,
+                      college.collegeAddress.city
+                    )}`}
+                    className="block border relative bg-white rounded-lg overflow-hidden h-[300px]"
+                  >
+                    <img
+                      src={
+                        college.collegeImages?.[0] ||
+                        "/assets/testimonial_noImage.png"
+                      }
+                      alt={college.collegeName}
+                      className="scale-100 hover:scale-125 transition duration-700 object-cover h-full"
+                    />
+                    <div className="absolute bottom-0 left-0 w-full bg-second/80 py-4 px-3">
+                      <div className="twoLinerTitle2 font-medium text-white hover:text-gray-400 text-lg">
+                        {college.collegeName}
+                      </div>
+                    </div>
+                  </a>
+                </SwiperSlide>
+              ))
+            ) : (
+              <div>No College Available.</div>
+            )}
+          </Swiper>
+        )}
+      </div>
+    </section>
+  );
+};
 
-                    }}
-                    // navigation={true}
-                    //  modules={[Autoplay, Pagination, Navigation]}
-                    modules={[Autoplay, Navigation, A11y]}
-                    className="swiper-wrapper mx-auto mb-4"
-                >
-                    {data2.map((value, index) => (
-                        <SwiperSlide key={index}>
-                            <TopCollectionCard
-                                college_name={value.college_name}
-                                noofcoolleges={value.noofcoolleges}
-                                image={value.image}
-                            />
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-            </div>
-        </section>
-    )
-}
-
-export default TopCollection
+export default TopCollection;

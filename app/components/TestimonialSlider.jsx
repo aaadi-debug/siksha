@@ -54,7 +54,7 @@ const studentTestimonials = [
       "The personalized counseling and guidance I received helped me choose the  perfect college for my MB",
     image: "https://getmasum.com/html-preview/edumon/assets/img/review/1.jpg",
     course: " B.tech(biotec)",
-  }
+  },
 ];
 
 const TestimonialSlider = () => {
@@ -62,7 +62,9 @@ const TestimonialSlider = () => {
     <div className="testimonialSliderWrapper relative">
       <div className="2xl:px-48 xl:px-32 lg:px-20 px-6 py-28">
         <div>
-          <div className="text-white text-lg font-semibold">Our Students Review</div>
+          <div className="text-white text-lg font-semibold">
+            Our Students Review
+          </div>
           <div className="text-4xl max-sm:text-3xl text-white font-semibold">
             Hear From Our Students
           </div>

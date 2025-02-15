@@ -79,8 +79,8 @@ const LatestNews = () => {
      fetchData();
    }, []);
   return (
-    <section className="setgoalsection latest_news lg:px-20">
-      <div className="setgoalsection_wrapper ">
+    <section className=" lg:px-20 py-20">
+      <div className=" ">
         <h2 data-aos="zoom-in" className='mb-4 text-3xl text-black font-semibold'>Latest News & Notifications</h2>
 
         {/* <button onClick={toggleSwiping}>Toggle Swiping</button> */}

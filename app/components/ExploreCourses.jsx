@@ -133,8 +133,8 @@ const ExploreCourses = () => {
   };
 
   return (
-    <div className="bg-skin lg:px-20">
-      <div className=" pt-48 pb-10 mx-auto explorecourses">
+    <div className="bg-prim-light lg:px-20 py-20">
+      <div className=" mx-auto explorecourses">
         <h2 className="text-black text-3xl font-semibold ">Explore Courses</h2>
         <div className="w-full mt-4">
           <div className="w-full">
@@ -153,8 +153,8 @@ const ExploreCourses = () => {
                   onClick={() => setActiveTab(tab.id)}
                   className={`px-4 py-2 text-sm font-medium transition duration-500 ${
                     activeTab === tab.id
-                      ? "border rounded-full bg-white border-black text-black"
-                      : "text-gray-500 border rounded-full border-black hover:text-black hover:bg-white hover:rounded-full hover:border hover:border-black"
+                      ? "border-2 rounded-full text-white bg-prim border-prim "
+                      : "border-2 rounded-full  border-prim hover:bg-prim transition duration-300 hover:text-white"
                   }`}
                 >
                   {tab.label}
@@ -163,7 +163,7 @@ const ExploreCourses = () => {
             </div>
 
             {/* Tab Content */}
-            <div className="mt-2 relative ">
+            <div className="mt-4 relative ">
               {tabsData.length > 0 ? (
                 tabsData.map((tab) => {
                   if (activeTab === tab.id) {
@@ -187,7 +187,7 @@ const ExploreCourses = () => {
                               className="min-w-[300px] max-w-[300px] p-3 bg-white border rounded-lg flex-shrink-0 flex flex-col justify-between"
                             >
                               <div>
-                                <p className="capitalize text-xs p-2 bg-skin rounded inline">
+                                <p className="capitalize text-xs p-2 bg-prim text-white rounded inline">
                                   {data.courseType}
                                 </p>
                                 <h3 className="text-lg font-semibold mb-2 mt-2">

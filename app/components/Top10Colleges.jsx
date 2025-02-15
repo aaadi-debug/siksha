@@ -157,7 +157,7 @@ const Top10Colleges = () => {
   };
 
   return (
-    <div className="bg-prim-light py-20 lg:px-20">
+    <div className="bg-prim-light py-20 lg:px-20 px-6">
       <h2 data-aos="fade-up" className="mb-4 text-3xl text-black font-semibold">
         Top 10 Colleges
       </h2>
@@ -184,10 +184,10 @@ const Top10Colleges = () => {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-3 py-1 rounded-full ${
+              className={`px-4 py-2 rounded-full ${
                 activeTab === tab.id
                   ? "border-2 border-prim bg-prim text-white"
-                  : "border-2 border-prim text-prim hover:bg-prim hover:text-white"
+                  : "border-2 border-prim hover:bg-prim hover:text-white"
               } transition duration-300`}
             >
               {tab.label}
@@ -207,14 +207,14 @@ const Top10Colleges = () => {
       </div>
 
       {/* Tab Content */}
-      <div className="mt-4 grid gap-6 lg:grid-cols-5 md:grid-cols-3 grid-cols-2">
+      <div className="mt-4 grid gap-6 2xl:grid-cols-5 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 max-sm:grid-cols-1">
         {tabsData
           .filter((tab) => tab.id === activeTab)
           .map((tab) =>
             tab.content.map((college) => (
               <div
                 key={college.collegeId}
-                className="rounded-2xl h-[400px] flex flex-col justify-end items-center"
+                className="rounded-2xl 2xl:h-[400px] xl:h-[350px] lg:h-[300px] md:h-[270px] h-[280px] max-sm:h-[350px] flex flex-col justify-end items-center"
                 style={{
                   backgroundImage: `url(${college.collegeImages[0]})`,
                   backgroundSize: "cover",

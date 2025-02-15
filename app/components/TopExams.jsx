@@ -76,8 +76,8 @@ const TopExams = () => {
     });
   }, []);
   return (
-    <section className="topexam pb-5 lg:px-20">
-      <div className="topexam_wrapper">
+    <section className=" pb-5 lg:px-20 py-20 bg-prim-light">
+      <div className="">
         <h2 className="mb-4 text-black text-3xl font-semibold">Top Exams</h2>
 
         <Swiper
@@ -105,7 +105,7 @@ const TopExams = () => {
           {exams.map((exam, index) => (
             <SwiperSlide key={index}>
               <div className="bg-white rounded-lg relative group">
-                <div className="h-50 relative overflow-hidden">
+                <div className="h-50 relative overflow-hidden rounded-t-lg">
                   <img
                     src={exam.imgSrc}
                     alt={exam.organization}

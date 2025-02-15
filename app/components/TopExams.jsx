@@ -4,9 +4,68 @@ import { Autoplay, Navigation, A11y } from "swiper/modules";
 import "swiper/css";
 
 import "swiper/css/navigation";
-import TopExamsCard from "./TopExamsCard";
 import AOS from "aos";
 import "aos/dist/aos.css";
+
+import { ChevronRight } from "lucide-react";
+
+const exams = [
+  {
+    imgSrc: "/assets/images/TOP exams n signs/neet-exam.png",
+    examLogo: "/assets/images/TOP exams n signs/neet.png",
+    organization: "Neet",
+  },
+  {
+    imgSrc: "/assets/images/TOP exams n signs/bitsat-exam.png",
+    examLogo: "/assets/images/TOP exams n signs/cat-symbol.png",
+    organization: "Cat",
+  },
+  {
+    imgSrc: "/assets/images/TOP exams n signs/jee-adv.png",
+    examLogo: "/assets/images/TOP exams n signs/jee-advance-symbol.png",
+    organization: "JEE Advance",
+  },
+  {
+    imgSrc: "/assets/images/TOP exams n signs/jee mains.png",
+    examLogo: "/assets/images/TOP exams n signs/jee-mains-logo.png",
+    organization: "JEE Main",
+  },
+  {
+    imgSrc: "/assets/images/TOP exams n signs/nmat-exam.png",
+    examLogo: "/assets/images/TOP exams n signs/nmat-logo.png",
+    organization: "NMAT",
+  },
+  {
+    imgSrc: "/assets/images/TOP exams n signs/mat-exam.png",
+    examLogo: "/assets/images/TOP exams n signs/mat-logo.png",
+    organization: "MAT",
+  },
+  {
+    imgSrc: "/assets/images/TOP exams n signs/gate-exam.png",
+    examLogo: "/assets/images/TOP exams n signs/gate-logo.png",
+    organization: "Gate",
+  },
+  {
+    imgSrc: "/assets/images/TOP exams n signs/xat-exam.png",
+    examLogo: "/assets/images/TOP exams n signs/xat-symbol.png",
+    organization: "XAT",
+  },
+  {
+    imgSrc: "/assets/images/TOP exams n signs/bitsat-exam.png",
+    examLogo: "/assets/images/TOP exams n signs/bitsat-exam-logo.png",
+    organization: "BISAT",
+  },
+  {
+    imgSrc: "/assets/images/TOP exams n signs/iitjam.png",
+    examLogo: "/assets/images/TOP exams n signs/iitjam-logo.png",
+    organization: "IIT JAM",
+  },
+  {
+    imgSrc: "/assets/images/TOP exams n signs/cuet-exam.png",
+    examLogo: "/assets/images/TOP exams n signs/cuet-symbol.png",
+    organization: "CUET",
+  },
+];
 
 const TopExams = () => {
   useEffect(() => {
@@ -20,6 +79,7 @@ const TopExams = () => {
     <section className="topexam pb-5 lg:px-20">
       <div className="topexam_wrapper">
         <h2 className="mb-4 text-black text-3xl font-semibold">Top Exams</h2>
+
         <Swiper
           spaceBetween={10}
           slidesPerView={1.5}
@@ -29,7 +89,6 @@ const TopExams = () => {
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
           }}
-          // navigation
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
           breakpoints={{
@@ -40,155 +99,61 @@ const TopExams = () => {
             1300: { slidesPerView: 4.2 },
             1500: { slidesPerView: 5.4 },
           }}
-          // navigation={true}
-          //  modules={[Autoplay, Pagination, Navigation]}
           modules={[Autoplay, Navigation, A11y]}
           className="swiper-wrapper mx-auto mb-4"
         >
-          <SwiperSlide>
-            <TopExamsCard
-              imgSrc="/assets/images/TOP exams n signs/neet-exam.png"
-              examLogo="/assets/images/TOP exams n signs/neet.png"
-              organization="Neet"
-              participating_colleges="9987"
-              exam_date="May 05, 2024"
-              exam_level="National"
-              application_process_link=""
-              exam_info_link=""
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TopExamsCard
-              imgSrc="/assets/images/TOP exams n signs/bitsat-exam.png"
-              examLogo="/assets/images/TOP exams n signs/cat-symbol.png"
-              organization="Cat"
-              participating_colleges="9987"
-              exam_date="May 05, 2024"
-              exam_level="National"
-              application_process_link=""
-              exam_info_link=""
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TopExamsCard
-              imgSrc="/assets/images/TOP exams n signs/jee-adv.png"
-              examLogo="/assets/images/TOP exams n signs/jee-advance-symbol.png"
-              organization="JEE Advance"
-              participating_colleges="9987"
-              exam_date="May 05, 2024"
-              exam_level="National"
-              application_process_link=""
-              exam_info_link=""
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TopExamsCard
-              imgSrc="/assets/images/TOP exams n signs/jee mains.png"
-              examLogo="/assets/images/TOP exams n signs/jee-mains-logo.png"
-              organization="JEE Main"
-              participating_colleges="9987"
-              exam_date="May 05, 2024"
-              exam_level="National"
-              application_process_link=""
-              exam_info_link=""
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TopExamsCard
-              imgSrc="/assets/images/TOP exams n signs/nmat-exam.png"
-              examLogo="/assets/images/TOP exams n signs/nmat-logo.png"
-              organization="NMAT"
-              participating_colleges="9987"
-              exam_date="May 05, 2024"
-              exam_level="National"
-              application_process_link=""
-              exam_info_link=""
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TopExamsCard
-              imgSrc="/assets/images/TOP exams n signs/mat-exam.png"
-              examLogo="/assets/images/TOP exams n signs/mat-logo.png"
-              organization="MAT"
-              participating_colleges="9987"
-              exam_date="May 05, 2024"
-              exam_level="National"
-              application_process_link=""
-              exam_info_link=""
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TopExamsCard
-              imgSrc="/assets/images/TOP exams n signs/gate-exam.png"
-              examLogo="/assets/images/TOP exams n signs/gate-logo.png"
-              organization="Gate"
-              participating_colleges="9987"
-              exam_date="May 05, 2024"
-              exam_level="National"
-              application_process_link=""
-              exam_info_link=""
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TopExamsCard
-              imgSrc="/assets/images/TOP exams n signs/xat-exam.png"
-              examLogo="/assets/images/TOP exams n signs/xat-symbol.png"
-              organization="XAT"
-              participating_colleges="9987"
-              exam_date="May 05, 2024"
-              exam_level="National"
-              application_process_link=""
-              exam_info_link=""
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TopExamsCard
-              imgSrc="/assets/images/TOP exams n signs/bitsat-exam.png"
-              examLogo="/assets/images/TOP exams n signs/bitsat-exam-logo.png"
-              organization="BISAT"
-              participating_colleges="9987"
-              exam_date="May 05, 2024"
-              exam_level="National"
-              application_process_link=""
-              exam_info_link=""
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TopExamsCard
-              imgSrc="/assets/images/TOP exams n signs/iitjam.png"
-              examLogo="/assets/images/TOP exams n signs/iitjam-logo.png"
-              organization="IIT JAM"
-              participating_colleges="9987"
-              exam_date="May 05, 2024"
-              exam_level="National"
-              application_process_link=""
-              exam_info_link=""
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TopExamsCard
-              imgSrc="/assets/images/TOP exams n signs/bitsat-exam.png"
-              examLogo="/assets/images/TOP exams n signs/cat-symbol.png"
-              organization="Cat"
-              participating_colleges="9987"
-              exam_date="May 05, 2024"
-              exam_level="National"
-              application_process_link=""
-              exam_info_link=""
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TopExamsCard
-              imgSrc="/assets/images/TOP exams n signs/cuet-exam.png"
-              examLogo="/assets/images/TOP exams n signs/cuet-symbol.png"
-              organization="CUET"
-              participating_colleges="9987"
-              exam_date="May 05, 2024"
-              exam_level="National"
-              application_process_link=""
-              exam_info_link=""
-            />
-          </SwiperSlide>
+          {exams.map((exam, index) => (
+            <SwiperSlide key={index}>
+              <div className="bg-white rounded-lg relative group">
+                <div className="h-50 relative overflow-hidden">
+                  <img
+                    src={exam.imgSrc}
+                    alt={exam.organization}
+                    className="rounded-t-lg object-cover h-full w-full scale group-hover:scale-125 transition duration-700"
+                  />
+                  <div className="absolute bottom-0 left-0 bg-second px-2 py-1 text-xs text-white">
+                    {exam.organization}
+                  </div>
+                </div>
+                <div className="p-3">
+                  <div className="flex gap-4 ">
+                    <div className="w-2/3 text-sm">Participating Colleges</div>
+                    <div className="w-1/3 text-sm">
+                      {exam.participating_colleges || "N/A"}
+                    </div>
+                  </div>
+                  <div className="flex gap-4  mt-2">
+                    <div className="w-2/3 text-sm">Exam Date</div>
+                    <div className="w-1/3 text-sm">9887</div>
+                  </div>
+                  <div className="flex gap-4  mt-2">
+                    <div className="w-2/3 text-sm">Exam Level</div>
+                    <div className="w-1/3 text-sm">
+                      {exam.exam_level || "N/A"}
+                    </div>
+                  </div>
+                  <div className="flex justify-between items-center pt-2 mt-3 text-sm border-t group">
+                    <a
+                      href=""
+                      className="text-prim hover:text-black transition duration-300"
+                    >
+                      Exam Overview
+                    </a>
+                    <span className="text-black hover:text-primary">
+                      <ChevronRight size={16} />
+                    </span>
+                  </div>
+                </div>
+                <div className="absolute top-2 right-2 bg-white rounded-full w-12 h-12 shadow-md border-2 border-white">
+                  <img
+                    src={exam.examLogo}
+                    alt={exam.organization}
+                    className="rounded-full w-full h-full"
+                  />
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
     </section>

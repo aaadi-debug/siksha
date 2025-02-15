@@ -17,6 +17,7 @@ import Top10Colleges from "./components/Top10Colleges";
 import ExploreCourses from "./components/ExploreCourses";
 import Head from "next/head";
 import { usePathname } from "next/navigation";
+import Popup from "./components/Popup";
 
 export default function Home() {
   // const pathname = usePathname();
@@ -48,6 +49,7 @@ export default function Home() {
         <LatestNews />
         <StudyAbroad />
         <Testimonials />
+        <Popup />
       </main>
     </>
   );

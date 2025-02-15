@@ -39,8 +39,8 @@ const TopCollection = () => {
   }, []);
 
   return (
-    <section className="pb-5">
-      <div className="container lg:px-28">
+    <section className="pb-5 lg:px-20">
+      <div className="">
         <h2
           data-aos="fade-up"
           className="mb-4 text-3xl text-black font-semibold"
@@ -66,7 +66,7 @@ const TopCollection = () => {
             768: { slidesPerView: 2.8 },
             1024: { slidesPerView: 3.4 },
             1300: { slidesPerView: 4.2 },
-            1500: { slidesPerView: 4.4 },
+            1500: { slidesPerView: 5.4 },
           }}
           modules={[Autoplay, Navigation, A11y]}
           className="swiper-wrapper mx-auto mb-4"

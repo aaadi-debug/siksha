@@ -55,6 +55,7 @@ const menuItems = [
       { name: "All Colleges", href: "/college" },
       { name: "Dashboard", href: "/dashboard" },
       { name: "Education Loan", href: "/education-loan" },
+      { name: "Apply Now", href: "/apply-now" },
     ],
   },
 ];

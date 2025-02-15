@@ -133,8 +133,8 @@ const ExploreCourses = () => {
   };
 
   return (
-    <div className="bg-skin">
-      <div className="container  pt-48 pb-10 lg:px-32 mx-auto explorecourses">
+    <div className="bg-skin lg:px-20">
+      <div className=" pt-48 pb-10 mx-auto explorecourses">
         <h2 className="text-black text-3xl font-semibold ">Explore Courses</h2>
         <div className="w-full mt-4">
           <div className="w-full">

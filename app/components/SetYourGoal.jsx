@@ -1,7 +1,10 @@
 import { React, useState, useEffect } from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper-bundle.css';
-import 'swiper/css'; // Import Swiper CSS
+
+// importing swiper
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation, A11y } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 
 import SliderCard from './SliderCard';
 
@@ -197,11 +200,32 @@ const SetYourGoal = () => {
 
 
   return (
-    <section className="setgoalsection pb-5">
-      <div className="setgoalsection_wrapper container lg:px-28 pt-5">
+    <section className="setgoalsection pb-5 lg:px-20">
+      <div className="setgoalsection_wrapper   pt-5">
         <h2 data-aos="fade-up" className='mb-4 text-3xl text-black font-semibold'>Select Your Goal</h2>
 
-        <Swiper {...params}>
+        <Swiper
+          spaceBetween={10}
+          slidesPerView={1.5}
+          loop={true}
+          autoplay={{
+            delay: 4500,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
+          pagination={{ clickable: true }}
+          scrollbar={{ draggable: true }}
+          breakpoints={{
+            320: { slidesPerView: 1.4 },
+            500: { slidesPerView: 2 },
+            768: { slidesPerView: 2.8 },
+            1024: { slidesPerView: 3.4 },
+            1300: { slidesPerView: 4.2 },
+            1500: { slidesPerView: 5.4 },
+          }}
+          modules={[Autoplay, Navigation, A11y]}
+          className="swiper-wrapper mx-auto mb-4"
+        >
 
           {data.map((value, index) => (
             <SwiperSlide key={index}>

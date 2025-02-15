@@ -11,8 +11,8 @@ const ClassExam = () => {
     // }
 
   return (
-    <section className="classexam pb-5">
-        <div className="classexam_wrapper container lg:px-32">
+    <section className="classexam pb-5 lg:px-20">
+        <div className="classexam_wrapper ">
             <h2 data-aos="fade-up" className='mb-5 text-3xl text-black font-semibold'>CBSE Class Board Exam</h2>
             <div className="row">
                 <div className="col-md-6">

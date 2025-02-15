@@ -19,6 +19,7 @@ import WriteAReview from "../components/WriteAReview";
 
 import studentsDataJson from "../data/studentsData.json";
 import collegeDataJson from "../data/collegeData.json";
+import ApplyNow from "../components/ApplyNow";
 
 const Page = () => {
   const student = studentsDataJson[0];
@@ -43,13 +44,13 @@ const Page = () => {
           }}
         >
           <Breadcrumbs2
-            breadcrumbs={[{ title: "Review Colleges", link: "" }]}
+            breadcrumbs={[{ title: "Apply Now", link: "" }]}
             linkColor="text-tertiary"
             activeColor="text-gray-500"
           />
           {/* <!-- Content inside your hero section --> */}
           <h2 className="text-4xl font-bold pt-10 pb-16 text-center">
-            Review Colleges
+            Apply Now
           </h2>
         </div>
       </div>
@@ -57,16 +58,16 @@ const Page = () => {
       <div className="2xl:px-64 xl:px-48 lg:px-20 px-6 py-20 bg-prim-light flex flex-col justify-center items-center">
         <div className="text-lg font-semibold">Hello {student.studentName},</div>
         <div className="text-4xl font-bold text-tertiary mt-3 mb-5">
-          Start Writing a Review
+          Start Applying in the Colleges
         </div>
 
         <DynamicThemeButton href="#writeReviewForm">
-          Review Now
+          Apply Now
         </DynamicThemeButton>
       </div>
 
       <div className="py-20 lg:px-10 px6">
-        <WriteAReview colleges={colleges} student={student} />
+        <ApplyNow colleges={colleges} student={student} />
       </div>
     </>
   );

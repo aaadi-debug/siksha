@@ -115,9 +115,9 @@ const WriteAReview = ({ student, colleges }) => {
 
     let errorMessage = [];
 
-    //   // if (value.length < 200) {
-    //   //   return "Minimum 200 characters required.";
-    //   // }
+    if (value.length < 200) {
+      return "Minimum 200 characters required.";
+    }
 
     if (value.length > 2000) {
       return "Character limit exceeded! Maximum 2000 characters allowed.";
@@ -732,7 +732,6 @@ const WriteAReview = ({ student, colleges }) => {
                         >
                           2004
                         </li>
-
 
                         <li
                           className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"

@@ -75,7 +75,7 @@ const StudyAbroad = () => {
             ([country, data], index) => (
               <SwiperSlide key={index}>
                 <a
-                  href={`/college/${data.representativeCollege.collegeId}`}
+                  href={`/courses-abroad/abroad-colleges`}
                   className="block border relative bg-white rounded-lg overflow-hidden h-[300px] group"
                 >
                   <img

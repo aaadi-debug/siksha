@@ -45,17 +45,6 @@ const Page = () => {
         </div>
       </div>
 
-      {/* <div className="2xl:px-64 xl:px-48 lg:px-20 px-6 py-20 bg-prim-light flex flex-col justify-center items-center">
-        <div className="text-lg font-semibold">Hello {student.studentName},</div>
-        <div className="text-4xl font-bold text-tertiary mt-3 mb-5">
-          Start Writing a Review
-        </div>
-
-        <DynamicThemeButton href="#writeReviewForm">
-          Compare Colleges
-        </DynamicThemeButton>
-      </div> */}
-
       <div className=" lg:px-10 px-6">
         <CollegeCompare />
       </div>

@@ -1,28 +1,21 @@
 import React from "react";
-import ExploreStudyCard from "./ExploreStudyCard";
 import DynamicThemeButton from "./DynamicThemeButton";
 
 const ExploreStudy = () => {
   // Define the data array
   const studyPlaces = [
-    { src: "/assets/images/explore-places/delhi.png", name: "Delhi" },
-    { src: "/assets/images/explore-places/bengalore.png", name: "Bangalore" },
-    {
-      src: "/assets/images/explore-places/gateway of india.png",
-      name: "Mumbai",
-    },
-    {
-      src: "/assets/images/explore-places/West-bengal.png",
-      name: "West Bengal",
-    },
-    { src: "/assets/images/explore-places/chennai.png", name: "Chennai" },
-    { src: "/assets/images/explore-places/ahemdabad.png", name: "Ahmedabad" },
-    { src: "/assets/images/explore-places/kolakata.png", name: "Kolkata" },
-    { src: "/assets/images/explore-places/golden-temple.png", name: "Punjab" },
+    { src: "/assets/images/explore-places/delhi.png", name: "Delhi", link: "courses/delhi" },
+    { src: "/assets/images/explore-places/bengalore.png", name: "Bangalore", link: "courses/bangalore" },
+    { src: "/assets/images/explore-places/gateway of india.png", name: "Mumbai", link: "courses/mumbai" },
+    { src: "/assets/images/explore-places/West-bengal.png", name: "West Bengal", link: "courses/west-bengal" },
+    { src: "/assets/images/explore-places/chennai.png", name: "Chennai", link: "courses/chennai" },
+    { src: "/assets/images/explore-places/ahemdabad.png", name: "Ahmedabad", link: "courses/ahmedabad" },
+    { src: "/assets/images/explore-places/kolakata.png", name: "Kolkata", link: "courses/kolkata" },
+    { src: "/assets/images/explore-places/golden-temple.png", name: "Punjab", link: "courses/punjab" },
   ];
 
   return (
-    <section className="relative w-full 2xl:h-[75vh] xl:h-[78vh] lg:h-[80vh] md:h-[100vh] h-[100vh] max-sm:h-[135vh] overflow-hidden ">
+    <section className="relative w-full 2xl:h-[75vh] xl:h-[78vh] lg:h-[80vh] md:h-[100vh] h-[100vh] max-sm:h-[135vh] overflow-hidden">
       {/* Video Background */}
       <video
         className="absolute top-0 left-0 w-full h-full object-cover"
@@ -47,16 +40,16 @@ const ExploreStudy = () => {
         </p>
         <div className="bg-white p-4 2xl:w-[80%] xl:w-[90%] lg:w-[90%] w-[80%] max-sm:w-[100%] rounded-lg">
           <div className="text-2xl font-semibold text-tertiary">
-            Find all Study Place here
+            Find all Study Places here
           </div>
           <div className="grid gap-4 lg:grid-cols-4 md:grid-cols-2 grid-cols-2 mb-6 mt-10 2xl:w-[80%] xl:w-[90%] lg:w-[90%] w-[100%] h-[auto] mx-auto">
-            {studyPlaces?.map((place, index) => (
+            {studyPlaces.map((place, index) => (
               <a
-                href=""
+                href={place.link}
                 className="border-2 border-prim p-2 rounded flex 2xl:flex-row xl:flex-row lg:flex-col max-sm:flex-col gap-2 justify-start items-center hover:bg-prim transition duration-500 group"
                 key={index}
               >
-                <img src={place.src} alt="" className="rounded" />
+                <img src={place.src} alt={place.name} className="rounded" />
                 <div className="text-tertiary 2xl:text-lg xl:text-lg lg:text-base group-hover:text-white">
                   {place.name}
                 </div>
@@ -64,7 +57,7 @@ const ExploreStudy = () => {
             ))}
           </div>
           <div className="text-center mt-4 mb-5">
-            <DynamicThemeButton href="/login">View More</DynamicThemeButton>
+            <DynamicThemeButton href="/courses/india-colleges">View More</DynamicThemeButton>
           </div>
         </div>
       </div>

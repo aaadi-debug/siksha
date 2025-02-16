@@ -229,7 +229,7 @@ const Footer2 = () => {
           <ul className="mt-6">
             <li className="mt-2">
               <a
-                href="/college/#"
+                href="#"
                 className="hover:text-prim transition duration-300"
               >
                 CAT
@@ -237,7 +237,7 @@ const Footer2 = () => {
             </li>
             <li className="mt-2">
               <a
-                href="/college/#"
+                href="#"
                 className="hover:text-prim transition duration-300"
               >
                 GATE
@@ -245,7 +245,7 @@ const Footer2 = () => {
             </li>
             <li className="mt-2">
               <a
-                href="/college/#"
+                href="#"
                 className="hover:text-prim transition duration-300"
               >
                 NEET
@@ -253,7 +253,7 @@ const Footer2 = () => {
             </li>
             <li className="mt-2">
               <a
-                href="/college/#"
+                href="#"
                 className="hover:text-prim transition duration-300"
               >
                 JEE Mains
@@ -269,7 +269,7 @@ const Footer2 = () => {
           <ul className="mt-6">
             <li className="mt-2">
               <a
-                href="/college/#"
+                href="/courses-abroad/abroad-colleges"
                 className="hover:text-prim transition duration-300"
               >
                 Canada
@@ -277,7 +277,7 @@ const Footer2 = () => {
             </li>
             <li className="mt-2">
               <a
-                href="/college/#"
+                href="/courses-abroad/abroad-colleges"
                 className="hover:text-prim transition duration-300"
               >
                 USA
@@ -285,7 +285,7 @@ const Footer2 = () => {
             </li>
             <li className="mt-2">
               <a
-                href="/college/#"
+                href="/courses-abroad/abroad-colleges"
                 className="hover:text-prim transition duration-300"
               >
                 New Zealand
@@ -293,7 +293,7 @@ const Footer2 = () => {
             </li>
             <li className="mt-2">
               <a
-                href="/college/#"
+                href="/courses-abroad/abroad-colleges"
                 className="hover:text-prim transition duration-300"
               >
                 Singapore

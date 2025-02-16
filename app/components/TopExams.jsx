@@ -14,56 +14,67 @@ const exams = [
     imgSrc: "/assets/images/TOP exams n signs/neet-exam.png",
     examLogo: "/assets/images/TOP exams n signs/neet.png",
     organization: "Neet",
+    link: "#",
   },
   {
     imgSrc: "/assets/images/TOP exams n signs/bitsat-exam.png",
     examLogo: "/assets/images/TOP exams n signs/cat-symbol.png",
     organization: "Cat",
+    link: "#",
   },
   {
     imgSrc: "/assets/images/TOP exams n signs/jee-adv.png",
     examLogo: "/assets/images/TOP exams n signs/jee-advance-symbol.png",
     organization: "JEE Advance",
+    link: "#",
   },
   {
     imgSrc: "/assets/images/TOP exams n signs/jee mains.png",
     examLogo: "/assets/images/TOP exams n signs/jee-mains-logo.png",
     organization: "JEE Main",
+    link: "#",
   },
   {
     imgSrc: "/assets/images/TOP exams n signs/nmat-exam.png",
     examLogo: "/assets/images/TOP exams n signs/nmat-logo.png",
     organization: "NMAT",
+    link: "#",
   },
   {
     imgSrc: "/assets/images/TOP exams n signs/mat-exam.png",
     examLogo: "/assets/images/TOP exams n signs/mat-logo.png",
     organization: "MAT",
+    link: "#",
   },
   {
     imgSrc: "/assets/images/TOP exams n signs/gate-exam.png",
     examLogo: "/assets/images/TOP exams n signs/gate-logo.png",
     organization: "Gate",
+    link: "#",
   },
   {
     imgSrc: "/assets/images/TOP exams n signs/xat-exam.png",
     examLogo: "/assets/images/TOP exams n signs/xat-symbol.png",
     organization: "XAT",
+    link: "#",
   },
   {
     imgSrc: "/assets/images/TOP exams n signs/bitsat-exam.png",
     examLogo: "/assets/images/TOP exams n signs/bitsat-exam-logo.png",
     organization: "BISAT",
+    link: "#",
   },
   {
     imgSrc: "/assets/images/TOP exams n signs/iitjam.png",
     examLogo: "/assets/images/TOP exams n signs/iitjam-logo.png",
     organization: "IIT JAM",
+    link: "#",
   },
   {
     imgSrc: "/assets/images/TOP exams n signs/cuet-exam.png",
     examLogo: "/assets/images/TOP exams n signs/cuet-symbol.png",
     organization: "CUET",
+    link: "#",
   },
 ];
 
@@ -104,7 +115,10 @@ const TopExams = () => {
         >
           {exams.map((exam, index) => (
             <SwiperSlide key={index}>
-              <div className="bg-white rounded-lg relative group">
+              <a
+                href={exam.link}
+                className="bg-white rounded-lg relative group"
+              >
                 <div className="h-50 relative overflow-hidden rounded-t-lg">
                   <img
                     src={exam.imgSrc}
@@ -115,7 +129,7 @@ const TopExams = () => {
                     {exam.organization}
                   </div>
                 </div>
-                <div className="p-3">
+                <div className="p-3 text-tertiary bg-white">
                   <div className="flex gap-4 ">
                     <div className="w-2/3 text-sm">Participating Colleges</div>
                     <div className="w-1/3 text-sm">
@@ -133,12 +147,9 @@ const TopExams = () => {
                     </div>
                   </div>
                   <div className="flex justify-between items-center pt-2 mt-3 text-sm border-t group">
-                    <a
-                      href=""
-                      className="text-prim hover:text-black transition duration-300"
-                    >
+                    <div className="group-hover:text-prim transition duration-300">
                       Exam Overview
-                    </a>
+                    </div>
                     <span className="text-black hover:text-primary">
                       <ChevronRight size={16} />
                     </span>
@@ -151,7 +162,7 @@ const TopExams = () => {
                     className="rounded-full w-full h-full"
                   />
                 </div>
-              </div>
+              </a>
             </SwiperSlide>
           ))}
         </Swiper>

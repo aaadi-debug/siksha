@@ -89,7 +89,7 @@ export default function CollegeCompare() {
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">College Comparison</h1>
-      <div className="grid grid-cols-3 gap-4 mb-4">
+      <div className="grid lg:grid-cols-3 grid-cols-2 max-sm:grid-cols-1 gap-4 mb-4">
         {[...Array(3)].map((_, index) => (
           <div
             key={index}
@@ -100,7 +100,7 @@ export default function CollegeCompare() {
                 <img
                   src={selectedColleges[index].collegeImages[0]}
                   alt="College"
-                  className="w-full mb-2 rounded-lg h-[250px]"
+                  className="w-full mb-2 rounded-lg 2xl:h-[250px] xl:h-[220px] lg:h-[200px] md:h-[200px] h-[250px]"
                 />
                 <div className="text-xl font-semibold">
                   {selectedColleges[index].collegeName}
@@ -200,6 +200,7 @@ export default function CollegeCompare() {
           </div>
         ))}
       </div>
+
       <div className="overflow-x-auto border border-gray-300 rounded-lg mt-2">
         <table className="w-full border-collapse border border-gray-300 rounded-lg overflow-hidden">
           <thead>

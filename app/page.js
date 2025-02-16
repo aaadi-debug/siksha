@@ -50,7 +50,7 @@ export default function Home() {
         <LatestNews />
         <StudyAbroad />
         {/* <Testimonials /> */}
-        <div className="lg:px-20 py-20">
+        <div className="lg:px-20 py-20 px-6">
           <TestimonialSlider2 />
         </div>
         {/* <Popup /> */}

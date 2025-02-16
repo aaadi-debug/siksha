@@ -40,7 +40,7 @@ const StudyAbroad = () => {
   };
 
   return (
-    <section className=" lg:px-20">
+    <section className="px-6 lg:px-20">
       <div className="">
         <h2
           data-aos="zoom-in"

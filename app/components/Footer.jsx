@@ -10,7 +10,7 @@ const Footer = () => {
 
   return (
     <footer>
-      <div className="footer_wrapper py-5">
+      <div className="footer_wrapper py-5" id="developedByAdityaRajGupta">
         <div className="footer_body row pt-5">
           <div className="col-md-4">
             <div className="row">

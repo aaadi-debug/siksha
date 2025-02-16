@@ -36,7 +36,7 @@ const CollegeRecommendations = () => {
   };
 
   return (
-    <section className="pb-5 lg:px-20">
+    <section className="pb-5 lg:px-20 px-6">
       <div className="">
         <h2 className="pb-3 text-3xl text-black font-semibold">
           Recommended Colleges

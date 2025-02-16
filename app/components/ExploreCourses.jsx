@@ -133,8 +133,8 @@ const ExploreCourses = () => {
   };
 
   return (
-    <div className="bg-prim-light lg:px-20 py-20">
-      <div className=" mx-auto explorecourses">
+    <div className="bg-prim-light lg:px-20 px-6 py-20">
+      <div className=" mx-auto ">
         <h2 className="text-black text-3xl font-semibold ">Explore Courses</h2>
         <div className="w-full mt-4">
           <div className="w-full">
@@ -182,15 +182,16 @@ const ExploreCourses = () => {
                           onMouseLeave={handleMouseUp} // Stop dragging if the mouse leaves
                         >
                           {tab?.content?.map((data) => (
-                            <div
-                              key={data._id}
-                              className="min-w-[300px] max-w-[300px] p-3 bg-white border rounded-lg flex-shrink-0 flex flex-col justify-between"
+                            <a
+                            key={data._id}
+                            href={`/courses/${data.courseCategory}`}
+                              className="min-w-[300px] max-w-[300px] p-3 bg-white border rounded-lg flex-shrink-0 flex flex-col justify-between group"
                             >
                               <div>
                                 <p className="capitalize text-xs p-2 bg-prim text-white rounded inline">
                                   {data.courseType}
                                 </p>
-                                <h3 className="text-lg font-semibold mb-2 mt-2">
+                                <h3 className="text-lg font-semibold text-tertiary mb-2 mt-2">
                                   {data.courseName}
                                 </h3>
                                 <div>
@@ -215,17 +216,16 @@ const ExploreCourses = () => {
                                 </div>
                               </div>
                               <div className="flex justify-between items-center pt-2 mt-3 text-sm border-t group">
-                                <a
-                                  href={`/courses/${data.courseCategory}`}
-                                  className="text-textClr hover:text-primary"
+                                <div
+                                  className="text-textClr hover:text-primary group-hover:text-prim transition duration-300"
                                 >
                                   Course Overview
-                                </a>
+                                </div>
                                 <span className="text-black hover:text-primary">
                                   <ChevronRight size={16} />
                                 </span>
                               </div>
-                            </div>
+                            </a>
                           ))}
                         </div>
 

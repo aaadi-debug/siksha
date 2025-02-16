@@ -16,6 +16,17 @@ import {
   ShoppingBasket,
   Mail,
   FilePenLine,
+  UserRoundPen,
+  ReceiptText,
+  LogOut,
+  SlidersHorizontal,
+  FileCheck2,
+  Pencil,
+  ChevronRight,
+  CircleUserRound,
+  School,
+  MessageSquareCode,
+  Settings,
 } from "lucide-react";
 import { FaUserTie } from "react-icons/fa6";
 import { IoMdNotifications } from "react-icons/io";
@@ -367,12 +378,12 @@ export default function Nav() {
                 onClick={toggleNotificationSidebar}
                 aria-label="Notification Button"
                 className={` ${
-                isHomePage
-                  ? isScrolled
-                    ? "text-second border-2 border-second p-2 rounded-full hover:bg-second hover:text-white"
-                    : "text-second border-2 bg-white border-second p-2 rounded-full hover:bg-second"
-                  : "text-second border-2 border-second p-2 rounded-full hover:bg-second hover:text-white"
-              }
+                  isHomePage
+                    ? isScrolled
+                      ? "text-second border-2 border-second p-2 rounded-full hover:bg-second hover:text-white"
+                      : "text-second border-2 bg-white border-second p-2 rounded-full hover:bg-second"
+                    : "text-second border-2 border-second p-2 rounded-full hover:bg-second hover:text-white"
+                }
                transition duration-500`}
               >
                 <IoMdNotifications size={16} />
@@ -710,7 +721,7 @@ export default function Nav() {
               isUserSidebarOpen ? "translate-x-0" : "translate-x-full"
             } duration-700 ease-in-out`}
           >
-            <div className="flex items-center justify-between border-textClr w-full p-4 bg-prim-light">
+            <div className="flex relative items-center justify-between border-textClr w-full p-4 bg-prim-light">
               <div className="flex gap-2">
                 <div className="w-12 h-12 flex items-center justify-center border-2 border-prim bg-prim-light text-prim font-semibold rounded-full">
                   {getStudentNameInitials(student.studentName)}
@@ -723,18 +734,54 @@ export default function Nav() {
                   {/* Hi, {student.studentName.split(" ")[0]} */}
                 </div>
               </div>
-
-              {/* <button
-                onClick={closeUserSidebar}
-                className="text-gray-600 hover:text-gray-900"
-              >
-                <X
-                  className="h-10 w-10 rounded-full p-2 transition duration-500 hover:bg-prim hover:text-white"
-                  aria-hidden="true"
-                />
-              </button> */}
             </div>
-            <div className="py-2 pb-16"></div>
+
+            <div className=" flex flex-col justify-between">
+              <ul className="p-2 mt-3">
+                <li>
+                  <a
+                    href="/dashboard"
+                    className="flex items-center text-prim border-2 border-prim gap-2 p-2 rounded hover:bg-prim hover:text-white transition duration-300"
+                  >
+                    <CircleUserRound size={20} />
+                    My Profile
+                  </a>
+                </li>
+                <li className="mt-2">
+                  <a
+                    href="/dashboard?tab=applied-colleges"
+                    className="flex items-center text-prim border-2 border-prim gap-2 p-2 rounded hover:bg-prim hover:text-white transition duration-300"
+                  >
+                    <School size={20} />
+                    Applied Colleges
+                  </a>
+                </li>
+                <li className="mt-2">
+                  <a
+                    href="/dashboard?tab=my-reviews"
+                    className="flex items-center text-prim border-2 border-prim gap-2 p-2 rounded hover:bg-prim hover:text-white transition duration-300"
+                  >
+                    <MessageSquareCode size={20} />
+                    My Reviews
+                  </a>
+                </li>
+                <li className="mt-2">
+                  <a
+                    href="/dashboard?tab=account-settings"
+                    className="flex items-center text-prim border-2 border-prim gap-2 p-2 rounded hover:bg-prim hover:text-white transition duration-300"
+                  >
+                    <Settings size={20} />
+                    Account Settings
+                  </a>
+                </li>
+              </ul>
+
+              <div className="absolute bottom-0 left-0 w-full mt-4 border-t py-4 bg-prim-light px-2  ">
+                <button className="flex gap-2 items-center hover:text-prim transition duration-300">
+                  <LogOut size={20} /> Logout
+                </button>
+              </div>
+            </div>
           </div>
           {/* Overlay */}
           <div

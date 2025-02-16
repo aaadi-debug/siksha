@@ -41,7 +41,7 @@ const TopCollection = () => {
   }, []);
 
   return (
-    <section className="pb-5 lg:px-20">
+    <section className="pb-5 lg:px-20 px-6">
       <div className="">
         <h2
           data-aos="fade-up"

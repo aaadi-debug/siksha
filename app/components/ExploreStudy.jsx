@@ -22,7 +22,7 @@ const ExploreStudy = () => {
   ];
 
   return (
-    <section className="relative w-full 2xl:h-[75vh] xl:h-[78vh] lg:h-[80vh] md:h-[100vh] h-[100vh] max-sm:h-[120vh] overflow-hidden ">
+    <section className="relative w-full 2xl:h-[75vh] xl:h-[78vh] lg:h-[80vh] md:h-[100vh] h-[100vh] max-sm:h-[135vh] overflow-hidden ">
       {/* Video Background */}
       <video
         className="absolute top-0 left-0 w-full h-full object-cover"
@@ -63,7 +63,7 @@ const ExploreStudy = () => {
               </a>
             ))}
           </div>
-          <div data-aos="fade-up" className="text-center mt-4 mb-5">
+          <div className="text-center mt-4 mb-5">
             <DynamicThemeButton href="/login">View More</DynamicThemeButton>
           </div>
         </div>

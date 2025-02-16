@@ -76,7 +76,7 @@ const TopExams = () => {
     });
   }, []);
   return (
-    <section className=" pb-5 lg:px-20 py-20 bg-prim-light">
+    <section className=" pb-5 lg:px-20 py-20 px-6 bg-prim-light">
       <div className="">
         <h2 className="mb-4 text-black text-3xl font-semibold">Top Exams</h2>
 

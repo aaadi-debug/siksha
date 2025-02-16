@@ -60,7 +60,7 @@ const SetYourGoal = () => {
   const uniqueDepartments = extractUniqueDepartments(colleges);
 
   return (
-    <section className="pt-20 pb-10 lg:px-20">
+    <section className="pt-20 pb-10 lg:px-20 px-6">
       <div className="">
         <h2 data-aos="fade-up" className="mb-4 text-3xl text-black font-semibold">
           Select Your Goal

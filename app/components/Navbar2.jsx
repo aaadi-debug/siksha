@@ -524,12 +524,12 @@ export default function Nav() {
                           )}
                         </a>
                         {item.subMenu && activeSubMenu === item.name && (
-                          <ul className="ml-6 mt-2">
+                          <ul className="ml-2 mt-3">
                             {item.subMenu.map((subItem, index) => (
-                              <li key={index} className=" border">
+                              <li key={index} className="">
                                 <a
                                   href={subItem.href}
-                                  className="text-sm text-gray-700 hover:text-gray-900 border w-full py-2"
+                                  className="text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-100 block border-b w-full py-2 px-3"
                                 >
                                   {subItem.name}
                                 </a>

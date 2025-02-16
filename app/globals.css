@@ -38,6 +38,7 @@ body {
   --btn-hover-color: var(--star-clr);
   --offset: 0.3em;
 
+  text-align: center;
   border: 1px solid var(--btn-color);
   padding: 10px 20px;
   border-radius: 30px;
@@ -62,6 +63,7 @@ body {
   border: 1px solid var(--btn-color);
   padding: 10px 20px;
   border-radius: 30px;
+  text-align: center;
   color: var(--btn-color);
   box-shadow: var(--offset) var(--offset) 0 var(--btn-hover-color);
   transition: all 0.3s ease; /* Add a smooth transition for hover effects */

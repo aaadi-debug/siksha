@@ -67,6 +67,7 @@ const menuItems = [
       { name: "Dashboard", href: "/dashboard" },
       { name: "Education Loan", href: "/education-loan" },
       { name: "Apply Now", href: "/apply-now" },
+      { name: "College Compare", href: "/college-compare" },
     ],
   },
 ];

@@ -1,0 +1,227 @@
+{
+  "data": [
+    {
+      "id": 10,
+      "course": "B.com",
+      "stream": "Commerce",
+      "url": "bcom-colleges",
+      "collegeCount": 6258,
+      "slugs": [
+        {
+          "id": "18",
+          "slug": "BE/B.Tech",
+          "url": "btech-courses",
+          "goalId": 1
+        },
+        {
+          "id": "40",
+          "slug": "Diploma in Engineering",
+          "url": "diploma-in-engineering-courses",
+          "goalId": 2
+        },
+        {
+          "id": "125",
+          "slug": "ME/M.Tech",
+          "url": "mtech-courses",
+          "goalId": 3
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "stream": "Management",
+      "url": "",
+      "collegeCount": 7735,
+      "slugs": [
+        {
+          "id": "120",
+          "slug": "MBA/PGDM",
+          "url": "mba-courses",
+          "goalId": 4
+        },
+        {
+          "id": "15",
+          "slug": "BBA/BMS",
+          "url": "bba-courses",
+          "goalId": 5
+        },
+        {
+          "id": "48",
+          "slug": "Executive MBA",
+          "url": "executive-mba-courses",
+          "goalId": 6
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "stream": "Commerce",
+      "url": "",
+      "collegeCount": 4971,
+      "slugs": [
+        {
+          "id": "2",
+          "slug": "B.Com",
+          "url": "bcom-courses",
+          "goalId": 7
+        },
+        {
+          "id": "88",
+          "slug": "M.Com",
+          "url": "mcom-courses",
+          "goalId": 8
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "stream": "Arts",
+      "url": "",
+      "collegeCount": 5607,
+      "slugs": [
+        {
+          "id": "12",
+          "slug": "BA",
+          "url": "ba-courses",
+          "goalId": 9
+        },
+        {
+          "id": "117",
+          "slug": "MA",
+          "url": "ma-courses",
+          "goalId": 10
+        },
+        {
+          "id": "193",
+          "slug": "BFA",
+          "url": "bfa-courses",
+          "goalId": 11
+        },
+        {
+          "id": "205",
+          "slug": "BSW",
+          "url": "bsw-courses",
+          "goalId": 12
+        }
+      ]
+    }
+  ],
+  "places": {
+    "cities": [
+      {
+        "id": "125",
+        "name": "New Delhi"
+      },
+      {
+        "id": "162",
+        "name": "Gurgaon"
+      },
+      {
+        "id": "562",
+        "name": "Noida"
+      },
+      {
+        "id": "336",
+        "name": "Mumbai"
+      },
+      {
+        "id": "471",
+        "name": "Chennai"
+      },
+      {
+        "id": "608",
+        "name": "Kolkata"
+      },
+      {
+        "id": "8",
+        "name": "Hyderabad"
+      },
+      {
+        "id": "227",
+        "name": "Bangalore"
+      },
+      {
+        "id": "344",
+        "name": "Pune"
+      },
+      {
+        "id": "129",
+        "name": "Ahmedabad"
+      },
+      {
+        "id": "551",
+        "name": "Lucknow"
+      },
+      {
+        "id": "472",
+        "name": "Coimbatore"
+      },
+      {
+        "id": "450",
+        "name": "Jaipur"
+      },
+      {
+        "id": "277",
+        "name": "Bhopal"
+      },
+      {
+        "id": "337",
+        "name": "Nagpur"
+      },
+      {
+        "id": "387",
+        "name": "Bhubaneswar"
+      },
+      {
+        "id": "290",
+        "name": "Indore"
+      },
+      {
+        "id": "580",
+        "name": "Dehradun"
+      }
+    ],
+    "states": [
+      {
+        "id": "21",
+        "name": "Maharashtra"
+      },
+      {
+        "id": "31",
+        "name": "Tamil Nadu"
+      },
+      {
+        "id": "17",
+        "name": "Karnataka"
+      },
+      {
+        "id": "33",
+        "name": "Uttar Pradesh"
+      },
+      {
+        "id": "12",
+        "name": "Gujarat"
+      },
+      {
+        "id": "2",
+        "name": "Andhra Pradesh"
+      },
+      {
+        "id": "29",
+        "name": "Rajasthan"
+      },
+      {
+        "id": "18",
+        "name": "Kerala"
+      },
+      {
+        "id": "37",
+        "name": "Telangana"
+      },
+      {
+        "id": "20",
+        "name": "Madhya Pradesh"
+      }
+    ]
+  }
+}

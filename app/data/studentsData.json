@@ -1,0 +1,34 @@
+[
+  {
+    "_id": 1,
+    "studentName": "Aditya Raj Gupta",
+    "studentImage": "",
+    "studentEmail": "webdegredg@gmail.com",
+    "studentPhone": "9999999999",
+    "studentGender": "Male",
+    "studentRatings": [
+      {
+        "studentRating": "5",
+        "universityName": "",
+        "courseName": "",
+        "yearOfAdmission": "",
+        "isHelpful": true,
+        "date": "",
+        "likePoints": ["like 1", "like 2"],
+        "dislikePoints": ["dis-like 1", "dis-like 2"],
+        "reason2": "",
+        "reason4": "",
+        "reason5": "",
+        "reason6": "",
+        "reason7": ""
+      }
+    ],
+    "studentAddress": {
+      "addressLine": "509, RG Trade Tower, 5th Floor",
+      "city": "Pitampura",
+      "state": "New Delhi",
+      "pinCode": "110038",
+      "country": "India"
+    }
+  }
+]

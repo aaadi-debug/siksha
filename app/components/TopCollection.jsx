@@ -13,9 +13,13 @@ import "aos/dist/aos.css";
 import collegeDataJSON from "../data/collegeData.json";
 
 const TopCollection = () => {
+<<<<<<< HEAD
   const colleges = collegeDataJSON.data.filter(
     (college) => college.collegeAddress.country.toLowerCase() === "india"
   );
+=======
+  const colleges = collegeDataJSON.data;
+>>>>>>> second-account/main
 
   // Split data into two parts
   const first20Colleges = colleges.slice(0, 20);
@@ -41,7 +45,11 @@ const TopCollection = () => {
   }, []);
 
   return (
+<<<<<<< HEAD
     <section className="pb-5 lg:px-20 px-6">
+=======
+    <section className="pb-5 lg:px-20">
+>>>>>>> second-account/main
       <div className="">
         <h2
           data-aos="fade-up"

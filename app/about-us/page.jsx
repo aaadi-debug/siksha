@@ -44,7 +44,11 @@ const About = () => {
     <>
       <div className="pt-20 max-sm:pt-16">
         <div
+<<<<<<< HEAD
           className="border-red-500 bg-cover bg-center bg-no-repeat developedByAdityaRajGupta  lg:px-10 px-6 py-10"
+=======
+          className="border-red-500 bg-cover bg-center bg-no-repeat  lg:px-10 px-6 py-10"
+>>>>>>> second-account/main
           style={{
             backgroundImage: `url('https://demos.codexcoder.com/labartisan/html/edukon/assets/images/pageheader/bg/01.jpg')`,
           }}
@@ -162,7 +166,11 @@ const About = () => {
       </div>
 
       <div
+<<<<<<< HEAD
         className="2xl:px-64 xl:px-48 lg:px-20 px-6 py-20 developedByAdityaRajGupta"
+=======
+        className="2xl:px-64 xl:px-48 lg:px-20 px-6 py-20 "
+>>>>>>> second-account/main
         style={{ backgroundImage: "url(/assets/images/about/dotted-bg.png)" }}
       >
         <div className="flex gap-4 justify-center items-center">
@@ -285,7 +293,11 @@ const About = () => {
         </div>
       </div>
 
+<<<<<<< HEAD
       <div className="2xl:px-64 xl:px-48 lg:px-20 px-6 py-20 developedByAdityaRajGupta">
+=======
+      <div className="2xl:px-64 xl:px-48 lg:px-20 px-6 py-20">
+>>>>>>> second-account/main
         <div className="flex gap-4 justify-center items-center">
           <div className="border-2 border-second w-24"></div>
           <h2 className="text-3xl font-semibold text-black text-center ">

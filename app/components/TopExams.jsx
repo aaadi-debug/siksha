@@ -14,67 +14,100 @@ const exams = [
     imgSrc: "/assets/images/TOP exams n signs/neet-exam.png",
     examLogo: "/assets/images/TOP exams n signs/neet.png",
     organization: "Neet",
+<<<<<<< HEAD
     link: "#",
+=======
+>>>>>>> second-account/main
   },
   {
     imgSrc: "/assets/images/TOP exams n signs/bitsat-exam.png",
     examLogo: "/assets/images/TOP exams n signs/cat-symbol.png",
     organization: "Cat",
+<<<<<<< HEAD
     link: "#",
+=======
+>>>>>>> second-account/main
   },
   {
     imgSrc: "/assets/images/TOP exams n signs/jee-adv.png",
     examLogo: "/assets/images/TOP exams n signs/jee-advance-symbol.png",
     organization: "JEE Advance",
+<<<<<<< HEAD
     link: "#",
+=======
+>>>>>>> second-account/main
   },
   {
     imgSrc: "/assets/images/TOP exams n signs/jee mains.png",
     examLogo: "/assets/images/TOP exams n signs/jee-mains-logo.png",
     organization: "JEE Main",
+<<<<<<< HEAD
     link: "#",
+=======
+>>>>>>> second-account/main
   },
   {
     imgSrc: "/assets/images/TOP exams n signs/nmat-exam.png",
     examLogo: "/assets/images/TOP exams n signs/nmat-logo.png",
     organization: "NMAT",
+<<<<<<< HEAD
     link: "#",
+=======
+>>>>>>> second-account/main
   },
   {
     imgSrc: "/assets/images/TOP exams n signs/mat-exam.png",
     examLogo: "/assets/images/TOP exams n signs/mat-logo.png",
     organization: "MAT",
+<<<<<<< HEAD
     link: "#",
+=======
+>>>>>>> second-account/main
   },
   {
     imgSrc: "/assets/images/TOP exams n signs/gate-exam.png",
     examLogo: "/assets/images/TOP exams n signs/gate-logo.png",
     organization: "Gate",
+<<<<<<< HEAD
     link: "#",
+=======
+>>>>>>> second-account/main
   },
   {
     imgSrc: "/assets/images/TOP exams n signs/xat-exam.png",
     examLogo: "/assets/images/TOP exams n signs/xat-symbol.png",
     organization: "XAT",
+<<<<<<< HEAD
     link: "#",
+=======
+>>>>>>> second-account/main
   },
   {
     imgSrc: "/assets/images/TOP exams n signs/bitsat-exam.png",
     examLogo: "/assets/images/TOP exams n signs/bitsat-exam-logo.png",
     organization: "BISAT",
+<<<<<<< HEAD
     link: "#",
+=======
+>>>>>>> second-account/main
   },
   {
     imgSrc: "/assets/images/TOP exams n signs/iitjam.png",
     examLogo: "/assets/images/TOP exams n signs/iitjam-logo.png",
     organization: "IIT JAM",
+<<<<<<< HEAD
     link: "#",
+=======
+>>>>>>> second-account/main
   },
   {
     imgSrc: "/assets/images/TOP exams n signs/cuet-exam.png",
     examLogo: "/assets/images/TOP exams n signs/cuet-symbol.png",
     organization: "CUET",
+<<<<<<< HEAD
     link: "#",
+=======
+>>>>>>> second-account/main
   },
 ];
 
@@ -87,7 +120,11 @@ const TopExams = () => {
     });
   }, []);
   return (
+<<<<<<< HEAD
     <section className=" pb-5 lg:px-20 py-20 px-6 bg-prim-light">
+=======
+    <section className=" pb-5 lg:px-20 py-20 bg-prim-light">
+>>>>>>> second-account/main
       <div className="">
         <h2 className="mb-4 text-black text-3xl font-semibold">Top Exams</h2>
 
@@ -115,10 +152,14 @@ const TopExams = () => {
         >
           {exams.map((exam, index) => (
             <SwiperSlide key={index}>
+<<<<<<< HEAD
               <a
                 href={exam.link}
                 className="bg-white rounded-lg relative group"
               >
+=======
+              <div className="bg-white rounded-lg relative group">
+>>>>>>> second-account/main
                 <div className="h-50 relative overflow-hidden rounded-t-lg">
                   <img
                     src={exam.imgSrc}
@@ -129,7 +170,11 @@ const TopExams = () => {
                     {exam.organization}
                   </div>
                 </div>
+<<<<<<< HEAD
                 <div className="p-3 text-tertiary bg-white">
+=======
+                <div className="p-3">
+>>>>>>> second-account/main
                   <div className="flex gap-4 ">
                     <div className="w-2/3 text-sm">Participating Colleges</div>
                     <div className="w-1/3 text-sm">
@@ -147,9 +192,18 @@ const TopExams = () => {
                     </div>
                   </div>
                   <div className="flex justify-between items-center pt-2 mt-3 text-sm border-t group">
+<<<<<<< HEAD
                     <div className="group-hover:text-prim transition duration-300">
                       Exam Overview
                     </div>
+=======
+                    <a
+                      href=""
+                      className="text-prim hover:text-black transition duration-300"
+                    >
+                      Exam Overview
+                    </a>
+>>>>>>> second-account/main
                     <span className="text-black hover:text-primary">
                       <ChevronRight size={16} />
                     </span>
@@ -162,7 +216,11 @@ const TopExams = () => {
                     className="rounded-full w-full h-full"
                   />
                 </div>
+<<<<<<< HEAD
               </a>
+=======
+              </div>
+>>>>>>> second-account/main
             </SwiperSlide>
           ))}
         </Swiper>

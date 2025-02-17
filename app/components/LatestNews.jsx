@@ -79,7 +79,11 @@ const LatestNews = () => {
      fetchData();
    }, []);
   return (
+<<<<<<< HEAD
     <section className="px-6 lg:px-20 py-20">
+=======
+    <section className=" lg:px-20 py-20">
+>>>>>>> second-account/main
       <div className=" ">
         <h2 data-aos="zoom-in" className='mb-4 text-3xl text-black font-semibold'>Latest News & Notifications</h2>
 

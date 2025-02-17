@@ -28,7 +28,10 @@ import {
   Newspaper,
   House,
   SlidersHorizontal,
+<<<<<<< HEAD
   Download,
+=======
+>>>>>>> second-account/main
 } from "lucide-react";
 import { TbMilitaryRank } from "react-icons/tb";
 import { FaChalkboardTeacher } from "react-icons/fa";
@@ -52,7 +55,10 @@ import Reviews from "@/app/components/collegeTabs/Reviews";
 import Results from "@/app/components/collegeTabs/Results";
 import NewsArticles from "@/app/components/collegeTabs/NewsArticles";
 import StarRating from "@/app/components/StarRating";
+<<<<<<< HEAD
 import DynamicThemeButton from "@/app/components/DynamicThemeButton";
+=======
+>>>>>>> second-account/main
 
 const page = () => {
   const router = useRouter(); // Initialize the router
@@ -414,6 +420,7 @@ const page = () => {
       </div>
 
       {/* tabs section */}
+<<<<<<< HEAD
       <div className="lg:px-10 px-6 py-2 max-sm:px-2  overflow-visible">
         <div className="lg:hidden block">
           <div className="w-60 max-sm:w-full bg-white p-3 flex flex-col gap-4 rounded-lg mb-4">
@@ -427,6 +434,9 @@ const page = () => {
             </a>
           </div>
         </div>
+=======
+      <div className="lg:px-10 px-6 py-2 mt-4 max-sm:px-2  overflow-visible">
+>>>>>>> second-account/main
         <div className="lg:hidden mb-5 sticky top-24">
           <button
             className={`border-2 border-prim bg-white text-prim px-4 py-2 z-50 
@@ -441,7 +451,11 @@ const page = () => {
           </button>
         </div>
 
+<<<<<<< HEAD
         <div className="mt-2 flex gap-2 flex-col md:flex-row items-start rounded-xl bg-gray-100 lg:p-3 max-sm:p-0  overflow-visible">
+=======
+        <div className="flex gap-2 flex-col md:flex-row rounded-xl bg-gray-100 lg:p-3 max-sm:p-0  overflow-visible">
+>>>>>>> second-account/main
           {/* Sidebar Modal - Mobile & Tab View */}
           {isSidebarOpen && (
             <>
@@ -661,6 +675,7 @@ const page = () => {
             {/* Profile Completion Reminder Box */}
             {renderContent()}
           </main>
+<<<<<<< HEAD
 
           <div className="lg:block hidden lg:w-1/6">
             <div className="w-full bg-white p-3 flex flex-col gap-4 rounded-lg">
@@ -684,6 +699,8 @@ const page = () => {
               Adverstisemt 2
             </div>
           </div>
+=======
+>>>>>>> second-account/main
         </div>
       </div>
     </>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use client";
 import { useState } from "react";
 import Breadcrumbs2 from "../../components/Breadcrumbs2";
@@ -50,11 +51,17 @@ const AppliedColleges = () => {
     };
 
 
+=======
+import React from 'react'
+
+const AppliedColleges = () => {
+>>>>>>> second-account/main
   return (
     <>
       <div className="text-2xl font-semibold text-tertiary">
         Applied Colleges
       </div>
+<<<<<<< HEAD
       <div className="grid gap-4 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 mt-4">
         {colleges.slice(0, visibleCount).map((college) => {
           // Calculate reviews for each college individually
@@ -165,3 +172,10 @@ const AppliedColleges = () => {
 };
 
 export default AppliedColleges;
+=======
+    </>
+  )
+}
+
+export default AppliedColleges
+>>>>>>> second-account/main

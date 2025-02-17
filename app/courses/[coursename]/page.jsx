@@ -86,9 +86,13 @@ function formatNumberWithCommas(number) {
 const FilterableCoursePage = () => {
   const pathname = usePathname();
   const courseUrlFromPath = pathname.split("/").pop() || ""; // Extracting courseUrl from the path
+<<<<<<< HEAD
   const collegeData = collegeDataJson.data.filter(
     (college) => college.collegeAddress.country.toLowerCase() === "india"
   );
+=======
+  const collegeData = collegeDataJson;
+>>>>>>> second-account/main
   const router = useRouter();
 
   // State to control the number of displayed colleges
@@ -115,7 +119,11 @@ const FilterableCoursePage = () => {
   };
 
   // Default filters based on URL
+<<<<<<< HEAD
   const defaultDepartment = collegeData
+=======
+  const defaultDepartment = collegeData.data
+>>>>>>> second-account/main
     .flatMap((college) => college.departments)
     .find((department) =>
       department.courses.some(
@@ -123,7 +131,11 @@ const FilterableCoursePage = () => {
       )
     )?.departmentName;
 
+<<<<<<< HEAD
   const defaultCourse = collegeData
+=======
+  const defaultCourse = collegeData.data
+>>>>>>> second-account/main
     .flatMap((college) =>
       college.departments.flatMap((department) => department.courses)
     )
@@ -174,7 +186,11 @@ const FilterableCoursePage = () => {
   // Unique values from college data for all filters
   const uniqueDepartments = [
     ...new Set(
+<<<<<<< HEAD
       collegeData.flatMap((college) =>
+=======
+      collegeData.data.flatMap((college) =>
+>>>>>>> second-account/main
         college.departments.map((department) => department.departmentName)
       )
     ),
@@ -182,7 +198,11 @@ const FilterableCoursePage = () => {
 
   const uniqueCourses = [
     ...new Set(
+<<<<<<< HEAD
       collegeData.flatMap((college) =>
+=======
+      collegeData.data.flatMap((college) =>
+>>>>>>> second-account/main
         college.departments.flatMap((department) =>
           department.courses.map((course) => course.courseName)
         )
@@ -193,7 +213,11 @@ const FilterableCoursePage = () => {
   // Update unique specializations based on selected department and course
   const uniqueSpecializations = [
     ...new Set(
+<<<<<<< HEAD
       collegeData.flatMap((college) =>
+=======
+      collegeData.data.flatMap((college) =>
+>>>>>>> second-account/main
         college.departments
           .filter((department) =>
             selectedDepartment
@@ -214,6 +238,7 @@ const FilterableCoursePage = () => {
   ];
 
   const states = [
+<<<<<<< HEAD
     ...new Set(collegeData.map((college) => college.collegeAddress.state)),
   ];
 
@@ -223,6 +248,17 @@ const FilterableCoursePage = () => {
 
   const collegeTypes = [
     ...new Set(collegeData.map((college) => college.collegeType)),
+=======
+    ...new Set(collegeData.data.map((college) => college.collegeAddress.state)),
+  ];
+
+  const cities = [
+    ...new Set(collegeData.data.map((college) => college.collegeAddress.city)),
+  ];
+
+  const collegeTypes = [
+    ...new Set(collegeData.data.map((college) => college.collegeType)),
+>>>>>>> second-account/main
   ];
 
   // console.log("Filtered unique specializations", uniqueSpecializations);
@@ -233,7 +269,11 @@ const FilterableCoursePage = () => {
   // =====================================================
 
   useEffect(() => {
+<<<<<<< HEAD
     const fees = collegeData.flatMap((college) =>
+=======
+    const fees = collegeData.data.flatMap((college) =>
+>>>>>>> second-account/main
       college.departments.flatMap((department) =>
         department.courses.flatMap((course) =>
           course.specialization.flatMap((spec) => {
@@ -261,7 +301,11 @@ const FilterableCoursePage = () => {
   }, [collegeData]); // Ensure collegeData is available
 
   useEffect(() => {
+<<<<<<< HEAD
     const filtered = collegeData.filter((college) => {
+=======
+    const filtered = collegeData.data.filter((college) => {
+>>>>>>> second-account/main
       // Check filters one by one
       const matchesState = selectedState
         ? college.collegeAddress.state === selectedState
@@ -337,7 +381,11 @@ const FilterableCoursePage = () => {
     setSelectedDepartment(department);
 
     // Find the first course in the selected department
+<<<<<<< HEAD
     const firstCourseInDepartment = collegeData
+=======
+    const firstCourseInDepartment = collegeData.data
+>>>>>>> second-account/main
       .flatMap((college) =>
         college.departments.filter((dep) => dep.departmentName === department)
       )
@@ -356,7 +404,11 @@ const FilterableCoursePage = () => {
     setSelectedCourse(course);
 
     // Automatically update department based on the selected course
+<<<<<<< HEAD
     const relatedDepartment = collegeData
+=======
+    const relatedDepartment = collegeData.data
+>>>>>>> second-account/main
       .flatMap((college) =>
         college.departments.filter((department) =>
           department.courses.some((crs) => crs.courseName === course)
@@ -367,7 +419,11 @@ const FilterableCoursePage = () => {
     setSelectedDepartment(relatedDepartment);
 
     // Update the URL based on selected course's courseUrl
+<<<<<<< HEAD
     const selectedCourseObj = collegeData
+=======
+    const selectedCourseObj = collegeData.data
+>>>>>>> second-account/main
       .flatMap((college) =>
         college.departments.flatMap((department) =>
           department.courses.filter((crs) => crs.courseName === course)
@@ -468,7 +524,11 @@ const FilterableCoursePage = () => {
   // =====================================================
   // =====================================================
   // Find the matching course based on courseUrlFromPath
+<<<<<<< HEAD
   const matchedCourse = collegeData
+=======
+  const matchedCourse = collegeData.data
+>>>>>>> second-account/main
     .flatMap((college) =>
       college.departments.flatMap((department) =>
         department.courses.find(

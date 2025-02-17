@@ -2,9 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import { ArrowLeft, ArrowRight, ChevronRight } from "lucide-react";
 import CollegeData from "../data/collegeData.json";
 
+<<<<<<< HEAD
 const data = CollegeData.data.filter(
   (college) => college.collegeAddress.country.toLowerCase() === "india"
 );
+=======
+const data = CollegeData.data;
+>>>>>>> second-account/main
 
 const generateTabsData = (data) => {
   // Extract unique courseSlugs from the nested structure
@@ -216,7 +220,11 @@ const Top10Colleges = () => {
             tab.content.map((college) => (
               <div
                 key={college.collegeId}
+<<<<<<< HEAD
                 className="rounded-2xl 2xl:h-[350px] xl:h-[320px] lg:h-[280px] md:h-[250px] h-[250px] max-sm:h-[350px] flex flex-col justify-end items-center"
+=======
+                className="rounded-2xl 2xl:h-[400px] xl:h-[350px] lg:h-[300px] md:h-[270px] h-[280px] max-sm:h-[350px] flex flex-col justify-end items-center"
+>>>>>>> second-account/main
                 style={{
                   backgroundImage: `url(${college.collegeImages[0]})`,
                   backgroundSize: "cover",
@@ -237,22 +245,39 @@ const Top10Colleges = () => {
                     className="w-16 h-16 rounded-full bg-white shadow-md p-1 -mt-12"
                   />
                   <div className="flex gap-4 mt-6 text-left w-full">
+<<<<<<< HEAD
                     <div className="w-1/4 text-sm font-semibold">College</div>
                     <div className="w-3/4 text-sm twoLinerTitle2">
+=======
+                    <div className="w-1/3 text-sm font-semibold">College</div>
+                    <div className="w-2/3 text-sm twoLinerTitle2">
+>>>>>>> second-account/main
                       {college.collegeName}
                     </div>
                   </div>
                   <div className="flex gap-4 mt-2 text-left w-full">
+<<<<<<< HEAD
                     <div className="w-1/4 text-sm font-semibold">Cut-Off</div>
                     <div className="w-3/4 text-sm twoLinerTitle2">
                       {/* Check if cutOffs and cutoffExamWise exist */}
                       {college?.cutOffs?.[0]?.cutoffExamWise?.[0] ? (
                         <div className="flex flex-wrap">
+=======
+                    <div className="w-1/3 text-sm font-semibold">Cut-Off</div>
+                    <div className="w-2/3 text-sm twoLinerTitle2">
+                      {/* Check if cutOffs and cutoffExamWise exist */}
+                      {college?.cutOffs?.[0]?.cutoffExamWise?.[0] ? (
+                        <div className="flex">
+>>>>>>> second-account/main
                           <span className="font-semibold">
                             {college?.cutOffs[0]?.cutoffExamWise[0]?.examName}{" "}
                             Cut-Off:
                           </span>
+<<<<<<< HEAD
                           <span>
+=======
+                          <span className="ml-2">
+>>>>>>> second-account/main
                             {
                               college?.cutOffs[0]?.cutoffExamWise[0]
                                 ?.examCutoffTable?.rows[0]?.[1]?.content
@@ -273,15 +298,24 @@ const Top10Colleges = () => {
                     </div>
                   </div> */}
                   <div className="flex gap-4 mt-2 text-left w-full">
+<<<<<<< HEAD
                     <div className="w-1/4 text-sm font-semibold">Fees</div>
                     <div className="w-3/4 text-sm ">
+=======
+                    <div className="w-1/3 text-sm font-semibold">Fees</div>
+                    <div className="w-2/3 text-sm twoLinerTitle2">
+>>>>>>> second-account/main
                       {(() => {
                         const { minFee, maxFee } = calculateMinMaxFees(college);
                         return `₹ ${formatNumberWithCommas(
                           minFee
                         )} - ₹ ${formatNumberWithCommas(maxFee)}`;
                       })()}{" "}
+<<<<<<< HEAD
                       <div className="text-xs">(1st Year)</div>
+=======
+                      <div className="text-xs">(1st Year Fees)</div>
+>>>>>>> second-account/main
                     </div>
                   </div>
                 </a>

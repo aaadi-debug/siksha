@@ -80,11 +80,7 @@ const Footer2 = () => {
 
   return (
     <footer className="pt-20">
-<<<<<<< HEAD
       <div className="grid lg:grid-cols-6 md:grid-cols-3 max-sm:grid-cols-1 gap-8 lg:px-10 px-6 developedByAdityaRajGupta">
-=======
-      <div className="grid lg:grid-cols-6 md:grid-cols-3 max-sm:grid-cols-1 gap-8 lg:px-10 px-6">
->>>>>>> second-account/main
         <div>
           <div className="text-xl text-white font-semibold">Useful Links</div>
           <ul className="mt-6">
@@ -113,11 +109,7 @@ const Footer2 = () => {
               </a>
             </li>
             <li className="mt-2">
-<<<<<<< HEAD
               <a href="/education-loan" className="hover:text-prim transition duration-300">
-=======
-              <a href="#" className="hover:text-prim transition duration-300">
->>>>>>> second-account/main
                 Education Loan
               </a>
             </li>
@@ -152,11 +144,7 @@ const Footer2 = () => {
               </a>
             </li>
             <li className="mt-2">
-<<<<<<< HEAD
               <a href="/dashboard" className="hover:text-prim transition duration-300">
-=======
-              <a href="#" className="hover:text-prim transition duration-300">
->>>>>>> second-account/main
                 Your Account
               </a>
             </li>
@@ -187,22 +175,14 @@ const Footer2 = () => {
                 Refund Policy
               </a>
             </li>
-<<<<<<< HEAD
             {/* <li className="mt-2">
-=======
-            <li className="mt-2">
->>>>>>> second-account/main
               <a
                 href="/sitemap"
                 className="hover:text-prim transition duration-300"
               >
                 Sitemap
               </a>
-<<<<<<< HEAD
             </li> */}
-=======
-            </li>
->>>>>>> second-account/main
           </ul>
         </div>
 
@@ -249,11 +229,7 @@ const Footer2 = () => {
           <ul className="mt-6">
             <li className="mt-2">
               <a
-<<<<<<< HEAD
                 href="#"
-=======
-                href="/collegepage/IIT Madras (IIT-M)"
->>>>>>> second-account/main
                 className="hover:text-prim transition duration-300"
               >
                 CAT
@@ -261,11 +237,7 @@ const Footer2 = () => {
             </li>
             <li className="mt-2">
               <a
-<<<<<<< HEAD
                 href="#"
-=======
-                href="/collegepage/IIT Kharagpur (IIT-KGP)"
->>>>>>> second-account/main
                 className="hover:text-prim transition duration-300"
               >
                 GATE
@@ -273,11 +245,7 @@ const Footer2 = () => {
             </li>
             <li className="mt-2">
               <a
-<<<<<<< HEAD
                 href="#"
-=======
-                href="/collegepage/IIT Roorkee (IIT-R)"
->>>>>>> second-account/main
                 className="hover:text-prim transition duration-300"
               >
                 NEET
@@ -285,11 +253,7 @@ const Footer2 = () => {
             </li>
             <li className="mt-2">
               <a
-<<<<<<< HEAD
                 href="#"
-=======
-                href="/collegepage/IIT Bombay (IIT-B)"
->>>>>>> second-account/main
                 className="hover:text-prim transition duration-300"
               >
                 JEE Mains
@@ -305,11 +269,7 @@ const Footer2 = () => {
           <ul className="mt-6">
             <li className="mt-2">
               <a
-<<<<<<< HEAD
                 href="/courses-abroad/abroad-colleges"
-=======
-                href="/collegepage/IIT Madras (IIT-M)"
->>>>>>> second-account/main
                 className="hover:text-prim transition duration-300"
               >
                 Canada
@@ -317,11 +277,7 @@ const Footer2 = () => {
             </li>
             <li className="mt-2">
               <a
-<<<<<<< HEAD
                 href="/courses-abroad/abroad-colleges"
-=======
-                href="/collegepage/IIT Kharagpur (IIT-KGP)"
->>>>>>> second-account/main
                 className="hover:text-prim transition duration-300"
               >
                 USA
@@ -329,11 +285,7 @@ const Footer2 = () => {
             </li>
             <li className="mt-2">
               <a
-<<<<<<< HEAD
                 href="/courses-abroad/abroad-colleges"
-=======
-                href="/collegepage/IIT Roorkee (IIT-R)"
->>>>>>> second-account/main
                 className="hover:text-prim transition duration-300"
               >
                 New Zealand
@@ -341,11 +293,7 @@ const Footer2 = () => {
             </li>
             <li className="mt-2">
               <a
-<<<<<<< HEAD
                 href="/courses-abroad/abroad-colleges"
-=======
-                href="/collegepage/IIT Bombay (IIT-B)"
->>>>>>> second-account/main
                 className="hover:text-prim transition duration-300"
               >
                 Singapore

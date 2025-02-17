@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 "use client";
 import React, { useState } from "react";
 import { ThumbsUp, ThumbsDown } from "lucide-react";
@@ -173,14 +172,6 @@ const Reviews = () => {
           ))}
         </div>
       </div>
-=======
-import React from "react";
-
-const Reviews = () => {
-  return (
-    <>
-      <div className="text-2xl font-semibold text-tertiary">Reviews</div>
->>>>>>> second-account/main
     </>
   );
 };

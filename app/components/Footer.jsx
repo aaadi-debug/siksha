@@ -10,11 +10,7 @@ const Footer = () => {
 
   return (
     <footer>
-<<<<<<< HEAD
       <div className="footer_wrapper py-5" id="developedByAdityaRajGupta">
-=======
-      <div className="footer_wrapper py-5">
->>>>>>> second-account/main
         <div className="footer_body row pt-5">
           <div className="col-md-4">
             <div className="row">

@@ -16,7 +16,6 @@ import {
   ShoppingBasket,
   Mail,
   FilePenLine,
-<<<<<<< HEAD
   UserRoundPen,
   ReceiptText,
   LogOut,
@@ -28,8 +27,6 @@ import {
   School,
   MessageSquareCode,
   Settings,
-=======
->>>>>>> second-account/main
 } from "lucide-react";
 import { FaUserTie } from "react-icons/fa6";
 import { IoMdNotifications } from "react-icons/io";
@@ -70,10 +67,7 @@ const menuItems = [
       { name: "Dashboard", href: "/dashboard" },
       { name: "Education Loan", href: "/education-loan" },
       { name: "Apply Now", href: "/apply-now" },
-<<<<<<< HEAD
       { name: "College Compare", href: "/college-compare" },
-=======
->>>>>>> second-account/main
     ],
   },
 ];
@@ -385,21 +379,12 @@ export default function Nav() {
                 onClick={toggleNotificationSidebar}
                 aria-label="Notification Button"
                 className={` ${
-<<<<<<< HEAD
                   isHomePage
                     ? isScrolled
                       ? "text-second border-2 border-second p-2 rounded-full hover:bg-second hover:text-white"
                       : "text-second border-2 bg-white border-second p-2 rounded-full hover:bg-second"
                     : "text-second border-2 border-second p-2 rounded-full hover:bg-second hover:text-white"
                 }
-=======
-                isHomePage
-                  ? isScrolled
-                    ? "text-second border-2 border-second p-2 rounded-full hover:bg-second hover:text-white"
-                    : "text-second border-2 bg-white border-second p-2 rounded-full hover:bg-second"
-                  : "text-second border-2 border-second p-2 rounded-full hover:bg-second hover:text-white"
-              }
->>>>>>> second-account/main
                transition duration-500`}
               >
                 <IoMdNotifications size={16} />
@@ -540,21 +525,12 @@ export default function Nav() {
                           )}
                         </a>
                         {item.subMenu && activeSubMenu === item.name && (
-<<<<<<< HEAD
                           <ul className="ml-2 mt-3">
                             {item.subMenu.map((subItem, index) => (
                               <li key={index} className="">
                                 <a
                                   href={subItem.href}
                                   className="text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-100 block border-b w-full py-2 px-3"
-=======
-                          <ul className="ml-6 mt-2">
-                            {item.subMenu.map((subItem, index) => (
-                              <li key={index} className=" border">
-                                <a
-                                  href={subItem.href}
-                                  className="text-sm text-gray-700 hover:text-gray-900 border w-full py-2"
->>>>>>> second-account/main
                                 >
                                   {subItem.name}
                                 </a>
@@ -746,11 +722,7 @@ export default function Nav() {
               isUserSidebarOpen ? "translate-x-0" : "translate-x-full"
             } duration-700 ease-in-out`}
           >
-<<<<<<< HEAD
             <div className="flex relative items-center justify-between border-textClr w-full p-4 bg-prim-light">
-=======
-            <div className="flex items-center justify-between border-textClr w-full p-4 bg-prim-light">
->>>>>>> second-account/main
               <div className="flex gap-2">
                 <div className="w-12 h-12 flex items-center justify-center border-2 border-prim bg-prim-light text-prim font-semibold rounded-full">
                   {getStudentNameInitials(student.studentName)}
@@ -763,7 +735,6 @@ export default function Nav() {
                   {/* Hi, {student.studentName.split(" ")[0]} */}
                 </div>
               </div>
-<<<<<<< HEAD
             </div>
 
             <div className=" flex flex-col justify-between">
@@ -812,20 +783,6 @@ export default function Nav() {
                 </button>
               </div>
             </div>
-=======
-
-              {/* <button
-                onClick={closeUserSidebar}
-                className="text-gray-600 hover:text-gray-900"
-              >
-                <X
-                  className="h-10 w-10 rounded-full p-2 transition duration-500 hover:bg-prim hover:text-white"
-                  aria-hidden="true"
-                />
-              </button> */}
-            </div>
-            <div className="py-2 pb-16"></div>
->>>>>>> second-account/main
           </div>
           {/* Overlay */}
           <div

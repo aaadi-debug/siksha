@@ -15,14 +15,10 @@ import "swiper/css/navigation";
 import collegeDataJSON from "../data/collegeData.json";
 
 const CollegeRecommendations = () => {
-<<<<<<< HEAD
   const colleges = collegeDataJSON.data.filter(
     (college) => college.collegeAddress.country.toLowerCase() === "india"
   );
   
-=======
-  const colleges = collegeDataJSON.data;
->>>>>>> second-account/main
 
   const createSlug = (id, name, city) => {
     const cleanedName = encodeURIComponent(
@@ -40,11 +36,7 @@ const CollegeRecommendations = () => {
   };
 
   return (
-<<<<<<< HEAD
     <section className="pb-5 lg:px-20 px-6">
-=======
-    <section className="pb-5 lg:px-20">
->>>>>>> second-account/main
       <div className="">
         <h2 className="pb-3 text-3xl text-black font-semibold">
           Recommended Colleges

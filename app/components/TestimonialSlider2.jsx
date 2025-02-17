@@ -47,11 +47,7 @@ const successStories = [
 const TestimonialSlider2 = () => {
   return (
     <div className="testimonialSliderWrapper2 relative">
-<<<<<<< HEAD
       <div className="">
-=======
-      <div className="2xl:px-48 xl:px-32 lg:px-20 px-6 py-28">
->>>>>>> second-account/main
         <div>
           <div className="text-prim text-lg font-semibold">
             Our Success Stories{" "}

@@ -61,7 +61,6 @@ const ApplyNow = ({ student, colleges }) => {
     setTimeout(() => {
       console.log(data); // Process the data here
       setIsSubmitting(false); // End loading
-<<<<<<< HEAD
 
       setIsSubmitted(true); // Show success image
       setTimeout(() => {
@@ -71,11 +70,6 @@ const ApplyNow = ({ student, colleges }) => {
         setSelectedOption4(""); // Reset "Start Year" dropdown
         setSelectedOption5(""); // Reset "Start Year" dropdown
         setSelectedOption6(""); // Reset "Start Year" dropdown
-=======
-      setIsSubmitted(true); // Show success image
-      setTimeout(() => {
-        setIsSubmitted(false); // Reset the form after 2 seconds
->>>>>>> second-account/main
         // window.location.reload(); // Reset the form fields
       }, 3000);
     }, 2000); // Simulate server request for 2 seconds
@@ -86,24 +80,15 @@ const ApplyNow = ({ student, colleges }) => {
     setSelectedOption3(college.collegeName);
     setDropdownOpen3(false);
     setDropdownOpen4(true);
-<<<<<<< HEAD
 
     clearErrors("collegeName");
     setValue("collegeName", college.collegeName);
   };
 
-=======
-  
-    clearErrors("collegeName");
-    setValue("collegeName", college.collegeName);
-  };
-  
->>>>>>> second-account/main
   const handleSelectOption4 = (department) => {
     setSelectedCourse(department);
     setSelectedOption4(department.departmentName);
     setDropdownOpen4(false);
-<<<<<<< HEAD
     setDropdownOpen6(true); // Open Specialization dropdown
 
     // Extract all specializations from department courses
@@ -123,39 +108,15 @@ const ApplyNow = ({ student, colleges }) => {
     clearErrors("specilizationOpted");
     setValue("specilizationOpted", specialization.name);
   };
-=======
-    setDropdownOpen6(true);
-  
-    setSpecializations(department.specializations || []);
-    clearErrors("courseOpted");
-    setValue("courseOpted", department.departmentName);
-  };
-  
-  const handleSelectOption6 = (specialization) => {
-    setSelectedOption6(specialization.name);
-    setDropdownOpen6(false);
-  
-    clearErrors("specilizationOpted");
-    setValue("specilizationOpted", specialization.name);
-  };
-  
->>>>>>> second-account/main
 
   // Handle selecting an option for dropdown 5
   const handleSelectOption5 = (option) => {
     setSelectedOption5(option);
     setDropdownOpen5(false);
-<<<<<<< HEAD
     clearErrors("startYear");
 
     // Update React Hook Form value manually to sync with state
     setValue("startYear", option);
-=======
-    clearErrors("yearOfAdmission");
-
-    // Update React Hook Form value manually to sync with state
-    setValue("yearOfAdmission", option);
->>>>>>> second-account/main
   };
 
   //to select department from college data
@@ -173,18 +134,13 @@ const ApplyNow = ({ student, colleges }) => {
     const allSpecializations = colleges.flatMap((college) =>
       college.departments.flatMap((dept) =>
         dept.courses.flatMap((course) =>
-<<<<<<< HEAD
           Array.isArray(course.specialization) &&
           course.specialization.length > 0
-=======
-          Array.isArray(course.specialization) && course.specialization.length > 0
->>>>>>> second-account/main
             ? course.specialization.map((spec) => spec.name)
             : []
         )
       )
     );
-<<<<<<< HEAD
 
     // Remove duplicates and filter out any falsy values
     const uniqueSpecializations = [
@@ -193,15 +149,6 @@ const ApplyNow = ({ student, colleges }) => {
 
     setSpecializations(uniqueSpecializations);
   }, [colleges]);
-=======
-  
-    // Remove duplicates and filter out any falsy values
-    const uniqueSpecializations = [...new Set(allSpecializations.filter(Boolean))];
-    
-    setSpecializations(uniqueSpecializations);
-  }, [colleges]);
-  
->>>>>>> second-account/main
 
   console.log(specializations);
 
@@ -238,15 +185,12 @@ const ApplyNow = ({ student, colleges }) => {
       ) {
         setDropdownOpen5(false);
       }
-<<<<<<< HEAD
       if (
         dropdownRef6.current &&
         !dropdownRef6.current.contains(event.target)
       ) {
         setDropdownOpen6(false);
       }
-=======
->>>>>>> second-account/main
     };
 
     document.addEventListener("mousedown", handleClickOutside);
@@ -340,11 +284,7 @@ const ApplyNow = ({ student, colleges }) => {
                 {...register("collegeName", {
                   required: "This field is required",
                 })}
-<<<<<<< HEAD
                 value={selectedCollege?.collegeName || ""}
-=======
-                value={selectedOption3?.collegeName || ""}
->>>>>>> second-account/main
               />
 
               {/* Validation message */}
@@ -361,11 +301,7 @@ const ApplyNow = ({ student, colleges }) => {
                 htmlFor="courseOpted"
                 className="block text-sm font-medium text-gray-500"
               >
-<<<<<<< HEAD
                 Course Interested In
-=======
-                Course Interested
->>>>>>> second-account/main
               </label>
 
               <div
@@ -435,15 +371,10 @@ const ApplyNow = ({ student, colleges }) => {
                 </p>
               )}
             </div>
-<<<<<<< HEAD
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4  ">
             {/* Third specilaization (Specilaization) */}
-=======
-
-            {/* Second specilaization (Department) */}
->>>>>>> second-account/main
             <div className="relative" ref={dropdownRef6}>
               <label
                 htmlFor="specilizationOpted"
@@ -486,7 +417,6 @@ const ApplyNow = ({ student, colleges }) => {
                 </div>
               </div>
 
-<<<<<<< HEAD
               {dropdownOpen6 && specializations.length > 0 && (
                 <div className="absolute left-0 w-full bg-white border border-gray-300 rounded-md shadow-md mt-1 z-10">
                   <ul className="divide-y divide-gray-100 max-h-[200px] overflow-y-auto">
@@ -502,27 +432,6 @@ const ApplyNow = ({ student, colleges }) => {
                   </ul>
                 </div>
               )}
-=======
-              {dropdownOpen6 &&
-                selectedCourse &&
-                specializations.length > 0 && (
-                  <div className="absolute left-0 w-full bg-white border border-gray-300 rounded-md shadow-md mt-1 z-10">
-                    <ul className="divide-y divide-gray-100 max-h-[200px] overflow-y-auto">
-                      {specializations.map((specialization, index) => (
-                        <li
-                          key={index}
-                          className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
-                          onClick={() =>
-                            handleSelectOption6(specialization)
-                          }
-                        >
-                          {specialization.name}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
->>>>>>> second-account/main
 
               {/* Hidden input to integrate with React Hook Form */}
               <input
@@ -540,14 +449,7 @@ const ApplyNow = ({ student, colleges }) => {
                 </p>
               )}
             </div>
-<<<<<<< HEAD
             {/* Fourth Name */}
-=======
-          </div>
-
-          {/* Name and Email  */}
-          <div className="grid grid-cols-2  max-sm:grid-cols-1 gap-8 mt-4">
->>>>>>> second-account/main
             <div className="grid grid-cols-1 gap-4">
               <div>
                 <label
@@ -561,23 +463,15 @@ const ApplyNow = ({ student, colleges }) => {
                   type="text"
                   placeholder="Enter Full Name"
                   value={student.studentName} // Pre-populate with student name
-<<<<<<< HEAD
                   readOnly // Disable input field
-=======
-                  disabled // Disable input field
->>>>>>> second-account/main
                   className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md bg-gray-300 text-gray-700 opacity-50"
                 />
               </div>
             </div>
-<<<<<<< HEAD
           </div>
 
           <div className="grid grid-cols-2  max-sm:grid-cols-1 gap-8 mt-4">
             {/* Email  */}
-=======
-
->>>>>>> second-account/main
             <div>
               <label
                 htmlFor="email"
@@ -590,22 +484,11 @@ const ApplyNow = ({ student, colleges }) => {
                 type="email"
                 placeholder="Enter Email"
                 value={student.studentEmail} // Pre-populate with student email
-<<<<<<< HEAD
                 readOnly // Disable input field
                 className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md bg-gray-300 text-gray-700 opacity-50"
               />
             </div>
             {/* Phone  */}
-=======
-                disabled // Disable input field
-                className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md bg-gray-300 text-gray-700 opacity-50"
-              />
-            </div>
-          </div>
-
-          {/* Phone and course Interested  */}
-          <div className="grid grid-cols-2  max-sm:grid-cols-1 gap-8 mt-4 mb-10">
->>>>>>> second-account/main
             <div>
               <label
                 htmlFor="phone"
@@ -624,18 +507,13 @@ const ApplyNow = ({ student, colleges }) => {
                   type="text"
                   placeholder="Enter Phone Number"
                   value={student.studentPhone} // Pre-populate with student phone
-<<<<<<< HEAD
                   readOnly={student.studentAddress.country === "India"} // Disable if from India
-=======
-                  disabled={student.studentAddress.country === "India"} // Disable if from India
->>>>>>> second-account/main
                   className={`block w-full px-4 py-3 border border-gray-300 rounded-md bg-gray-300 text-gray-700 opacity-50 ${
                     student.studentAddress.country === "India" ? "" : ""
                   }`}
                 />
               </div>
             </div>
-<<<<<<< HEAD
           </div>
 
           <div className="grid grid-cols-2  max-sm:grid-cols-1 gap-8 mt-4 mb-6">
@@ -646,15 +524,6 @@ const ApplyNow = ({ student, colleges }) => {
                 className="block text-sm font-medium text-gray-500"
               >
                 When do you plan to start your studies?
-=======
-
-            <div className="relative" ref={dropdownRef5}>
-              <label
-                htmlFor="yearOfAdmission"
-                className="block text-sm font-medium text-gray-500"
-              >
-                Year of Admission
->>>>>>> second-account/main
               </label>
 
               <div
@@ -662,11 +531,7 @@ const ApplyNow = ({ student, colleges }) => {
                 onClick={() => setDropdownOpen5(!dropdownOpen5)} // Toggle dropdown
               >
                 <div
-<<<<<<< HEAD
                   className={`px-4 py-3 ${
-=======
-                  className={`px-4 py-3  ${
->>>>>>> second-account/main
                     selectedOption5 ? "text-gray-700" : "text-gray-400"
                   }`}
                 >
@@ -697,7 +562,6 @@ const ApplyNow = ({ student, colleges }) => {
               {dropdownOpen5 && (
                 <div className="absolute left-0 w-full bg-white border border-gray-300 rounded-md shadow-md mt-1 z-10">
                   <ul className="divide-y divide-gray-100 max-h-[200px] overflow-y-auto">
-<<<<<<< HEAD
                     {Array.from({ length: 10 }, (_, i) => {
                       const year = new Date().getFullYear() + i; // Generate years dynamically
                       return (
@@ -710,166 +574,6 @@ const ApplyNow = ({ student, colleges }) => {
                         </li>
                       );
                     })}
-=======
-                    {/* Options for Year of Admission */}
-                    <li
-                      className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
-                      onClick={() => handleSelectOption5("2025")}
-                    >
-                      2025
-                    </li>
-                    <li
-                      className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
-                      onClick={() => handleSelectOption5("2024")}
-                    >
-                      2024
-                    </li>
-                    <li
-                      className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
-                      onClick={() => handleSelectOption5("2023")}
-                    >
-                      2023
-                    </li>
-                    <li
-                      className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
-                      onClick={() => handleSelectOption5("2022")}
-                    >
-                      2022
-                    </li>
-                    <li
-                      className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
-                      onClick={() => handleSelectOption5("2021")}
-                    >
-                      2021
-                    </li>
-                    <li
-                      className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
-                      onClick={() => handleSelectOption5("2020")}
-                    >
-                      2020
-                    </li>
-                    <li
-                      className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
-                      onClick={() => handleSelectOption5("2019")}
-                    >
-                      2019
-                    </li>
-                    <li
-                      className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
-                      onClick={() => handleSelectOption5("2018")}
-                    >
-                      2018
-                    </li>
-                    <li
-                      className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
-                      onClick={() => handleSelectOption5("2017")}
-                    >
-                      2017
-                    </li>
-                    <li
-                      className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
-                      onClick={() => handleSelectOption5("2016")}
-                    >
-                      2016
-                    </li>
-                    <li
-                      className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
-                      onClick={() => handleSelectOption5("2015")}
-                    >
-                      2015
-                    </li>
-                    <li
-                      className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
-                      onClick={() => handleSelectOption5("2014")}
-                    >
-                      2014
-                    </li>
-                    <li
-                      className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
-                      onClick={() => handleSelectOption5("2013")}
-                    >
-                      2013
-                    </li>
-                    <li
-                      className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
-                      onClick={() => handleSelectOption5("2012")}
-                    >
-                      2012
-                    </li>
-                    <li
-                      className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
-                      onClick={() => handleSelectOption5("2011")}
-                    >
-                      2011
-                    </li>
-                    <li
-                      className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
-                      onClick={() => handleSelectOption5("2010")}
-                    >
-                      2010
-                    </li>
-                    <li
-                      className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
-                      onClick={() => handleSelectOption5("2009")}
-                    >
-                      2009
-                    </li>
-                    <li
-                      className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
-                      onClick={() => handleSelectOption5("2008")}
-                    >
-                      2008
-                    </li>
-                    <li
-                      className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
-                      onClick={() => handleSelectOption5("2007")}
-                    >
-                      2007
-                    </li>
-                    <li
-                      className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
-                      onClick={() => handleSelectOption5("2006")}
-                    >
-                      2006
-                    </li>
-                    <li
-                      className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
-                      onClick={() => handleSelectOption5("2005")}
-                    >
-                      2005
-                    </li>
-                    <li
-                      className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
-                      onClick={() => handleSelectOption5("2004")}
-                    >
-                      2004
-                    </li>
-
-                    <li
-                      className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
-                      onClick={() => handleSelectOption5("2003")}
-                    >
-                      2003
-                    </li>
-                    <li
-                      className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
-                      onClick={() => handleSelectOption5("2002")}
-                    >
-                      2002
-                    </li>
-                    <li
-                      className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
-                      onClick={() => handleSelectOption5("2001")}
-                    >
-                      2001
-                    </li>
-                    <li
-                      className="px-4 py-3 cursor-pointer hover:bg-prim-light hover:text-prim"
-                      onClick={() => handleSelectOption5("2000")}
-                    >
-                      2000
-                    </li>
->>>>>>> second-account/main
                   </ul>
                 </div>
               )}
@@ -877,18 +581,13 @@ const ApplyNow = ({ student, colleges }) => {
               {/* Hidden input to integrate with React Hook Form */}
               <input
                 type="hidden"
-<<<<<<< HEAD
                 {...register("startYear", {
-=======
-                {...register("yearOfAdmission", {
->>>>>>> second-account/main
                   required: "This field is required",
                 })}
                 value={selectedOption5 || ""}
               />
 
               {/* Validation message */}
-<<<<<<< HEAD
               {errors.startYear && (
                 <p className="text-red-500 text-sm">
                   {errors.startYear.message}
@@ -922,11 +621,6 @@ const ApplyNow = ({ student, colleges }) => {
               {errors.entranceExam && (
                 <p className="text-red-500 text-sm mt-1">
                   {errors.entranceExam.message}
-=======
-              {errors.yearOfAdmission && (
-                <p className="text-red-500 text-sm">
-                  {errors.yearOfAdmission.message}
->>>>>>> second-account/main
                 </p>
               )}
             </div>

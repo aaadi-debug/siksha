@@ -12,10 +12,7 @@ import TopExams from "./components/TopExams";
 import LatestNews from "./components/LatestNews";
 import StudyAbroad from "./components/StudyAbroad";
 import Testimonials from "./components/Testimonials";
-<<<<<<< HEAD
 import TestimonialSlider2 from "./components/TestimonialSlider2";
-=======
->>>>>>> second-account/main
 import Footer from "./components/Footer";
 import Top10Colleges from "./components/Top10Colleges";
 import ExploreCourses from "./components/ExploreCourses";
@@ -52,16 +49,11 @@ export default function Home() {
         <TopExams />
         <LatestNews />
         <StudyAbroad />
-<<<<<<< HEAD
         {/* <Testimonials /> */}
         <div className="lg:px-20 py-20 px-6">
           <TestimonialSlider2 />
         </div>
         {/* <Popup /> */}
-=======
-        <Testimonials />
-        <Popup />
->>>>>>> second-account/main
       </main>
     </>
   );

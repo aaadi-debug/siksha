@@ -38,10 +38,7 @@ body {
   --btn-hover-color: var(--star-clr);
   --offset: 0.3em;
 
-<<<<<<< HEAD
   text-align: center;
-=======
->>>>>>> second-account/main
   border: 1px solid var(--btn-color);
   padding: 10px 20px;
   border-radius: 30px;
@@ -66,10 +63,7 @@ body {
   border: 1px solid var(--btn-color);
   padding: 10px 20px;
   border-radius: 30px;
-<<<<<<< HEAD
   text-align: center;
-=======
->>>>>>> second-account/main
   color: var(--btn-color);
   box-shadow: var(--offset) var(--offset) 0 var(--btn-hover-color);
   transition: all 0.3s ease; /* Add a smooth transition for hover effects */

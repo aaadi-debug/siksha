@@ -88,7 +88,7 @@ const FilterableCoursePage = () => {
   const courseUrlFromPath = pathname.split("/").pop() || ""; // Extracting courseUrl from the path
   const collegeData = collegeDataJson.data.filter(
     (college) => college.collegeAddress.country.toLowerCase() !== "india"
-  );;
+  );
   const router = useRouter();
 
   // State to control the number of displayed colleges
